@@ -1,12 +1,14 @@
 execute pathogen#infect()
 syntax on
 filetype plugin indent on
+set wildmenu
 
 set tabstop=2
 set shiftwidth=2
 set expandtab
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
@@ -21,10 +23,12 @@ set laststatus=2
 " colours)
 set t_Co=256
 
-let NERDTreeMinimalUI=1
+let NERDTreeMinimalUI=20
 let NERDTreeDirArrows=1
 
-let g:ruby_path="/usr/bin/env ruby"
+let g:NERDSpaceDelims = 1
+
+" let g:ruby_path="/usr/bin/env ruby"
 set nocompatible
 set nobackup
 set nowritebackup
@@ -37,8 +41,8 @@ set showcmd
 set number
 set incsearch
 set switchbuf=usetab
-" set lines=40 columns=169
 set hidden
+set mouse=a
 
 nnoremap <C-Up> :m .-2<CR>==
 nnoremap <C-Down> :m +1<CR>==
@@ -49,8 +53,15 @@ nnoremap <C-h> <c-w>h
 nnoremap <C-k> <c-w>k
 nnoremap <C-l> <c-w>l
 nnoremap <F5> :buffers<CR>:buffer<Space>
-
 map <F9> :NERDTreeToggle<CR>
+nnoremap <F6> :%y +<CR>
+map <F7> :%s ///g
+map <F2> :w<CR>
+inoremap <F2> <Esc>:w<CR>
+nnoremap <Tab> :bnext<CR>
+nnoremap <S-Tab> :bprevious<CR>
+map <F10> :bufdo update<CR>:bufdo q<CR>
+
 set updatetime=300
 ab vr vertical resize
 
@@ -75,6 +86,11 @@ function! QuickfixFilenames()
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
+if executable('ag')
+    " Note we extract the column as well as the file and line number
+    set grepprg=ag\ --nogroup\ --nocolor\ --column
+    set grepformat=%f:%l:%c%m
+endif
 
 set wildmode=list:longest,list:full
 set complete=.,w,t
@@ -88,3 +104,4 @@ function! InsertTabWrapper()
 endfunction
 inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
 let g:switch_mapping = "gs"
+set path+=**
