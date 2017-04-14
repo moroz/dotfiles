@@ -10,8 +10,20 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-scripts/fcitx.vim'
 Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-rails'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-easytags'
+Plug 'Valloric/YouCompleteMe'
+Plug 'ternjs/tern_for_vim'
+Plug 'easymotion/vim-easymotion'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-dispatch'
+Plug 'radenling/vim-dispatch-neovim'
 call plug#end()
 
 set tabstop=2
@@ -22,18 +34,28 @@ set path+=**
 set hidden
 set laststatus=2
 set showcmd
-set nocompatible
+set noswapfile
+set incsearch
+set ignorecase
 
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType yaml set inde=
+autocmd Filetype tex command Tex Dispatch! xelatex %
+map <Leader> <Plug>(easymotion-prefix)
+" Fix indentation on entire file
+map <Leader>ri mzgg=G`z
+
 
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
 
+nmap <Leader>ev :tabedit $MYVIMRC<CR>
 nnoremap <C-Up> :m .-2<CR>==
 nnoremap <C-Down> :m +1<CR>==
+vmap <C-Down> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <C-Up> :m'<-2<cr>`>my`<mzgv`yo`z
 nnoremap <C-Left> <c-w>h
 nnoremap <C-Right> <c-w>l
 nnoremap <C-j> <c-w>j
@@ -45,14 +67,18 @@ nnoremap k gk
 nnoremap <F5> :Buffers<CR>
 map <F9> :NERDTreeToggle<CR>
 nnoremap <F6> :%y +<CR>
-nnoremap <F4> :GFiles<CR>
-map <F2> :w<CR>
-inoremap <F2> <Esc>:w<CR>
+nnoremap <F4> :Files<CR>
+nnoremap <F3> :Tags<CR>
+inoremap <C-s> <esc>:update<cr>
+inoremap <C-j> <esc>:wq<cr>
+nnoremap <C-s> :update<cr>
+nnoremap <C-j> :wq<cr>
 nnoremap <Tab> :bnext<CR>
 nnoremap <S-Tab> :bprevious<CR>
 map <F10> :bufdo update<CR>:bufdo q<CR>
-noremap ;; :%s:::g<Left><Left><Left>
-noremap ;' :%s:::cg<Left><Left><Left><Left>
+map <silent> <Esc><Esc> :noh<CR>
+command! Uall bufdo update
+command! Bdall %bd|e#
 
 "https://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
 " fugitive git bindings
@@ -70,7 +96,7 @@ nnoremap <space>gd :Gdiff<CR>
 "nnoremap <space>gm :Gmove<Space>
 "nnoremap <space>gb :Git branch<Space>
 "nnoremap <space>go :Git checkout<Space>
-"nnoremap <space>gp :Dispatch! git push<CR>
+nnoremap <space>gp :Dispatch! git push origin master<CR>
 "nnoremap <space>gpl :Dispatch! git pull<CR>
 
 if executable('ag')
@@ -78,20 +104,6 @@ if executable('ag')
     set grepprg=ag\ --nogroup\ --nocolor\ --column
     set grepformat=%f:%l:%c%m
 endif
-
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
-function! QuickfixFilenames()
-  " Building a hash ensures we get each buffer only once
-  let buffer_numbers = {}
-  for quickfix_item in getqflist()
-    let bufnr = quickfix_item['bufnr']
-    " Lines without files will appear as bufnr=0
-    if bufnr > 0
-      let buffer_numbers[bufnr] = bufname(bufnr)
-    endif
-  endfor
-  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
-endfunction
 
 set wildmode=list:longest,list:full
 set complete=.,w,t
@@ -113,7 +125,12 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-colorscheme desert
+set tags=./tags
+let g:easytags_dynamic_files = 1
+let g:easytags_async = 0
+let g:easytags_events = ['BufWritePost']
+let g:jsx_ext_required = 0
+colorscheme jellybeans
 
 function! NumberToggle()
   if(&relativenumber == 1)
