@@ -37,16 +37,25 @@ set showcmd
 set noswapfile
 set incsearch
 set ignorecase
+set lbr
 
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType yaml set inde=
 autocmd Filetype tex command Tex Dispatch! xelatex %
+au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 map <Leader> <Plug>(easymotion-prefix)
 " Fix indentation on entire file
 map <Leader>ri mzgg=G`z
 
+" Leader shortcuts for Rails commands
+map <Space>m :Emodel 
+map <Space>c :Econtroller 
+map <Space>v :Eview 
+map <Space>s :Eschema<cr>
+map <Space>e :e Gemfile<cr>
+map <Space>i :Emigration 
 
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
@@ -67,7 +76,7 @@ nnoremap k gk
 nnoremap <F5> :Buffers<CR>
 map <F9> :NERDTreeToggle<CR>
 nnoremap <F6> :%y +<CR>
-nnoremap <F4> :Files<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <F3> :Tags<CR>
 inoremap <C-s> <esc>:update<cr>
 inoremap <C-j> <esc>:wq<cr>
@@ -125,6 +134,8 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {'regex': 'possibly useless use of a variable in void context'}
 set tags=./tags
 let g:easytags_dynamic_files = 1
 let g:easytags_async = 0
