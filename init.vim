@@ -2,6 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plugins will go here in the middle.
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
+Plug 'StanAngeloff/php.vim'
 "Plug 'vim-syntastic/syntastic'
 "Plug 'jnurmine/Zenburn'
 Plug 'rking/ag.vim'
@@ -11,6 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-scripts/fcitx.vim'
+Plug 'mmai/vim-zenmode'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -145,6 +147,9 @@ let g:easytags_events = ['BufWritePost']
 let g:jsx_ext_required = 0
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.haml,*.erb"
 let g:airline_powerline_fonts = 1
+"Zenmode
+let g:zenmode_background = "dark"
+let g:zenmode_colorscheme = "solarized"
 if strftime("%H") < 20 && strftime("%H") > 5
   colorscheme Tomorrow
 else
