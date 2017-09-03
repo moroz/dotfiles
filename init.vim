@@ -2,10 +2,7 @@ call plug#begin('~/.config/nvim/plugged')
 " Plugins will go here in the middle.
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'StanAngeloff/php.vim'
-"Plug 'vim-syntastic/syntastic'
-"Plug 'jnurmine/Zenburn'
-Plug 'rking/ag.vim'
+Plug 'vim-syntastic/syntastic'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -17,11 +14,10 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
-"Plug 'tpope/vim-rails'
 Plug 'xolox/vim-misc'
 Plug 'xolox/vim-easytags'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'ternjs/tern_for_vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'ternjs/tern_for_vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
@@ -64,12 +60,10 @@ let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
 
 nmap <Leader>ev :tabedit $MYVIMRC<CR>
-nnoremap <C-Up> :m .-2<CR>==
-nnoremap <C-Down> :m +1<CR>==
-vmap <C-Down> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <C-Up> :m'<-2<cr>`>my`<mzgv`yo`z
-nnoremap <C-Left> <c-w>h
-nnoremap <C-Right> <c-w>l
+nnoremap <M-Up> :m .-2<CR>==
+nnoremap <M-Down> :m +1<CR>==
+vmap <M-Down> :m'>+<cr>`<my`>mzgv`yo`z
+vmap <M-Up> :m'<-2<cr>`>my`<mzgv`yo`z
 nnoremap <C-j> <c-w>j
 nnoremap <C-h> <c-w>h
 nnoremap <C-k> <c-w>k
@@ -82,6 +76,8 @@ map <F9> :NERDTreeToggle<CR>
 nnoremap <F6> :%y +<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <F3> :Tags<CR>
+inoremap <D-s> <esc>:update<cr>
+nnoremap <D-s> :update<cr>
 inoremap <C-s> <esc>:update<cr>
 nnoremap <C-s> :update<cr>
 nnoremap <Tab> :bnext<CR>
@@ -99,35 +95,13 @@ nnoremap <space>gl :Git add .<CR><CR>
 nnoremap <space>gc :Gcommit -v -q<CR>
 nnoremap <space>gt :Gcommit -v -q %:p<CR>
 nnoremap <space>gd :Gdiff<CR>
-"nnoremap <space>ge :Gedit<CR>
-"nnoremap <space>gr :Gread<CR>
-"nnoremap <space>gw :Gwrite<CR><CR>
-"nnoremap <space>gl :silent! Glog<CR>:bot copen<CR>
-"nnoremap <space>gp :Ggrep<Space>
-"nnoremap <space>gm :Gmove<Space>
-"nnoremap <space>gb :Git branch<Space>
-"nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gp :Dispatch! git push origin master<CR>
-"nnoremap <space>gpl :Dispatch! git pull<CR>
 
 if executable('ag')
     " Note we extract the column as well as the file and line number
     set grepprg=ag\ --nogroup\ --nocolor\ --column
     set grepformat=%f:%l:%c%m
 endif
-
-"set wildmode=list:longest,list:full
-"set complete=.,w,t
-"function! InsertTabWrapper()
-    "let col = col('.') - 1
-    "if !col || getline('.')[col - 1] !~ '\k'
-        "return "\<tab>"
-    "else
-        "return "\<c-p>"
-    "endif
-"endfunction
-"inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
-
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
@@ -150,12 +124,14 @@ let g:airline_powerline_fonts = 1
 "Zenmode
 let g:zenmode_background = "dark"
 let g:zenmode_colorscheme = "solarized"
-if strftime("%H") < 20 && strftime("%H") > 5
+if strftime("%H") < 18 && strftime("%H") > 5
   colorscheme Tomorrow
 else
   colorscheme gruvbox
   set background=dark
 endif
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 function! NumberToggle()
   if(&relativenumber == 1)
