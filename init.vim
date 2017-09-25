@@ -8,7 +8,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-scripts/fcitx.vim'
+"Plug 'vim-scripts/fcitx.vim'
 Plug 'mmai/vim-zenmode'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
@@ -140,3 +140,4 @@ endfunc
 
 nnoremap <C-n> :call NumberToggle()<cr>
 set mouse=a
+set guicursor=
