@@ -20,6 +20,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'ternjs/tern_for_vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'vim-ruby/vim-ruby'
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'tpope/vim-dispatch'
@@ -76,8 +77,8 @@ map <F9> :NERDTreeToggle<CR>
 nnoremap <F6> :%y +<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <F3> :Tags<CR>
-inoremap <D-s> <esc>:update<cr>
-nnoremap <D-s> :update<cr>
+inoremap <D-s> <esc>:w<cr>
+nnoremap <D-s> :w<cr>
 inoremap <C-s> <esc>:update<cr>
 nnoremap <C-s> :update<cr>
 nnoremap <Tab> :bnext<CR>
@@ -124,12 +125,8 @@ let g:airline_powerline_fonts = 1
 "Zenmode
 let g:zenmode_background = "dark"
 let g:zenmode_colorscheme = "solarized"
-if strftime("%H") < 18 && strftime("%H") > 5
-  colorscheme Tomorrow
-else
-  colorscheme gruvbox
-  set background=dark
-endif
+colorscheme gruvbox
+set background=dark
 let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
