@@ -125,10 +125,14 @@ let g:airline_powerline_fonts = 1
 "Zenmode
 let g:zenmode_background = "dark"
 let g:zenmode_colorscheme = "solarized"
-colorscheme gruvbox
-set background=dark
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
+colorscheme Tomorrow-Night-Bright
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    let g:python_host_prog = '/usr/local/bin/python2'
+    let g:python3_host_prog = '/usr/local/bin/python3'
+  endif
+endif
 
 function! NumberToggle()
   if(&relativenumber == 1)
