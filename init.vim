@@ -61,11 +61,14 @@ map <Leader>ri mzgg=G`z
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
 
-nmap <Leader>ev :tabedit $MYVIMRC<CR>
-nnoremap <M-Up> :m .-2<CR>==
-nnoremap <M-Down> :m +1<CR>==
-vmap <M-Down> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-Up> :m'<-2<cr>`>my`<mzgv`yo`z
+" Moving lines up and down
+nnoremap <C-Down> :m .+1<CR>==
+nnoremap <C-Up> :m .-2<CR>==
+inoremap <C-Down> <Esc>:m .+1<CR>==gi
+inoremap <C-Up> <Esc>:m .-2<CR>==gi
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+vnoremap <C-Up> :m '<-2<CR>gv=gvnmap <Leader>ev :tabedit $MYVIMRC<CR>
+
 nnoremap <C-j> <c-w>j
 nnoremap <C-h> <c-w>h
 nnoremap <C-k> <c-w>k
