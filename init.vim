@@ -10,6 +10,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 "Plug 'vim-scripts/fcitx.vim'
 Plug 'mmai/vim-zenmode'
+Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -69,6 +70,7 @@ nnoremap <C-j> <c-w>j
 nnoremap <C-h> <c-w>h
 nnoremap <C-k> <c-w>k
 nnoremap <C-l> <c-w>l
+nnoremap <C-S-t> :tabe<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <F5> :Buffers<CR>
@@ -81,8 +83,8 @@ inoremap <D-s> <esc>:w<cr>
 nnoremap <D-s> :w<cr>
 inoremap <C-s> <esc>:update<cr>
 nnoremap <C-s> :update<cr>
-nnoremap <Tab> :bnext<CR>
-nnoremap <S-Tab> :bprevious<CR>
+nnoremap <C-Tab> gt
+nnoremap <C-S-Tab> gT
 map <F10> :bufdo update<CR>:bufdo q<CR>
 map <silent> <Esc><Esc> :noh<CR>
 command! Uall bufdo update
@@ -113,8 +115,10 @@ endif
 "let g:syntastic_check_on_wq = 0
 "let g:syntastic_scss_sass_quiet_messages = {
     "\ "regex": 'File to import not found or unreadable', }
-"let g:syntastic_eruby_ruby_quiet_messages =
-    "\ {'regex': 'possibly useless use of a variable in void context'}
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {'regex': 'possibly useless use of a variable in void context'}
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+
 set tags=./tags
 let g:easytags_dynamic_files = 1
 let g:easytags_async = 0
