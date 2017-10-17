@@ -67,7 +67,8 @@ nnoremap <C-Up> :m .-2<CR>==
 inoremap <C-Down> <Esc>:m .+1<CR>==gi
 inoremap <C-Up> <Esc>:m .-2<CR>==gi
 vnoremap <C-Down> :m '>+1<CR>gv=gv
-vnoremap <C-Up> :m '<-2<CR>gv=gvnmap <Leader>ev :tabedit $MYVIMRC<CR>
+vnoremap <C-Up> :m '<-2<CR>gv=gvn
+map <Leader>ev :tabedit $MYVIMRC<CR>
 
 nnoremap <C-j> <c-w>j
 nnoremap <C-h> <c-w>h
