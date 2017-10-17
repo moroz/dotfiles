@@ -3,31 +3,35 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-syntastic/syntastic'
+Plug 'vim-utils/vim-ruby-fold'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
-"Plug 'vim-scripts/fcitx.vim'
-Plug 'mmai/vim-zenmode'
-Plug 'Chiel92/vim-autoformat'
+Plug 'ap/vim-css-color', { 'for' : ['sass', 'css', 'scss'] }
+"Plug 'mmai/vim-zenmode'
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+"Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
 Plug 'xolox/vim-misc'
+Plug 'AndrewRadev/switch.vim', { 'for' : 'ruby' }
 Plug 'xolox/vim-easytags'
-Plug 'Valloric/YouCompleteMe'
-Plug 'ternjs/tern_for_vim'
+"Plug 'Valloric/YouCompleteMe'
+"Plug 'ternjs/tern_for_vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
-Plug 'alvan/vim-closetag'
+"Plug 'alvan/vim-closetag'
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
+Plug 'nathanaelkane/vim-indent-guides'
 call plug#end()
 
 set tabstop=2
@@ -74,14 +78,16 @@ nnoremap <C-j> <c-w>j
 nnoremap <C-h> <c-w>h
 nnoremap <C-k> <c-w>k
 nnoremap <C-l> <c-w>l
-nnoremap <C-S-t> :tabe<CR>
+nnoremap <C-t> :tabe<CR>
 nnoremap j gj
 nnoremap k gk
 nnoremap <F5> :Buffers<CR>
 nnoremap <F4> :GundoToggle<CR>
 map <F9> :NERDTreeToggle<CR>
+"map <F9> :Lexplore<CR>
 nnoremap <F6> :%y +<CR>
 nnoremap <C-p> :Files<CR>
+nnoremap <F7> :Colors<cr>
 nnoremap <F3> :Tags<CR>
 inoremap <D-s> <esc>:w<cr>
 nnoremap <D-s> :w<cr>
@@ -123,9 +129,19 @@ let g:syntastic_eruby_ruby_quiet_messages =
     \ {'regex': 'possibly useless use of a variable in void context'}
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 
+let g:netrw_keepdir      = 0
+let g:netrw_liststyle    = 3
+let g:netrw_sort_options = 'i'
+let g:netrw_banner=0
+let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
+" absolute width of netrw window
+let g:netrw_winsize = -28
+
+autocmd FileType netrw set nolist
+
 set tags=./tags
 let g:easytags_dynamic_files = 1
-let g:easytags_async = 0
+let g:easytags_async = 1
 let g:easytags_events = ['BufWritePost']
 let g:jsx_ext_required = 0
 let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.haml,*.erb"
@@ -133,7 +149,8 @@ let g:airline_powerline_fonts = 1
 "Zenmode
 let g:zenmode_background = "dark"
 let g:zenmode_colorscheme = "solarized"
-colorscheme Tomorrow-Night-Bright
+colorscheme gruvbox
+set bg=dark
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
@@ -149,6 +166,10 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
+
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=bg
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=black
 
 nnoremap <C-n> :call NumberToggle()<cr>
 set mouse=a
