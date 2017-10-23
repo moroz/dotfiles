@@ -1,0 +1,35 @@
+# This is the configuration used to check the rubocop source code.
+
+inherit_from: .rubocop_optional.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'vendor/**/*'
+    - 'spec/fixtures/**/*'
+    - 'db/functional_test_data.rb'
+    - 'db/schema.rb'
+
+Lint/HandleExceptions:
+  Exclude:
+    - 'bin/rails'
+    - 'bin/rake'
+    - 'bin/rspec'
+
+Style/Encoding:
+  Enabled: true
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/RescueModifier:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - '**/*.rake'
+    - 'spec/**/*.rb'
+    - 'config/**/*.rb'
