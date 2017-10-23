@@ -1,18 +1,15 @@
 call plug#begin('~/.config/nvim/plugged')
-" Plugins will go here in the middle.
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-syntastic/syntastic'
 Plug 'vim-utils/vim-ruby-fold'
+Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'ap/vim-css-color', { 'for' : ['sass', 'css', 'scss'] }
-"Plug 'mmai/vim-zenmode'
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-"Plug 'Chiel92/vim-autoformat'
 Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -20,8 +17,6 @@ Plug 'flazz/vim-colorschemes'
 Plug 'xolox/vim-misc'
 Plug 'AndrewRadev/switch.vim', { 'for' : 'ruby' }
 Plug 'xolox/vim-easytags'
-"Plug 'Valloric/YouCompleteMe'
-"Plug 'ternjs/tern_for_vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
@@ -29,9 +24,9 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
-"Plug 'alvan/vim-closetag'
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'neomake/neomake'
 call plug#end()
 
 set tabstop=2
@@ -57,15 +52,32 @@ map <Leader> <Plug>(easymotion-prefix)
 " Fix indentation on entire file
 map <Leader>ri mzgg=G`z
 
-" Leader shortcuts for Rails commands
-"map <Space>m :Emodel 
-"map <Space>c :Econtroller 
-"map <Space>i :Emigration 
+call neomake#configure#automake({
+  \ 'TextChanged': {},
+  \ 'InsertLeave': {},
+  \ 'BufWritePost': {'delay': 0},
+  \ 'BufWinEnter': {},
+  \ }, 500)
+
+let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
+let g:neomake_warning_sign = {
+  \ 'text': '>>',
+  \ 'texthl': 'WarningMsg',
+  \ }
+
+let g:neomake_error_sign = {
+  \ 'text': '>>',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+
+let g:neomake_info_sign = {
+  \ 'text': '>>',
+  \ 'texthl': 'NeomakeInfoSign'
+  \ }
 
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
 
-" Moving lines up and down
 nnoremap <C-Down> :m .+1<CR>==
 nnoremap <C-Up> :m .-2<CR>==
 inoremap <C-Down> <Esc>:m .+1<CR>==gi
@@ -97,45 +109,18 @@ nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 map <F10> :bufdo update<CR>:bufdo q<CR>
 map <silent> <Esc><Esc> :noh<CR>
-command! Uall bufdo update
-command! Bdall %bd|e#
 
-"https://www.reddit.com/r/vim/comments/21f4gm/best_workflow_when_using_fugitive/
-" fugitive git bindings
 nnoremap <space>ga :Git add %:p<CR><CR>
 nnoremap <space>gs :Gstatus<CR>
 nnoremap <space>gl :Git add .<CR><CR>
 nnoremap <space>gc :Gcommit -v -q<CR>
 nnoremap <space>gt :Gcommit -v -q %:p<CR>
 nnoremap <space>gd :Gdiff<CR>
-nnoremap <space>gp :Dispatch! git push origin master<CR>
 
 if executable('ag')
-    " Note we extract the column as well as the file and line number
     set grepprg=ag\ --nogroup\ --nocolor\ --column
     set grepformat=%f:%l:%c%m
 endif
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
-"let g:syntastic_scss_sass_quiet_messages = {
-    "\ "regex": 'File to import not found or unreadable', }
-let g:syntastic_eruby_ruby_quiet_messages =
-    \ {'regex': 'possibly useless use of a variable in void context'}
-let g:syntastic_ruby_checkers = ['rubocop', 'mri']
-
-let g:netrw_keepdir      = 0
-let g:netrw_liststyle    = 3
-let g:netrw_sort_options = 'i'
-let g:netrw_banner=0
-let g:netrw_list_hide = '\(^\|\s\s\)\zs\.\S\+,\(^\|\s\s\)ntuser\.\S\+'
-" absolute width of netrw window
-let g:netrw_winsize = -28
 
 autocmd FileType netrw set nolist
 
@@ -144,13 +129,10 @@ let g:easytags_dynamic_files = 1
 let g:easytags_async = 1
 let g:easytags_events = ['BufWritePost']
 let g:jsx_ext_required = 0
-let g:closetag_filenames = "*.html,*.xhtml,*.phtml,*.haml,*.erb"
 let g:airline_powerline_fonts = 1
-"Zenmode
-let g:zenmode_background = "dark"
-let g:zenmode_colorscheme = "solarized"
-colorscheme gruvbox
-set bg=dark
+
+colorscheme distinguished
+"set bg=dark
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
