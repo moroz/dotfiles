@@ -93,8 +93,8 @@ inoremap <D-s> <esc>:w<cr>
 nnoremap <D-s> :w<cr>
 inoremap <C-s> <esc>:update<cr>
 nnoremap <C-s> :update<cr>
-nnoremap <C-Tab> gt
-nnoremap <C-S-Tab> gT
+nnoremap <Tab> gt
+nnoremap <S-Tab> gT
 map <F10> :bufdo update<CR>:bufdo q<CR>
 map <silent> <Esc><Esc> :noh<CR>
 command! Uall bufdo update
