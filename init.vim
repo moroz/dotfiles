@@ -1,32 +1,39 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-utils/vim-ruby-fold'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-surround'
+Plug 'AndrewRadev/switch.vim', { 'for' : 'ruby' }
+
 Plug 'tpope/vim-fugitive'
+Plug 'xolox/vim-easytags'
+Plug 'xolox/vim-misc'
+Plug 'easymotion/vim-easymotion'
+Plug 'tpope/vim-dispatch'
+
+" Language supports
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'ap/vim-css-color', { 'for' : ['sass', 'css', 'scss'] }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
-Plug 'tpope/vim-surround'
+Plug 'vim-utils/vim-ruby-fold'
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'tpope/vim-rails'
+Plug 'mxw/vim-jsx', { 'for': 'javascript' }
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'flazz/vim-colorschemes'
-Plug 'xolox/vim-misc'
-Plug 'AndrewRadev/switch.vim', { 'for' : 'ruby' }
-Plug 'xolox/vim-easytags'
-Plug 'easymotion/vim-easymotion'
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'mxw/vim-jsx', { 'for': 'javascript' }
-Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-Plug 'tpope/vim-dispatch'
 Plug 'radenling/vim-dispatch-neovim'
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 Plug 'nathanaelkane/vim-indent-guides'
+
 Plug 'neomake/neomake'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 set tabstop=2
@@ -41,6 +48,7 @@ set incsearch
 set ignorecase
 set lbr
 set smartindent
+set eol
 
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
@@ -77,6 +85,9 @@ let g:neomake_info_sign = {
 
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 nnoremap <C-Down> :m .+1<CR>==
 nnoremap <C-Up> :m .-2<CR>==
@@ -132,7 +143,6 @@ let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
 
 colorscheme distinguished
-"set bg=dark
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
