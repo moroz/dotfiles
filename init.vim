@@ -3,6 +3,7 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
 Plug 'vim-utils/vim-ruby-fold'
 Plug 'tpope/vim-rails'
+Plug 'elixir-editors/vim-elixir'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -53,12 +54,7 @@ map <Leader> <Plug>(easymotion-prefix)
 map <Leader>ri mzgg=G`z
 
 call neomake#configure#automake({
-  \ 'TextChanged': {},
-  \ 'InsertLeave': {},
-  \ 'BufWritePost': {'delay': 0},
-  \ 'BufWinEnter': {},
-  \ }, 500)
-
+  \ 'BufWritePost': {'delay': 500}})
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
 let g:neomake_warning_sign = {
   \ 'text': '>>',
@@ -74,6 +70,18 @@ let g:neomake_info_sign = {
   \ 'text': '>>',
   \ 'texthl': 'NeomakeInfoSign'
   \ }
+let g:neomake_elixir_enabled_makers = ['elixir']
+let g:neomake_elixir_elixir_maker = {
+      \ 'exe': 'elixirc',
+      \ 'args': [
+        \ '--ignore-module-conflict', '--warnings-as-errors',
+        \ '--app', 'mix', '--app', 'ex_unit',
+        \ '-o', '$TMPDIR', '%:p'
+      \ ],
+      \ 'errorformat':
+          \ '%E** %s %f:%l: %m,' .
+          \ '%W%f:%l'
+      \ }
 
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
@@ -100,6 +108,7 @@ map <F9> :NERDTreeToggle<CR>
 nnoremap <F6> :%y +<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <F7> :Colors<cr>
+nnoremap <F8> :terminal<cr>
 nnoremap <F3> :Tags<CR>
 inoremap <D-s> <esc>:w<cr>
 nnoremap <D-s> :w<cr>
@@ -131,7 +140,7 @@ let g:easytags_events = ['BufWritePost']
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
 
-colorscheme distinguished
+colorscheme jellybeans
 "set bg=dark
 if has("unix")
   let s:uname = system("uname")
