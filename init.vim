@@ -33,7 +33,6 @@ Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 Plug 'nathanaelkane/vim-indent-guides'
 
 Plug 'neomake/neomake'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
 set tabstop=2
@@ -61,12 +60,9 @@ map <Leader> <Plug>(easymotion-prefix)
 map <Leader>ri mzgg=G`z
 
 call neomake#configure#automake({
-  \ 'TextChanged': {},
-  \ 'InsertLeave': {},
-  \ 'BufWritePost': {'delay': 0},
+  \ 'BufWritePost': {'delay': 100},
   \ 'BufWinEnter': {},
   \ }, 500)
-
 let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
 let g:neomake_warning_sign = {
   \ 'text': '>>',
@@ -82,6 +78,18 @@ let g:neomake_info_sign = {
   \ 'text': '>>',
   \ 'texthl': 'NeomakeInfoSign'
   \ }
+let g:neomake_elixir_enabled_makers = ['elixir']
+let g:neomake_elixir_elixir_maker = {
+      \ 'exe': 'elixirc',
+      \ 'args': [
+        \ '--ignore-module-conflict', '--warnings-as-errors',
+        \ '--app', 'mix', '--app', 'ex_unit',
+        \ '-o', '$TMPDIR', '%:p'
+      \ ],
+      \ 'errorformat':
+          \ '%E** %s %f:%l: %m,' .
+          \ '%W%f:%l'
+      \ }
 
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
@@ -111,6 +119,8 @@ map <F9> :NERDTreeToggle<CR>
 nnoremap <F6> :%y +<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <F7> :Colors<cr>
+nnoremap <F8> :terminal<CR>
+tnoremap <Esc><Esc> <C-\><C-n>
 nnoremap <F3> :Tags<CR>
 inoremap <D-s> <esc>:w<cr>
 nnoremap <D-s> :w<cr>
@@ -142,7 +152,7 @@ let g:easytags_events = ['BufWritePost']
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
 
-colorscheme distinguished
+colorscheme jellybeans
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
