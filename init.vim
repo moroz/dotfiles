@@ -120,7 +120,7 @@ map <F9> :NERDTreeToggle<CR>
 nnoremap <F6> :%y +<CR>
 nnoremap <C-p> :Files<CR>
 nnoremap <F7> :Colors<cr>
-nnoremap <F8> :terminal<cr>
+nnoremap <F8> :terminal<CR>
 nnoremap <F3> :Tags<CR>
 inoremap <D-s> <esc>:w<cr>
 nnoremap <D-s> :w<cr>
@@ -152,7 +152,7 @@ let g:easytags_events = ['BufWritePost']
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
 
-colorscheme jellybeans
+colorscheme Tomorrow-Night-Eighties
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
