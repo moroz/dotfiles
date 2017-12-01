@@ -30,7 +30,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(javascript
      yaml
      html
      ruby
@@ -45,7 +45,9 @@ values."
             shell-default-position 'bottom)
      ;; spell-checking
      syntax-checking
+     auto-completion
      version-control
+     ruby-on-rails
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -124,6 +126,8 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         material
+                         distinguished
                          jbeans
                          wombat
                          spacemacs-light
@@ -132,8 +136,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monaco for Powerline"
-                               :size 14
+   dotspacemacs-default-font '("Hack"
+                               :size 15
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -355,11 +359,25 @@ you should place your code here."
    ;; ))
    )
 
+  (setq sql-mysql-login-params
+        '((user :default "karol")
+          (database :default "buddy_development")
+          (server :default "localhost")
+          (password)))
+
+  (defadvice evil-inner-word (around underscore-as-word activate)
+    (let ((table (copy-syntax-table (syntax-table))))
+      (modify-syntax-entry ?_ "w" table)
+      (with-syntax-table table
+        ad-do-it)))
+
   ;; Key mappings
-  (global-set-key (kbd "<f9>") 'neotree-project-dir-toggle)
-  (global-set-key (kbd "<f5>") 'helm-mini)
   (global-set-key (kbd "<M-up>") 'move-text-line-up)
   (global-set-key (kbd "<M-down>") 'move-text-line-down)
+  (global-set-key (kbd "s-r") 'counsel-rhythmbox)
+  (global-set-key (kbd "<f7>") 'sql-mysql)
+  (global-set-key (kbd "<f8>") 'spacemacs/projectile-shell-pop)
+  (global-set-key (kbd "<f9>") 'neotree-project-dir-toggle)
 
   (setq ruby-insert-encoding-magic-comment nil)
   (setq require-final-newline t)
@@ -367,6 +385,7 @@ you should place your code here."
   (setq powerline-default-separator nil)
   (spaceline-compile)
   (setq-default flycheck-disabled-checkers '(haml))
+  (set-face-attribute 'mode-line nil :font "Lato-11")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -383,16 +402,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- '(custom-enabled-themes nil)
- '(custom-safe-themes
-   (quote
-    ("fa2b58bb98b62c3b8cf3b6f02f058ef7827a8e497125de0254f56e373abee088" "bffa9739ce0752a37d9b1eee78fc00ba159748f50dc328af4be661484848e476" "d78cb58f3b219197d85181a387e08577e2e61e02935dd80762e8561aa527b412" default)))
- '(display-time-mode t)
+ '(custom-enabled-themes (quote (deeper-blue)))
  '(evil-want-Y-yank-to-eol nil)
- '(linum-format " %3i ")
  '(package-selected-packages
    (quote
-    (yaml-mode reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters popwin persp-mode pcre2el paradox spinner orgit org-plus-contrib org-bullets open-junk-file neotree multi-term move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish diff-hl define-word counsel-projectile projectile pkg-info epl counsel swiper ivy company-statistics company column-enforce-mode clean-aindent-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup))))
+    (livid-mode json-mode js2-refactor company-tern dash-functional yaml-mode reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters popwin persp-mode pcre2el paradox spinner orgit org-plus-contrib org-bullets open-junk-file neotree multi-term move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish diff-hl define-word counsel-projectile projectile pkg-info epl counsel swiper ivy company-statistics company column-enforce-mode clean-aindent-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
