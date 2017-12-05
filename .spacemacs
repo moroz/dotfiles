@@ -126,21 +126,24 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         badwolf
                          material
                          distinguished
+                         afternoon
+                         alect-black-alt
+                         ample
                          jbeans
                          wombat
-                         spacemacs-light
                          spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Hack"
-                               :size 15
+                               :size 16
                                :weight normal
                                :width normal
-                               :powerline-scale 1.1)
+                               :powerline-scale 1.2)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -343,6 +346,12 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
+  (add-hook 'text-mode-hook
+            '(lambda ()
+               (setq indent-tabs-mode nil)
+               (setq tab-width 2)
+               (setq indent-line-function (quote insert-tab))))
+
   (cond
    ((string-equal system-type "darwin")
     (progn
@@ -351,12 +360,15 @@ you should place your code here."
       (setq mac-command-modifier 'meta)
       (setq mac-option-modifier 'super)
       (setq mac-right-option-modifier nil)
+      (global-set-key (kbd "<s-tab>") 'other-frame)
       (global-set-key (kbd "M-p") 'counsel-projectile-find-file)
       (global-set-key (kbd "M-s") 'save-buffer)
     ))
-   ;; ((string-equal system-type "gnu/linux")
-   ;;  (progn
-   ;; ))
+   ((string-equal system-type "gnu/linux")
+    (progn
+      (global-set-key (kbd "<C-tab>") 'other-frame)
+      (global-set-key (kbd "s-r") 'counsel-rhythmbox)
+   ))
    )
 
   (setq sql-mysql-login-params
@@ -365,6 +377,11 @@ you should place your code here."
           (server :default "localhost")
           (password)))
 
+  (setq sql-postgres-login-params
+        '((user :default "karol")
+          (database :default "injobs_development")
+          (server :default "localhost")))
+
   (defadvice evil-inner-word (around underscore-as-word activate)
     (let ((table (copy-syntax-table (syntax-table))))
       (modify-syntax-entry ?_ "w" table)
@@ -372,20 +389,21 @@ you should place your code here."
         ad-do-it)))
 
   ;; Key mappings
-  (global-set-key (kbd "<M-up>") 'move-text-line-up)
-  (global-set-key (kbd "<M-down>") 'move-text-line-down)
-  (global-set-key (kbd "s-r") 'counsel-rhythmbox)
-  (global-set-key (kbd "<f7>") 'sql-mysql)
   (global-set-key (kbd "<f8>") 'spacemacs/projectile-shell-pop)
   (global-set-key (kbd "<f9>") 'neotree-project-dir-toggle)
+  (global-set-key (kbd "s-t") 'make-frame)
+
+  (spacemacs/set-leader-keys "s q m" 'sql-mysql)
+  (spacemacs/set-leader-keys "s q p" 'sql-postgres)
 
   (setq ruby-insert-encoding-magic-comment nil)
   (setq require-final-newline t)
+  (setq vc-follow-symlinks t)
+  (setq tags-add-tables nil)
 
   (setq powerline-default-separator nil)
   (spaceline-compile)
   (setq-default flycheck-disabled-checkers '(haml))
-  (set-face-attribute 'mode-line nil :font "Lato-11")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -402,11 +420,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- '(custom-enabled-themes (quote (deeper-blue)))
  '(evil-want-Y-yank-to-eol nil)
+ '(linum-format " %3i ")
  '(package-selected-packages
    (quote
-    (livid-mode json-mode js2-refactor company-tern dash-functional yaml-mode reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters popwin persp-mode pcre2el paradox spinner orgit org-plus-contrib org-bullets open-junk-file neotree multi-term move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish diff-hl define-word counsel-projectile projectile pkg-info epl counsel swiper ivy company-statistics company column-enforce-mode clean-aindent-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup))))
+    (badwolf-theme ample-zen-theme ample-theme alect-themes afternoon-theme yaml-mode reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters popwin persp-mode pcre2el paradox spinner orgit org-plus-contrib org-bullets open-junk-file neotree multi-term move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish diff-hl define-word counsel-projectile projectile pkg-info epl counsel swiper ivy company-statistics company column-enforce-mode clean-aindent-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -421,8 +439,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- '(custom-enabled-themes (quote (deeper-blue)))
  '(evil-want-Y-yank-to-eol nil)
+ '(tab-stop-list (number-sequence 4 200 4))
  '(package-selected-packages
    (quote
     (yaml-mode reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters popwin persp-mode pcre2el paradox spinner orgit org-plus-contrib org-bullets open-junk-file neotree multi-term move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish diff-hl define-word counsel-projectile projectile pkg-info epl counsel swiper ivy company-statistics company column-enforce-mode clean-aindent-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup))))
