@@ -33,8 +33,8 @@ values."
    '(javascript
      yaml
      html
-     ruby
      ivy
+     ruby
      emacs-lisp
      git
      osx
@@ -128,9 +128,21 @@ values."
    dotspacemacs-themes '(
                          badwolf
                          material
+                         gruvbox
                          distinguished
                          afternoon
-                         alect-black-alt
+                         apropospriate
+                         cyberpunk
+                         dakrone
+                         flatland
+                         grandshell
+                         lush
+                         molokai
+                         monokai
+                         naquadah
+                         twilight
+                         sanityinc-tomorrow-bright
+                         sanityinc-tomorrow-eighties
                          ample
                          jbeans
                          wombat
@@ -371,6 +383,35 @@ you should place your code here."
    ))
    )
 
+  ;; In text mode, I don't want it auto-indenting for the first
+  ;; line in the file, or lines following blank lines.
+  ;; Everywhere else is okay.
+  (defun newline-and-text-indent ()
+    "Insert a newline, then indent the next line sensibly for text"
+    (interactive)
+    (cond
+     ;; Beginning of buffer, or beginning of an existing line, don't indent:
+     ((or (bobp) (bolp)) (newline))
+
+     ;; If we're on a whitespace-only line,
+     ((and (eolp)
+           (save-excursion (re-search-backward "^\\(\\s \\)*$"
+                                               (line-beginning-position) t)))
+      ;; ... delete the whitespace, then add another newline:
+      (kill-line 0)
+      (newline))
+
+     ;; Else (not on whitespace-only) insert a newline,
+     ;; then add the appropriate indent:
+     (t (insert "\n")
+        (indent-according-to-mode))
+     ))
+
+  (defun text-indent-hook ()
+    (local-set-key "\C-m" 'newline-and-text-indent)
+    )
+  (setq text-mode-hook 'text-indent-hook)
+
   (setq sql-mysql-login-params
         '((user :default "karol")
           (database :default "buddy_development")
@@ -421,10 +462,10 @@ This function is called at the very end of Spacemacs initialization."
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(evil-want-Y-yank-to-eol nil)
- '(linum-format " %3i ")
  '(package-selected-packages
    (quote
-    (badwolf-theme ample-zen-theme ample-theme alect-themes afternoon-theme yaml-mode reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters popwin persp-mode pcre2el paradox spinner orgit org-plus-contrib org-bullets open-junk-file neotree multi-term move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish diff-hl define-word counsel-projectile projectile pkg-info epl counsel swiper ivy company-statistics company column-enforce-mode clean-aindent-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup))))
+    (color-theme-sanityinc-tomorrow yaml-mode reveal-in-osx-finder pbcopy osx-trash osx-dictionary launchctl web-mode tagedit slim-mode scss-mode sass-mode pug-mode less-css-mode haml-mode emmet-mode company-web web-completion-data xterm-color ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline powerline smex smeargle shell-pop rvm ruby-tools ruby-test-mode rubocop rspec-mode robe restart-emacs request rbenv rake rainbow-delimiters popwin persp-mode pcre2el paradox spinner orgit org-plus-contrib org-bullets open-junk-file neotree multi-term move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint ivy-hydra info+ indent-guide hydra hungry-delete hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation hide-comnt help-fns+ helm-make helm helm-core google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter fuzzy flycheck-pos-tip pos-tip flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit with-editor evil-lisp-state smartparens evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-args evil-anzu anzu evil goto-chg undo-tree eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help elisp-slime-nav dumb-jump f dash s diminish diff-hl define-word counsel-projectile projectile pkg-info epl counsel swiper ivy company-statistics company column-enforce-mode clean-aindent-mode chruby bundler inf-ruby bind-map bind-key auto-yasnippet yasnippet auto-highlight-symbol auto-compile packed async aggressive-indent adaptive-wrap ace-window ace-link avy ac-ispell auto-complete popup)))
+ '(tab-stop-list (number-sequence 4 200 4)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -440,6 +481,7 @@ This function is called at the very end of Spacemacs initialization."
  '(ansi-color-names-vector
    ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
  '(evil-want-Y-yank-to-eol nil)
+
  '(tab-stop-list (number-sequence 4 200 4))
  '(package-selected-packages
    (quote
