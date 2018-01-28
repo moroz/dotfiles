@@ -45,6 +45,7 @@ values."
             shell-default-position 'bottom)
      syntax-checking
      auto-completion
+     themes-megapack
      version-control
      ruby-on-rails
      )
@@ -126,26 +127,11 @@ values."
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
                          badwolf
-                         material
-                         gruvbox
-                         distinguished
-                         afternoon
-                         apropospriate
-                         cyberpunk
-                         dakrone
-                         flatland
-                         grandshell
-                         lush
-                         molokai
                          monokai
-                         naquadah
-                         twilight
+                         distinguished
                          sanityinc-tomorrow-bright
-                         sanityinc-tomorrow-eighties
-                         ample
-                         jbeans
-                         wombat
-                         spacemacs-dark)
+                         gruvbox-dark-hard
+                         )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -356,6 +342,8 @@ you should place your code here."
 
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+  (evil-leader/set-key "o y" 'clipboard-kill-ring-save)
+  (evil-leader/set-key "o p" 'clipboard-yank)
 
   (cond
    ((string-equal system-type "darwin")
@@ -374,37 +362,8 @@ you should place your code here."
    ))
    )
 
-  ;; In text mode, I don't want it auto-indenting for the first
-  ;; line in the file, or lines following blank lines.
-  ;; Everywhere else is okay.
-  (defun newline-and-text-indent ()
-    "Insert a newline, then indent the next line sensibly for text"
-    (interactive)
-    (cond
-     ;; Beginning of buffer, or beginning of an existing line, don't indent:
-     ((or (bobp) (bolp)) (newline))
-
-     ;; If we're on a whitespace-only line,
-     ((and (eolp)
-           (save-excursion (re-search-backward "^\\(\\s \\)*$"
-                                               (line-beginning-position) t)))
-      ;; ... delete the whitespace, then add another newline:
-      (kill-line 0)
-      (newline))
-
-     ;; Else (not on whitespace-only) insert a newline,
-     ;; then add the appropriate indent:
-     (t (insert "\n")
-        (indent-according-to-mode))
-     ))
-
-  (defun text-indent-hook ()
-    (local-set-key "\C-m" 'newline-and-text-indent)
-    )
-  (setq text-mode-hook 'text-indent-hook)
-
   (setq sql-mysql-login-params
-        '((user :default "karol")
+        '((user :default "buddy_development")
           (database :default "buddy_development")
           (server :default "localhost")
           (password)))
@@ -443,6 +402,7 @@ you should place your code here."
         '((user :default "karol")
           (database :default "injobs_dev")
           (server :default "localhost")))
+  (setq select-enable-clipboard nil)
 
   (setq powerline-default-separator nil)
   (spaceline-compile)
@@ -461,6 +421,23 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#272822" "#F92672" "#A6E22E" "#E6DB74" "#66D9EF" "#FD5FF0" "#A1EFE4" "#F8F8F2"])
+ '(compilation-message-face (quote default))
+ '(evil-want-Y-yank-to-eol nil)
+ '(fci-rule-color "#3C3D37" t)
+ '(highlight-changes-colors (quote ("#FD5FF0" "#AE81FF")))
+ '(highlight-tail-colors
+   (quote
+    (("#3C3D37" . 0)
+     ("#679A01" . 20)
+     ("#4BBEAE" . 30)
+     ("#1DB4D0" . 50)
+     ("#9A8F21" . 60)
+     ("#A75B00" . 70)
+     ("#F309DF" . 85)
+     ("#3C3D37" . 100))))
+ '(magit-diff-use-overlays nil)
  '(package-selected-packages
    (quote
     (web-beautify livid-mode skewer-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode yaml-mode xterm-color ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package twilight-theme toc-org tagedit symon string-inflection spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe restart-emacs request rbenv rainbow-delimiters pug-mode projectile-rails popwin persp-mode password-generator paradox overseer org-bullets open-junk-file ob-elixir neotree naquadah-theme nameless multi-term move-text monokai-theme molokai-theme minitest material-theme magit-gitflow macrostep lush-theme lorem-ipsum linum-relative link-hint jbeans-theme ivy-purpose ivy-hydra info+ indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make gruvbox-theme grandshell-theme google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ fuzzy flycheck-pos-tip flycheck-mix flycheck-credo flx-ido flatland-theme fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump distinguished-theme diminish diff-hl define-word dakrone-theme cyberpunk-theme counsel-projectile company-web company-statistics company-auctex column-enforce-mode color-theme-sanityinc-tomorrow clean-aindent-mode chruby bundler browse-at-remote badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme ample-theme alchemist aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ac-ispell))))
@@ -469,5 +446,9 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(font-lock-constant-face ((t (:weight normal))))
+ '(font-lock-function-name-face ((t (:weight normal))))
+ '(font-lock-keyword-face ((t (:weight normal))))
+ '(font-lock-type-face ((t (:weight normal))))
+ '(widget-button ((t (:weight normal)))))
 )

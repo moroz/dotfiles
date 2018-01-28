@@ -1,8 +1,10 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'easymotion/vim-easymotion'
-Plug 'vim-airline/vim-airline'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 set tabstop=2
@@ -29,6 +31,8 @@ map <Leader> <Plug>(easymotion-prefix)
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
 map <Leader>ev :tabedit $MYVIMRC<CR>
+colorscheme gruvbox
+set bg=dark
 
 nnoremap <C-j> <c-w>j
 nnoremap <C-h> <c-w>h
@@ -42,6 +46,7 @@ inoremap <D-s> <esc>:w<cr>
 nnoremap <D-s> :w<cr>
 inoremap <C-s> <esc>:update<cr>
 nnoremap <C-s> :update<cr>
+nnoremap <C-p> :Files<cr>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
 map <F10> :bufdo update<CR>:bufdo q<CR>
