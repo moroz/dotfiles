@@ -12,6 +12,7 @@ alias docker='sudo docker'
 alias crspec='COVERAGE=true bundle exec rspec'
 alias rspec='bundle exec rspec'
 alias dep='git push origin master && cap production deploy'
+alias injobs='ssh deployer@injobs.pl'
 alias mc='mc -b'
 alias vim="nvim"
 alias ga='git add .'
