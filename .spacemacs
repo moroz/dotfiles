@@ -32,6 +32,7 @@ values."
    dotspacemacs-configuration-layers
    '(javascript
      elixir
+     markdown
      yaml
      html
      ruby
@@ -126,8 +127,14 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         hemisu-light
+                         twilight-bright
                          distinguished
+                         minimal-light
+                         subatomic256
                          badwolf
+                         ujelly
+                         twilight-anti-bright
                          monokai
                          sanityinc-tomorrow-bright
                          gruvbox-dark-hard
@@ -136,7 +143,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("DejaVu Sans Mono"
+   dotspacemacs-default-font '("Source Code Pro for Powerline"
                                :size 14
                                ;; :weight regular
                                ;; :width normal
@@ -344,6 +351,7 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
   (evil-leader/set-key "o y" 'clipboard-kill-ring-save)
   (evil-leader/set-key "o p" 'clipboard-yank)
+  (evil-leader/set-key "q q" 'delete-frame)
 
   (cond
    ((string-equal system-type "darwin")
@@ -438,12 +446,13 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (web-beautify livid-mode skewer-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode yaml-mode xterm-color ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package twilight-theme toc-org tagedit symon string-inflection spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe restart-emacs request rbenv rainbow-delimiters pug-mode projectile-rails popwin persp-mode password-generator paradox overseer org-bullets open-junk-file ob-elixir neotree naquadah-theme nameless multi-term move-text monokai-theme molokai-theme minitest material-theme magit-gitflow macrostep lush-theme lorem-ipsum linum-relative link-hint jbeans-theme ivy-purpose ivy-hydra info+ indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make gruvbox-theme grandshell-theme google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ fuzzy flycheck-pos-tip flycheck-mix flycheck-credo flx-ido flatland-theme fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump distinguished-theme diminish diff-hl define-word dakrone-theme cyberpunk-theme counsel-projectile company-web company-statistics company-auctex column-enforce-mode color-theme-sanityinc-tomorrow clean-aindent-mode chruby bundler browse-at-remote badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme ample-theme alchemist aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ac-ispell))))
+    (mmm-mode markdown-toc markdown-mode gh-md auctex-latexmk web-beautify livid-mode skewer-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc company-tern dash-functional tern coffee-mode yaml-mode xterm-color ws-butler winum which-key wgrep web-mode volatile-highlights vi-tilde-fringe uuidgen use-package twilight-theme toc-org tagedit symon string-inflection spaceline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor rubocop rspec-mode robe restart-emacs request rbenv rainbow-delimiters pug-mode projectile-rails popwin persp-mode password-generator paradox overseer org-bullets open-junk-file ob-elixir neotree naquadah-theme nameless multi-term move-text monokai-theme molokai-theme minitest material-theme magit-gitflow macrostep lush-theme lorem-ipsum linum-relative link-hint jbeans-theme ivy-purpose ivy-hydra info+ indent-guide impatient-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation hide-comnt help-fns+ helm-make gruvbox-theme grandshell-theme google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ fuzzy flycheck-pos-tip flycheck-mix flycheck-credo flx-ido flatland-theme fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help emmet-mode elisp-slime-nav editorconfig dumb-jump distinguished-theme diminish diff-hl define-word dakrone-theme cyberpunk-theme counsel-projectile company-web company-statistics company-auctex column-enforce-mode color-theme-sanityinc-tomorrow clean-aindent-mode chruby bundler browse-at-remote badwolf-theme auto-yasnippet auto-highlight-symbol auto-compile apropospriate-theme ample-theme alchemist aggressive-indent afternoon-theme adaptive-wrap ace-window ace-link ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil))))
  '(font-lock-builtin-face ((t (:weight normal))))
  '(font-lock-constant-face ((t (:weight normal))))
  '(font-lock-function-name-face ((t (:weight normal))))

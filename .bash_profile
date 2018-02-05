@@ -17,5 +17,12 @@ alias vim="nvim"
 alias ga='git add .'
 alias gs='git status'
 alias gc='git commit'
+alias gf='git checkout'
 alias gd='git diff'
+alias gp='git pull'
+alias gpu='git push'
+alias cdb='cd ~/working/buddy'
+alias prc='pry -r ./config/environment'
 set -o vi
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
