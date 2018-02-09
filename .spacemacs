@@ -349,8 +349,6 @@ you should place your code here."
 
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
-  (evil-leader/set-key "o y" 'clipboard-kill-ring-save)
-  (evil-leader/set-key "o p" 'clipboard-yank)
   (evil-leader/set-key "q q" 'delete-frame)
 
   (cond
@@ -457,5 +455,4 @@ This function is called at the very end of Spacemacs initialization."
  '(font-lock-function-name-face ((t (:weight normal))))
  '(font-lock-type-face ((t (:weight normal))))
  '(widget-button ((t (:weight normal)))))
- )
 )
