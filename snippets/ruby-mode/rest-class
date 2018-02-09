@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: rest-class
+# key: rest
+# --
+# frozen_string_literal: true
+
+# PlentyMarkets::Rest::$1
+module PlentyMarkets
+  module Rest
+    $2
+  end
+end

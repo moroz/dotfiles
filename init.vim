@@ -31,8 +31,7 @@ map <Leader> <Plug>(easymotion-prefix)
 let NERDTreeMinimalUI=25
 let NERDTreeDirArrows=1
 map <Leader>ev :tabedit $MYVIMRC<CR>
-colorscheme gruvbox
-set bg=dark
+colorscheme default
 
 nnoremap <C-j> <c-w>j
 nnoremap <C-h> <c-w>h
