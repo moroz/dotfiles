@@ -351,23 +351,6 @@ you should place your code here."
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
   (evil-leader/set-key "q q" 'delete-frame)
 
-  (cond
-   ((string-equal system-type "darwin")
-    (progn
-      (setq mac-command-modifier 'control)
-      (setq mac-option-modifier 'meta)
-      (setq mac-right-option-modifier nil)
-      (global-set-key (kbd "<s-tab>") 'other-frame)
-      (global-set-key (kbd "M-p") 'counsel-projectile-find-file)
-      (global-set-key (kbd "M-s") 'save-buffer)
-    ))
-   ((string-equal system-type "gnu/linux")
-    (progn
-      (global-set-key (kbd "<C-tab>") 'other-frame)
-      (global-set-key (kbd "s-r") 'counsel-rhythmbox)
-   ))
-   )
-
   (setq sql-mysql-login-params
         '((user :default "buddy_development")
           (database :default "buddy_development")
@@ -392,7 +375,6 @@ you should place your code here."
 
   (spacemacs/set-leader-keys "s q m" 'sql-mysql)
   (spacemacs/set-leader-keys "s q p" 'sql-postgres)
-  (global-set-key (kbd "<f5>") 'helm-mini)
   (global-set-key (kbd "<M-up>") 'move-text-line-up)
   (global-set-key (kbd "<M-down>") 'move-text-line-down)
   (modify-syntax-entry ?_ "w")

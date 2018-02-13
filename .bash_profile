@@ -24,6 +24,7 @@ alias gp='git pull'
 alias gpu='git push'
 alias cdb='cd ~/working/buddy'
 alias prc='pry -r ./config/environment'
+alias vol='~/bin/vol.rb'
 set -o vi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
