@@ -13,7 +13,6 @@ alias crspec='COVERAGE=true bundle exec rspec'
 alias rspec='bundle exec rspec'
 alias dep='git push origin master && cap production deploy'
 alias injobs='ssh deployer@injobs.pl'
-alias mc='mc -b'
 alias vim="nvim"
 alias ga='git add .'
 alias gs='git status'
@@ -25,6 +24,7 @@ alias gpu='git push'
 alias cdb='cd ~/working/buddy'
 alias prc='pry -r ./config/environment'
 alias vol='~/bin/vol.rb'
+alias his='history 10'
 set -o vi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 

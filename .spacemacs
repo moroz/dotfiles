@@ -375,6 +375,11 @@ you should place your code here."
 
   (spacemacs/set-leader-keys "s q m" 'sql-mysql)
   (spacemacs/set-leader-keys "s q p" 'sql-postgres)
+  (spacemacs/set-leader-keys "s n" 'smerge-next)
+  (spacemacs/set-leader-keys "s l" 'smerge-keep-lower)
+  (spacemacs/set-leader-keys "s m" 'smerge-keep-upper)
+  (spacemacs/set-leader-keys "s m" 'smerge-keep-upper)
+  (spacemacs/set-leader-keys "s -" 'smerge-keep-all)
   (global-set-key (kbd "<M-up>") 'move-text-line-up)
   (global-set-key (kbd "<M-down>") 'move-text-line-down)
   (modify-syntax-entry ?_ "w")

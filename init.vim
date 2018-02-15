@@ -35,8 +35,12 @@ autocmd Filetype tex command! Tex Dispatch! xelatex %
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
-colorscheme hemisu
-let g:airline_theme='angr'
+if strftime("%H%M") < 1430 && strftime("%H") > 5
+  colorscheme hemisu
+  let g:airline_theme='angr'
+else
+  colorscheme Tomorrow-Night-Bright
+endif
 
 nnoremap <C-c> "+yy
 nnoremap <C-t> :tabe<CR>
@@ -57,6 +61,7 @@ map <Leader>wd :q<cr>
 map <Leader>Ts :Colors<cr>
 map <Leader>fer :source $MYVIMRC<cr>
 map <Leader>gs :Magit<cr>
+map <Leader>pg :Tags<cr>
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
