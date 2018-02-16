@@ -387,7 +387,6 @@ you should place your code here."
   (spacemacs/set-leader-keys "s -" 'smerge-keep-all)
   (global-set-key (kbd "<M-up>") 'move-text-line-up)
   (global-set-key (kbd "<M-down>") 'move-text-line-down)
-  (modify-syntax-entry ?_ "w")
 
   (setq ruby-insert-encoding-magic-comment nil)
   (setq require-final-newline t)
