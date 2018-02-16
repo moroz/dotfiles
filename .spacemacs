@@ -356,6 +356,22 @@ you should place your code here."
       (modify-syntax-entry ?_ "w" table)
       (with-syntax-table table
         ad-do-it)))
+  (cond
+   ((string-equal system-type "darwin")
+    (progn
+      (setq mac-command-modifier 'control)
+      (setq mac-option-modifier 'meta)
+      (setq mac-right-option-modifier nil)
+      (global-set-key (kbd "<s-tab>") 'other-frame)
+      (global-set-key (kbd "M-p") 'counsel-projectile-find-file)
+      (global-set-key (kbd "M-s") 'save-buffer)
+      ))
+   ((string-equal system-type "gnu/linux")
+    (progn
+      (global-set-key (kbd "<C-tab>") 'other-frame)
+      (global-set-key (kbd "s-r") 'counsel-rhythmbox)
+      ))
+   )
 
   ;; Key mappings
   (global-set-key (kbd "<f8>") 'spacemacs/projectile-shell-pop)
