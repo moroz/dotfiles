@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+# name: xetex
+# key: xetex
+# --
+%%% Local Variables:
+%%% coding: utf-8
+%%% mode: latex
+%%% TeX-master: t
+%%% TeX-command-extra-options: "-shell-escape"
+%%% TeX-engine: xetex
+%%% End:
