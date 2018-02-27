@@ -30,7 +30,9 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(elixir markdown ruby ivy emacs-lisp git latex
+   '(html
+     yaml
+     elixir markdown ruby ivy emacs-lisp git latex
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -114,17 +116,14 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         hemisu-light
+                         espresso
                          twilight-bright
-                         distinguished
-                         minimal-light
+                         sanityinc-tomorrow-day
                          subatomic256
-                         badwolf
                          ujelly
-                         twilight-anti-bright
-                         monokai
                          sanityinc-tomorrow-bright
                          gruvbox-dark-hard
+                         distinguished
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -387,7 +386,6 @@ you should place your code here."
   (spacemacs/set-leader-keys "s n" 'smerge-next)
   (spacemacs/set-leader-keys "s l" 'smerge-keep-lower)
   (spacemacs/set-leader-keys "s m" 'smerge-keep-upper)
-  (spacemacs/set-leader-keys "s m" 'smerge-keep-upper)
   (spacemacs/set-leader-keys "s -" 'smerge-keep-all)
   (global-set-key (kbd "<M-up>") 'move-text-line-up)
   (global-set-key (kbd "<M-down>") 'move-text-line-down)
@@ -398,6 +396,7 @@ you should place your code here."
   (setq tags-add-tables nil)
   (setq js2-basic-offset 2)
   (setq js-indent-level 2)
+  (setq web-mode-markup-indent-offset 2)
 
   (setq sql-postgres-login-params
         '((user :default "karol")
