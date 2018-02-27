@@ -26,6 +26,7 @@ alias cdb='cd ~/working/buddy'
 alias prc='pry -r ./config/environment'
 alias vol='~/bin/vol.rb'
 alias his='history 10'
+alias imix="iex -S mix"
 set -o vi
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
