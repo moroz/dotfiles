@@ -1,16 +1,15 @@
-if [ -f ~/.bashrc ]; then
-source ~/.bashrc
-fi
-
+source $HOME/.bashrc
 PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[35;1m\]\w\[\033[m\]\$ "
 export TMPDIR="/tmp"
 export FZF_DEFAULT_COMMAND="ag -g ."
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_TMUX=1
+export EDITOR=nvim
 
 alias dc='docker-compose'
 alias crspec='COVERAGE=true bundle exec rspec'
 alias rspec='bundle exec rspec'
 alias dep='git push origin master && cap production deploy'
-alias injobs='ssh deployer@injobs.pl'
 alias vim="nvim"
 alias ga='git add .'
 alias gs='git status'
@@ -20,8 +19,7 @@ alias gfo='git fetch origin'
 alias gd='git diff'
 alias gp='git pull'
 alias gpu='git push'
-alias cdb='cd ~/working/buddy'
-alias cdp='cd ~/working/packing'
+alias ls='ls --color=auto'
 alias vol='~/bin/vol.rb'
 alias his='history 10'
 alias imix="iex -S mix"
