@@ -1,14 +1,20 @@
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
-"Plug 'rafi/awesome-vim-colorschemes'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
+Plug 'tpope/vim-rails'
+Plug 'tpope/vim-endwise'
 Plug 'ctjhoa/spacevim'
-Plug 'jreybert/vimagit'
+Plug 'tpope/vim-surround'
+Plug 'neomake/neomake'
+Plug 'vim-scripts/fcitx.vim'
 call plug#end()
 
 set tabstop=2
@@ -35,12 +41,30 @@ autocmd Filetype tex command! Tex Dispatch! xelatex %
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
-if strftime("%H%M") < 1430 && strftime("%H") > 5
-  colorscheme hemisu
-  let g:airline_theme='angr'
-else
+"if strftime("%H%M") < 1430 && strftime("%H") > 5
+"  colorscheme hemisu
+"else
   colorscheme Tomorrow-Night-Bright
-endif
+  let g:airline_theme='angr'
+"endif
+
+call neomake#configure#automake({
+  \ 'BufWritePost': {'delay': 500}})
+let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
+let g:neomake_warning_sign = {
+  \ 'text': '>>',
+  \ 'texthl': 'WarningMsg',
+  \ }
+
+let g:neomake_error_sign = {
+  \ 'text': '>>',
+  \ 'texthl': 'ErrorMsg',
+  \ }
+
+let g:neomake_info_sign = {
+  \ 'text': '>>',
+  \ 'texthl': 'NeomakeInfoSign'
+  \ }
 
 nnoremap <C-c> "+yy
 nnoremap <C-t> :tabe<CR>
