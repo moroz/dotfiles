@@ -390,6 +390,7 @@ you should place your code here."
   (spacemacs/set-leader-keys "s l" 'smerge-keep-lower)
   (spacemacs/set-leader-keys "s m" 'smerge-keep-upper)
   (spacemacs/set-leader-keys "s -" 'smerge-keep-all)
+  (spacemacs/set-leader-keys "i b" 'spacemacs/indent-region-or-buffer)
   (global-set-key (kbd "<M-up>") 'move-text-line-up)
   (global-set-key (kbd "<M-down>") 'move-text-line-down)
 
