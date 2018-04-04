@@ -12,8 +12,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-autoload -U promptinit; promptinit
-prompt pure
+PS1='[%~] $ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 
@@ -29,6 +28,9 @@ export EDITOR=nvim
 
 alias dc='docker-compose'
 alias rspec='bundle exec rspec'
+alias rake='bundle exec rake'
+alias rc="bundle exec rails console"
+alias rs="bundle exec rails server"
 alias dep='git push origin master && cap production deploy'
 alias vim="nvim"
 alias ga='git add .'
