@@ -117,14 +117,13 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         dracula
                          atom-one-dark
-                         espresso
                          twilight-bright
                          sanityinc-tomorrow-day
                          subatomic256
                          ujelly
                          sanityinc-tomorrow-bright
-                         gruvbox-dark-hard
                          distinguished
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
@@ -419,6 +418,7 @@ you should place your code here."
   (spaceline-compile)
   (setq-default flycheck-disabled-checkers '(haml))
   (setq-default TeX-engine 'xetex)
+  (setq-default TeX-master "master")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
