@@ -30,6 +30,7 @@ alias dc='docker-compose'
 alias rspec='bundle exec rspec'
 alias rake='bundle exec rake'
 alias rc="bundle exec rails console"
+alias ss="spring stop"
 alias rs="bundle exec rails server"
 alias dep='git push origin master && cap production deploy'
 alias vim="nvim"
@@ -48,3 +49,7 @@ alias imix="iex -S mix"
 alias drw="docker-compose run web"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+magit() {
+  emacsclient -t --eval "(call-interactively #'magit-status)"
+}
