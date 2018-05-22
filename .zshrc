@@ -25,6 +25,7 @@ export FZF_DEFAULT_COMMAND="ag -g ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
+export ERL_AFLAGS="-kernel shell_history enabled"
 
 alias dc='docker-compose'
 alias rspec='bundle exec rspec'

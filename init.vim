@@ -12,6 +12,7 @@ Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
+Plug 'mhinz/vim-mix-format'
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
@@ -42,12 +43,12 @@ autocmd Filetype tex command! Tex Dispatch! xelatex %
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
-"if strftime("%H%M") < 1430 && strftime("%H") > 5
-"  colorscheme hemisu
-"else
+if strftime("%H%M") < 1630 && strftime("%H") > 5
+  colorscheme hemisu
+else
   colorscheme Tomorrow-Night-Bright
   let g:airline_theme='angr'
-"endif
+endif
 
 call neomake#configure#automake({
   \ 'BufWritePost': {'delay': 500}})
@@ -90,6 +91,7 @@ map <Leader>pg :Tags<cr>
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
+let g:mix_format_on_save = 1
 
 if has("unix")
   let s:uname = system("uname")
