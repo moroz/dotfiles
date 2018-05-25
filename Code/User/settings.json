@@ -1,7 +1,7 @@
 {
     "ruby.rubocop.executePath": "/home/debian/.rbenv/shims/",
-    "editor.fontFamily": "Hack, 'Source Code Pro for Powerline', 'Droid Sans Mono', monospace, 'Droid Sans Fallback'",
-    "editor.fontSize": "14px",
+    "editor.fontFamily": "'Input Mono', 'Menlo', 'Droid Sans Mono', monospace",
+    "editor.fontSize": 14.5,
     "editor.wordWrap": "on",
     "editor.tabSize": 2,
     "[elixir]": {
@@ -10,19 +10,6 @@
     "keyboard.dispatch": "keyCode",
         "vim.leader": "<space>",
         "vim.otherModesKeyBindingsNonRecursive": [
-            {
-                "before": [
-                    "<leader>",
-                    "<space>"
-                ],
-                "after": [],
-                "commands": [
-                    {
-                        "command": "workbench.action.showCommands",
-                        "args": []
-                    }
-                ]
-            },
             {
                 "before": [
                     "<leader>",
@@ -940,7 +927,7 @@
         ],
         "vim.easymotion": true,
         "window.menuBarVisibility": "default",
-        "workbench.colorTheme": "Gruvbox Dark (Hard)",
+        "workbench.colorTheme": "Visual Studio Light",
         "window.zoomLevel": 0,
         "editor.minimap.enabled": false,
         "gitlens.advanced.messages": {
@@ -953,6 +940,8 @@
             "suppressResultsExplorerNotice": false,
             "suppressShowKeyBindingsNotice": true
         },
-        "workbench.iconTheme": "material-icon-theme",
-        "gitlens.historyExplorer.enabled": true
+        "workbench.iconTheme": "eq-material-theme-icons",
+        "gitlens.historyExplorer.enabled": true,
+        "emmet.triggerExpansionOnTab": true,
+        "emmet.showExpandedAbbreviation": "never"
     }

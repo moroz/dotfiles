@@ -45,5 +45,10 @@
         "key": "ctrl+o",
         "command": "-extension.vim_ctrl+o",
         "when": "editorTextFocus && vim.active && vim.use<C-o> && !inDebugRepl"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "-extension.vim_ctrl+w",
+        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
     }
 ]
