@@ -122,8 +122,8 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("DejaVu Sans Mono for Powerline"
-                               :size 16
+   dotspacemacs-default-font '("Ubuntu Mono Derivative Powerline"
+                               :size 18
                                ;; :weight regular
                                ;; :width normal
                                :powerline-scale 0.9
@@ -358,6 +358,8 @@ you should place your code here."
    ((string-equal system-type "gnu/linux")
     (progn
       (global-set-key (kbd "<C-tab>") 'other-frame)
+      (define-key evil-normal-state-map (kbd "C-p") 'counsel-projectile-find-file)
+      (define-key evil-normal-state-map (kbd "C-s") 'save-buffer)
       (global-set-key (kbd "s-r") 'counsel-rhythmbox)
       (setq TeX-view-program-selection '((output-pdf "Okular")))
       ))
