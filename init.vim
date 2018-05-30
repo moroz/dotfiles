@@ -27,6 +27,7 @@ Plug 'neomake/neomake'
 Plug 'vim-scripts/fcitx.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set tabstop=2
