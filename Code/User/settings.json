@@ -1,7 +1,7 @@
 {
     "ruby.rubocop.executePath": "/home/debian/.rbenv/shims/",
-    "editor.fontFamily": "'Input Mono', 'Menlo', 'Droid Sans Mono', monospace",
-    "editor.fontSize": 14.5,
+    "editor.fontFamily": "'Ubuntu Mono derivative powerline', 'Input Mono', 'Menlo', 'Droid Sans Mono', monospace",
+    "editor.fontSize": 16.5,
     "editor.wordWrap": "on",
     "editor.tabSize": 2,
     "[elixir]": {
@@ -927,7 +927,7 @@
         ],
         "vim.easymotion": true,
         "window.menuBarVisibility": "default",
-        "workbench.colorTheme": "Visual Studio Light",
+        "workbench.colorTheme": "Material Theme",
         "window.zoomLevel": 0,
         "editor.minimap.enabled": false,
         "gitlens.advanced.messages": {
@@ -943,5 +943,6 @@
         "workbench.iconTheme": "eq-material-theme-icons",
         "gitlens.historyExplorer.enabled": true,
         "emmet.triggerExpansionOnTab": true,
-        "emmet.showExpandedAbbreviation": "never"
+        "emmet.showExpandedAbbreviation": "never",
+        "materialTheme.fixIconsRunning": false
     }
