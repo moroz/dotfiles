@@ -1,3 +1,10 @@
+" Install Vim Plug if not installed
+if empty(glob('~/.config/nvim/autoload/plug.vim'))
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
+        \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall
+endif
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'scrooloose/nerdcommenter'
@@ -12,11 +19,14 @@ Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-mix-format'
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
 Plug 'vim-scripts/fcitx.vim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 set tabstop=2
@@ -43,12 +53,12 @@ autocmd Filetype tex command! Tex Dispatch! xelatex %
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
-if strftime("%H%M") < 1630 && strftime("%H") > 5
-  colorscheme hemisu
-else
-  colorscheme Tomorrow-Night-Bright
+"if strftime("%H%M") < 1630 && strftime("%H") > 5
+"  colorscheme hemisu
+"else
+  colorscheme colorsbox-material
   let g:airline_theme='angr'
-endif
+"endif
 
 call neomake#configure#automake({
   \ 'BufWritePost': {'delay': 500}})
@@ -68,6 +78,11 @@ let g:neomake_info_sign = {
   \ 'texthl': 'NeomakeInfoSign'
   \ }
 
+let g:deoplete#enable_at_startup = 1
+" Disable the candidates in Comment/String syntaxes.
+call deoplete#custom#source('_',
+            \ 'disabled_syntaxes', ['Comment', 'String'])
+
 nnoremap <C-c> "+yy
 nnoremap <C-t> :tabe<CR>
 nnoremap j gj
@@ -86,7 +101,7 @@ autocmd FileType netrw set nolist
 map <Leader>wd :q<cr>
 map <Leader>Ts :Colors<cr>
 map <Leader>fer :source $MYVIMRC<cr>
-map <Leader>gs :Magit<cr>
+map <Leader>gs :Gstatus<cr>
 map <Leader>pg :Tags<cr>
 
 let g:jsx_ext_required = 0
