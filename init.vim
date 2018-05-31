@@ -6,28 +6,27 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
 Plug 'scrooloose/nerdcommenter'
-Plug 'rafi/awesome-vim-colorschemes'
+"Plug 'rafi/awesome-vim-colorschemes'
 Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-Plug 'tpope/vim-rails'
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-mix-format'
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
-Plug 'vim-scripts/fcitx.vim'
+Plug 'vim-scripts/fcitx.vim', { 'for': 'tex' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set tabstop=2
@@ -58,7 +57,7 @@ let NERDTreeDirArrows=1
 "  colorscheme hemisu
 "else
   colorscheme colorsbox-material
-  let g:airline_theme='angr'
+  "let g:airline_theme='angr'
 "endif
 
 call neomake#configure#automake({
@@ -89,7 +88,6 @@ nnoremap <C-t> :tabe<CR>
 nnoremap j gj
 nnoremap k gk
 map <F7> :Colors<CR>
-map <F9> :NERDTreeToggle<CR>
 inoremap <C-s> <esc>:update<cr>
 nnoremap <C-s> :update<cr>
 nnoremap <C-p> :Files<cr>
@@ -99,11 +97,34 @@ map <F10> :bufdo update<CR>:bufdo q<CR>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
 
+" returns true iff is NERDTree open/active
+function! s:isNTOpen()        
+  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
+endfunction
+
+function! s:syncTree()
+  if s:isNTOpen()
+    NERDTreeClose
+  else
+    if exists("g:treesynced") && g:treesynced == @%
+      NERDTreeToggle
+    else
+      let g:treesynced = @%
+      NERDTreeFind
+    end
+  endif
+endfunction
+command! ToggleTree call s:syncTree()
+map <F9> :ToggleTree<cr>
+
 map <Leader>wd :q<cr>
 map <Leader>Ts :Colors<cr>
 map <Leader>fer :source $MYVIMRC<cr>
-map <Leader>gs :Gstatus<cr>
 map <Leader>pg :Tags<cr>
+
+map <Leader>gs :Gstatus<cr>
+map <Leader>ga :Git add .<cr>
+map <Leader>gc :Gcommit<cr>
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
@@ -117,6 +138,5 @@ if has("unix")
   endif
 endif
 
-nnoremap <C-n> :call NumberToggle()<cr>
 set mouse=a
-set guicursor=
+"set guicursor=
