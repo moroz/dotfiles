@@ -96,26 +96,8 @@ nnoremap <S-Tab> gT
 map <F10> :bufdo update<CR>:bufdo q<CR>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
-
-" returns true iff is NERDTree open/active
-function! s:isNTOpen()        
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-function! s:syncTree()
-  if s:isNTOpen()
-    NERDTreeClose
-  else
-    if exists("g:treesynced") && g:treesynced == @%
-      NERDTreeToggle
-    else
-      let g:treesynced = @%
-      NERDTreeFind
-    end
-  endif
-endfunction
-command! ToggleTree call s:syncTree()
-map <F9> :ToggleTree<cr>
+map <F9> :NERDTreeToggle<cr>
+map <F8> :NERDTreeFind<cr>
 
 map <Leader>wd :q<cr>
 map <Leader>Ts :Colors<cr>
@@ -139,4 +121,3 @@ if has("unix")
 endif
 
 set mouse=a
-"set guicursor=
