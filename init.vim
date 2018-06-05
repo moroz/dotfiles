@@ -6,27 +6,41 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
+" Project management
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
-Plug 'scrooloose/nerdcommenter'
-"Plug 'rafi/awesome-vim-colorschemes'
-Plug 'flazz/vim-colorschemes'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
-Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
-Plug 'tpope/vim-endwise'
+Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
-Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+Plug 'ludovicchabant/vim-gutentags'
+
+" Editing
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
-Plug 'vim-scripts/fcitx.vim', { 'for': 'tex' }
+Plug 'tpope/vim-endwise'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'ludovicchabant/vim-gutentags'
+
+" Ruby
+Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
+
+" Elixir
+Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
+
+Plug 'scrooloose/nerdcommenter'
+"Plug 'rafi/awesome-vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline'
+Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+Plug 'vim-scripts/fcitx.vim', { 'for': 'tex' }
+Plug 'jacoborus/tender.vim'
+
+" Javascript & React
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
+Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
+Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'eelixir'] }
+Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 call plug#end()
 
 set tabstop=2
@@ -47,18 +61,13 @@ let mapleader = " "
 nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,eelixir,javascript,jsx EmmetInstall
 autocmd FileType yaml set inde=
 autocmd Filetype tex command! Tex Dispatch! xelatex %
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
-"if strftime("%H%M") < 1630 && strftime("%H") > 5
-"  colorscheme hemisu
-"else
-  colorscheme colorsbox-material
-  "let g:airline_theme='angr'
-"endif
+colorscheme tender
 
 call neomake#configure#automake({
   \ 'BufWritePost': {'delay': 500}})
@@ -93,7 +102,7 @@ nnoremap <C-s> :update<cr>
 nnoremap <C-p> :Files<cr>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
-map <F10> :bufdo update<CR>:bufdo q<CR>
+map <F10> :wqa<CR>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
 map <F9> :NERDTreeToggle<cr>
@@ -107,10 +116,22 @@ map <Leader>pg :Tags<cr>
 map <Leader>gs :Gstatus<cr>
 map <Leader>ga :Git add .<cr>
 map <Leader>gc :Gcommit<cr>
+map <Leader>ds :ToggleWorkspace<cr>
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
 let g:mix_format_on_save = 1
+let g:workspace_session_disable_on_args = 1
+let g:workspace_autosave = 0
+
+let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_settings = {
+  \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \}
+let g:user_emmet_install_global = 0
+let NERDTreeQuitOnOpen = 0
 
 if has("unix")
   let s:uname = system("uname")
@@ -118,6 +139,10 @@ if has("unix")
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/usr/local/bin/python3'
   endif
+endif
+
+if (has("termguicolors"))
+ set termguicolors
 endif
 
 set mouse=a
