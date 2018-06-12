@@ -15,26 +15,29 @@ Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
 
 " Editing
+Plug 'easymotion/vim-easymotion'
+Plug 'scrooloose/nerdcommenter'
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-endwise'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 
 " Ruby
 Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
 Plug 'tpope/vim-rails', { 'for': 'ruby' }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
 
 " Elixir
 Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 
-Plug 'scrooloose/nerdcommenter'
-"Plug 'rafi/awesome-vim-colorschemes'
-Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'vim-scripts/fcitx.vim', { 'for': 'tex' }
 Plug 'jacoborus/tender.vim'
+Plug 'chriskempson/base16-vim'
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
@@ -56,6 +59,7 @@ set ignorecase
 set lbr
 set smartindent
 set eol
+set autoread
 
 let mapleader = " "
 nnoremap <Space> <Nop>
@@ -67,7 +71,8 @@ autocmd Filetype tex command! Tex Dispatch! xelatex %
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
-colorscheme tender
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-material-palenight
 
 call neomake#configure#automake({
   \ 'BufWritePost': {'delay': 500}})
@@ -96,21 +101,27 @@ nnoremap <C-c> "+yy
 nnoremap <C-t> :tabe<CR>
 nnoremap j gj
 nnoremap k gk
-map <F7> :Colors<CR>
 inoremap <C-s> <esc>:update<cr>
 nnoremap <C-s> :update<cr>
 nnoremap <C-p> :Files<cr>
 nnoremap <Tab> gt
 nnoremap <S-Tab> gT
-map <F10> :wqa<CR>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
-map <F9> :NERDTreeToggle<cr>
+map <F4> :GundoToggle<cr>
 map <F8> :NERDTreeFind<cr>
+map <F9> :NERDTreeToggle<cr>
+map <F10> :wqa<CR>
+" Select all occurrences of selected text
+vnoremap // y/\V<C-R>"<CR>
+
+map <Leader>h <C-w><C-h>
+map <Leader>l <C-w><C-l>
 
 map <Leader>wd :q<cr>
 map <Leader>Ts :Colors<cr>
 map <Leader>fer :source $MYVIMRC<cr>
+map <Leader>pi :PlugInstall<cr>
 map <Leader>pg :Tags<cr>
 
 map <Leader>gs :Gstatus<cr>
@@ -123,6 +134,7 @@ let g:airline_powerline_fonts = 1
 let g:mix_format_on_save = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave = 0
+let g:NERDSpaceDelims = 1
 
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {

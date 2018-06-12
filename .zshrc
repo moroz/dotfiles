@@ -49,8 +49,10 @@ alias his='history 10'
 alias imix="iex -S mix"
 alias drw="docker-compose run web"
 
+alias ms="mix phx.server"
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 magit() {
-  emacsclient -t --eval "(call-interactively #'magit-status)"
+  emacsclient -t --eval "(call-interactively #'magit-status)" -a "emacs -nw --eval \"(call-interactively #'magit-status)\""
 }
