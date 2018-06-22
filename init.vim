@@ -44,6 +44,7 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
 Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'eelixir'] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
+Plug 'jparise/vim-graphql', { 'for': ['javascript', 'jsx', 'graphql'] }
 call plug#end()
 
 set tabstop=2
@@ -91,6 +92,8 @@ let g:neomake_info_sign = {
   \ 'text': '>>',
   \ 'texthl': 'NeomakeInfoSign'
   \ }
+
+let g:neomake_elixir_enabled_makers = []
 
 let g:deoplete#enable_at_startup = 1
 " Disable the candidates in Comment/String syntaxes.
