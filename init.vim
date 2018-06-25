@@ -138,6 +138,7 @@ let g:mix_format_on_save = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave = 0
 let g:NERDSpaceDelims = 1
+let g:gutentags_file_list_command='ag -l --ignore spec/ --ignore public/'
 
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
