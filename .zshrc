@@ -16,9 +16,11 @@ PS1='[%~] $ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 
-# Initialize rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+if [ -d $HOME/.rbenv/bin ]; then
+  # Initialize rbenv
+  export PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND="ag -g ."
