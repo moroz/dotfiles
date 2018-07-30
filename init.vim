@@ -44,6 +44,9 @@ Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
 Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'eelixir'] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'jsx', 'graphql'] }
+Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
+Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 call plug#end()
 
 set tabstop=2
