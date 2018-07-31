@@ -22,6 +22,10 @@ if [ -d $HOME/.rbenv/bin ]; then
   eval "$(rbenv init -)"
 fi
 
+if [ "$(uname)" = "Linux" ]; then
+  alias ls="ls --color=auto"
+fi
+
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND="ag -g ."
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -45,7 +49,6 @@ alias gfo='git fetch origin'
 alias gd='git diff'
 alias gp='git pull'
 alias gpu='git push'
-alias ls='ls --color=auto'
 alias vol='~/bin/vol.rb'
 alias his='history 10'
 alias imix="iex -S mix"

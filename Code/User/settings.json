@@ -10,9 +10,12 @@
     "[javascript]": {
         "editor.formatOnSave": true
     },
+    "[typescript]": {
+        "editor.formatOnSave": true
+    },
     "keyboard.dispatch": "keyCode",
         "vim.leader": "<space>",
-        "vim.otherModesKeyBindingsNonRecursive": [
+        "vim.normalModeKeyBindingsNonRecursive": [
             {
                 "before": [
                     "<leader>",
