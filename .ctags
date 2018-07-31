@@ -1,0 +1,24 @@
+--recurse=yes
+--tag-relative=yes
+--fields=-k
+--fields=+K
+--exclude=.git
+--exclude=node_modules
+--exclude=bower_components
+--exclude=log
+--exclude=tmp
+--exclude=dist
+--exclude=deps
+--exclude=public
+--exclude=spec
+--exclude=_build
+
+--langdef=css
+--langmap=css:.css
+--langmap=css:+.scss
+--langmap=css:+.sass
+--langmap=css:+.styl
+--langmap=css:+.less
+--regex-css=/^[ \t]*(([A-Za-z0-9_-]+[ \t\n,]+)+)\{/\1/t,tag,tags/
+--regex-css=/^[ \t]*#([A-Za-z0-9_-]+)/#\1/i,id,ids/
+--regex-css=/^[ \t]*\.([A-Za-z0-9_-]+)/.\1/c,class,classes/
