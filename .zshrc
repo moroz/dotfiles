@@ -16,12 +16,6 @@ PS1='[%~] $ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 
-if [ -d $HOME/.rbenv/bin ]; then
-  # Initialize rbenv
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
 if [ "$(uname)" = "Linux" ]; then
   alias ls="ls --color=auto"
 fi
@@ -33,12 +27,6 @@ export FZF_TMUX=1
 export EDITOR=nvim
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-alias dc='docker-compose'
-alias rspec='bundle exec rspec'
-alias rake='bundle exec rake'
-alias rc="bundle exec rails console"
-alias ss="spring stop"
-alias rs="bundle exec rails server"
 alias dep='git push origin master && cap production deploy'
 alias vim="nvim"
 alias ga='git add .'
@@ -49,10 +37,7 @@ alias gfo='git fetch origin'
 alias gd='git diff'
 alias gp='git pull'
 alias gpu='git push'
-alias vol='~/bin/vol.rb'
-alias his='history 10'
 alias imix="iex -S mix"
-alias drw="docker-compose run web"
 
 alias ms="mix phx.server"
 
