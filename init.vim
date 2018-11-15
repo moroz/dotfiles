@@ -21,12 +21,7 @@ Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-endwise'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
-
-" Ruby
-Plug 'vim-ruby/vim-ruby', { 'for': 'ruby' }
-Plug 'tpope/vim-rails', { 'for': 'ruby' }
-Plug 'kchmck/vim-coffee-script', { 'for': 'coffee' }
+" Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 
 " Elixir
 Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
@@ -99,7 +94,7 @@ let g:neomake_info_sign = {
 let g:neomake_elixir_enabled_makers = []
 
 " let g:deoplete#enable_at_startup = 1
-" " Disable the candidates in Comment/String syntaxes.
+" Disable the candidates in Comment/String syntaxes.
 " call deoplete#custom#source('_',
 "             \ 'disabled_syntaxes', ['Comment', 'String'])
 
