@@ -11,7 +11,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 
 " Editing
 Plug 'easymotion/vim-easymotion'
@@ -20,7 +20,7 @@ Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'neomake/neomake'
 Plug 'tpope/vim-endwise'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
 
 " Ruby
@@ -34,7 +34,7 @@ Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-Plug 'vim-scripts/fcitx.vim', { 'for': 'tex' }
+Plug 'vim-scripts/fcitx.vim' ", { 'for': ['tex', 'text', 'markdown'] }
 Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
 
@@ -47,6 +47,7 @@ Plug 'jparise/vim-graphql', { 'for': ['javascript', 'jsx', 'graphql'] }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 set tabstop=2
@@ -75,7 +76,7 @@ au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-material-darker
+colorscheme base16-google-dark
 
 call neomake#configure#automake({
   \ 'BufWritePost': {'delay': 500}})
@@ -97,10 +98,10 @@ let g:neomake_info_sign = {
 
 let g:neomake_elixir_enabled_makers = []
 
-let g:deoplete#enable_at_startup = 1
-" Disable the candidates in Comment/String syntaxes.
-call deoplete#custom#source('_',
-            \ 'disabled_syntaxes', ['Comment', 'String'])
+" let g:deoplete#enable_at_startup = 1
+" " Disable the candidates in Comment/String syntaxes.
+" call deoplete#custom#source('_',
+"             \ 'disabled_syntaxes', ['Comment', 'String'])
 
 nnoremap <C-c> "+yy
 nnoremap <C-t> :tabe<CR>
@@ -140,7 +141,7 @@ let g:mix_format_on_save = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave = 0
 let g:NERDSpaceDelims = 1
-let g:gutentags_file_list_command='ag -l --ignore spec/ --ignore public/'
+" let g:gutentags_file_list_command='ag -l --ignore spec/ --ignore public/'
 
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {

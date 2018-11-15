@@ -37,8 +37,12 @@ alias gfo='git fetch origin'
 alias gd='git diff'
 alias gp='git pull'
 alias gpu='git push'
-alias imix="iex -S mix"
 
+alias cdw="cd ~/working"
+alias cde="cd ~/elixir"
+
+alias imix="iex -S mix"
+alias ims="iex -S mix phx.server"
 alias ms="mix phx.server"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
