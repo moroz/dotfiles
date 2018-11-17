@@ -12,7 +12,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PS1=$'[\e[0;32m%m:\e[0;34m%~\e[0m] $'
+PS1=$'[\e[0;32m%m:\e[0;34m%~\e[0m]$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 
