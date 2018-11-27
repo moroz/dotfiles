@@ -12,6 +12,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 " Plug 'ludovicchabant/vim-gutentags'
+Plug 'tpope/vim-dispatch'
 
 " Editing
 Plug 'easymotion/vim-easymotion'
@@ -32,6 +33,7 @@ Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'vim-scripts/fcitx.vim' ", { 'for': ['tex', 'text', 'markdown'] }
 Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
+Plug 'Lokaltog/vim-distinguished'
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
@@ -40,9 +42,10 @@ Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'eelixir'] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'jsx', 'graphql'] }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
-Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+" Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'posva/vim-vue'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 call plug#end()
 
 set tabstop=2
@@ -66,7 +69,7 @@ autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType html,eelixir,javascript,jsx EmmetInstall
 autocmd FileType yaml set inde=
-autocmd Filetype tex command! Tex Dispatch! xelatex %
+autocmd Filetype tex nnoremap <Leader>mb :Start! xelatex %<CR>
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
@@ -155,8 +158,8 @@ if has("unix")
   endif
 endif
 
-if (has("termguicolors"))
- set termguicolors
-endif
+" if (has("termguicolors"))
+"  set termguicolors
+" endif
 
 set mouse=a

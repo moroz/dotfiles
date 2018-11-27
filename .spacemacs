@@ -380,6 +380,10 @@ you should place your code here."
 
   (add-hook 'elixir-mode-hook
             (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
+  (add-hook 'LaTeX-mode-hook
+            (lambda () (visual-line-mode 1)
+              (auto-fill-mode 0)))
+  
   (setq require-final-newline t)
   (setq vc-follow-symlinks t)
   (setq tags-add-tables nil)
