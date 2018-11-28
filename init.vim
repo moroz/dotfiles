@@ -33,7 +33,7 @@ Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'vim-scripts/fcitx.vim' ", { 'for': ['tex', 'text', 'markdown'] }
 Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
-Plug 'Lokaltog/vim-distinguished'
+Plug 'flazz/vim-colorschemes'
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
@@ -74,7 +74,7 @@ au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-google-dark
+colorscheme distinguished
 
 call neomake#configure#automake({
   \ 'BufWritePost': {'delay': 500}})
@@ -158,8 +158,8 @@ if has("unix")
   endif
 endif
 
-" if (has("termguicolors"))
-"  set termguicolors
-" endif
+if (has("termguicolors"))
+ set termguicolors
+endif
 
 set mouse=a
