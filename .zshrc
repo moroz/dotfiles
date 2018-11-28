@@ -6,13 +6,13 @@ setopt autocd
 bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
-zstyle :compinstall filename '/home/arch/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PS1=$'[\e[0;32m%m:\e[0;34m%~\e[0m]$ '
+PS1=$'%{\e[34m%}%m%{\e[m%}:%{\e[32m%}%~%{\e[m%}$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 
