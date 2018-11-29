@@ -158,8 +158,8 @@ if has("unix")
   endif
 endif
 
-" if (has("termguicolors"))
-"  set termguicolors
-" endif
+if (has("termguicolors"))
+ set termguicolors
+endif
 
 set mouse=a
