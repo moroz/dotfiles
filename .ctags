@@ -13,6 +13,8 @@
 --exclude=public
 --exclude=spec
 --exclude=_build
+--exclude=deps
+--exclude=.elixir_ls
 
 --langdef=css
 --langmap=css:.css

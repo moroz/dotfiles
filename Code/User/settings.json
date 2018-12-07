@@ -670,4 +670,6 @@
   "window.titleBarStyle": "custom",
   "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "explorer.confirmDelete": false
+  "explorer.confirmDelete": false,
+  "typescript.updateImportsOnFileMove.enabled": "always"
 }

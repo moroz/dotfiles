@@ -9,6 +9,10 @@ fi
 [[ -f $HOME/.spacemacs ]] || ln -s $HOME/.dotfiles/.spacemacs $HOME/.spacemacs
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
 [[ -f $HOME/.gitignore ]] || ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
+git config --global core.excludesfile ~/.gitignore
+
+mkdir -p ~/.ctags.d
+[[ -f $HOME/.ctags.d/default.ctags ]] || ln -s $HOME/.dotfiles/.ctags $HOME/.ctags.d/default.ctags
 
 os="`uname`"
 if [[ "$os" == 'Darwin' ]]; then
