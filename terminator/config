@@ -1,5 +1,7 @@
 [global_config]
   inactive_color_offset = 1.0
+  title_font = Consolas 9
+  title_use_system_font = False
 [keybindings]
 [layouts]
   [[default]]
@@ -16,13 +18,15 @@
     background_color = "#132738"
     cursor_color = "#f0cc09"
     custom_command = TERM=xterm-256color tmux
-    font = Monospace 13
+    font = Monaco for Powerline 13
     foreground_color = "#ffffff"
     palette = "#000000:#ff0000:#38de21:#ffe50a:#1460d2:#ff005d:#00bbbb:#bbbbbb:#555555:#f40e17:#3bd01d:#edc809:#5555ff:#ff55ff:#6ae3fa:#ffffff"
     scrollbar_position = hidden
     show_titlebar = False
     use_custom_command = True
+    use_system_font = False
   [[Cobalt2]]
     cursor_color = "#f0cc09"
+    font = Consolas 10
     foreground_color = "#ffffff"
     palette = "#000000:#ff0000:#38de21:#ffe50a:#1460d2:#ff005d:#00bbbb:#bbbbbb:#555555:#f40e17:#3bd01d:#edc809:#5555ff:#ff55ff:#6ae3fa:#ffffff"

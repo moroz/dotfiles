@@ -26,6 +26,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
 export ERL_AFLAGS="-kernel shell_history enabled"
+export LC_CTYPE=zh_TW.UTF-8
 
 alias dep='git push origin master && cap production deploy'
 alias vim="nvim"
