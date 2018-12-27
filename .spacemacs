@@ -412,10 +412,10 @@ you should place your code here."
   (spacemacs/set-leader-keys-for-major-mode 'latex-mode "d" 'convert-buffer-to-docx)
 
   (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'web-mode-hook '(lambda ()
-                              (if (buffer-file-name)
-                                  (if (not (string-match "\\.eex\\'" (buffer-file-name)))
-                                      (prettier-js-mode)))))
+  (add-hook 'web-mode-hook
+            '(lambda ()
+              (if (buffer-file-name)
+                  (if (not (string-match "\\.eex\\'" buffer-file-name)) (prettier-js-mode)))))
 
   (setq require-final-newline t)
   (setq vc-follow-symlinks t)
@@ -424,15 +424,13 @@ you should place your code here."
    ;; js2-mode
    js2-basic-offset 2
    js-indent-level 2
+   typescript-indent-level 2
    ;; web-mode
    css-indent-offset 2
    web-mode-markup-indent-offset 2
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
-  (setq js2-basic-offset 2)
-  (setq js-indent-level 2)
-  (setq typescript-indent-level 2)
 
   (when (executable-find "hunspell")
     (setq-default ispell-program-name "hunspell")
