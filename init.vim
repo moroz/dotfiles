@@ -45,7 +45,7 @@ Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 " Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'posva/vim-vue'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install'}
 call plug#end()
 
 set tabstop=2
