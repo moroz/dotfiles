@@ -1,5 +1,4 @@
 {
-  "ruby.rubocop.executePath": "/home/debian/.rbenv/shims/",
   "editor.wordWrap": "on",
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
@@ -648,28 +647,16 @@
   ],
   "vim.easymotion": true,
   "window.menuBarVisibility": "default",
-  "workbench.colorTheme": "Cobalt2",
+  "workbench.colorTheme": "ƒ - Gruvbox",
   "window.zoomLevel": 0,
   "editor.minimap.enabled": false,
-  "gitlens.advanced.messages": {
-    "suppressCommitHasNoPreviousCommitWarning": false,
-    "suppressCommitNotFoundWarning": false,
-    "suppressFileNotUnderSourceControlWarning": false,
-    "suppressGitVersionWarning": false,
-    "suppressLineUncommittedWarning": false,
-    "suppressNoRepositoryWarning": false,
-    "suppressResultsExplorerNotice": false,
-    "suppressShowKeyBindingsNotice": true
-  },
   "gitlens.historyExplorer.enabled": true,
   "emmet.triggerExpansionOnTab": true,
   "emmet.showExpandedAbbreviation": "never",
-  "materialTheme.fixIconsRunning": false,
   "files.trimTrailingWhitespace": true,
-  "editor.fontSize": 18,
+  "editor.fontSize": 15,
   "window.titleBarStyle": "custom",
-  "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-  "explorer.confirmDelete": false
+  "editor.fontFamily": "'Monaco', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
   "explorer.confirmDelete": false,
   "typescript.updateImportsOnFileMove.enabled": "always"
 }

@@ -1,143 +1,153 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-    {
-        "key": "ctrl+j",
-        "command": "-workbench.action.togglePanel"
-    },
-    {
-        "key": "ctrl+j",
-        "command": "list.focusDown"
-    },
-    {
-        "key": "f9",
-        "command": "workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "-extension.vim_ctrl+k",
-        "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+h",
-        "command": "-extension.vim_ctrl+h",
-        "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+a",
-        "command": "-extension.vim_ctrl+a",
-        "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+c",
-        "command": "-extension.vim_ctrl+c",
-        "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+v",
-        "command": "-extension.vim_ctrl+v",
-        "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+o",
-        "command": "-extension.vim_ctrl+o",
-        "when": "editorTextFocus && vim.active && vim.use<C-o> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+w",
-        "command": "-extension.vim_ctrl+w",
-        "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
-    },
-    {
-        "key": "cmd+n",
-        "command": "workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "-workbench.action.quickOpenSelectNext",
-        "when": "inQuickOpen"
-    },
-    // {
-    //     "key": "cmd+r",
-    //     "command": "extension.vim_ctrl+r",
-    //     "when": "editorTextFocus && vim.active && vim.use<C-r> && !inDebugRepl"
-    // },
-    // {
-    //     "key": "ctrl+r",
-    //     "command": "-extension.vim_ctrl+r",
-    //     "when": "editorTextFocus && vim.active && vim.use<C-r> && !inDebugRepl"
-    // },
-    {
-        "key": "cmd+n",
-        "command": "-workbench.action.files.newUntitledFile",
-    },
-    {
-        "key": "cmd+n",
-        "command": "extension.vim_ctrl+n",
-        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+n",
-        "command": "-extension.vim_ctrl+n",
-        "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
-    },
-    {
-        "key": "cmd+f",
-        "command": "-actions.find"
-    },
-    {
-        "key": "cmd+f",
-        "command": "-workbench.action.terminal.focusFindWidget",
-        "when": "terminalFocus"
-    },
-    {
-        "key": "cmd+f",
-        "command": "editor.action.formatSelection",
-        "when": "editorHasSelection && editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "cmd+k cmd+f",
-        "command": "-editor.action.formatSelection",
-        "when": "editorHasSelection && editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "cmd+f",
-        "command": "extension.vim_ctrl+f",
-        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl"
-    },
-    {
-        "key": "ctrl+f",
-        "command": "-extension.vim_ctrl+f",
-        "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl"
-    },
-    {
-        "key": "cmd+b",
-        "command": "-workbench.action.toggleSidebarVisibility"
-    },
-    // {
-    //     "key": "cmd+b",
-    //     "command": "extension.vim_ctrl+b",
-    //     "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
-    // },
-    // {
-    //     "key": "ctrl+b",
-    //     "command": "-extension.vim_ctrl+b",
-    //     "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
-    // },
-    {
-        "key": "alt+/",
-        "command": "editor.action.insertSnippet",
-        "when": "editorTextFocus && vim.active",
-        "args": {
-            "snippet": "|>"
-        }
+  {
+    "key": "ctrl+j",
+    "command": "-workbench.action.togglePanel"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "list.focusDown"
+  },
+  {
+    "key": "f9",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "-extension.vim_ctrl+k",
+    "when": "editorTextFocus && vim.active && vim.use<C-k> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "-extension.vim_ctrl+h",
+    "when": "editorTextFocus && vim.active && vim.use<C-h> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+a",
+    "command": "-extension.vim_ctrl+a",
+    "when": "editorTextFocus && vim.active && vim.use<C-a> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+c",
+    "command": "-extension.vim_ctrl+c",
+    "when": "editorTextFocus && vim.active && vim.overrideCtrlC && vim.use<C-c> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+v",
+    "command": "-extension.vim_ctrl+v",
+    "when": "editorTextFocus && vim.active && vim.use<C-v> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+o",
+    "command": "-extension.vim_ctrl+o",
+    "when": "editorTextFocus && vim.active && vim.use<C-o> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+w",
+    "command": "-extension.vim_ctrl+w",
+    "when": "editorTextFocus && vim.active && vim.use<C-w> && !inDebugRepl"
+  },
+  {
+    "key": "cmd+n",
+    "command": "workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-workbench.action.quickOpenSelectNext",
+    "when": "inQuickOpen"
+  },
+  // {
+  //     "key": "cmd+r",
+  //     "command": "extension.vim_ctrl+r",
+  //     "when": "editorTextFocus && vim.active && vim.use<C-r> && !inDebugRepl"
+  // },
+  // {
+  //     "key": "ctrl+r",
+  //     "command": "-extension.vim_ctrl+r",
+  //     "when": "editorTextFocus && vim.active && vim.use<C-r> && !inDebugRepl"
+  // },
+  {
+    "key": "cmd+n",
+    "command": "-workbench.action.files.newUntitledFile"
+  },
+  {
+    "key": "cmd+n",
+    "command": "extension.vim_ctrl+n",
+    "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+n",
+    "command": "-extension.vim_ctrl+n",
+    "when": "editorTextFocus && vim.active && vim.use<C-n> && !inDebugRepl"
+  },
+  {
+    "key": "cmd+f",
+    "command": "-actions.find"
+  },
+  {
+    "key": "cmd+f",
+    "command": "-workbench.action.terminal.focusFindWidget",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+f",
+    "command": "editor.action.formatSelection",
+    "when": "editorHasSelection && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+k cmd+f",
+    "command": "-editor.action.formatSelection",
+    "when": "editorHasSelection && editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+f",
+    "command": "extension.vim_ctrl+f",
+    "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+f",
+    "command": "-extension.vim_ctrl+f",
+    "when": "editorTextFocus && vim.active && vim.use<C-f> && !inDebugRepl"
+  },
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  // {
+  //     "key": "cmd+b",
+  //     "command": "extension.vim_ctrl+b",
+  //     "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+  // },
+  // {
+  //     "key": "ctrl+b",
+  //     "command": "-extension.vim_ctrl+b",
+  //     "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+  // },
+  {
+    "key": "alt+/",
+    "command": "editor.action.insertSnippet",
+    "when": "editorTextFocus && vim.active",
+    "args": {
+      "snippet": "|>"
     }
-    // {
-    //     "key": "ctrl+r",
-    //     "command": "-workbench.action.openRecent"
-    // }
+  },
+  {
+    "key": "cmd+b",
+    "command": "extension.vim_ctrl+b",
+    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-extension.vim_ctrl+b",
+    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+  }
+  // {
+  //     "key": "ctrl+r",
+  //     "command": "-workbench.action.openRecent"
+  // }
 ]
