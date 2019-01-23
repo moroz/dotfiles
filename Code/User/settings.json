@@ -1,9 +1,7 @@
 {
-  "ruby.rubocop.executePath": "/home/debian/.rbenv/shims/",
   "editor.wordWrap": "on",
   "editor.tabSize": 2,
   "editor.formatOnSave": true,
-  "prettier.disableLanguages": [],
   "keyboard.dispatch": "keyCode",
   "vim.leader": "<space>",
   "vim.normalModeKeyBindingsNonRecursive": [
@@ -666,10 +664,11 @@
   "emmet.showExpandedAbbreviation": "never",
   "materialTheme.fixIconsRunning": false,
   "files.trimTrailingWhitespace": true,
-  "editor.fontSize": 18,
+  "editor.fontSize": 14,
   "window.titleBarStyle": "custom",
-  "editor.fontFamily": "'Ubuntu Mono', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback'",
-  "explorer.confirmDelete": false
+  "editor.fontFamily": "Monaco, monospace",
   "explorer.confirmDelete": false,
-  "typescript.updateImportsOnFileMove.enabled": "always"
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "breadcrumbs.enabled": true,
+  "javascript.implicitProjectConfig.experimentalDecorators": true
 }
