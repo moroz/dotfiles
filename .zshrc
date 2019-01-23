@@ -45,6 +45,7 @@ alias cde="cd ~/elixir"
 alias imix="iex -S mix"
 alias ims="iex -S mix phx.server"
 alias ms="mix phx.server"
+alias mm="mix ecto.migrate"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
