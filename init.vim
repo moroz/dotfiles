@@ -111,8 +111,8 @@ nnoremap k gk
 inoremap <C-s> <esc>:update<cr>
 nnoremap <C-s> :update<cr>
 nnoremap <C-p> :Files<cr>
-nnoremap <Tab> gt
-nnoremap <S-Tab> gT
+nnoremap <C-Tab> gt
+nnoremap <C-S-Tab> gT
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
 map <F4> :GundoToggle<cr>
