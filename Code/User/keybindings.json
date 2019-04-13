@@ -135,6 +135,19 @@
     "args": {
       "snippet": "|>"
     }
+<<<<<<< HEAD
+=======
+  },
+  {
+    "key": "cmd+b",
+    "command": "extension.vim_ctrl+b",
+    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+  },
+  {
+    "key": "ctrl+b",
+    "command": "-extension.vim_ctrl+b",
+    "when": "editorTextFocus && vim.active && vim.use<C-b> && !inDebugRepl && vim.mode != 'Insert'"
+>>>>>>> 13ff496ac3f7b52db69da3c6288c16fe6bc7e47f
   }
   // {
   //     "key": "ctrl+r",
