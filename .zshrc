@@ -18,6 +18,8 @@ ENABLE_CORRECTION="true"
 
 if [ "$(uname)" = "Linux" ]; then
   alias ls="ls --color=auto"
+else;
+  alias ls="ls -G"
 fi
 
 export QUOTING_STYLE=literal
@@ -46,6 +48,8 @@ alias imix="iex -S mix"
 alias ims="iex -S mix phx.server"
 alias ms="mix phx.server"
 alias mm="mix ecto.migrate"
+alias md="mix deps.get"
+alias mt="mix test"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
