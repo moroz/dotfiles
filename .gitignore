@@ -4,3 +4,4 @@ node_modules/
 TAGS
 tags
 .elixir_ls
+.prettierrc.js

@@ -389,7 +389,8 @@ you should place your code here."
 
   (add-hook 'elixir-mode-hook
             (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
-
+  (setq js2-mode-show-parse-errors nil)
+  (setq js2-mode-show-strict-warnings nil)
   (add-hook 'LaTeX-mode-hook 'visual-line-mode)
   (add-hook 'LaTeX-mode-hook 'spacemacs/toggle-auto-completion-off)
   (remove-hook 'LaTeX-mode-hook #'latex/auto-fill-mode)

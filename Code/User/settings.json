@@ -664,12 +664,17 @@
   "emmet.showExpandedAbbreviation": "never",
   "materialTheme.fixIconsRunning": false,
   "files.trimTrailingWhitespace": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "window.titleBarStyle": "custom",
-  "editor.fontFamily": "Monaco, monospace",
+  "editor.fontFamily": "'Droid Sans Mono for Powerline',Monaco, monospace",
   "explorer.confirmDelete": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "breadcrumbs.enabled": true,
   "javascript.implicitProjectConfig.experimentalDecorators": true,
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "sync.gist": "086b8dfbed27fc524eb7ee54dc5f1119",
+  "prettier.semi": false,
+  "prettier.singleQuote": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.stylelintIntegration": true
 }
