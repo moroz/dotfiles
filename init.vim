@@ -9,7 +9,7 @@ call plug#begin('~/.config/nvim/plugged')
 Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'thaerkh/vim-workspace'
+" Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-dispatch'
@@ -19,10 +19,9 @@ Plug 'easymotion/vim-easymotion'
 Plug 'scrooloose/nerdcommenter'
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
-Plug 'neomake/neomake'
 Plug 'tpope/vim-endwise'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'sjl/gundo.vim', { 'on': 'GundoToggle' }
+Plug 'airblade/vim-gitgutter'
 
 " Elixir
 Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
@@ -30,8 +29,8 @@ Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-Plug 'vim-scripts/fcitx.vim' ", { 'for': ['tex', 'text', 'markdown'] }
-Plug 'jacoborus/tender.vim'
+" Plug 'vim-scripts/fcitx.vim' ", { 'for': ['tex', 'text', 'markdown'] }
+" Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
 
@@ -40,11 +39,9 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
 Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
 Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'eelixir'] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-Plug 'jparise/vim-graphql', { 'for': ['javascript', 'jsx', 'graphql'] }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 " Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'posva/vim-vue'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
@@ -74,35 +71,16 @@ au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme base16-monokai
+colorscheme Spacedust
+lang zh_TW.UTF-8
 
-call neomake#configure#automake({
-  \ 'BufWritePost': {'delay': 500}})
-let g:neomake_ruby_enabled_makers = ['mri', 'rubocop']
-let g:neomake_warning_sign = {
-  \ 'text': '>>',
-  \ 'texthl': 'WarningMsg',
-  \ }
-
-let g:neomake_error_sign = {
-  \ 'text': '>>',
-  \ 'texthl': 'ErrorMsg',
-  \ }
-
-let g:neomake_info_sign = {
-  \ 'text': '>>',
-  \ 'texthl': 'NeomakeInfoSign'
-  \ }
-
-let g:neomake_elixir_enabled_makers = []
-
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 " Disable the candidates in Comment/String syntaxes.
 call deoplete#custom#source('_',
             \ 'disabled_syntaxes', ['Comment', 'String'])
 
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+" let g:prettier#autoformat = 0
+" autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.html PrettierAsync
 
 nnoremap <C-c> "+yy
 nnoremap <C-t> :tabe<CR>
