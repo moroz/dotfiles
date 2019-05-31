@@ -11,7 +11,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'thaerkh/vim-workspace'
 Plug 'tpope/vim-fugitive'
-Plug 'ludovicchabant/vim-gutentags'
+" Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-dispatch'
 
 " Editing
@@ -20,7 +20,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 
 " Elixir
@@ -42,7 +42,7 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'leafgarland/typescript-vim', { 'for': 'typescript' }
 " Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 call plug#end()
 
 set tabstop=2
@@ -71,13 +71,20 @@ au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let NERDTreeMinimalUI=28
 let NERDTreeDirArrows=1
 let base16colorspace=256  " Access colors present in 256 colorspace
-colorscheme Spacedust
 lang zh_TW.UTF-8
+
+" set light color scheme during day hours
+if strftime("%H") > 6 && strftime("%H") < 17
+  colorscheme Tomorrow
+  " colorscheme Tomorrow-Night
+else
+  colorscheme Tomorrow-Night
+endif
 
 " let g:deoplete#enable_at_startup = 1
 " Disable the candidates in Comment/String syntaxes.
-call deoplete#custom#source('_',
-            \ 'disabled_syntaxes', ['Comment', 'String'])
+" call deoplete#custom#source('_',
+"             \ 'disabled_syntaxes', ['Comment', 'String'])
 
 " let g:prettier#autoformat = 0
 " autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.json,*.html PrettierAsync
@@ -94,6 +101,7 @@ nnoremap <C-S-Tab> gT
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
 map <F4> :GundoToggle<cr>
+map <F6> :MixFormat<cr>
 map <F8> :NERDTreeFind<cr>
 map <F9> :NERDTreeToggle<cr>
 map <F10> :wqa<CR>
@@ -105,6 +113,7 @@ map <Leader>l <C-w><C-l>
 
 map <Leader>wd :q<cr>
 map <Leader>Ts :Colors<cr>
+map <Leader>Tn :colorscheme Tomorrow-Night<cr>
 map <Leader>fer :source $MYVIMRC<cr>
 map <Leader>pi :PlugInstall<cr>
 map <Leader>pg :Tags<cr>
@@ -116,7 +125,7 @@ map <Leader>ds :ToggleWorkspace<cr>
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
-let g:mix_format_on_save = 1
+let g:mix_format_on_save = 0
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave = 0
 let g:NERDSpaceDelims = 1
@@ -144,3 +153,11 @@ if (has("termguicolors"))
 endif
 
 set mouse=a
+
+if (filereadable("../.vimrc.local"))
+  source ../.vimrc.local
+endif
+
+if (filereadable("./.vimrc.local"))
+  source ./.vimrc.local
+endif

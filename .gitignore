@@ -3,6 +3,8 @@ node_modules/
 .DS_Store
 TAGS
 tags
+tags.*
 .elixir_ls
 .prettierrc.js
 .vscode
+.vimrc.local

@@ -44,7 +44,7 @@ alias gpu='git push'
 alias cdw="cd ~/working"
 alias cde="cd ~/elixir"
 
-alias imix="iex -S mix"
+alias im="iex -S mix"
 alias ims="iex -S mix phx.server"
 alias ms="mix phx.server"
 alias mm="mix ecto.migrate"
