@@ -10,8 +10,6 @@
 	<integer>1</integer>
 	<key>AppleWindowTabbingMode</key>
 	<string>manual</string>
-	<key>CGFontRenderingFontSmoothingDisabled</key>
-	<false/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>C64</key>
@@ -1863,9 +1861,9 @@
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
 	<key>NSFontPanelAttributes</key>
-	<string>1, 0</string>
+	<string>1, 4</string>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Downloads/iTerm2-Color-Schemes-master/schemes</string>
+	<string>~/Documents</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
@@ -1905,12 +1903,10 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>551 251 1008 194 0 0 1920 1057 </string>
+	<string>1085 110 769 284 0 0 1920 1057 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>469 576 958 470 0 0 1920 1057 </string>
+	<string>269 235 916 423 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 1057 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
 	<string>0 0 1920 1057 0 0 1920 1057 </string>
 	<key>New Bookmarks</key>
 	<array>
@@ -2484,7 +2480,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>ConsolasNerdFontCM- 16</string>
+			<string>Hack-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -6396,7 +6392,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>ConsolasNerdFontCM- 16</string>
+			<string>Hack-Regular 14</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -6464,11 +6460,9 @@
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>4B3AC43B-B6D3-4DF0-AA99-A932FD22ACDE</string>
-	<key>NoSyncPermissionToShowTip</key>
-	<false/>
+	<string>975DF25A-12C4-4EA1-8919-9FE06E182FB5</string>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>578561694.16206801</real>
+	<real>580976089.601143</real>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>0</integer>
 	<key>PasteTabToStringTabStopSize</key>
@@ -6507,17 +6501,17 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>~/.dotfiles</string>
+	<string>/Users/karol/.dotfiles</string>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/final.xml?shard=70</string>
+	<string>https://iterm2.com/appcasts/final.xml?shard=77</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-05-26T12:08:27Z</date>
+	<date>2019-05-31T06:16:52Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>TabStyleWithAutomaticOption</key>

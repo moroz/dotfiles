@@ -32,7 +32,7 @@ export LC_CTYPE=zh_TW.UTF-8
 
 alias dep='git push origin master && cap production deploy'
 alias vim="nvim"
-alias ga='git add .'
+alias ga='git add -A'
 alias gs='git status'
 alias gc='git commit'
 alias gf='git checkout'
@@ -50,6 +50,11 @@ alias ms="mix phx.server"
 alias mm="mix ecto.migrate"
 alias md="mix deps.get"
 alias mt="mix test"
+
+serve() {
+  DIR=${1:-.}
+  nginx -p $DIR -c ~/.dotfiles/nginx_cwd.conf
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 

@@ -441,9 +441,9 @@ you should place your code here."
   (setq select-enable-clipboard nil)
   (setq font-latex-fontify-sectioning 1.0)
 
-  (setq-default flycheck-disabled-checkers '(haml))
+  (setq-default flycheck-disabled-checkers '(haml scss-lint sass))
   (setq-default TeX-engine 'xetex)
-  ;; (setq-default TeX-master "main.tex")
+  (setq-default TeX-master "main.tex")
   (spacemacs/set-leader-keys "s a p" 'counsel-ag)
   (setq base16-theme-256-color-source 'colors)
 
