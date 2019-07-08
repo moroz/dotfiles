@@ -32,7 +32,8 @@ export LC_CTYPE=zh_TW.UTF-8
 
 alias dep='git push origin master && cap production deploy'
 alias vim="nvim"
-alias ga='git add .'
+alias tf=terraform
+alias ga='git add -A'
 alias gs='git status'
 alias gc='git commit'
 alias gf='git checkout'
@@ -46,13 +47,41 @@ alias cde="cd ~/elixir"
 
 alias im="iex -S mix"
 alias ims="iex -S mix phx.server"
-alias ms="mix phx.server"
-alias mm="mix ecto.migrate"
-alias md="mix deps.get"
 alias mt="mix test"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+mm() {
+  if [ -f Gemfile ]; then 
+    rails db:migrate
+  fi
+  if [ -f mix.exs ]; then
+    mix ecto.migrate
+  fi
+}
+
+md() {
+  if [ -f Gemfile ]; then 
+    bundle
+  fi
+  if [ -f mix.exs ]; then
+    mix deps.get
+  fi
+}
+
+ms() {
+  if [ -f Gemfile ]; then 
+    rails server
+  fi
+  if [ -f mix.exs ]; then
+    mix phx.server
+  fi
+}
+
 magit() {
   emacsclient -t --eval "(call-interactively #'magit-status)" -a "emacs -nw --eval \"(call-interactively #'magit-status)\""
+}
+
+serve() {
+  nginx -p . -c ~/.dotfiles/nginx-serve-cwd.conf
 }
