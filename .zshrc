@@ -32,7 +32,6 @@ export LC_CTYPE=zh_TW.UTF-8
 
 alias dep='git push origin master && cap production deploy'
 alias vim="nvim"
-alias tf=terraform
 alias ga='git add -A'
 alias gs='git status'
 alias gc='git commit'
@@ -47,6 +46,11 @@ alias cde="cd ~/elixir"
 
 alias ims="iex -S mix phx.server"
 alias mt="mix test --trace"
+
+serve() {
+  DIR=${1:-.}
+  nginx -p $DIR -c ~/.dotfiles/nginx_cwd.conf
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
