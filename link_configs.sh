@@ -20,6 +20,15 @@ if [[ "$os" == 'Darwin' ]]; then
   mkdir -p "$HOME/Library/Application Support/Code/User"
   ln -sf $HOME/.dotfiles/Code/User/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
   ln -sf $HOME/.dotfiles/Code/User/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
+  if [ -x $(which brew) ]; then
+    brew install zsh tmux reattach-to-user-namespace mc ag neovim wget curl postgresql python3 nodejs
+    sudo echo $(which zsh) >> /etc/shells
+    sudo chsh -s $(which zsh) $USER
+  fi
+  sudo cp "$HOME/.dotfiles/Custom Dvorak.keylayout" /Library/Keyboard\ Layouts
+  defaults write -g ApplePressAndHoldEnabled -bool false
+  mkdir -p $HOME/Pictures/screenshots
+  defaults write com.apple.screencapture location !$
 elif [[ "$os" == 'Linux' ]]; then
   mkdir -p $HOME/.config/Code/User/
   ln -sf $HOME/.dotfiles/Code/User/settings.json $HOME/.config/Code/User/settings.json
