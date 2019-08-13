@@ -45,11 +45,19 @@ alias gpu='git push'
 alias cdw="cd ~/working"
 alias cde="cd ~/elixir"
 
-alias im="iex -S mix"
 alias ims="iex -S mix phx.server"
-alias mt="mix test"
+alias mt="mix test --trace"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+im() {
+  if [ -f Gemfile ]; then
+    rails console
+  fi
+  if [ -f mix.exs ]; then
+    iex -S mix
+  fi
+}
 
 mm() {
   if [ -f Gemfile ]; then 
