@@ -23,8 +23,11 @@ Plug 'tpope/vim-endwise'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'airblade/vim-gitgutter'
 
+Plug 'Chiel92/vim-autoformat', { 'for': 'ruby' }
+Plug 'slim-template/vim-slim'
+
 " Elixir
-Plug 'elixir-editors/vim-elixir', { 'for': ['elixir', 'eelixir'] }
+Plug 'elixir-editors/vim-elixir'
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -33,6 +36,8 @@ Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 " Plug 'jacoborus/tender.vim'
 Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
+
+Plug 'hashivim/vim-terraform'
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
@@ -74,12 +79,13 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 lang zh_TW.UTF-8
 
 " set light color scheme during day hours
-if strftime("%H") > 6 && strftime("%H") < 17
-  colorscheme Tomorrow
-  " colorscheme Tomorrow-Night
-else
-  colorscheme Tomorrow-Night
-endif
+" if strftime("%H") > 6 && strftime("%H") < 17
+" colorscheme Tomorrow
+" colorscheme Tomorrow-Night
+" else
+" colorscheme Tomorrow-Night
+" endif
+colorscheme gruvbox
 
 " let g:deoplete#enable_at_startup = 1
 " Disable the candidates in Comment/String syntaxes.
@@ -100,6 +106,7 @@ nnoremap <C-Tab> gt
 nnoremap <C-S-Tab> gT
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
+noremap <F3> :Autoformat<CR>
 map <F4> :GundoToggle<cr>
 map <F6> :MixFormat<cr>
 map <F8> :NERDTreeFind<cr>
@@ -125,7 +132,7 @@ map <Leader>ds :ToggleWorkspace<cr>
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 1
-let g:mix_format_on_save = 0
+let g:mix_format_on_save = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave = 0
 let g:NERDSpaceDelims = 1
@@ -133,10 +140,10 @@ let g:NERDSpaceDelims = 1
 
 let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
-  \  'javascript.jsx' : {
-    \      'extends' : 'jsx',
-    \  },
-  \}
+      \  'javascript.jsx' : {
+      \      'extends' : 'jsx',
+      \  },
+      \}
 let g:user_emmet_install_global = 0
 let NERDTreeQuitOnOpen = 0
 
@@ -149,7 +156,7 @@ if has("unix")
 endif
 
 if (has("termguicolors"))
- set termguicolors
+  set termguicolors
 endif
 
 set mouse=a
