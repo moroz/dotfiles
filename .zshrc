@@ -46,6 +46,11 @@ alias cde="cd ~/elixir"
 
 alias ims="iex -S mix phx.server"
 alias mt="mix test --trace"
+alias mtf="mix test --trace --failed"
+alias mm="mix ecto.migrate"
+alias ml="mix compile"
+alias mr="mix ecto.rollback"
+alias im="iex -S mix"
 
 serve() {
   DIR=${1:-.}
@@ -53,24 +58,6 @@ serve() {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-im() {
-  if [ -f Gemfile ]; then
-    rails console
-  fi
-  if [ -f mix.exs ]; then
-    iex -S mix
-  fi
-}
-
-mm() {
-  if [ -f Gemfile ]; then 
-    rails db:migrate
-  fi
-  if [ -f mix.exs ]; then
-    mix ecto.migrate
-  fi
-}
 
 md() {
   if [ -f Gemfile ]; then 
