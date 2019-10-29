@@ -1,9 +1,9 @@
 Code/User/workspaceStorage
 node_modules/
 .DS_Store
-TAGS
-tags
-tags.*
+/TAGS
+/tags
+/tags.*
 .elixir_ls
 .prettierrc.js
 .vscode

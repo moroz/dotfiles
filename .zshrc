@@ -40,6 +40,7 @@ alias gfo='git fetch origin'
 alias gd='git diff'
 alias gp='git pull'
 alias gpu='git push'
+alias gr='git rev-parse HEAD'
 
 alias cdw="cd ~/working"
 alias cde="cd ~/elixir"
@@ -47,6 +48,7 @@ alias cde="cd ~/elixir"
 alias ims="iex -S mix phx.server"
 alias mt="mix test --trace"
 alias mtf="mix test --trace --failed"
+alias imtf="iex -S mix test --failed"
 alias mm="mix ecto.migrate"
 alias ml="mix compile"
 alias mr="mix ecto.rollback"
