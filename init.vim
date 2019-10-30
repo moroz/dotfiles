@@ -83,12 +83,12 @@ lang zh_TW.UTF-8
 
 " set light color scheme during day hours
 " if strftime("%H") > 6 && strftime("%H") < 17
-" colorscheme Tomorrow
-" colorscheme Tomorrow-Night
+"   colorscheme Tomorrow
 " else
-" colorscheme Tomorrow-Night
+"   colorscheme Tomorrow-Night
 " endif
 colorscheme gruvbox
+set bg=dark
 
 " let g:deoplete#enable_at_startup = 1
 " Disable the candidates in Comment/String syntaxes.
