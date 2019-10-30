@@ -646,14 +646,13 @@
   ],
   "vim.easymotion": true,
   "window.menuBarVisibility": "default",
-  "workbench.colorTheme": "Base16 Light Solarized",
   "window.zoomLevel": 0,
   "editor.minimap.enabled": false,
   "gitlens.historyExplorer.enabled": true,
   "emmet.triggerExpansionOnTab": true,
   "emmet.showExpandedAbbreviation": "never",
   "files.trimTrailingWhitespace": true,
-  "editor.fontSize": 15,
+  "editor.fontSize": 16,
   "window.titleBarStyle": "custom",
   "explorer.confirmDelete": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -670,5 +669,9 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.formatOnSave": true,
-  "extensions.ignoreRecommendations": true
+  "extensions.ignoreRecommendations": true,
+  "workbench.colorTheme": "Cobalt2",
+  "editor.fontFamily": "'Monaco', Menlo, Monaco, 'Courier New', monospace",
+  "sass.format.enabled": false,
+  "sass.lint.enable": false
 }
