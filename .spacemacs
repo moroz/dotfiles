@@ -132,7 +132,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Monaco"
-                               :size 17
+                               :size 15
                                ;; :weight regular
                                ;; :width normal
                                :powerline-scale 0.9
@@ -395,8 +395,10 @@ you should place your code here."
   (global-set-key (kbd "<M-up>") 'move-text-line-up)
   (global-set-key (kbd "<M-down>") 'move-text-line-down)
   (define-key evil-normal-state-map (kbd "C-p") 'counsel-projectile-find-file)
+  (define-key evil-normal-state-map (kbd "C-n") 'make-frame-command)
   (define-key evil-normal-state-map (kbd "C-S-p") 'helm-M-x)
   (global-set-key (kbd "C-s") 'save-buffer)
+  (global-set-key (kbd "C-`") 'other-frame)
 
   (add-hook 'elixir-mode-hook
             (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
