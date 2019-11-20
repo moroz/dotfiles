@@ -28,6 +28,12 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
 export ERL_AFLAGS="-kernel shell_history enabled"
+export LANG=en_US.UTF-8
+export LC_NUMERIC=en_US.UTF-8
+export LC_MONETARY=en_US.UTF-8
+export LC_MESSAGES=en_US.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_COLLATE=en_US.UTF-8
 export LC_CTYPE=zh_TW.UTF-8
 
 alias dep='git push origin master && cap production deploy'
@@ -41,6 +47,8 @@ alias gd='git diff'
 alias gp='git pull'
 alias gpu='git push'
 alias gr='git rev-parse HEAD'
+
+alias cd..="cd .."
 
 alias cdw="cd ~/working"
 alias cde="cd ~/elixir"

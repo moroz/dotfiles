@@ -26,6 +26,7 @@ if [[ "$os" == 'Darwin' ]]; then
     sudo chsh -s $(which zsh) $USER
   fi
   sudo cp "$HOME/.dotfiles/Custom Dvorak.keylayout" /Library/Keyboard\ Layouts
+  sudo cp "$HOME/.dotfiles/Dvorak Esperanto.keylayout" /Library/Keyboard\ Layouts
   defaults write -g ApplePressAndHoldEnabled -bool false
   mkdir -p $HOME/Pictures/screenshots
   defaults write com.apple.screencapture location !$
