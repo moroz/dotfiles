@@ -670,7 +670,7 @@
   },
   "editor.formatOnSave": true,
   "extensions.ignoreRecommendations": true,
-  "workbench.colorTheme": "Gruvbox Dark Medium",
+  "workbench.colorTheme": "Cobalt2",
   "editor.fontFamily": "'Monaco', Menlo, Monaco, 'Courier New', monospace",
   "sass.format.enabled": false,
   "sass.lint.enable": false
