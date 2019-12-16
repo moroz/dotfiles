@@ -660,7 +660,6 @@
   "javascript.implicitProjectConfig.experimentalDecorators": true,
   "javascript.updateImportsOnFileMove.enabled": "always",
   "sync.gist": "086b8dfbed27fc524eb7ee54dc5f1119",
-  "prettier.stylelintIntegration": true,
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },

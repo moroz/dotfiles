@@ -132,7 +132,7 @@ values."
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("Monaco"
-                               :size 15
+                               :size 16
                                ;; :weight regular
                                ;; :width normal
                                :powerline-scale 0.9
@@ -392,6 +392,8 @@ you should place your code here."
   (spacemacs/set-leader-keys "s l" 'smerge-keep-other)
   (spacemacs/set-leader-keys "s m" 'smerge-keep-mine)
   (spacemacs/set-leader-keys "s -" 'smerge-keep-all)
+  (spacemacs/set-leader-keys "m t" 'alchemist-mix-test-this-buffer)
+  (spacemacs/set-leader-keys "m a" 'alchemist-mix-test)
   (global-set-key (kbd "<M-up>") 'move-text-line-up)
   (global-set-key (kbd "<M-down>") 'move-text-line-down)
   (define-key evil-normal-state-map (kbd "C-p") 'counsel-projectile-find-file)
