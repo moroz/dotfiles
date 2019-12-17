@@ -85,6 +85,9 @@ ms() {
   if [ -f mix.exs ]; then
     mix phx.server
   fi
+  if [ -f daemon.sh ]; then
+    ./daemon.sh
+  fi
 }
 
 magit() {
