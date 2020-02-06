@@ -54,7 +54,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(helm-ag basic-theme base16-theme exec-path-from-shell color-theme-modern prettier-js)
+   dotspacemacs-additional-packages '(helm-ag basic-theme base16-theme exec-path-from-shell color-theme-modern prettier-js graphql-mode mmm-mode vue-mode rjsx-mode)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -462,6 +462,21 @@ you should place your code here."
   (setq base16-theme-256-color-source 'colors)
 
   (setq-default left-fringe-width 10)
+
+  (add-to-list 'auto-mode-alist '(".*\\.js\\'" . rjsx-mode))
+  (add-to-list 'auto-mode-alist '(".*\\.tsx\\'" . rjsx-mode))
+  (mmm-add-classes
+   '((js-graphql
+      :submode graphql-mode
+      :face mmm-declaration-submode-face
+      :front "[^a-zA-Z]gql`" ;; regex to find the opening tag
+      :back "`"))) ;; regex to find the closing tag
+  (mmm-add-mode-ext-class 'js-mode nil 'js-graphql)
+  (mmm-add-mode-ext-class 'typescript-mode nil 'js-graphql)
+  (setq mmm-global-mode 'maybe)
+  ;; Optional configuration that hides the background color for a highlighted block
+  ;; I find it useful for debugging emacs, but when actually coding I dont want so much emphasis on submodes
+  (setq mmm-submode-decoration-level 0)
 
   (when (display-graphic-p)
     (setq powerline-default-separator nil)
