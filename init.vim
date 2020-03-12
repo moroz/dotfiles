@@ -20,6 +20,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
 Plug 'slim-template/vim-slim'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 " Elixir
 Plug 'elixir-editors/vim-elixir'
@@ -33,10 +34,12 @@ Plug 'flazz/vim-colorschemes'
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
-Plug 'mxw/vim-jsx', { 'for': ['javascript', 'jsx'] }
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx'] }
 Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'eelixir'] }
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
+Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'hashivim/vim-terraform'
 
@@ -68,8 +71,8 @@ au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let base16colorspace=256  " Access colors present in 256 colorspace
 lang zh_TW.UTF-8
 
-colorscheme gruvbox
-set bg=dark
+colorscheme onehalfdark
+let g:airline_theme='onehalfdark'
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
@@ -80,8 +83,7 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
-  \ 'coc-json', 
-  \ 'coc-explorer'
+  \ 'coc-json'
   \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300

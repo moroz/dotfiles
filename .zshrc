@@ -52,6 +52,7 @@ alias cd..="cd .."
 
 alias cdw="cd ~/working"
 alias cde="cd ~/elixir"
+alias c="code ."
 
 alias ims="iex -S mix phx.server"
 alias mt="mix test --trace"
@@ -85,8 +86,8 @@ ms() {
   if [ -f mix.exs ]; then
     mix phx.server
   fi
-  if [ -f daemon.sh ]; then
-    ./daemon.sh
+  if [ -f package.json ]; then
+    yarn start
   fi
 }
 
