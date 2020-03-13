@@ -49,15 +49,13 @@ values."
             shell-default-height 30
             shell-default-position 'bottom)
      syntax-checking auto-completion
-     (version-control :variables
-                      version-control-diff-tool 'git-gutter
-                      version-control-diff-side 'left)
+     version-control
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(helm-ag basic-theme base16-theme exec-path-from-shell color-theme-modern prettier-js graphql-mode mmm-mode moe-theme afternoon-theme doom-themes)
+   dotspacemacs-additional-packages '(helm-ag basic-theme base16-theme exec-path-from-shell color-theme-modern prettier-js graphql-mode mmm-mode rjsx-mode moe-theme afternoon-theme doom-themes)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -421,8 +419,20 @@ you should place your code here."
 
   (spacemacs/set-leader-keys-for-major-mode 'latex-mode "d" 'convert-buffer-to-docx)
 
+  (mmm-add-classes
+   '((js-graphql
+      :submode graphql-mode
+      :face mmm-declaration-submode-face
+      :front "[^a-zA-Z]gql`" ;; regex to find the opening tag
+      :back "`"))) ;; regex to find the closing tag
+  (mmm-add-mode-ext-class 'typescript-mode "\\.ts" 'js-graphql)
+  (mmm-add-mode-ext-class 'typescript-mode "\\.tsx" 'js-graphql)
+  (setq mmm-global-mode 'maybe)
+  (setq mmm-submode-decoration-level 0)
+
   (add-hook 'js2-mode-hook 'prettier-js-mode)
   (add-hook 'typescript-mode-hook 'prettier-js-mode)
+  (add-hook 'typescript-mode-hook 'mmm-mode)
   (add-hook 'web-mode-hook
             '(lambda ()
               (if (buffer-file-name)
@@ -458,22 +468,7 @@ you should place your code here."
   (spacemacs/set-leader-keys "s a p" 'counsel-ag)
   (setq base16-theme-256-color-source 'colors)
 
-  (setq-default left-fringe-width 10)
-
-  (add-to-list 'auto-mode-alist '(".*\\.js\\'" . rjsx-mode))
-  (add-to-list 'auto-mode-alist '(".*\\.tsx\\'" . typescript-tsx-mode))
-  (mmm-add-classes
-   '((js-graphql
-      :submode graphql-mode
-      :face mmm-declaration-submode-face
-      :front "[^a-zA-Z]gql`" ;; regex to find the opening tag
-      :back "`"))) ;; regex to find the closing tag
-  (mmm-add-mode-ext-class 'js-mode "\\.js\\" 'js-graphql)
-  (mmm-add-mode-ext-class 'typescript-mode "\\.ts\\" 'js-graphql)
-  (mmm-add-mode-ext-class 'typescript-tsx-mode "\\.tsx\\" 'js-graphql)
-  (setq mmm-global-mode 'maybe)
-  ;; (setq mmm-submode-decoration-level 0)
-  )
+)
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
