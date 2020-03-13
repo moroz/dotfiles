@@ -325,6 +325,12 @@ or the current buffer directory."
         (if file-name
             (neotree-find file-name))))))
 
+(defun my-tsx-setup-hook ()
+  (company-mode)
+  (mmm-mode)
+  (prettier-js-mode)
+  )
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -398,6 +404,7 @@ you should place your code here."
             (lambda () (add-hook 'before-save-hook 'elixir-format nil t)))
   (setq js2-mode-show-parse-errors nil)
   (setq js2-mode-show-strict-warnings nil)
+  (setq web-mode-enable-auto-quoting nil)
   (add-hook 'LaTeX-mode-hook 'visual-line-mode)
   (add-hook 'LaTeX-mode-hook 'spacemacs/toggle-auto-completion-off)
   (remove-hook 'LaTeX-mode-hook #'latex/auto-fill-mode)
@@ -431,8 +438,7 @@ you should place your code here."
   (setq mmm-submode-decoration-level 0)
 
   (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'typescript-mode-hook 'prettier-js-mode)
-  (add-hook 'typescript-mode-hook 'mmm-mode)
+  (add-hook 'typescript-mode-hook 'my-tsx-setup-hook)
   (add-hook 'web-mode-hook
             '(lambda ()
               (if (buffer-file-name)
