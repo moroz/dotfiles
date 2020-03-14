@@ -36,7 +36,6 @@ export LC_TIME=en_US.UTF-8
 export LC_COLLATE=en_US.UTF-8
 export LC_CTYPE=zh_TW.UTF-8
 
-alias dep='git push origin master && cap production deploy'
 alias vim="nvim"
 alias ga='git add -A'
 alias gs='git status'
@@ -44,14 +43,15 @@ alias gc='git commit'
 alias gf='git checkout'
 alias gfo='git fetch origin'
 alias gd='git diff'
-alias gp='git pull'
-alias gpu='git push'
+alias gp='git push'
+alias gpu='git pull'
 alias gr='git rev-parse HEAD'
 
 alias cd..="cd .."
 
 alias cdw="cd ~/working"
 alias cde="cd ~/elixir"
+alias c="code ."
 
 alias ims="iex -S mix phx.server"
 alias mt="mix test --trace"
@@ -84,6 +84,9 @@ ms() {
   fi
   if [ -f mix.exs ]; then
     mix phx.server
+  fi
+  if [ -f package.json ]; then
+    yarn start
   fi
 }
 

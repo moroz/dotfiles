@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+# name: Click Schema
+# key: click
+# --
+
+defmodule Click.$1 do
+  use Click.Ecto.LegacySchema
+
+  schema "$2" do
+    $0
+
+    timestamps()
+  end
+end
