@@ -328,6 +328,7 @@ or the current buffer directory."
 (defun my-tsx-setup-hook ()
   (company-mode)
   (mmm-mode)
+  (tide-setup)
   (prettier-js-mode)
   )
 
@@ -382,9 +383,7 @@ you should place your code here."
   (global-set-key (kbd "<f8>") 'multi-term)
   (global-set-key (kbd "<f9>") 'neotree-project-dir-toggle)
   (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
-  (global-set-key (kbd "s-t") 'make-frame)
 
-  (spacemacs/set-leader-keys "s q m" 'sql-mysql)
   (spacemacs/set-leader-keys "s q p" 'sql-postgres)
   (spacemacs/set-leader-keys "s n" 'smerge-next)
   (spacemacs/set-leader-keys "s l" 'smerge-keep-other)
@@ -458,6 +457,10 @@ you should place your code here."
    web-mode-css-indent-offset 2
    web-mode-code-indent-offset 2
    web-mode-attr-indent-offset 2)
+
+  (setq powerline-default-separator 'arrow)
+  (spaceline-compile)
+  (spaceline-toggle-minor-modes-off)
 
   (when (executable-find "hunspell")
     (setq-default ispell-program-name "hunspell")
