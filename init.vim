@@ -11,6 +11,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
+Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 
 " Editing
 Plug 'easymotion/vim-easymotion'
