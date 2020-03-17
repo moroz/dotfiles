@@ -11,6 +11,7 @@ fi
 [[ -f $HOME/.spacemacs ]] || ln -s $HOME/.dotfiles/.spacemacs $HOME/.spacemacs
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
 [[ -f $HOME/.gitignore ]] || ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
+[[ -f $HOME/.config/nvim/coc-settings.json ]] || ln -s $HOME/.dotfiles/coc-settings.json $HOME/.config/nvim/coc-settings.json
 git config --global core.excludesfile ~/.gitignore
 
 mkdir -p ~/.ctags.d

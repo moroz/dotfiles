@@ -1,0 +1,13 @@
+{
+  "suggest.noselect": false,
+  "explorer.width": 32,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
+  ]
+}
