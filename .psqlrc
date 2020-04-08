@@ -1,0 +1,6 @@
+\set PROMPT1 '%[%033[96m%]%M %n@%/%R%[%033[0m%]%# '
+\pset null '[NULL]'
+\x auto
+\timing
+\pset pager off
+\set COMP_KEYWORD_CASE upper

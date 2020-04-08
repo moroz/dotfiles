@@ -8,6 +8,8 @@ bindkey -v
 # The following lines were added by compinstall
 zstyle :compinstall filename "$HOME/.zshrc"
 
+system=$(uname -s)
+
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -16,7 +18,7 @@ PS1=$'%{\e[34m%}%m%{\e[m%}:%{\e[32m%}%~%{\e[m%}$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 
-if [ "$(uname)" = "Linux" ]; then
+if [ "$system" = "Linux" ]; then
   alias ls="ls --color=auto"
 else;
   alias ls="ls -G"
@@ -97,3 +99,10 @@ magit() {
 serve() {
   nginx -p . -c ~/.dotfiles/nginx-serve-cwd.conf
 }
+
+if [ "$system" = "Darwin" ]; then
+  # enable Erlang builds on Catalina
+  export CFLAGS="-O2 -g -fno-stack-check"
+  # Uncomment this line to build (takes too much time when not building)
+  # export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"
+fi
