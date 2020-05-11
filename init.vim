@@ -39,7 +39,7 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx'] }
-Plug 'mattn/emmet-vim', { 'for': ['javascript', 'html', 'eelixir'] }
+Plug 'mattn/emmet-vim'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
@@ -77,9 +77,11 @@ au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let base16colorspace=256  " Access colors present in 256 colorspace
 lang zh_TW.UTF-8
 
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+if (has("termguicolors"))
+  set termguicolors
+endif
 
+colorscheme gruvbox
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " coc config
@@ -87,7 +89,8 @@ let g:coc_global_extensions = [
   \ 'coc-tsserver',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
-  \ 'coc-json'
+  \ 'coc-json',
+  \ 'coc-elixir'
   \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -160,10 +163,6 @@ if has("unix")
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/usr/local/bin/python3'
   endif
-endif
-
-if (has("termguicolors"))
-  set termguicolors
 endif
 
 set mouse=a
