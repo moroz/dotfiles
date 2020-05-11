@@ -56,13 +56,29 @@ alias cde="cd ~/elixir"
 alias c="code ."
 
 alias ims="iex -S mix phx.server"
-alias mt="mix test --trace"
 alias mtf="mix test --trace --failed"
 alias imtf="iex -S mix test --failed"
 alias mm="mix ecto.migrate"
 alias ml="mix compile"
 alias mr="mix ecto.rollback"
-alias im="iex -S mix"
+
+mt() {
+  if [ -f mix.exs ]; then
+    mix test --trace
+  fi
+  if [ -f package.json ]; then
+    yarn test
+  fi
+}
+
+im() {
+  if [ -f mix.exs ]; then
+    iex -S mix
+  fi
+  if [ -f package.json ]; then
+    ts-node
+  fi
+}
 
 serve() {
   DIR=${1:-.}
