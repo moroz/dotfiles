@@ -2,6 +2,13 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+(defun km/get-font ()
+  (if (eq (getenv "SCREENCAST") nil)
+    '("Source Code Pro" :size 18 :powerline-scale 0.9)
+    '("Source Code Pro" :size 26 :powerline-scale 0.8)
+    )
+  )
+
 (defun dotspacemacs/layers ()
   "Configuration Layers declaration.
 You should not put any user code in this function besides modifying the variable
@@ -137,12 +144,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Monaco"
-                               :size 18
-                               ;; :weight regular
-                               ;; :width normal
-                               :powerline-scale 0.9
-                               )
+   dotspacemacs-default-font (km/get-font)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -362,6 +364,7 @@ you should place your code here."
   (setenv "SOURCEKIT_TOOLCHAIN_PATH" "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain")
   (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp")
   (add-hook 'swift-mode-hook (lambda () (lsp)))
+  (add-hook 'rjsx-mode-hook (lambda () (lsp)))
 
   ;; OS-specific configuration
   (cond
@@ -387,6 +390,7 @@ you should place your code here."
     (exec-path-from-shell-initialize))
 
   ;; Key mappings
+  (global-set-key (kbd "<f2>") 'lsp-rename)
   (global-set-key (kbd "<f8>") 'multi-term)
   (global-set-key (kbd "<f9>") 'neotree-project-dir-toggle)
   (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
@@ -533,7 +537,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (flycheck-swift yapfify yaml-mode xterm-color winum which-key wgrep web-mode uuidgen use-package toc-org tide typescript-mode sql-indent spaceline powerline smeargle shell-pop request rainbow-delimiters pytest pyim xr popwin persp-mode paradox pangu-spacing osx-dictionary orgit org-bullets neotree multi-term minitest markdown-toc lorem-ipsum live-py-mode link-hint ivy-hydra indent-guide hy-mode hungry-delete hl-todo helm-make helm-ag helm helm-core golden-ratio git-messenger git-link git-gutter-fringe git-gutter flycheck-mix fill-column-indicator eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-surround evil-nerd-commenter evil-mc evil-matchit evil-magit evil-exchange eshell-z eshell-prompt-extras esh-help dumb-jump doom-themes docker tablist diminish diff-hl counsel-projectile projectile counsel swiper ivy company-anaconda color-theme-modern coffee-mode clj-refactor hydra cider parseedn clojure-mode bind-key base16-theme auto-yasnippet aggressive-indent ace-window ace-pinyin ace-link avy elixir-mode eval-sexp-fu auctex company anzu iedit smartparens highlight evil undo-tree flx pos-tip flycheck yasnippet multiple-cursors skewer-mode simple-httpd lv markdown-mode dash-functional magit-popup magit git-commit with-editor transient async org-plus-contrib f js2-mode dash ws-butler web-beautify volatile-highlights vi-tilde-fringe tagedit systemd swift-mode smex slim-mode simpleclip sesman scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode reveal-in-osx-finder restart-emacs rbenv rake queue pyvenv pyim-basedict pyenv-mode py-isort pug-mode prettier-js pip-requirements pbcopy parseclj paredit osx-trash open-junk-file ob-elixir nginx-mode move-text moe-theme mmm-mode magit-gitflow livid-mode linum-relative launchctl json-mode js2-refactor js-doc inflections highlight-parentheses highlight-numbers highlight-indentation graphql-mode goto-chg google-translate gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-credo flx-ido find-by-pinyin-dired fancy-battery evil-visualstar evil-visual-mark-mode evil-tutor evil-search-highlight-persist evil-numbers evil-lisp-state evil-indent-plus evil-iedit-state evil-escape evil-ediff evil-args evil-anzu erlang emmet-mode dockerfile-mode docker-tramp cython-mode company-web company-tern company-statistics company-auctex column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu chruby bundler basic-theme auto-highlight-symbol auctex-latexmk anaconda-mode alchemist afternoon-theme adaptive-wrap ac-ispell))))
+    (ssh flycheck-swift yapfify yaml-mode xterm-color winum which-key wgrep web-mode uuidgen use-package toc-org tide typescript-mode sql-indent spaceline powerline smeargle shell-pop request rainbow-delimiters pytest pyim xr popwin persp-mode paradox pangu-spacing osx-dictionary orgit org-bullets neotree multi-term minitest markdown-toc lorem-ipsum live-py-mode link-hint ivy-hydra indent-guide hy-mode hungry-delete hl-todo helm-make helm-ag helm helm-core golden-ratio git-messenger git-link git-gutter-fringe git-gutter flycheck-mix fill-column-indicator eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-surround evil-nerd-commenter evil-mc evil-matchit evil-magit evil-exchange eshell-z eshell-prompt-extras esh-help dumb-jump doom-themes docker tablist diminish diff-hl counsel-projectile projectile counsel swiper ivy company-anaconda color-theme-modern coffee-mode clj-refactor hydra cider parseedn clojure-mode bind-key base16-theme auto-yasnippet aggressive-indent ace-window ace-pinyin ace-link avy elixir-mode eval-sexp-fu auctex company anzu iedit smartparens highlight evil undo-tree flx pos-tip flycheck yasnippet multiple-cursors skewer-mode simple-httpd lv markdown-mode dash-functional magit-popup magit git-commit with-editor transient async org-plus-contrib f js2-mode dash ws-butler web-beautify volatile-highlights vi-tilde-fringe tagedit systemd swift-mode smex slim-mode simpleclip sesman scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode reveal-in-osx-finder restart-emacs rbenv rake queue pyvenv pyim-basedict pyenv-mode py-isort pug-mode prettier-js pip-requirements pbcopy parseclj paredit osx-trash open-junk-file ob-elixir nginx-mode move-text moe-theme mmm-mode magit-gitflow livid-mode linum-relative launchctl json-mode js2-refactor js-doc inflections highlight-parentheses highlight-numbers highlight-indentation graphql-mode goto-chg google-translate gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-credo flx-ido find-by-pinyin-dired fancy-battery evil-visualstar evil-visual-mark-mode evil-tutor evil-search-highlight-persist evil-numbers evil-lisp-state evil-indent-plus evil-iedit-state evil-escape evil-ediff evil-args evil-anzu erlang emmet-mode dockerfile-mode docker-tramp cython-mode company-web company-tern company-statistics company-auctex column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu chruby bundler basic-theme auto-highlight-symbol auctex-latexmk anaconda-mode alchemist afternoon-theme adaptive-wrap ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
