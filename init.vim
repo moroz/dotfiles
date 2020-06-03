@@ -70,7 +70,7 @@ let NERDTreeDirArrows=1
 nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
-autocmd FileType html,eelixir,javascript,jsx EmmetInstall
+autocmd FileType html,eelixir,javascript,jsx,typescriptreact EmmetInstall
 autocmd FileType yaml set inde=
 autocmd Filetype tex nnoremap <Leader>mb :Start! xelatex %<CR>
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
@@ -81,7 +81,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme gruvbox
+colorscheme onehalfdark
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " coc config
@@ -135,6 +135,7 @@ map <Leader>pg :Tags<cr>
 map <Leader>cl <C-o>:call NERDComment(0,"toggle")<C-m>
 
 map <Leader>gs :Gstatus<cr>
+map <Leader>gp :Gpush<cr>
 map <Leader>wm :only<cr>
 map <Leader>ga :Git add .<cr>
 map <Leader>gc :Gcommit<cr>
@@ -148,13 +149,14 @@ let g:workspace_autosave = 0
 let g:NERDSpaceDelims = 1
 " let g:gutentags_file_list_command='ag -l --ignore spec/ --ignore public/'
 
-let g:user_emmet_leader_key='<Tab>'
+" let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
       \  'javascript.jsx' : {
       \      'extends' : 'jsx',
       \  },
       \}
 let g:user_emmet_install_global = 0
+let g:user_emmet_expandabbr_key = '<Tab>'
 let NERDTreeQuitOnOpen = 0
 
 if has("unix")
