@@ -58,9 +58,17 @@ alias c="code ."
 alias ims="iex -S mix phx.server"
 alias mtf="mix test --trace --failed"
 alias imtf="iex -S mix test --failed"
-alias mm="mix ecto.migrate"
 alias ml="mix compile"
 alias mr="mix ecto.rollback"
+
+mm() {
+    if [ -f mix.exs ]; then
+        mix ecto.migrate
+    fi
+    if [ -f package.json ]; then
+        yarn db:migrate
+    fi
+}
 
 mt() {
   if [ -f mix.exs ]; then
@@ -76,7 +84,7 @@ im() {
     iex -S mix
   fi
   if [ -f package.json ]; then
-    ts-node
+    yarn run ts-node
   fi
 }
 
