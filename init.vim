@@ -7,7 +7,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 " Project management
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'scrooloose/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
+Plug 'preservim/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -111,6 +111,14 @@ nmap <F2> <Plug>(coc-rename)
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+function NERDTreeToggleFind()
+  if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
+    :NERDTreeToggle
+  else
+    :NERDTreeFind
+  endif
+endfunction
+
 nnoremap <C-c> "+yy
 nnoremap <C-t> :tabe<CR>
 nnoremap j gj
@@ -120,10 +128,8 @@ nnoremap <C-s> :update<cr>
 nnoremap <C-p> :Files<cr>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
-" map <silent> <F9> :CocCommand explorer<cr>
-map <F8> :NERDTreeFind<cr>
-map <F9> :NERDTreeToggle<cr>
-map <F10> :wqa<CR>
+nnoremap <silent> <F9> :call NERDTreeToggleFind()<CR>
+" map <F10> :wqa<CR>
 " Select all occurrences of selected text
 vnoremap // y/\V<C-R>"<CR>
 
@@ -132,7 +138,7 @@ map <Leader>Ts :Colors<cr>
 map <Leader>fer :source $MYVIMRC<cr>
 map <Leader>pi :PlugInstall<cr>
 map <Leader>pg :Tags<cr>
-map <Leader>cl <C-o>:call NERDComment(0,"toggle")<C-m>
+" map <Leader>cl <Leader>ci
 
 map <Leader>gs :Gstatus<cr>
 map <Leader>gp :Gpush<cr>
@@ -149,14 +155,13 @@ let g:workspace_autosave = 0
 let g:NERDSpaceDelims = 1
 " let g:gutentags_file_list_command='ag -l --ignore spec/ --ignore public/'
 
-" let g:user_emmet_leader_key='<Tab>'
+let g:user_emmet_leader_key='<Tab>'
 let g:user_emmet_settings = {
       \  'javascript.jsx' : {
       \      'extends' : 'jsx',
       \  },
       \}
 let g:user_emmet_install_global = 0
-let g:user_emmet_expandabbr_key = '<Tab>'
 let NERDTreeQuitOnOpen = 0
 
 if has("unix")
