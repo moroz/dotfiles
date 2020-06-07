@@ -16,7 +16,7 @@ Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 
 " Editing
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-commentary'
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
@@ -129,7 +129,7 @@ nnoremap <C-p> :Files<cr>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
 nnoremap <silent> <F9> :call NERDTreeToggleFind()<CR>
-" map <F10> :wqa<CR>
+map <F10> :wqa<CR>
 " Select all occurrences of selected text
 vnoremap // y/\V<C-R>"<CR>
 
@@ -138,7 +138,7 @@ map <Leader>Ts :Colors<cr>
 map <Leader>fer :source $MYVIMRC<cr>
 map <Leader>pi :PlugInstall<cr>
 map <Leader>pg :Tags<cr>
-" map <Leader>cl <Leader>ci
+map <silent> <Leader>cl :echom "Use gcc instead!"<CR>
 
 map <Leader>gs :Gstatus<cr>
 map <Leader>gp :Gpush<cr>
