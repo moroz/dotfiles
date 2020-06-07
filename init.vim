@@ -7,7 +7,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 " Project management
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdtree', { 'on':  ['NERDTreeToggle','NERDTreeFind'] }
+Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -76,6 +76,9 @@ autocmd Filetype tex nnoremap <Leader>mb :Start! xelatex %<CR>
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let base16colorspace=256  " Access colors present in 256 colorspace
 lang zh_TW.UTF-8
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 if (has("termguicolors"))
   set termguicolors
