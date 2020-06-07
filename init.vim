@@ -12,7 +12,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
-Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 
 " Editing
 Plug 'easymotion/vim-easymotion'
@@ -21,8 +20,9 @@ Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
 Plug 'airblade/vim-gitgutter'
-Plug 'slim-template/vim-slim'
+Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'jiangmiao/auto-pairs'
+Plug 'lervag/vimtex', { 'for': 'tex' }
 
 " Elixir
 Plug 'elixir-editors/vim-elixir'
@@ -30,7 +30,6 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-" Plug 'vim-scripts/fcitx.vim' ", { 'for': ['tex', 'text', 'markdown'] }
 Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
@@ -44,7 +43,6 @@ Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -72,7 +70,12 @@ autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType html,eelixir,javascript,jsx,typescriptreact EmmetInstall
 autocmd FileType yaml set inde=
-autocmd Filetype tex nnoremap <Leader>mb :Start! xelatex %<CR>
+
+" LaTeX
+autocmd Filetype tex nnoremap <Leader>mb <Leader>ll
+autocmd BufReadPre *.tex let b:vimtex_main = 'main.tex'
+let g:vimtex_view_method = 'skim'
+
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let base16colorspace=256  " Access colors present in 256 colorspace
 lang zh_TW.UTF-8
