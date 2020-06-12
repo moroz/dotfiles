@@ -24,6 +24,12 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex', { 'for': 'tex' }
 
+Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
+
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+"
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 
@@ -38,9 +44,10 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx'] }
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
+Plug 'shmargum/vim-sass-colors'
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
@@ -68,7 +75,7 @@ let NERDTreeDirArrows=1
 nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
-autocmd FileType html,eelixir,javascript,jsx,typescriptreact EmmetInstall
+" autocmd FileType html,eelixir,javascript,jsx,typescriptreact EmmetInstall
 autocmd FileType yaml set inde=
 
 " LaTeX
@@ -88,7 +95,7 @@ if (has("termguicolors"))
 endif
 
 colorscheme onehalfdark
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " coc config
 let g:coc_global_extensions = [
@@ -96,17 +103,27 @@ let g:coc_global_extensions = [
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json',
-  \ 'coc-elixir'
+  \ 'coc-elixir',
+  \ 'coc-emmet',
+  \ 'coc-css'
   \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -161,13 +178,13 @@ let g:workspace_autosave = 0
 let g:NERDSpaceDelims = 1
 " let g:gutentags_file_list_command='ag -l --ignore spec/ --ignore public/'
 
-let g:user_emmet_leader_key='<Tab>'
-let g:user_emmet_settings = {
-      \  'javascript.jsx' : {
-      \      'extends' : 'jsx',
-      \  },
-      \}
-let g:user_emmet_install_global = 0
+" let g:user_emmet_leader_key='<Tab>'
+" let g:user_emmet_settings = {
+"       \  'javascript.jsx' : {
+"       \      'extends' : 'jsx',
+"       \  },
+"       \}
+" let g:user_emmet_install_global = 0
 let NERDTreeQuitOnOpen = 0
 
 if has("unix")
