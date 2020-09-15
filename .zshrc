@@ -49,6 +49,10 @@ alias gp='git push'
 alias gpu='git pull'
 alias gr='git rev-parse HEAD'
 
+ee() {
+    emacsclient --create-frame "${1:-.}"
+}
+
 alias cd..="cd .."
 
 alias cdw="cd ~/working"

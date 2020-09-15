@@ -4,8 +4,8 @@
 
 (defun km/get-font ()
   (if (eq (getenv "SCREENCAST") nil)
-    '("Source Code Pro" :size 18 :powerline-scale 0.9)
-    '("Source Code Pro" :size 26 :powerline-scale 0.8)
+    '("Monaco" :size 18 :powerline-scale 0.9)
+    '("Monaco" :size 26 :powerline-scale 0.8)
     )
   )
 
@@ -67,7 +67,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(helm-ag basic-theme base16-theme exec-path-from-shell color-theme-modern prettier-js graphql-mode mmm-mode rjsx-mode moe-theme afternoon-theme doom-themes simpleclip lsp-sourcekit)
+   dotspacemacs-additional-packages '(helm-ag basic-theme base16-theme exec-path-from-shell color-theme-modern prettier-js graphql-mode mmm-mode rjsx-mode moe-theme afternoon-theme doom-themes simpleclip lsp-sourcekit format-sql)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -139,7 +139,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes (if (display-graphic-p) '(doom-monokai-pro doom-vibrant spacemacs-dark moe-dark doom-laserwave moe-dark base16-gruvbox-dark-medium base16-material-palenight base16-solarized-dark base16-monokai) '(moe-dark spacemacs-dark))
+   dotspacemacs-themes (if (display-graphic-p) '(spacemacs-dark moe-dark doom-laserwave moe-dark base16-gruvbox-dark-medium base16-material-palenight base16-solarized-dark base16-monokai) '(moe-dark spacemacs-dark))
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -360,6 +360,7 @@ you should place your code here."
   (setq mac-command-modifier 'control)
   (setq mac-option-modifier 'meta)
   (setq mac-right-option-modifier nil)
+  (setq mac-control-modifier 'super)
   (use-package lsp-sourcekit)
   (setenv "SOURCEKIT_TOOLCHAIN_PATH" "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain")
   (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp")
@@ -393,7 +394,7 @@ you should place your code here."
   (global-set-key (kbd "<f2>") 'lsp-rename)
   (global-set-key (kbd "<f8>") 'multi-term)
   (global-set-key (kbd "<f9>") 'neotree-project-dir-toggle)
-  (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
+  ;; (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
 
   (spacemacs/set-leader-keys "s q p" 'sql-postgres)
   (spacemacs/set-leader-keys "s n" 'smerge-next)
@@ -475,6 +476,7 @@ you should place your code here."
   (setq mmm-submode-decoration-level 0)
 
   (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'slim-mode 'display-line-numbers-mode)
   (add-hook 'typescript-mode-hook 'my-tsx-setup-hook)
   (add-hook 'web-mode-hook
             '(lambda ()

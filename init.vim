@@ -23,13 +23,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'tmux-plugins/vim-tmux-focus-events'
 
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
-" Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-"
 " Elixir
 Plug 'elixir-editors/vim-elixir'
 
@@ -40,14 +37,17 @@ Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
 Plug 'leafgarland/typescript-vim'
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx'] }
-" Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-Plug 'shmargum/vim-sass-colors'
+" Plug 'shmargum/vim-sass-colors'
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
@@ -75,8 +75,8 @@ let NERDTreeDirArrows=1
 nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
-" autocmd FileType html,eelixir,javascript,jsx,typescriptreact EmmetInstall
 autocmd FileType yaml set inde=
+autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
 
 " LaTeX
 autocmd Filetype tex nnoremap <Leader>mb <Leader>ll
@@ -88,18 +88,20 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 lang zh_TW.UTF-8
 
 autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 if (has("termguicolors"))
   set termguicolors
 endif
 
 colorscheme onehalfdark
+
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " coc config
 let g:coc_global_extensions = [
   \ 'coc-tsserver',
+  \ 'coc-explorer',
   \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json',
@@ -111,19 +113,6 @@ set hidden " Some servers have issues with backup files, see #649 set nobackup s
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -151,10 +140,19 @@ nnoremap <C-s> :update<cr>
 nnoremap <C-p> :Files<cr>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
-nnoremap <silent> <F9> :call NERDTreeToggleFind()<CR>
+inoremap <silent> <F9> <esc>
+nnoremap <silent> <F9> :CocCommand explorer<CR>
 map <F10> :wqa<CR>
 " Select all occurrences of selected text
 vnoremap // y/\V<C-R>"<CR>
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 map <Leader>wd :q<cr>
 map <Leader>Ts :Colors<cr>
@@ -171,20 +169,14 @@ map <Leader>gc :Gcommit<cr>
 map <Leader>ds :ToggleWorkspace<cr>
 
 let g:jsx_ext_required = 0
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:mix_format_on_save = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave = 0
 let g:NERDSpaceDelims = 1
-" let g:gutentags_file_list_command='ag -l --ignore spec/ --ignore public/'
 
-" let g:user_emmet_leader_key='<Tab>'
-" let g:user_emmet_settings = {
-"       \  'javascript.jsx' : {
-"       \      'extends' : 'jsx',
-"       \  },
-"       \}
-" let g:user_emmet_install_global = 0
 let NERDTreeQuitOnOpen = 0
 
 if has("unix")

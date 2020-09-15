@@ -922,7 +922,7 @@
   ],
   "vim.easymotion": true,
   "window.menuBarVisibility": "default",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 0,
   "editor.minimap.enabled": false,
   "gitlens.historyExplorer.enabled": true,
   "emmet.triggerExpansionOnTab": true,
@@ -933,7 +933,7 @@
     "javascript": "javascriptreact"
   },
   "files.trimTrailingWhitespace": true,
-  "editor.fontSize": 16,
+  "editor.fontSize": 18,
   "window.titleBarStyle": "custom",
   "explorer.confirmDelete": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -950,10 +950,17 @@
   },
   "editor.formatOnSave": true,
   "extensions.ignoreRecommendations": true,
-  "workbench.colorTheme": "Cobalt2",
   "editor.fontFamily": "'Monaco', Menlo, Monaco, 'Courier New', monospace",
   "sass.format.enabled": false,
   "sass.lint.enable": false,
   "git.enableSmartCommit": true,
-  "explorer.confirmDragAndDrop": false
+  "explorer.confirmDragAndDrop": false,
+  "vscode-neovim.neovimPath": "/usr/local/bin/nvim",
+  "workbench.colorTheme": "Atom One Dark",
+  "[sql]": {
+    "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
