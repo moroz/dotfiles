@@ -12,6 +12,7 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
+Plug 'lilydjwg/fcitx.vim'
 
 " Editing
 Plug 'easymotion/vim-easymotion'
@@ -39,6 +40,9 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+
+" Rust
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
@@ -75,6 +79,7 @@ let NERDTreeDirArrows=1
 nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
+autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType yaml set inde=
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
 

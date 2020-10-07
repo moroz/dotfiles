@@ -14,7 +14,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PS1=$'%{\e[34m%}%m%{\e[m%}:%{\e[32m%}%~%{\e[m%}$ '
+PS1=$'%{\e[92;1m%}%m%{\e[m%}:%{\e[96;1m%}%~%{\e[m%}$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 
@@ -72,6 +72,9 @@ mm() {
     if [ -f package.json ]; then
         yarn db:migrate
     fi
+    if [ -f composer.json ]; then
+      php artisan migrate
+    fi
 }
 
 mt() {
@@ -90,11 +93,6 @@ im() {
   if [ -f package.json ]; then
     yarn run ts-node
   fi
-}
-
-serve() {
-  DIR=${1:-.}
-  nginx -p $DIR -c ~/.dotfiles/nginx_cwd.conf
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -116,16 +114,15 @@ ms() {
     mix phx.server
   fi
   if [ -f package.json ]; then
-    yarn start
+    yarn dev
+  fi
+  if [ -f composer.json ]; then
+    php artisan serve
   fi
 }
 
 magit() {
   emacsclient -t --eval "(call-interactively #'magit-status)" -a "emacs -nw --eval \"(call-interactively #'magit-status)\""
-}
-
-serve() {
-  nginx -p . -c ~/.dotfiles/nginx-serve-cwd.conf
 }
 
 if [ "$system" = "Darwin" ]; then
