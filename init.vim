@@ -20,12 +20,13 @@ Plug 'tpope/vim-commentary'
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-abolish'
 Plug 'airblade/vim-gitgutter'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
-
+Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 " Elixir
@@ -43,6 +44,8 @@ Plug 'honza/vim-snippets'
 
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
+Plug 'ervandew/supertab'
+Plug 'Chiel92/vim-autoformat'
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
@@ -99,21 +102,21 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme onehalfdark
+colorscheme Tomorrow-Night
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " coc config
 let g:coc_global_extensions = [
-  \ 'coc-tsserver',
-  \ 'coc-explorer',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
-  \ 'coc-json',
-  \ 'coc-elixir',
-  \ 'coc-emmet',
-  \ 'coc-css'
-  \ ]
+      \ 'coc-tsserver',
+      \ 'coc-explorer',
+      \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ 'coc-json',
+      \ 'coc-elixir',
+      \ 'coc-emmet',
+      \ 'coc-css'
+      \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 set shortmess+=c
@@ -137,7 +140,7 @@ function NERDTreeToggleFind()
 endfunction
 
 nnoremap <C-c> "+yy
-nnoremap <C-t> :tabe<CR>
+" nnoremap <C-t> :tabe<CR>
 nnoremap j gj
 nnoremap k gk
 inoremap <C-s> <esc>:update<cr>
@@ -193,3 +196,27 @@ if has("unix")
 endif
 
 set mouse=a
+
+" Press Tab to scroll _down_ a list of auto-completions
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" rustfmt on write using autoformat
+" autocmd BufWrite * :Autoformat
+
+" Remap for do codeAction of selected region
+function! s:cocActionsOpenFromSelected(type) abort
+  execute 'CocCommand actions.open ' . a:type
+endfunction
+xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
+nmap <silent> <leader>a :CocCommand actions.open<CR>
+
+" Use sd to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
