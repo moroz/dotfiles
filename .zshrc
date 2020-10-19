@@ -63,25 +63,29 @@ alias ims="iex -S mix phx.server"
 alias mtf="mix test --trace --failed"
 alias imtf="iex -S mix test --failed"
 alias ml="mix compile"
-alias mr="mix ecto.rollback"
 
 mm() {
     if [ -f mix.exs ]; then
         mix ecto.migrate
-    fi
-    if [ -f package.json ]; then
+    elif [ -f composer.json ]; then
+      php artisan migrate
+    elif [ -f package.json ]; then
         yarn db:migrate
     fi
-    if [ -f composer.json ]; then
-      php artisan migrate
+}
+
+mr() {
+    if [ -f mix.exs ]; then
+        mix ecto.rollback
+    elif [ -f package.json ]; then
+        yarn db:rollback
     fi
 }
 
 mt() {
   if [ -f mix.exs ]; then
     mix test --trace
-  fi
-  if [ -f package.json ]; then
+  elif [ -f package.json ]; then
     yarn test
   fi
 }
@@ -89,8 +93,7 @@ mt() {
 im() {
   if [ -f mix.exs ]; then
     iex -S mix
-  fi
-  if [ -f package.json ]; then
+  elif [ -f package.json ]; then
     yarn run ts-node
   fi
 }
@@ -98,26 +101,24 @@ im() {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 md() {
-  if [ -f Gemfile ]; then 
-    bundle
-  fi
   if [ -f mix.exs ]; then
     mix deps.get
+  elif [ -f Gemfile ]; then 
+    bundle
+  elif [ -f package.json ]; then
+    yarn
   fi
 }
 
 ms() {
-  if [ -f Gemfile ]; then 
-    rails server
-  fi
   if [ -f mix.exs ]; then
     mix phx.server
-  fi
-  if [ -f package.json ]; then
-    yarn dev
-  fi
-  if [ -f composer.json ]; then
+  elif [ -f Gemfile ]; then 
+    rails server
+  elif [ -f composer.json ]; then
     php artisan serve
+  elif [ -f package.json ]; then
+    yarn dev
   fi
 }
 
