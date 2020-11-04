@@ -950,17 +950,23 @@
   },
   "editor.formatOnSave": true,
   "extensions.ignoreRecommendations": true,
-  "editor.fontFamily": "'Monaco', Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontFamily": "'DejaVu Sans Mono', 'Ubuntu Mono', 'Monaco', Menlo, Monaco, 'Courier New', monospace",
   "sass.format.enabled": false,
   "sass.lint.enable": false,
   "git.enableSmartCommit": true,
   "explorer.confirmDragAndDrop": false,
   "vscode-neovim.neovimPath": "/usr/local/bin/nvim",
-  "workbench.colorTheme": "Atom One Dark",
   "[sql]": {
     "editor.defaultFormatter": "adpyke.vscode-sql-formatter"
   },
   "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "workbench.colorTheme": "Cobalt2",
+  "[sass]": {
+    "editor.defaultFormatter": "michelemelluso.code-beautifier"
+  },
+  "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

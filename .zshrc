@@ -36,7 +36,7 @@ export LC_MONETARY=en_US.UTF-8
 export LC_MESSAGES=en_US.UTF-8
 export LC_TIME=en_US.UTF-8
 export LC_COLLATE=en_US.UTF-8
-export LC_CTYPE=zh_TW.UTF-8
+# export LC_CTYPE=zh_TW.UTF-8
 
 alias vim="nvim"
 alias ga='git add -A'
@@ -63,6 +63,9 @@ alias ims="iex -S mix phx.server"
 alias mtf="mix test --trace --failed"
 alias imtf="iex -S mix test --failed"
 alias ml="mix compile"
+alias ya="yarn add "
+alias yad="yarn add -D "
+alias ap="ansible-playbook -v site.yml"
 
 mm() {
     if [ -f mix.exs ]; then
@@ -118,7 +121,7 @@ ms() {
   elif [ -f composer.json ]; then
     php artisan serve
   elif [ -f package.json ]; then
-    yarn dev
+    yarn start
   fi
 }
 

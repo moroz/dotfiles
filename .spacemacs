@@ -4,8 +4,8 @@
 
 (defun km/get-font ()
   (if (eq (getenv "SCREENCAST") nil)
-    '("Monaco" :size 18 :powerline-scale 0.9)
-    '("Monaco" :size 26 :powerline-scale 0.8)
+    '("DejaVu Sans Mono" :size 20 :powerline-scale 0.9)
+    '("DejaVu Sans Mono" :size 26 :powerline-scale 0.8)
     )
   )
 
@@ -37,7 +37,7 @@ values."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
+   '(rust
      clojure
      docker
      erlang
@@ -67,7 +67,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(helm-ag basic-theme base16-theme exec-path-from-shell color-theme-modern prettier-js graphql-mode mmm-mode rjsx-mode moe-theme afternoon-theme doom-themes simpleclip lsp-sourcekit format-sql)
+   dotspacemacs-additional-packages '(helm-ag basic-theme base16-theme exec-path-from-shell color-theme-modern prettier-js graphql-mode mmm-mode rjsx-mode moe-theme afternoon-theme doom-themes simpleclip lsp-sourcekit format-sql fcitx)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -139,7 +139,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes (if (display-graphic-p) '(spacemacs-dark moe-dark doom-laserwave moe-dark base16-gruvbox-dark-medium base16-material-palenight base16-solarized-dark base16-monokai) '(moe-dark spacemacs-dark))
+   dotspacemacs-themes (if (display-graphic-p) '(base16-gruvbox-dark-hard doom-tomorrow-night spacemacs-dark moe-dark doom-laserwave base16-gruvbox-dark-medium base16-material-palenight base16-solarized-dark base16-monokai) '(moe-dark spacemacs-dark))
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
@@ -334,6 +334,7 @@ or the current buffer directory."
 
 (defun my-tsx-setup-hook ()
   (company-mode)
+  (lsp)
   (mmm-mode)
   (tide-setup)
   (prettier-js-mode)
@@ -366,27 +367,8 @@ you should place your code here."
   (setq lsp-sourcekit-executable "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp")
   (add-hook 'swift-mode-hook (lambda () (lsp)))
   (add-hook 'rjsx-mode-hook (lambda () (lsp)))
-
-  ;; OS-specific configuration
-  (cond
-   ((string-equal system-type "darwin")
-    (progn
-      (global-set-key (kbd "<s-tab>") 'other-frame)
-      (setq TeX-view-program-selection '((output-pdf "Skim")))
-      ))
-   ((string-equal system-type "gnu/linux")
-    (progn
-      (setq TeX-view-program-selection '((output-pdf "Okular")))
-      (setq fcitx-active-evil-states '(insert emacs hybrid)) ; if you use hybrid mode
-      (fcitx-aggressive-setup)
-      (setq fcitx-use-dbus t)
-      (global-set-key (kbd "<C-escape>") nil)
-      (dolist (charset '(kana han cjk-misc bopomofo))
-        (set-fontset-font (frame-parameter nil 'font) charset
-                          (font-spec :family "Noto Sans CJK TC")))
-      ))
-   )
-
+  (add-hook 'js2-mode-hook (lambda () (lsp)))
+  (add-hook 'web-mode-hook (lambda () (lsp)))
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize))
 
@@ -509,6 +491,30 @@ you should place your code here."
   (spacemacs/set-leader-keys "s a p" 'counsel-ag)
   (setq base16-theme-256-color-source 'colors)
 
+  ;; OS-specific configuration
+  (cond
+   ((string-equal system-type "darwin")
+    (progn
+      (global-set-key (kbd "<s-tab>") 'other-frame)
+      (setq TeX-view-program-list '(("Evince" "evince --page-index=%(outpage) %o")))
+      (setq TeX-view-program-selection '((output-pdf "Evince")))
+      ))
+   ((string-equal system-type "gnu/linux")
+    (progn
+      (setq TeX-view-program-selection '((output-pdf "Okular")))
+      ;; Make sure the following comes before `(fcitx-aggressive-setup)'
+      (setq fcitx-active-evil-states '(insert emacs hybrid)) ; if you use hybrid mode
+      (fcitx-aggressive-setup)
+      (fcitx-prefix-keys-add "SPC") ; M-m is common in Spacemacs
+      ;; (setq fcitx-use-dbus t) ; uncomment if you're using Linux
+      ;; (global-set-key (kbd "<C-escape>") nil)
+      (dolist (charset '(kana han cjk-misc bopomofo))
+        (set-fontset-font (frame-parameter nil 'font) charset
+                          (font-spec :family "Noto Sans CJK TC")))
+      ))
+   )
+
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -520,7 +526,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (yapfify yaml-mode xterm-color winum which-key wgrep web-mode uuidgen use-package toc-org tide typescript-mode sql-indent spaceline powerline smeargle shell-pop request rainbow-delimiters pytest pyim xr popwin persp-mode paradox pangu-spacing osx-dictionary orgit org-bullets neotree multi-term minitest markdown-toc lorem-ipsum live-py-mode link-hint ivy-hydra indent-guide hy-mode hungry-delete hl-todo helm-make helm-ag helm helm-core golden-ratio git-messenger git-link git-gutter-fringe git-gutter flycheck-mix fill-column-indicator eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-surround evil-nerd-commenter evil-mc evil-matchit evil-magit evil-exchange eshell-z eshell-prompt-extras esh-help dumb-jump doom-themes docker tablist diminish diff-hl counsel-projectile projectile counsel swiper ivy company-anaconda color-theme-modern coffee-mode clj-refactor hydra cider parseedn clojure-mode bind-key base16-theme auto-yasnippet aggressive-indent ace-window ace-pinyin ace-link avy elixir-mode eval-sexp-fu auctex company anzu iedit smartparens highlight evil undo-tree flx pos-tip flycheck yasnippet multiple-cursors skewer-mode simple-httpd lv markdown-mode dash-functional magit-popup magit git-commit with-editor transient async org-plus-contrib f js2-mode dash ws-butler web-beautify volatile-highlights vi-tilde-fringe tagedit systemd swift-mode smex slim-mode simpleclip sesman scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode reveal-in-osx-finder restart-emacs rbenv rake queue pyvenv pyim-basedict pyenv-mode py-isort pug-mode prettier-js pip-requirements pbcopy parseclj paredit osx-trash open-junk-file ob-elixir nginx-mode move-text moe-theme mmm-mode magit-gitflow lsp-sourcekit livid-mode linum-relative launchctl json-mode js2-refactor js-doc inflections highlight-parentheses highlight-numbers highlight-indentation graphql-mode goto-chg google-translate gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-credo flx-ido find-by-pinyin-dired fancy-battery evil-visualstar evil-visual-mark-mode evil-tutor evil-search-highlight-persist evil-numbers evil-lisp-state evil-indent-plus evil-iedit-state evil-escape evil-ediff evil-args evil-anzu erlang emmet-mode dockerfile-mode docker-tramp cython-mode company-web company-tern company-statistics company-auctex column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu chruby bundler basic-theme auto-highlight-symbol auctex-latexmk anaconda-mode alchemist afternoon-theme adaptive-wrap ac-ispell))))
+    (base16-gruvbox-dark-theme doom-monokai-pro-theme toml-mode racer flycheck-rust cargo rust-mode pcre2el lsp-mode ht parent-mode haml-mode fringe-helper git-gutter+ format-sql fcitx json-snatcher json-reformat web-completion-data yapfify yaml-mode xterm-color winum which-key wgrep web-mode uuidgen use-package toc-org tide typescript-mode sql-indent spaceline powerline smeargle shell-pop request rainbow-delimiters pytest pyim xr popwin persp-mode paradox pangu-spacing osx-dictionary orgit org-bullets neotree multi-term minitest markdown-toc lorem-ipsum live-py-mode link-hint ivy-hydra indent-guide hy-mode hungry-delete hl-todo helm-make helm-ag helm helm-core golden-ratio git-messenger git-link git-gutter-fringe git-gutter flycheck-mix fill-column-indicator eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-surround evil-nerd-commenter evil-mc evil-matchit evil-magit evil-exchange eshell-z eshell-prompt-extras esh-help dumb-jump doom-themes docker tablist diminish diff-hl counsel-projectile projectile counsel swiper ivy company-anaconda color-theme-modern coffee-mode clj-refactor hydra cider parseedn clojure-mode bind-key base16-theme auto-yasnippet aggressive-indent ace-window ace-pinyin ace-link avy elixir-mode eval-sexp-fu auctex company anzu iedit smartparens highlight evil undo-tree flx pos-tip flycheck yasnippet multiple-cursors skewer-mode simple-httpd lv markdown-mode dash-functional magit-popup magit git-commit with-editor transient async org-plus-contrib f js2-mode dash ws-butler web-beautify volatile-highlights vi-tilde-fringe tagedit systemd swift-mode smex slim-mode simpleclip sesman scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode reveal-in-osx-finder restart-emacs rbenv rake queue pyvenv pyim-basedict pyenv-mode py-isort pug-mode prettier-js pip-requirements pbcopy parseclj paredit osx-trash open-junk-file ob-elixir nginx-mode move-text moe-theme mmm-mode magit-gitflow lsp-sourcekit livid-mode linum-relative launchctl json-mode js2-refactor js-doc inflections highlight-parentheses highlight-numbers highlight-indentation graphql-mode goto-chg google-translate gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-credo flx-ido find-by-pinyin-dired fancy-battery evil-visualstar evil-visual-mark-mode evil-tutor evil-search-highlight-persist evil-numbers evil-lisp-state evil-indent-plus evil-iedit-state evil-escape evil-ediff evil-args evil-anzu erlang emmet-mode dockerfile-mode docker-tramp cython-mode company-web company-tern company-statistics company-auctex column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu chruby bundler basic-theme auto-highlight-symbol auctex-latexmk anaconda-mode alchemist afternoon-theme adaptive-wrap ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -539,7 +545,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (ssh flycheck-swift yapfify yaml-mode xterm-color winum which-key wgrep web-mode uuidgen use-package toc-org tide typescript-mode sql-indent spaceline powerline smeargle shell-pop request rainbow-delimiters pytest pyim xr popwin persp-mode paradox pangu-spacing osx-dictionary orgit org-bullets neotree multi-term minitest markdown-toc lorem-ipsum live-py-mode link-hint ivy-hydra indent-guide hy-mode hungry-delete hl-todo helm-make helm-ag helm helm-core golden-ratio git-messenger git-link git-gutter-fringe git-gutter flycheck-mix fill-column-indicator eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-surround evil-nerd-commenter evil-mc evil-matchit evil-magit evil-exchange eshell-z eshell-prompt-extras esh-help dumb-jump doom-themes docker tablist diminish diff-hl counsel-projectile projectile counsel swiper ivy company-anaconda color-theme-modern coffee-mode clj-refactor hydra cider parseedn clojure-mode bind-key base16-theme auto-yasnippet aggressive-indent ace-window ace-pinyin ace-link avy elixir-mode eval-sexp-fu auctex company anzu iedit smartparens highlight evil undo-tree flx pos-tip flycheck yasnippet multiple-cursors skewer-mode simple-httpd lv markdown-mode dash-functional magit-popup magit git-commit with-editor transient async org-plus-contrib f js2-mode dash ws-butler web-beautify volatile-highlights vi-tilde-fringe tagedit systemd swift-mode smex slim-mode simpleclip sesman scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode reveal-in-osx-finder restart-emacs rbenv rake queue pyvenv pyim-basedict pyenv-mode py-isort pug-mode prettier-js pip-requirements pbcopy parseclj paredit osx-trash open-junk-file ob-elixir nginx-mode move-text moe-theme mmm-mode magit-gitflow livid-mode linum-relative launchctl json-mode js2-refactor js-doc inflections highlight-parentheses highlight-numbers highlight-indentation graphql-mode goto-chg google-translate gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-credo flx-ido find-by-pinyin-dired fancy-battery evil-visualstar evil-visual-mark-mode evil-tutor evil-search-highlight-persist evil-numbers evil-lisp-state evil-indent-plus evil-iedit-state evil-escape evil-ediff evil-args evil-anzu erlang emmet-mode dockerfile-mode docker-tramp cython-mode company-web company-tern company-statistics company-auctex column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu chruby bundler basic-theme auto-highlight-symbol auctex-latexmk anaconda-mode alchemist afternoon-theme adaptive-wrap ac-ispell))))
+    (toml-mode ron-mode racer helm-gtags ggtags flycheck-rust dap-mode posframe lsp-treemacs bui treemacs pfuture counsel-gtags cargo rust-mode pcre2el lsp-mode ht parent-mode haml-mode fringe-helper git-gutter+ format-sql fcitx json-snatcher json-reformat web-completion-data yapfify yaml-mode xterm-color winum which-key wgrep web-mode uuidgen use-package toc-org tide typescript-mode sql-indent spaceline powerline smeargle shell-pop request rainbow-delimiters pytest pyim xr popwin persp-mode paradox pangu-spacing osx-dictionary orgit org-bullets neotree multi-term minitest markdown-toc lorem-ipsum live-py-mode link-hint ivy-hydra indent-guide hy-mode hungry-delete hl-todo helm-make helm-ag helm helm-core golden-ratio git-messenger git-link git-gutter-fringe git-gutter flycheck-mix fill-column-indicator eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-surround evil-nerd-commenter evil-mc evil-matchit evil-magit evil-exchange eshell-z eshell-prompt-extras esh-help dumb-jump doom-themes docker tablist diminish diff-hl counsel-projectile projectile counsel swiper ivy company-anaconda color-theme-modern coffee-mode clj-refactor hydra cider parseedn clojure-mode bind-key base16-theme auto-yasnippet aggressive-indent ace-window ace-pinyin ace-link avy elixir-mode eval-sexp-fu auctex company anzu iedit smartparens highlight evil undo-tree flx pos-tip flycheck yasnippet multiple-cursors skewer-mode simple-httpd lv markdown-mode dash-functional magit-popup magit git-commit with-editor transient async org-plus-contrib f js2-mode dash ws-butler web-beautify volatile-highlights vi-tilde-fringe tagedit systemd swift-mode smex slim-mode simpleclip sesman scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rjsx-mode reveal-in-osx-finder restart-emacs rbenv rake queue pyvenv pyim-basedict pyenv-mode py-isort pug-mode prettier-js pip-requirements pbcopy parseclj paredit osx-trash open-junk-file ob-elixir nginx-mode move-text moe-theme mmm-mode magit-gitflow lsp-sourcekit livid-mode linum-relative launchctl json-mode js2-refactor js-doc inflections highlight-parentheses highlight-numbers highlight-indentation graphql-mode goto-chg google-translate gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-gutter-fringe+ gh-md fuzzy flycheck-pos-tip flycheck-credo flx-ido find-by-pinyin-dired fancy-battery evil-visualstar evil-visual-mark-mode evil-tutor evil-search-highlight-persist evil-numbers evil-lisp-state evil-indent-plus evil-iedit-state evil-escape evil-ediff evil-args evil-anzu erlang emmet-mode dockerfile-mode docker-tramp cython-mode company-web company-tern company-statistics company-auctex column-enforce-mode clojure-snippets clean-aindent-mode cider-eval-sexp-fu chruby bundler basic-theme auto-highlight-symbol auctex-latexmk anaconda-mode alchemist afternoon-theme adaptive-wrap ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

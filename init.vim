@@ -102,7 +102,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-colorscheme Tomorrow-Night
+colorscheme darkspectrum
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
