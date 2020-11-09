@@ -31,6 +31,8 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'rhadley-recurly/vim-terragrunt'
 
 " Elixir
 Plug 'elixir-editors/vim-elixir'
@@ -86,6 +88,7 @@ autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType yaml set inde=
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
+let g:terraform_fmt_on_save=1
 
 " LaTeX
 autocmd Filetype tex nnoremap <Leader>mb <Leader>ll
