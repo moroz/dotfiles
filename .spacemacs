@@ -2,11 +2,17 @@
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
+
 (defun km/get-font ()
-  (if (eq (getenv "SCREENCAST") nil)
-    '("DejaVu Sans Mono" :size 20 :powerline-scale 0.9)
-    '("DejaVu Sans Mono" :size 26 :powerline-scale 0.8)
-    )
+  (setq default-font "BitstreamVeraSansMono Nerd Font Roman")
+  (setq base-size 20)
+  (setq screencast-size 28)
+  (setq is-screencast (not (eq (getenv "SCREENCAST") nil)))
+  (setq is-retina (and (string-equal system-type "gnu/linux") (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n")))
+  (setq size (if 'is-screencast 'screencast-size 'base-size))
+  (setq scaling-factor (if 'is-retina 2 1))
+  (setq font-size (* 'scaling-factor 'size))
+  '('default-font :size 'size :powerline-scale 0.8)
   )
 
 (defun dotspacemacs/layers ()
