@@ -16,6 +16,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-dispatch'
 Plug 'lilydjwg/fcitx.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'chriskempson/base16-vim'
+Plug 'flazz/vim-colorschemes'
 
 " Editing
 Plug 'easymotion/vim-easymotion'
@@ -32,17 +37,11 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-Plug 'rhadley-recurly/vim-terragrunt'
+Plug 'rhadley-recurly/vim-terragrunt', { 'for': 'terraform' }
 
 " Elixir
-Plug 'elixir-editors/vim-elixir'
-
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-Plug 'chriskempson/base16-vim'
-Plug 'flazz/vim-colorschemes'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
 
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -56,9 +55,9 @@ Plug 'Chiel92/vim-autoformat', { 'for': 'rust' }
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'typescriptreact'] }
 Plug 'mattn/emmet-vim'
-Plug 'HerringtonDarkholme/yats.vim'
+Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-Plug 'shmargum/vim-sass-colors'
+Plug 'shmargum/vim-sass-colors', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
