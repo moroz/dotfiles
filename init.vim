@@ -53,13 +53,12 @@ Plug 'ervandew/supertab', { 'for': 'rust' }
 Plug 'Chiel92/vim-autoformat', { 'for': 'rust' }
 
 " Javascript & React
-Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
-Plug 'leafgarland/typescript-vim'
-Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx'] }
+Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'typescriptreact'] }
 Plug 'mattn/emmet-vim'
-Plug 'HerringtonDarkholme/yats.vim' " TS Syntax
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-" Plug 'shmargum/vim-sass-colors'
+Plug 'shmargum/vim-sass-colors'
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
