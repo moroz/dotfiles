@@ -99,20 +99,16 @@ let base16colorspace=256  " Access colors present in 256 colorspace
 lang zh_TW.UTF-8
 
 autocmd StdinReadPre * let s:std_in=1
-" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 if (has("termguicolors"))
   set termguicolors
 endif
-
-colorscheme darkspectrum
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " coc config
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
-      \ 'coc-explorer',
       \ 'coc-eslint',
       \ 'coc-prettier',
       \ 'coc-json',
@@ -134,16 +130,7 @@ nmap <F2> <Plug>(coc-rename)
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-function NERDTreeToggleFind()
-  if &filetype == 'nerdtree' || exists("g:NERDTree") && g:NERDTree.IsOpen()
-    :NERDTreeToggle
-  else
-    :NERDTreeFind
-  endif
-endfunction
-
 nnoremap <C-c> "+yy
-" nnoremap <C-t> :tabe<CR>
 nnoremap j gj
 nnoremap k gk
 inoremap <C-s> <esc>:update<cr>
@@ -193,6 +180,15 @@ if has("unix")
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/usr/local/bin/python3'
   endif
+
+  let s:daytime = system("$HOME/.dotfiles/daytime")
+  let g:daytime = s:daytime == "DAYTIME\n"
+endif
+
+if g:daytime
+  colorscheme darkspectrum
+else
+  colorscheme distinguished
 endif
 
 set mouse=a
