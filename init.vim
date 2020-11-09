@@ -54,7 +54,7 @@ Plug 'Chiel92/vim-autoformat', { 'for': 'rust' }
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'typescriptreact'] }
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'shmargum/vim-sass-colors', { 'for': 'sass' }
@@ -113,7 +113,8 @@ let g:coc_global_extensions = [
       \ 'coc-json',
       \ 'coc-elixir',
       \ 'coc-emmet',
-      \ 'coc-css'
+      \ 'coc-css',
+      \ 'coc-snippets'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -144,7 +145,7 @@ map <F10> :wqa<CR>
 vnoremap // y/\V<C-R>"<CR>
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<C-j>"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
@@ -194,6 +195,12 @@ set mouse=a
 
 " Press Tab to scroll _down_ a list of auto-completions
 let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Use <C-j> for jump to next placeholder, it's default of coc.nvim
+let g:coc_snippet_next = '<c-n>'
+
+" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
+let g:coc_snippet_prev = '<c-k>'
 
 " rustfmt on write using autoformat
 autocmd FileType rust autocmd BufWrite <buffer> * :Autoformat
