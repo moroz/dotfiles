@@ -7,7 +7,10 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 " Project management
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'preservim/nerdtree'
+Plug 'lambdalisue/nerdfont.vim'
+Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+Plug 'lambdalisue/fern-git-status.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
@@ -44,8 +47,8 @@ Plug 'honza/vim-snippets'
 
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
-Plug 'ervandew/supertab'
-Plug 'Chiel92/vim-autoformat'
+Plug 'ervandew/supertab', { 'for': 'rust' }
+Plug 'Chiel92/vim-autoformat', { 'for': 'rust' }
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx'] }
@@ -76,8 +79,6 @@ set eol
 set autoread
 
 let mapleader = " "
-let NERDTreeMinimalUI=28
-let NERDTreeDirArrows=1
 
 nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
@@ -149,7 +150,7 @@ nnoremap <C-p> :Files<cr>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
 inoremap <silent> <F9> <esc>
-nnoremap <silent> <F9> :CocCommand explorer<CR>
+nnoremap <silent> <F9> :Fern . -drawer -reveal=% -toggle<CR>
 map <F10> :wqa<CR>
 " Select all occurrences of selected text
 vnoremap // y/\V<C-R>"<CR>
@@ -183,9 +184,6 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:mix_format_on_save = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave = 0
-let g:NERDSpaceDelims = 1
-
-let NERDTreeQuitOnOpen = 0
 
 if has("unix")
   let s:uname = system("uname")
@@ -201,7 +199,7 @@ set mouse=a
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " rustfmt on write using autoformat
-" autocmd BufWrite * :Autoformat
+autocmd FileType rust autocmd BufWrite <buffer> * :Autoformat
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
@@ -213,6 +211,8 @@ nmap <silent> <leader>a :CocCommand actions.open<CR>
 " Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
+let g:fern#renderer = "nerdfont"
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -220,3 +220,13 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+
+function! s:init_fern() abort
+  " Use 'select' instead of 'edit' for default 'open' action
+  nmap <buffer> d <Plug>(fern-action-remove)
+endfunction
+
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
