@@ -36,8 +36,6 @@ Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
-Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
-Plug 'rhadley-recurly/vim-terragrunt', { 'for': 'terraform' }
 
 " Elixir
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
@@ -57,9 +55,16 @@ Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'typescriptreact
 " Plug 'mattn/emmet-vim'
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
-Plug 'shmargum/vim-sass-colors', { 'for': 'sass' }
+" Plug 'shmargum/vim-sass-colors', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
+
+" Terraform
+Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
+Plug 'rhadley-recurly/vim-terragrunt', { 'for': 'terraform' }
+Plug 'juliosueiras/vim-terraform-completion', { 'for': 'terraform' }
 
 call plug#end()
 
@@ -77,6 +82,7 @@ set lbr
 set smartindent
 set eol
 set autoread
+set guicursor=
 
 let mapleader = " "
 
@@ -114,7 +120,8 @@ let g:coc_global_extensions = [
       \ 'coc-elixir',
       \ 'coc-emmet',
       \ 'coc-css',
-      \ 'coc-snippets'
+      \ 'coc-snippets',
+      \ 'coc-svelte'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -188,7 +195,7 @@ endif
 if g:daytime
   colorscheme darkspectrum
 else
-  colorscheme distinguished
+  colorscheme base16-pop
 endif
 
 set mouse=a
@@ -210,7 +217,7 @@ function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
 xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :CocCommand actions.open<CR>
+nmap <silent> <leader>a :CocAction<CR>
 
 " Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
