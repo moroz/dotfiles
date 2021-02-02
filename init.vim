@@ -5,7 +5,6 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-" Project management
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/nerdfont.vim'
 Plug 'lambdalisue/fern.vim'
@@ -40,9 +39,12 @@ Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 " Elixir
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
+Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir' }
 
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
+
+Plug 'ludovicchabant/vim-gutentags'
 
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -59,7 +61,7 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-Plug 'evanleck/vim-svelte', {'branch': 'main'}
+" Plug 'evanleck/vim-svelte', {'branch': 'main'}
 
 " Terraform
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
@@ -120,8 +122,7 @@ let g:coc_global_extensions = [
       \ 'coc-elixir',
       \ 'coc-emmet',
       \ 'coc-css',
-      \ 'coc-snippets',
-      \ 'coc-svelte'
+      \ 'coc-diagnostic'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -167,7 +168,7 @@ map <Leader>pg :Tags<cr>
 map <silent> <Leader>cl :echom "Use gcc instead!"<CR>
 
 map <Leader>gs :Gstatus<cr>
-map <Leader>gp :Gpush<cr>
+map <Leader>gp :Dispatch! git push<cr>
 map <Leader>wm :only<cr>
 map <Leader>ga :Git add .<cr>
 map <Leader>gc :Gcommit<cr>
@@ -241,3 +242,55 @@ augroup fern-custom
   autocmd! *
   autocmd FileType fern call s:init_fern()
 augroup END
+
+" https://bernheisel.com/blog/vim-elixir-ls-plug
+let g:ElixirLS = {}
+let ElixirLS.path = stdpath('config').'/plugged/elixir-ls'
+let ElixirLS.lsp = ElixirLS.path.'/release/language_server.sh'
+let ElixirLS.cmd = join([
+        \ 'cp .release-tool-versions .tool-versions &&',
+        \ 'asdf install &&',
+        \ 'mix do',
+        \ 'local.hex --force --if-missing,',
+        \ 'local.rebar --force,',
+        \ 'deps.get,',
+        \ 'compile,',
+        \ 'elixir_ls.release &&',
+        \ 'rm .tool-versions'
+        \ ], ' ')
+
+function ElixirLS.on_stdout(_job_id, data, _event)
+  let self.output[-1] .= a:data[0]
+  call extend(self.output, a:data[1:])
+endfunction
+
+let ElixirLS.on_stderr = function(ElixirLS.on_stdout)
+
+function ElixirLS.on_exit(_job_id, exitcode, _event)
+  if a:exitcode[0] == 0
+    echom '>>> ElixirLS compiled'
+  else
+    echoerr join(self.output, ' ')
+    echoerr '>>> ElixirLS compilation failed'
+  endif
+endfunction
+
+function ElixirLS.compile()
+  let me = copy(g:ElixirLS)
+  let me.output = ['']
+  echom '>>> compiling ElixirLS'
+  let me.id = jobstart('cd ' . me.path . ' && git pull && ' . me.cmd, me)
+endfunction
+
+function ElixirLS.compile_sync()
+  echom '>>> compiling ElixirLS'
+  silent call system(g:ElixirLS.cmd)
+  echom '>>> ElixirLS compiled'
+endfunction
+
+" Then, update the Elixir language server
+call coc#config('elixir', {
+  \ 'command': g:ElixirLS.lsp,
+  \ 'filetypes': ['elixir', 'eelixir']
+  \})
+call coc#config('elixir.pathToElixirLS', g:ElixirLS.lsp)
