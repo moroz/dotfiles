@@ -1,80 +1,45 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; sync' after modifying this file!
+(setq doom-theme 'doom-ayu-mirage)
+(setq common-face (font-spec :family "Ubuntu Mono" :size 23))
+(setq doom-font common-face
+      doom-variable-pitch-font common-face)
 
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'; use this for
-;;   presentations or streaming.
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
-
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/org/")
-
-;; This determines the style of line numbers in effect. If set to `nil', line
-;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
 
-
-;; Here are some additional functions/macros that could help you configure Doom:
-;;
-;; - `load!' for loading external *.el files relative to this one
-;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-
-(defun neotree-project-dir-toggle ()
-  "Open NeoTree using the project root, using find-file-in-project,
-or the current buffer directory."
-  (interactive)
-  (let ((project-dir
-         (ignore-errors
-           ;;; Pick one: projectile or find-file-in-project
-           (projectile-project-root)
-           ;; (ffip-project-root)
-           ))
-        (file-name (buffer-file-name))
-        (neo-smart-open t))
-    (if (and (fboundp 'neo-global--window-exists-p)
-             (neo-global--window-exists-p))
-        (neotree-hide)
-      (progn
-        (neotree-show)
-        (if project-dir
-            (neotree-dir project-dir))
-        (if file-name
-            (neotree-find file-name))))))
-
-(global-set-key (kbd "<f9>") 'neotree-project-dir-toggle)
-(define-key evil-normal-state-map (kbd "C-p") 'counsel-projectile-find-file)
+(global-set-key (kbd "<f9>") 'treemacs)
+(define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
 (global-set-key (kbd "C-s") 'save-buffer)
+
+(setq
+ ;; js2-mode
+ js2-basic-offset 2
+ js-indent-level 2
+ typescript-indent-level 2
+ ;; web-mode
+ css-indent-offset 2
+ web-mode-markup-indent-offset 2
+ web-mode-css-indent-offset 2
+ web-mode-code-indent-offset 2
+ web-mode-attr-indent-offset 2)
+
+(setq company-idle-delay 0.2)
+(setq select-enable-clipboard nil)
+
+;; Make evil mode recognize snake_case words
+(defadvice evil-inner-word (around underscore-as-word activate)
+  (let ((table (copy-syntax-table (syntax-table))))
+    (modify-syntax-entry ?_ "w" table)
+    (with-syntax-table table
+      ad-do-it)))
+
+(use-package! lsp-mode
+  :commands lsp
+  :ensure t
+  :diminish lsp-mode
+  :hook
+  (elixir-mode . lsp)
+  :init
+  (add-to-list 'exec-path "/home/karol/elixir-ls/release"))
+
+(setq treemacs-width 30)
