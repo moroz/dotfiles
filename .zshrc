@@ -17,11 +17,12 @@ compinit
 PS1=$'%{\e[92;1m%}%m%{\e[m%}:%{\e[96;1m%}%~%{\e[m%}$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
+export PATH="$HOME/.emacs.d/bin:$PATH"
 
 if [ "$system" = "Linux" ]; then
-  alias ls="ls --color=auto"
+  alias ls="ls --color=auto -las"
 else;
-  alias ls="ls -G"
+  alias ls="ls -G -las"
 fi
 
 export QUOTING_STYLE=literal
@@ -38,16 +39,22 @@ export LC_TIME=en_US.UTF-8
 export LC_COLLATE=en_US.UTF-8
 # export LC_CTYPE=zh_TW.UTF-8
 
+# https://mobile.twitter.com/bernheisel/status/1358201158507061250
+# compile erlang with docs using asdf/kerl
+export KERL_BUILD_DOCS="yes"
+
 alias vim="nvim"
 alias ga='git add -A'
 alias gs='git status'
 alias gc='git commit'
+alias gca='git commit --amend'
 alias gf='git checkout'
 alias gfo='git fetch origin'
 alias gd='git diff'
 alias gp='git push'
 alias gpu='git pull'
 alias gr='git rev-parse HEAD'
+alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 ee() {
     emacsclient --create-frame "${1:-.}"
@@ -66,6 +73,7 @@ alias ml="mix compile"
 alias ya="yarn add "
 alias yad="yarn add -D "
 alias ap="ansible-playbook -v site.yml"
+alias up="docker-compose up"
 
 mm() {
     if [ -f mix.exs ]; then
@@ -116,12 +124,14 @@ md() {
 ms() {
   if [ -f mix.exs ]; then
     mix phx.server
-  elif [ -f Gemfile ]; then 
-    rails server
   elif [ -f composer.json ]; then
     php artisan serve
+  elif [ -f next.config.js ]; then
+    yarn dev
   elif [ -f package.json ]; then
     yarn start
+  elif [ -f Gemfile ]; then 
+    rails server
   fi
 }
 
