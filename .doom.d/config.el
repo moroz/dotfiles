@@ -1,6 +1,6 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-(setq doom-theme 'doom-ayu-mirage)
+(setq doom-theme 'doom-horizon)
 (setq common-face (font-spec :family "Ubuntu Mono" :size 23))
 (setq doom-font common-face
       doom-variable-pitch-font common-face)
