@@ -1,0 +1,11 @@
+# KEYBOARD CONFIGURATION FILE
+# Put this in /etc/default/keyboard to override keyboard settings in KDE
+
+# Consult the keyboard(5) manual page.
+
+XKBMODEL="pc105"
+XKBLAYOUT="pl"
+XKBVARIANT="dvorak_altquotes"
+XKBOPTIONS="caps:swapescape,ctrl:swap_lalt_lctl_lwin"
+
+BACKSPACE="guess"
