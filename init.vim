@@ -20,6 +20,10 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
+Plug 'romgrk/doom-one.vim'
+
+" Testing
+Plug 'vim-test/vim-test'
 
 " Editing
 Plug 'easymotion/vim-easymotion'
@@ -84,7 +88,7 @@ set lbr
 set smartindent
 set eol
 set autoread
-set guicursor=
+" set guicursor=
 
 let mapleader = " "
 
@@ -173,6 +177,9 @@ map <Leader>wm :only<cr>
 map <Leader>ga :Git add .<cr>
 map <Leader>gc :Gcommit<cr>
 map <Leader>ds :ToggleWorkspace<cr>
+map <Leader>mtv :TestFile<CR>
+map <Leader>mtr :TestLast<CR>
+map <Leader>mta :TestSuite<CR>
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 0
@@ -181,6 +188,9 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:mix_format_on_save = 1
 let g:workspace_session_disable_on_args = 1
 let g:workspace_autosave = 0
+
+let test#strategy = "neovim"
+let test#neovim#term_position = "vert botright"
 
 if has("unix")
   let s:uname = system("uname")
@@ -193,11 +203,13 @@ if has("unix")
   let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
-if g:daytime
-  colorscheme darkspectrum
-else
-  colorscheme base16-pop
-endif
+" colorscheme base16-snazzy
+colorscheme distinguished
+" if g:daytime
+"   colorscheme darkspectrum
+" else
+"   colorscheme base16-pop
+" endif
 
 set mouse=a
 
@@ -224,6 +236,8 @@ nmap <silent> <leader>a :CocAction<CR>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 let g:fern#renderer = "nerdfont"
+
+let g:AutoPairs = {'(':')', '[':']', '{':'}', "`":"`", '```':'```', '"""':'"""'}
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
