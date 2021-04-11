@@ -13,42 +13,45 @@ Plug 'lambdalisue/fern-git-status.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
+" Plug 'jreybert/vimagit'
 Plug 'tpope/vim-dispatch'
 Plug 'lilydjwg/fcitx.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'chriskempson/base16-vim'
+" Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'romgrk/doom-one.vim'
+" Plug 'romgrk/doom-one.vim'
+" Plug 'herrbischoff/cobalt2.vim'
 
 " Testing
-Plug 'vim-test/vim-test'
+Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript'] }
 
 " Editing
 Plug 'easymotion/vim-easymotion'
 Plug 'tpope/vim-commentary'
 Plug 'ctjhoa/spacevim'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-endwise', { 'for': ['elixir', 'ruby'] }
 Plug 'tpope/vim-abolish'
 Plug 'airblade/vim-gitgutter'
 Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh' }
+Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh', 'for': 'ansible' }
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 " Elixir
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir' }
+" Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
+Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir' } " ,'do': { -> g:ElixirLS.compile() }  }
 
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
+Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+Plug 'honza/vim-snippets', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 
-Plug 'ludovicchabant/vim-gutentags'
+Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
 
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -65,7 +68,7 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-" Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'evanleck/vim-svelte', {'branch': 'main', 'for': 'svelte' }
 
 " Terraform
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
@@ -180,6 +183,7 @@ map <Leader>ds :ToggleWorkspace<cr>
 map <Leader>mtv :TestFile<CR>
 map <Leader>mtr :TestLast<CR>
 map <Leader>mta :TestSuite<CR>
+map <Leader>mm :Dispatch! mix ecto.migrate<CR>
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 0
@@ -203,13 +207,11 @@ if has("unix")
   let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
-" colorscheme base16-snazzy
-colorscheme distinguished
-" if g:daytime
-"   colorscheme darkspectrum
-" else
-"   colorscheme base16-pop
-" endif
+if g:daytime
+  colorscheme cobalt2
+else
+  colorscheme Tomorrow-Night-Bright
+endif
 
 set mouse=a
 
