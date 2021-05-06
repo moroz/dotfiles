@@ -18,11 +18,12 @@ Plug 'tpope/vim-dispatch'
 Plug 'lilydjwg/fcitx.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-" Plug 'chriskempson/base16-vim'
+" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
 " Plug 'romgrk/doom-one.vim'
 " Plug 'herrbischoff/cobalt2.vim'
+" Plug 'ethantrithon/elementary.vim'
 
 " Testing
 Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript'] }
@@ -45,10 +46,9 @@ Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 " Elixir
 Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
-" Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
-Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir' } " ,'do': { -> g:ElixirLS.compile() }  }
+Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
 
-Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+" Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 Plug 'honza/vim-snippets', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
@@ -61,7 +61,7 @@ Plug 'Chiel92/vim-autoformat', { 'for': 'rust' }
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'typescriptreact'] }
-" Plug 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim', { 'for': ['javascript', 'jsx', 'typescriptreact'] }
 Plug 'HerringtonDarkholme/yats.vim', { 'for': ['typescript', 'typescriptreact'] }
 Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 " Plug 'shmargum/vim-sass-colors', { 'for': 'sass' }
@@ -91,6 +91,7 @@ set lbr
 set smartindent
 set eol
 set autoread
+set nofoldenable
 " set guicursor=
 
 let mapleader = " "
@@ -172,9 +173,8 @@ map <Leader>Ts :Colors<cr>
 map <Leader>fer :source $MYVIMRC<cr>
 map <Leader>pi :PlugInstall<cr>
 map <Leader>pg :Tags<cr>
-map <silent> <Leader>cl :echom "Use gcc instead!"<CR>
 
-map <Leader>gs :Gstatus<cr>
+map <Leader>gs :Git<cr>
 map <Leader>gp :Dispatch! git push<cr>
 map <Leader>wm :only<cr>
 map <Leader>ga :Git add .<cr>
@@ -208,9 +208,10 @@ if has("unix")
 endif
 
 if g:daytime
-  colorscheme cobalt2
+  colorscheme codedark
+  let g:airline_theme = 'jellybeans'
 else
-  colorscheme Tomorrow-Night-Bright
+  colorscheme distinguished
 endif
 
 set mouse=a

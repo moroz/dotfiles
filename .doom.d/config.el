@@ -1,26 +1,38 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+(defun is-retina ()
+  (and (string-equal system-type "gnu/linux") (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n"))
+  )
+
+(defun is-daytime ()
+  (string-equal (string-trim (shell-command-to-string "$HOME/.dotfiles/daytime"))
+                "DAYTIME")
+  )
+
+(defun theme-by-daytime ()
+  (if (is-daytime) #'vscode-dark-plus #'distinguished)
+  )
+
 (defun km/get-font-size ()
   (setq base-size 20)
-  (setq is-retina (and (string-equal system-type "gnu/linux") (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n")))
-  (setq scaling-factor (if is-retina 2 1))
+  (setq scaling-factor (if (is-retina) 2 1))
   (* scaling-factor base-size)
   )
 
-(setq latin-font "DejaVu Sans Mono")
-(setq cjk-font "Microsoft JhengHei")
-(setq doom-theme 'doom-tomorrow-night)
+(setq latin-font "monospace")
+(setq cjk-font "Noto Sans CJK TC Medium")
+(setq cjk-scaling-factor (if (is-retina) 0.315 0.630))
+(setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
+(setq doom-theme (theme-by-daytime))
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
+(setq cjk-face (font-spec :family cjk-font :size cjk-font-size))
 (setq doom-font common-face
-      doom-variable-pitch-font common-face)
-
-(dolist (charset '(kana han cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-    charset (font-spec :family cjk-font :size (km/get-font-size))))
+      doom-variable-pitch-font common-face
+      doom-unicode-font cjk-face)
 
 (setq display-line-numbers-type t)
 
-(global-set-key (kbd "<f9>") 'treemacs)
+(global-set-key (kbd "<f9>") 'neotree-toggle)
 (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
 (global-set-key (kbd "C-s") 'save-buffer)
@@ -55,7 +67,8 @@
   :hook
   (elixir-mode . lsp)
   :init
-  (add-to-list 'exec-path "/home/karol/elixir-ls/release"))
+  (add-to-list 'exec-path "/home/karol/elixir-ls/release")
+  )
 
 (setq treemacs-width 30)
 (toggle-frame-maximized) ;; Maximize the window after starting
@@ -73,3 +86,4 @@
   (defalias 'sql-get-login 'ignore)
   (sql-mysql)
   )
+

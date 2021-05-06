@@ -48,3 +48,9 @@
 ;(unpin! pinned-package another-pinned-package)
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
+
+(package! graphql-mode)
+(package! mmm-mode)
+(package! color-theme-modern)
+(package! distinguished-theme)
+(package! vscode-dark-plus-theme)

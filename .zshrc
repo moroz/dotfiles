@@ -7,6 +7,9 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename "$HOME/.zshrc"
+autoload edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd v edit-command-line
 
 system=$(uname -s)
 
@@ -54,6 +57,7 @@ alias gd='git diff'
 alias gp='git push'
 alias gpu='git pull'
 alias gr='git rev-parse HEAD'
+alias gm="git merge"
 alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 ee() {
@@ -74,6 +78,7 @@ alias ya="yarn add "
 alias yad="yarn add -D "
 alias ap="ansible-playbook -v site.yml"
 alias up="docker-compose up"
+alias down="docker-compose down"
 
 mm() {
     if [ -f mix.exs ]; then
