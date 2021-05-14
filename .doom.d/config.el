@@ -1,11 +1,19 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
+(defun is-linux () (string-equal system-type "gnu/linux"))
+(defun is-mac () (not (is-linux)))
+
 (defun is-retina ()
-  (and (string-equal system-type "gnu/linux") (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n"))
+  (and (is-linux) (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n"))
   )
 
+(defun daytime-command ()
+  (if (is-linux)
+    "$HOME/.dotfiles/daytime"
+    "$HOME/.dotfiles/daytime.Darwin"))
+
 (defun is-daytime ()
-  (string-equal (string-trim (shell-command-to-string "$HOME/.dotfiles/daytime"))
+  (string-equal (string-trim (shell-command-to-string (daytime-command)))
                 "DAYTIME")
   )
 
@@ -14,12 +22,12 @@
   )
 
 (defun km/get-font-size ()
-  (setq base-size 20)
+  (setq base-size 17)
   (setq scaling-factor (if (is-retina) 2 1))
   (* scaling-factor base-size)
   )
 
-(setq latin-font "monospace")
+(setq latin-font "Monaco")
 (setq cjk-font "Noto Sans CJK TC Medium")
 (setq cjk-scaling-factor (if (is-retina) 0.315 0.630))
 (setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
@@ -71,7 +79,7 @@
   )
 
 (setq treemacs-width 30)
-(toggle-frame-maximized) ;; Maximize the window after starting
+(if (is-linux) (toggle-frame-maximized)) ;; Maximize the window after starting
 (setq lsp-enable-file-watchers nil)
 (setq lsp-file-watch-threshold 5000)
 
@@ -87,3 +95,4 @@
   (sql-mysql)
   )
 
+(setq mac-command-modifier 'control)

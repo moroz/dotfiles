@@ -52,12 +52,16 @@ alias gs='git status'
 alias gc='git commit'
 alias gca='git commit --amend'
 alias gf='git checkout'
+alias gfm='git checkout master'
+alias gfs='git checkout staging'
+alias gfp='git checkout production'
 alias gfo='git fetch origin'
 alias gd='git diff'
 alias gp='git push'
 alias gpu='git pull'
 alias gr='git rev-parse HEAD'
 alias gm="git merge"
+alias gmm="git merge master"
 alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 ee() {

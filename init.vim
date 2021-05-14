@@ -15,7 +15,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 " Plug 'jreybert/vimagit'
 Plug 'tpope/vim-dispatch'
-Plug 'lilydjwg/fcitx.vim'
+" Plug 'lilydjwg/fcitx.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 " Plug 'sonph/onehalf', { 'rtp': 'vim' }
@@ -200,16 +200,19 @@ if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
     let g:python_host_prog = '/usr/local/bin/python2'
-    let g:python3_host_prog = '/usr/local/bin/python3'
+    let g:python3_host_prog = '/opt/homebrew/bin/python3'
+    let s:daytime = system("$HOME/.dotfiles/daytime.Darwin")
+  else
+    let s:daytime = system("$HOME/.dotfiles/daytime")
   endif
 
-  let s:daytime = system("$HOME/.dotfiles/daytime")
   let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
 if g:daytime
-  colorscheme codedark
-  let g:airline_theme = 'jellybeans'
+  colorscheme tender
+  " colorscheme codedark
+  " let g:airline_theme = 'jellybeans'
 else
   colorscheme distinguished
 endif
@@ -226,7 +229,7 @@ let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-k>'
 
 " rustfmt on write using autoformat
-autocmd FileType rust autocmd BufWrite <buffer> * :Autoformat
+autocmd FileType rust autocmd BufWrite * :Autoformat
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort

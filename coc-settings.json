@@ -13,5 +13,6 @@
   "diagnostic-languageserver.filetypes": {
     "elixir": ["mix_credo", "mix_credo_compile"],
     "eelixir": ["mix_credo", "mix_credo_compile"]
-  }
+  },
+  "elixir.pathToElixirLS": "~/.vscode/extensions/jakebecker.elixir-ls-0.7.0/elixir-ls-release/language_server.sh"
 }
