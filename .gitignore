@@ -8,3 +8,4 @@ node_modules/
 .prettierrc.js
 .vscode
 .vimrc.local
+yarn-error.log

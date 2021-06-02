@@ -3,6 +3,10 @@
 (defun is-linux () (string-equal system-type "gnu/linux"))
 (defun is-mac () (not (is-linux)))
 
+(if (is-mac)
+    (exec-path-from-shell-initialize)
+)
+
 (defun is-retina ()
   (and (is-linux) (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n"))
   )
@@ -27,9 +31,10 @@
   (* scaling-factor base-size)
   )
 
+(add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq latin-font "Monaco")
-(setq cjk-font "Noto Sans CJK TC Medium")
-(setq cjk-scaling-factor (if (is-retina) 0.315 0.630))
+(setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
+(setq cjk-scaling-factor (if (is-linux) (if (is-retina) 0.315 0.630) 1))
 (setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
 (setq doom-theme (theme-by-daytime))
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
@@ -43,6 +48,8 @@
 (global-set-key (kbd "<f9>") 'neotree-toggle)
 (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 (global-set-key (kbd "C-s") 'save-buffer)
 (global-visual-line-mode t)
 
@@ -75,7 +82,7 @@
   :hook
   (elixir-mode . lsp)
   :init
-  (add-to-list 'exec-path "/home/karol/elixir-ls/release")
+  (add-to-list 'exec-path (expand-file-name "~/elixir-ls"))
   )
 
 (setq treemacs-width 30)
@@ -96,3 +103,11 @@
   )
 
 (setq mac-command-modifier 'control)
+
+(setq-default TeX-engine 'xetex)
+(setq-default TeX-master "main.tex")
+(setq-default TeX-command-default "LaTeX")
+
+(if (is-mac)
+    (setq TeX-view-program-selection '((output-pdf "Skim")))
+  )
