@@ -688,12 +688,16 @@
   },
   "workbench.startupEditor": "newUntitledFile",
   "[scss]": {
-    "editor.defaultFormatter": "michelemelluso.code-beautifier",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.suggest.insertMode": "replace",
     "gitlens.codeLens.scopes": ["document"]
   },
   "[elixir]": {
     "editor.defaultFormatter": "JakeBecker.elixir-ls"
   },
+  "files.associations": {
+    "*.slimleex": "slim"
+  },
+  "workbench.colorTheme": "Cobalt2",
   "window.zoomLevel": 1
 }

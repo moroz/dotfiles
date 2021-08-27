@@ -12,18 +12,18 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-fugitive'
-" Plug 'jreybert/vimagit'
+Plug 'TimUntersberger/neogit'
+Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-dispatch'
 " Plug 'lilydjwg/fcitx.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
-" Plug 'romgrk/doom-one.vim'
-" Plug 'herrbischoff/cobalt2.vim'
-" Plug 'ethantrithon/elementary.vim'
+Plug 'romgrk/doom-one.vim'
+Plug 'herrbischoff/cobalt2.vim'
+Plug 'ethantrithon/elementary.vim'
 
 " Testing
 Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript'] }
@@ -48,8 +48,8 @@ Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
 
-" Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
-Plug 'honza/vim-snippets', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+Plug 'mlaursen/vim-react-snippets'
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
 
@@ -103,6 +103,7 @@ autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd FileType yaml set inde=
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
 let g:terraform_fmt_on_save=1
+autocmd BufRead,BufNewFile *.slimleex set filetype=slim
 
 " LaTeX
 autocmd Filetype tex nnoremap <Leader>mb <Leader>ll
@@ -149,8 +150,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 nnoremap <C-c> "+yy
 nnoremap j gj
 nnoremap k gk
-inoremap <C-s> <esc>:update<cr>
-nnoremap <C-s> :update<cr>
+inoremap <C-s> <esc>:w<cr>
+nnoremap <C-s> :w<cr>
 nnoremap <C-p> :Files<cr>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
@@ -174,24 +175,25 @@ map <Leader>fer :source $MYVIMRC<cr>
 map <Leader>pi :PlugInstall<cr>
 map <Leader>pg :Tags<cr>
 
-map <Leader>gs :Git<cr>
-map <Leader>gp :Dispatch! git push<cr>
+map <Leader>gg :Neogit<cr>
+map <Leader>gp :NeogitPushPopup<cr>
 map <Leader>wm :only<cr>
-map <Leader>ga :Git add .<cr>
-map <Leader>gc :Gcommit<cr>
-map <Leader>ds :ToggleWorkspace<cr>
 map <Leader>mtv :TestFile<CR>
 map <Leader>mtr :TestLast<CR>
 map <Leader>mta :TestSuite<CR>
 map <Leader>mm :Dispatch! mix ecto.migrate<CR>
+
+lua << EOF
+local neogit = require("neogit")
+
+vim.api.nvim_set_keymap('n', '<leader>gp', '<Cmd>Neogit push<CR>', { noremap = true, silent = true })
+EOF
 
 let g:jsx_ext_required = 0
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:mix_format_on_save = 1
-let g:workspace_session_disable_on_args = 1
-let g:workspace_autosave = 0
 
 let test#strategy = "neovim"
 let test#neovim#term_position = "vert botright"
@@ -209,13 +211,17 @@ if has("unix")
   let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
-if g:daytime
-  colorscheme tender
-  " colorscheme codedark
-  " let g:airline_theme = 'jellybeans'
-else
-  colorscheme distinguished
-endif
+" if g:daytime
+"   colorscheme tender
+"   " colorscheme codedark
+"   " let g:airline_theme = 'jellybeans'
+" else
+"   colorscheme codedark
+"   let g:airline_theme = 'jellybeans'
+" endif
+
+colorscheme cobalt2
+let g:airline_theme = 'jellybeans'
 
 set mouse=a
 

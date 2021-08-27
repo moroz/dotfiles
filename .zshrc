@@ -48,11 +48,13 @@ export KERL_BUILD_DOCS="yes"
 
 alias vim="nvim"
 alias ga='git add -A'
+alias gac='git add -A; git commit'
 alias gs='git status'
 alias gc='git commit'
 alias gca='git commit --amend'
 alias gf='git checkout'
 alias gfm='git checkout master'
+alias gfb='git checkout beta'
 alias gfs='git checkout staging'
 alias gfp='git checkout production'
 alias gfo='git fetch origin'
@@ -62,6 +64,7 @@ alias gpu='git pull'
 alias gr='git rev-parse HEAD'
 alias gm="git merge"
 alias gmm="git merge master"
+alias gms="git merge staging"
 alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 
 ee() {
@@ -81,8 +84,8 @@ alias ml="mix compile"
 alias ya="yarn add "
 alias yad="yarn add -D "
 alias ap="ansible-playbook -v site.yml"
-alias up="docker-compose up"
-alias down="docker-compose down"
+alias up="docker compose up"
+alias down="docker compose down"
 
 mm() {
     if [ -f mix.exs ]; then
@@ -104,9 +107,9 @@ mr() {
 
 mt() {
   if [ -f mix.exs ]; then
-    mix test --trace
+    mix test --trace $@
   elif [ -f package.json ]; then
-    yarn test
+    yarn test $@
   fi
 }
 

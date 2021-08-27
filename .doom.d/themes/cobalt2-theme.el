@@ -32,7 +32,7 @@
 (custom-theme-set-faces
  'cobalt2
 
- '(default ((t (:background "#132738" :foreground "#F8F8F8"))))
+ '(default ((t (:background "#173347" :foreground "#FEFFFF"))))
  '(cursor ((t (:background "#A7A7A7"))))
  '(border ((t (:foreground "black"))))
 

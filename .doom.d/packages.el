@@ -55,3 +55,4 @@
 (package! distinguished-theme)
 (package! vscode-dark-plus-theme)
 (package! exec-path-from-shell)
+(package! ctags-update)

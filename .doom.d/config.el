@@ -3,9 +3,8 @@
 (defun is-linux () (string-equal system-type "gnu/linux"))
 (defun is-mac () (not (is-linux)))
 
-(if (is-mac)
-    (exec-path-from-shell-initialize)
-)
+(if (is-mac) (exec-path-from-shell-initialize))
+(setq mac-command-modifier 'control)
 
 (defun is-retina ()
   (and (is-linux) (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n"))
@@ -17,26 +16,22 @@
     "$HOME/.dotfiles/daytime.Darwin"))
 
 (defun is-daytime ()
-  (string-equal (string-trim (shell-command-to-string (daytime-command)))
-                "DAYTIME")
-  )
-
-(defun theme-by-daytime ()
-  (if (is-daytime) #'vscode-dark-plus #'distinguished)
-  )
+  (string-equal (string-trim (shell-command-to-string (daytime-command))) "DAYTIME"))
 
 (defun km/get-font-size ()
-  (setq base-size 17)
+  (setq base-size 20)
   (setq scaling-factor (if (is-retina) 2 1))
   (* scaling-factor base-size)
   )
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq latin-font "Monaco")
+(setq latin-font "UbuntuMono NF")
+(setq-default line-spacing 0.1)
 (setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
 (setq cjk-scaling-factor (if (is-linux) (if (is-retina) 0.315 0.630) 1))
 (setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
-(setq doom-theme (theme-by-daytime))
+;; (setq doom-theme #'doom-city-lights)
+(setq doom-theme #'doom-city-lights)
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
 (setq cjk-face (font-spec :family cjk-font :size cjk-font-size))
 (setq doom-font common-face
@@ -90,19 +85,26 @@
 (setq lsp-enable-file-watchers nil)
 (setq lsp-file-watch-threshold 5000)
 
-(defun km/connect-to-fitness-dev ()
-  "Connect to fitness_development running in Docker."
-  (interactive)
-  (setq sql-user "mmagym")
-  (setq sql-password "mmagym")
-  (setq sql-database "fitness_development")
-  (setq sql-server "localhost")
-  (setq sql-port 3307)
-  (defalias 'sql-get-login 'ignore)
-  (sql-mysql)
+(add-hook 'elixir-mode-hook  'turn-on-ctags-auto-update-mode)
+(add-hook 'typescript-mode-hook  'turn-on-ctags-auto-update-mode)
+
+(defun set-latex-vars ()
+  (setq-local TeX-master "main.tex")
   )
 
-(setq mac-command-modifier 'control)
+(add-hook 'LaTeX-mode-hook 'set-latex-vars)
+
+(map! :after tex-mode
+      :map LaTeX-mode-map
+      :localleader
+      :nv "b" #'latex/build
+      )
+
+(map! :after tex-mode
+      :map LaTeX-mode-map
+      :localleader
+      :nv "v" #'TeX-view
+      )
 
 (setq-default TeX-engine 'xetex)
 (setq-default TeX-master "main.tex")
@@ -111,3 +113,15 @@
 (if (is-mac)
     (setq TeX-view-program-selection '((output-pdf "Skim")))
   )
+
+(defvar latex-build-command (if (executable-find "latexmk") "LatexMk" "LaTeX")
+  "The default command to use with `SPC m b'")
+
+(defun latex/build ()
+  (interactive)
+  (progn
+    (let ((TeX-save-query nil))
+      (TeX-save-document (TeX-master-file)))
+    (TeX-command latex-build-command 'TeX-master-file -1)))
+
+(add-to-list 'auto-mode-alist '("\\.slimleex\\'" . slim-mode))

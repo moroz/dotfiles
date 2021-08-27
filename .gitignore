@@ -9,3 +9,5 @@ node_modules/
 .vscode
 .vimrc.local
 yarn-error.log
+/.lsp
+/.log
