@@ -26,7 +26,8 @@ if [[ "$os" == 'Darwin' ]]; then
   ln -sf $HOME/.dotfiles/Code/User/settings.json "$HOME/Library/Application Support/Code/User/settings.json"
   ln -sf $HOME/.dotfiles/Code/User/keybindings.json "$HOME/Library/Application Support/Code/User/keybindings.json"
   if [ -x $(which brew) ]; then
-    brew install zsh tmux reattach-to-user-namespace mc ag neovim wget curl postgresql python3 nodejs
+    brew install zsh tmux reattach-to-user-namespace mc ag neovim wget curl postgresql python3 nodejs direnv aws-vault ripgrep universal-ctags
+    brew install --cask firefox google-chrome iterm2 spectacle karabiner-elements signal slack tableplus
     sudo echo $(which zsh) >> /etc/shells
     sudo chsh -s $(which zsh) $USER
   fi
