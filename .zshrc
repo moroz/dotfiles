@@ -138,7 +138,7 @@ ms() {
     mix phx.server
   elif [ -f composer.json ]; then
     php artisan serve
-  elif [ -f next.config.js ]; then
+  elif [ -f next.config.js ] || [ -f vite.config.ts ]; then
     yarn dev
   elif [ -f package.json ]; then
     yarn start
