@@ -46,26 +46,28 @@ export LC_COLLATE=en_US.UTF-8
 # compile erlang with docs using asdf/kerl
 export KERL_BUILD_DOCS="yes"
 
-alias vim="nvim"
 alias ga='git add -A'
 alias gac='git add -A; git commit'
-alias gs='git status'
 alias gc='git commit'
 alias gca='git commit --amend'
-alias gf='git checkout'
-alias gfm='git checkout master'
-alias gfb='git checkout beta'
-alias gfs='git checkout staging'
-alias gfp='git checkout production'
-alias gfo='git fetch origin'
+alias gcfd='git clean -fd'
 alias gd='git diff'
-alias gp='git push'
-alias gpu='git pull'
-alias gr='git rev-parse HEAD'
+alias gf='git checkout'
+alias gfb='git checkout beta'
+alias gfm='git checkout master'
+alias gfo='git fetch origin'
+alias gfp='git checkout production'
+alias gfs='git checkout staging'
+alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gm="git merge"
 alias gmm="git merge master"
 alias gms="git merge staging"
-alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gp='git push'
+alias gpu='git pull'
+alias gr='git rev-parse HEAD'
+alias gs='git status'
+alias vi="nvim"
+alias vim="echo 'Use vi'"
 
 ee() {
     emacsclient --create-frame "${1:-.}"
