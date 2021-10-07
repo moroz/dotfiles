@@ -67,6 +67,7 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 " Plug 'shmargum/vim-sass-colors', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 
 Plug 'evanleck/vim-svelte', {'branch': 'main', 'for': 'svelte' }
 
@@ -211,17 +212,12 @@ if has("unix")
   let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
-" if g:daytime
-"   colorscheme tender
-"   " colorscheme codedark
-"   " let g:airline_theme = 'jellybeans'
-" else
-"   colorscheme codedark
-"   let g:airline_theme = 'jellybeans'
-" endif
-
-colorscheme cobalt2
-let g:airline_theme = 'jellybeans'
+if g:daytime
+  colorscheme doom-one
+else
+  colorscheme codedark
+  let g:airline_theme = 'jellybeans'
+endif
 
 set mouse=a
 
