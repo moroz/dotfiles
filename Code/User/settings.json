@@ -655,7 +655,7 @@
     "javascript": "javascriptreact"
   },
   "files.trimTrailingWhitespace": true,
-  "editor.fontSize": 14,
+  "editor.fontSize": 15,
   "window.titleBarStyle": "custom",
   "explorer.confirmDelete": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -671,7 +671,7 @@
   },
   "editor.formatOnSave": true,
   "extensions.ignoreRecommendations": true,
-  "editor.fontFamily": "'Fira Mono', Consolas, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Ubuntu Mono', 'Monaco', Menlo, monospace, 'Hiragino Sans GB', 'Microsoft YaHei', 'PingFang TC', 'Noto Sans CJK TC'",
+  "editor.fontFamily": "'FiraMono NF', Consolas, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Ubuntu Mono', 'Monaco', Menlo, monospace, 'Hiragino Sans GB', 'Microsoft YaHei', 'PingFang TC', 'Noto Sans CJK TC'",
   "sass.format.enabled": false,
   "sass.lint.enable": false,
   "git.enableSmartCommit": true,
