@@ -19,24 +19,24 @@
   (string-equal (string-trim (shell-command-to-string (daytime-command))) "DAYTIME"))
 
 (defun km/get-font-size ()
-  (setq base-size 20)
+  (setq base-size 18)
   (setq scaling-factor (if (is-retina) 2 1))
   (* scaling-factor base-size)
   )
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq latin-font "UbuntuMono NF")
-(setq-default line-spacing 0.1)
+(setq latin-font "FiraMono NF")
+;; (setq-default line-spacing 0.1)
 (setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
 (setq cjk-scaling-factor (if (is-linux) (if (is-retina) 0.315 0.630) 1))
 (setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
 ;; (setq doom-theme #'doom-city-lights)
-(setq doom-theme #'doom-city-lights)
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
 (setq cjk-face (font-spec :family cjk-font :size cjk-font-size))
 (setq doom-font common-face
       doom-variable-pitch-font common-face
       doom-unicode-font cjk-face)
+(setq doom-theme (if (display-graphic-p) #'doom-ayu-mirage #'distinguished))
 
 (setq display-line-numbers-type t)
 
