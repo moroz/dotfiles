@@ -153,6 +153,11 @@ magit() {
   emacsclient -t --eval "(call-interactively #'magit-status)" -a "emacs -nw --eval \"(call-interactively #'magit-status)\""
 }
 
+gpd() {
+  branch="$(git rev-parse --abbrev-ref HEAD)"
+  git push -u origin "$branch"
+}
+
 if [ "$system" = "Darwin" ]; then
   # enable Erlang builds on Catalina
   export CFLAGS="-O2 -g -fno-stack-check"
