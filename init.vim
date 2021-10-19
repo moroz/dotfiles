@@ -135,7 +135,9 @@ let g:coc_global_extensions = [
       \ 'coc-elixir',
       \ 'coc-emmet',
       \ 'coc-css',
-      \ 'coc-diagnostic'
+      \ 'coc-diagnostic',
+      \ 'coc-rust-analyzer',
+      \ 'coc-rls'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
