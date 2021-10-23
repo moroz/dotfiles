@@ -29,7 +29,8 @@ else;
 fi
 
 export QUOTING_STYLE=literal
-export FZF_DEFAULT_COMMAND="ag -g ."
+# export FZF_DEFAULT_COMMAND="ag -g ."
+export FZF_DEFAULT_COMMAND="rg --hidden --files --glob '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
