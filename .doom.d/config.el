@@ -34,13 +34,15 @@
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
 (setq cjk-face (font-spec :family cjk-font :size cjk-font-size))
 (setq doom-font common-face
-      doom-variable-pitch-font common-face
+      ;; doom-variable-pitch-font common-face
       doom-unicode-font cjk-face)
 (setq doom-theme (if (display-graphic-p) #'doom-ayu-mirage #'distinguished))
 
 (setq display-line-numbers-type t)
 
+(setq neo-smart-open t)
 (global-set-key (kbd "<f9>") 'neotree-toggle)
+
 (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)
 (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
