@@ -22,7 +22,6 @@ Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'romgrk/doom-one.vim'
-Plug 'herrbischoff/cobalt2.vim'
 Plug 'ethantrithon/elementary.vim'
 
 " Testing
@@ -113,7 +112,7 @@ let g:vimtex_view_method = 'skim'
 
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let base16colorspace=256  " Access colors present in 256 colorspace
-lang zh_TW.UTF-8
+" lang zh_TW.UTF-8
 
 autocmd StdinReadPre * let s:std_in=1
 
