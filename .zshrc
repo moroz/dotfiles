@@ -29,7 +29,7 @@ else;
 fi
 
 export QUOTING_STYLE=literal
-export FZF_DEFAULT_COMMAND="rg -g '!.git' --hidden --files ."
+export FZF_DEFAULT_COMMAND="rg -g '!.git' --hidden --files"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
@@ -98,6 +98,8 @@ mm() {
       php artisan migrate
     elif [ -f package.json ]; then
         yarn db:migrate
+    elif [ -f Cargo.toml ]; then
+        diesel migration run
     fi
 }
 
@@ -106,6 +108,8 @@ mr() {
         mix ecto.rollback
     elif [ -f package.json ]; then
         yarn db:rollback
+    elif [ -f Cargo.toml ]; then
+      diesel migration revert
     fi
 }
 
@@ -148,6 +152,8 @@ ms() {
     yarn start
   elif [ -f Gemfile ]; then 
     rails server
+  elif [ -f Cargo.toml ]; then
+    cargo watch -x run
   fi
 }
 
