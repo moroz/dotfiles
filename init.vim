@@ -137,7 +137,6 @@ let g:coc_global_extensions = [
       \ 'coc-eslint',
       \ 'coc-stylelintplus',
       \ 'coc-rls',
-      \ 'coc-rust-analyzer',
       \ 'coc-prettier',
       \ 'coc-json',
       \ 'coc-elixir',

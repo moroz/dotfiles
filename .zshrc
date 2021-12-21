@@ -77,6 +77,8 @@ alias cd..="cd .."
 
 alias cdw="cd ~/working"
 alias cde="cd ~/elixir"
+alias cdd="cd ~/Downloads"
+alias cdr="cd ~/rust"
 alias c="code ."
 
 alias ims="iex -S mix phx.server"
@@ -96,6 +98,8 @@ mm() {
       php artisan migrate
     elif [ -f package.json ]; then
         yarn db:migrate
+    elif [ -f Cargo.toml ]; then
+        diesel migration run
     fi
 }
 
@@ -104,6 +108,8 @@ mr() {
         mix ecto.rollback
     elif [ -f package.json ]; then
         yarn db:rollback
+    elif [ -f Cargo.toml ]; then
+      diesel migration revert
     fi
 }
 
@@ -146,6 +152,8 @@ ms() {
     yarn start
   elif [ -f Gemfile ]; then 
     rails server
+  elif [ -f Cargo.toml ]; then
+    cargo watch -x run
   fi
 }
 
