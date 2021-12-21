@@ -25,23 +25,26 @@
   )
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq latin-font "FiraMono NF")
+(setq latin-font "MesloLGLDZ NF")
 ;; (setq-default line-spacing 0.1)
+(setq sans-font "Arial")
 (setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
 (setq cjk-scaling-factor (if (is-linux) (if (is-retina) 0.315 0.630) 1))
 (setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
 ;; (setq doom-theme #'doom-city-lights)
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
 (setq cjk-face (font-spec :family cjk-font :size cjk-font-size))
+(setq sans-face (font-spec :family sans-font :size (- (km/get-font-size) 1)))
 (setq doom-font common-face
-      ;; doom-variable-pitch-font common-face
+      doom-variable-pitch-font sans-face
       doom-unicode-font cjk-face)
-(setq doom-theme (if (display-graphic-p) #'doom-ayu-mirage #'distinguished))
+(setq doom-theme (if (display-graphic-p) #'vscode-dark-plus #'distinguished))
 
 (setq display-line-numbers-type t)
 
 (setq neo-smart-open t)
 (global-set-key (kbd "<f9>") 'neotree-toggle)
+(setq neo-theme 'ascii)
 
 (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
 (define-key evil-normal-state-map (kbd "C-p") 'projectile-find-file)

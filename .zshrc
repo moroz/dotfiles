@@ -29,7 +29,7 @@ else;
 fi
 
 export QUOTING_STYLE=literal
-export FZF_DEFAULT_COMMAND="ag -g ."
+export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
@@ -157,6 +157,8 @@ gpd() {
   branch="$(git rev-parse --abbrev-ref HEAD)"
   git push -u origin "$branch"
 }
+
+alias gicm="git init && git add -A && git commit -m 'Initial commit'"
 
 if [ "$system" = "Darwin" ]; then
   # enable Erlang builds on Catalina
