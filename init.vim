@@ -12,18 +12,22 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" Plug 'TimUntersberger/neogit', { 'commit': 'e507909518568d452ae48f117e5f2dc1ee620689' }
 Plug 'TimUntersberger/neogit'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-dispatch'
 " Plug 'lilydjwg/fcitx.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Color schemes
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'romgrk/doom-one.vim'
-Plug 'herrbischoff/cobalt2.vim'
-Plug 'ethantrithon/elementary.vim'
+" Plug 'romgrk/doom-one.vim'
+" Plug 'ethantrithon/elementary.vim'
+" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'catppuccin/nvim'
 
 " Testing
 Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript'] }
@@ -48,10 +52,13 @@ Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
 
-Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
-Plug 'mlaursen/vim-react-snippets'
+" Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+" Plug 'mlaursen/vim-react-snippets'
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
+
+" Ruby
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -68,6 +75,7 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
+Plug 'pantharshit00/vim-prisma', { 'for': 'prisma' }
 
 Plug 'evanleck/vim-svelte', {'branch': 'main', 'for': 'svelte' }
 
@@ -113,7 +121,7 @@ let g:vimtex_view_method = 'skim'
 
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let base16colorspace=256  " Access colors present in 256 colorspace
-lang zh_TW.UTF-8
+" lang zh_TW.UTF-8
 
 autocmd StdinReadPre * let s:std_in=1
 
@@ -129,15 +137,12 @@ let g:coc_global_extensions = [
       \ 'coc-eslint',
       \ 'coc-stylelintplus',
       \ 'coc-rls',
-      \ 'coc-rust-analyzer',
       \ 'coc-prettier',
       \ 'coc-json',
       \ 'coc-elixir',
       \ 'coc-emmet',
       \ 'coc-css',
-      \ 'coc-diagnostic',
-      \ 'coc-rust-analyzer',
-      \ 'coc-rls'
+      \ 'coc-diagnostic'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -218,7 +223,8 @@ if has("unix")
 endif
 
 if g:daytime
-  colorscheme doom-one
+  colorscheme catppuccin
+  let g:airline_theme = 'atomic'
 else
   colorscheme codedark
   let g:airline_theme = 'jellybeans'

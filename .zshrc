@@ -30,7 +30,7 @@ fi
 
 export QUOTING_STYLE=literal
 # export FZF_DEFAULT_COMMAND="ag -g ."
-export FZF_DEFAULT_COMMAND="rg --hidden --files --glob '!.git'"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
@@ -78,6 +78,8 @@ alias cd..="cd .."
 
 alias cdw="cd ~/working"
 alias cde="cd ~/elixir"
+alias cdd="cd ~/Downloads"
+alias cdr="cd ~/rust"
 alias c="code ."
 
 alias ims="iex -S mix phx.server"
@@ -97,6 +99,8 @@ mm() {
       php artisan migrate
     elif [ -f package.json ]; then
         yarn db:migrate
+    elif [ -f Cargo.toml ]; then
+        diesel migration run
     fi
 }
 
@@ -105,6 +109,8 @@ mr() {
         mix ecto.rollback
     elif [ -f package.json ]; then
         yarn db:rollback
+    elif [ -f Cargo.toml ]; then
+      diesel migration revert
     fi
 }
 
@@ -147,6 +153,8 @@ ms() {
     yarn start
   elif [ -f Gemfile ]; then 
     rails server
+  elif [ -f Cargo.toml ]; then
+    cargo watch -x run
   fi
 }
 
@@ -158,6 +166,8 @@ gpd() {
   branch="$(git rev-parse --abbrev-ref HEAD)"
   git push -u origin "$branch"
 }
+
+alias gicm="git init && git add -A && git commit -m 'Initial commit'"
 
 if [ "$system" = "Darwin" ]; then
   # enable Erlang builds on Catalina
