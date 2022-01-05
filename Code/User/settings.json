@@ -645,7 +645,6 @@
     }
   ],
   "vim.easymotion": true,
-  "window.menuBarVisibility": "default",
   "editor.minimap.enabled": false,
   "emmet.triggerExpansionOnTab": true,
   "emmet.showExpandedAbbreviation": "never",
@@ -696,7 +695,8 @@
   "files.associations": {
     "*.slimleex": "slim"
   },
-  "editor.fontSize": 15,
-  "window.zoomLevel": 1,
-  "svelte.enable-ts-plugin": true
+  "editor.fontSize": 16,
+  "svelte.enable-ts-plugin": true,
+  "editor.fontFamily": "'FiraMono NF', 'monospace', monospace, 'Droid Sans Fallback'",
+  "workbench.colorTheme": "Cobalt2"
 }

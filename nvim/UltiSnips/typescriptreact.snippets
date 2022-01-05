@@ -1,1 +1,15 @@
-extends jsx
+snippet rafce "function component default export (with prop interface)" b
+import React from "react";
+
+interface Props {}
+
+const ${1:`!v expand('%:t:r')`}: React.FC<Props> = () => {
+	return (
+		<div>
+			<p>Hello world!</p>
+		</div>
+	);
+};
+
+export default $1;
+endsnippet

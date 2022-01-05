@@ -48,12 +48,12 @@ Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh', 'for': 'ansib
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 " Elixir
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
 
-" Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
-" Plug 'mlaursen/vim-react-snippets'
+Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+Plug 'mlaursen/vim-react-snippets'
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
 
@@ -142,7 +142,8 @@ let g:coc_global_extensions = [
       \ 'coc-elixir',
       \ 'coc-emmet',
       \ 'coc-css',
-      \ 'coc-diagnostic'
+      \ 'coc-diagnostic',
+      \ 'coc-snippets'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
