@@ -167,6 +167,17 @@ gpd() {
   git push -u origin "$branch"
 }
 
+ticket() {
+  base_branch="${BASE_BRANCH:-origin/development}"
+  initials="${INITIALS:-KM}"
+  ticket_number="$1"
+  name="${@:2}"
+  task_name="$(echo $name | tr ' ' '_' | tr '[:upper:]' '[:lower:]')"
+  branch_name="${initials}_${ticket_number}_${task_name}"
+  echo "Creating branch $branch_name"
+  git checkout -b $branch_name $base_branch
+}
+
 alias gicm="git init && git add -A && git commit -m 'Initial commit'"
 
 if [ "$system" = "Darwin" ]; then

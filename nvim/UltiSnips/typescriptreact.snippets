@@ -1,9 +1,20 @@
+global !p
+import os
+
+def module_name():
+		segments = path.split("/")
+		base = os.path.splitext(fn)[0]
+		if base == "index":
+				return segments[-2]
+		return base
+endglobal
+
 snippet rafce "function component default export (with prop interface)" b
 import React from "react";
 
 interface Props {}
 
-const ${1:`!v expand('%:t:r')`}: React.FC<Props> = () => {
+const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
 	return (
 		<div>
 			<p>Hello world!</p>
@@ -12,4 +23,18 @@ const ${1:`!v expand('%:t:r')`}: React.FC<Props> = () => {
 };
 
 export default $1;
+endsnippet
+
+snippet router "nested router view for React Router v6" b
+import { Routes, Route } from "react-router-dom";
+
+const ${1:`!p snip.rv = module_name`}Router = () => {
+  return (
+    <Routes>
+      <Route index element={<UserIndex />} />
+    </Routes>
+  );
+};
+
+export default $1Router;
 endsnippet
