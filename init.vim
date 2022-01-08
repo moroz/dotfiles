@@ -86,6 +86,7 @@ Plug 'cakebaker/scss-syntax.vim', { 'for': 'sass' }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'typescript', 'jsx'] }
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
+Plug 'pantharshit00/vim-prisma', { 'for': 'prisma' }
 
 Plug 'evanleck/vim-svelte', {'branch': 'main', 'for': 'svelte' }
 
