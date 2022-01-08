@@ -27,6 +27,7 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+" Plug 'TimUntersberger/neogit', { 'commit': 'e507909518568d452ae48f117e5f2dc1ee620689' }
 Plug 'TimUntersberger/neogit'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-dispatch'
@@ -37,11 +38,15 @@ endif
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
+" Color schemes
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
 Plug 'flazz/vim-colorschemes'
-Plug 'romgrk/doom-one.vim'
-Plug 'ethantrithon/elementary.vim'
+" Plug 'romgrk/doom-one.vim'
+" Plug 'ethantrithon/elementary.vim'
+" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'catppuccin/nvim'
 
 " Testing
 Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript'] }
@@ -62,7 +67,7 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 " Elixir
-Plug 'elixir-editors/vim-elixir', { 'for': 'elixir' }
+Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
 
@@ -70,6 +75,9 @@ Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }
 Plug 'mlaursen/vim-react-snippets'
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
+
+" Ruby
+Plug 'tpope/vim-rails', { 'for': 'ruby' }
 
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
@@ -153,7 +161,8 @@ let g:coc_global_extensions = [
       \ 'coc-elixir',
       \ 'coc-emmet',
       \ 'coc-css',
-      \ 'coc-diagnostic'
+      \ 'coc-diagnostic',
+      \ 'coc-snippets'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -236,7 +245,8 @@ if has("unix")
 endif
 
 if g:daytime
-  colorscheme doom-one
+  colorscheme catppuccin
+  let g:airline_theme = 'atomic'
 else
   colorscheme codedark
   let g:airline_theme = 'jellybeans'

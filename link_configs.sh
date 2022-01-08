@@ -13,6 +13,7 @@ fi
 [[ -f $HOME/.zshrc ]] || ln -s $HOME/.dotfiles/.psqlrc $HOME/.psqlrc
 [[ -f $HOME/.gitignore ]] || ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
 [[ -f $HOME/.config/nvim/coc-settings.json ]] || ln -s $HOME/.dotfiles/coc-settings.json $HOME/.config/nvim/coc-settings.json
+[[ -d $HOME/.config/nvim/UltiSnips ]] || ln -s $HOME/.dotfiles/nvim/UltiSnips $HOME/.config/nvim/UltiSnips
 git config --global core.excludesfile ~/.gitignore
 
 mkdir -p ~/.ctags.d

@@ -645,7 +645,6 @@
     }
   ],
   "vim.easymotion": true,
-  "window.menuBarVisibility": "default",
   "editor.minimap.enabled": false,
   "emmet.triggerExpansionOnTab": true,
   "emmet.showExpandedAbbreviation": "never",
@@ -655,7 +654,6 @@
     "javascript": "javascriptreact"
   },
   "files.trimTrailingWhitespace": true,
-  "editor.fontSize": 15,
   "window.titleBarStyle": "custom",
   "explorer.confirmDelete": false,
   "typescript.updateImportsOnFileMove.enabled": "always",
@@ -671,7 +669,6 @@
   },
   "editor.formatOnSave": true,
   "extensions.ignoreRecommendations": true,
-  "editor.fontFamily": "'FiraMono NF', Consolas, 'Bitstream Vera Sans Mono', 'DejaVu Sans Mono', 'Ubuntu Mono', 'Monaco', Menlo, monospace, 'Hiragino Sans GB', 'Microsoft YaHei', 'PingFang TC', 'Noto Sans CJK TC'",
   "sass.format.enabled": false,
   "sass.lint.enable": false,
   "git.enableSmartCommit": true,
@@ -698,6 +695,8 @@
   "files.associations": {
     "*.slimleex": "slim"
   },
-  "workbench.colorTheme": "Cobalt2",
-  "window.zoomLevel": 1
+  "editor.fontSize": 16,
+  "svelte.enable-ts-plugin": true,
+  "editor.fontFamily": "'FiraMono NF', 'monospace', monospace, 'Droid Sans Fallback'",
+  "workbench.colorTheme": "Cobalt2"
 }

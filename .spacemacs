@@ -4,8 +4,8 @@
 
 
 (defun km/get-font ()
-  (setq default-font "Ubuntu Mono")
-  (setq base-size 23)
+  (setq default-font "FiraMono NF")
+  (setq base-size 18)
   (setq screencast-size 28)
   (setq is-screencast (not (eq (getenv "SCREENCAST") nil)))
   (setq is-retina (and (string-equal system-type "gnu/linux") (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n")))
@@ -47,7 +47,6 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(rust
-     clojure
      docker
      erlang
      javascript
@@ -55,10 +54,8 @@ values."
      lsp
      neotree
      nginx
-     python
      ruby
      sql
-     swift
      systemd
      typescript
      terraform
@@ -68,7 +65,7 @@ values."
      html osx latex
      markdown ivy git
      (chinese :variables
-              ;; chinese-enable-fcitx (string-equal system-type "gnu/linux")
+              chinese-enable-fcitx (string-equal system-type "gnu/linux")
               )
      (shell :variables
             shell-default-height 30
