@@ -95,6 +95,9 @@
 
 (defun set-latex-vars ()
   (setq-local TeX-master "main.tex")
+  (company-mode nil)
+  (turn-off-evil-snipe-mode)
+  (turn-off-evil-snipe-override-mode)
   )
 
 (add-hook 'LaTeX-mode-hook 'set-latex-vars)

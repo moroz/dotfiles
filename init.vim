@@ -4,6 +4,21 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall
 endif
 
+if has("unix")
+  let s:uname = system("uname")
+  if s:uname == "Darwin\n"
+    let s:linux = 0
+    let g:python_host_prog = '/usr/local/bin/python2'
+    let g:python3_host_prog = '/opt/homebrew/bin/python3'
+    let s:daytime = system("$HOME/.dotfiles/daytime.Darwin")
+  else
+    let s:linux = 1
+    let s:daytime = system("$HOME/.dotfiles/daytime")
+  endif
+
+  let g:daytime = s:daytime == "DAYTIME\n"
+endif
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/nerdfont.vim'
@@ -16,7 +31,11 @@ Plug 'junegunn/fzf.vim'
 Plug 'TimUntersberger/neogit'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-dispatch'
-" Plug 'lilydjwg/fcitx.vim'
+
+if s:linux
+  Plug 'vim-scripts/fcitx.vim'
+endif
+
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -44,7 +63,7 @@ Plug 'slim-template/vim-slim', { 'for': 'slim' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'lervag/vimtex', { 'for': 'tex' }
 Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh', 'for': 'ansible' }
+" Plug 'pearofducks/ansible-vim', { 'do': './UltiSnips/generate.sh', 'for': 'ansible' }
 Plug 'lifepillar/pgsql.vim', { 'for': 'sql' }
 
 " Elixir
@@ -52,7 +71,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
 
-Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+" Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 Plug 'mlaursen/vim-react-snippets'
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
@@ -213,10 +232,12 @@ let test#neovim#term_position = "vert botright"
 if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
+    let s:linux = 0
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/opt/homebrew/bin/python3'
     let s:daytime = system("$HOME/.dotfiles/daytime.Darwin")
   else
+    let s:linux = 1
     let s:daytime = system("$HOME/.dotfiles/daytime")
   endif
 
@@ -255,7 +276,9 @@ nmap <silent> <leader>a :CocAction<CR>
 " Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-let g:fern#renderer = "nerdfont"
+if !s:linux
+  let g:fern#renderer = "nerdfont"
+endif
 
 let g:AutoPairs = {'(':')', '[':']', '{':'}', "`":"`", '```':'```', '"""':'"""'}
 
