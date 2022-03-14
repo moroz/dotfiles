@@ -14,6 +14,7 @@ if has("unix")
   else
     let s:linux = 1
     let s:daytime = system("$HOME/.dotfiles/daytime")
+    let g:fcitx5_remote = '/usr/bin/fcitx5-remote'
   endif
 
   let g:daytime = s:daytime == "DAYTIME\n"
@@ -33,7 +34,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-dispatch'
 
 if s:linux
-  Plug 'vim-scripts/fcitx.vim'
+  Plug 'lilydjwg/fcitx.vim'
 endif
 
 Plug 'vim-airline/vim-airline'
@@ -71,7 +72,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
 
-" Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 Plug 'mlaursen/vim-react-snippets'
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
@@ -97,6 +98,7 @@ Plug 'digitaltoad/vim-pug', { 'for': 'pug' }
 Plug 'pantharshit00/vim-prisma', { 'for': 'prisma' }
 
 Plug 'evanleck/vim-svelte', {'branch': 'main', 'for': 'svelte' }
+Plug 'leafOfTree/vim-vue-plugin'
 
 " Terraform
 Plug 'hashivim/vim-terraform', { 'for': 'terraform' }
@@ -162,7 +164,8 @@ let g:coc_global_extensions = [
       \ 'coc-emmet',
       \ 'coc-css',
       \ 'coc-diagnostic',
-      \ 'coc-snippets'
+      \ 'coc-snippets',
+      \ 'coc-vetur'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -245,11 +248,10 @@ if has("unix")
 endif
 
 if g:daytime
-  colorscheme catppuccin
+  colorscheme codedark
   let g:airline_theme = 'atomic'
 else
-  colorscheme codedark
-  let g:airline_theme = 'jellybeans'
+  colorscheme base16-horizon-dark
 endif
 
 set mouse=a
