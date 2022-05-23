@@ -165,7 +165,8 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-diagnostic',
       \ 'coc-snippets',
-      \ 'coc-vetur'
+      \ 'coc-vetur',
+      \ 'coc-sourcekit'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -216,6 +217,7 @@ map <Leader>mtv :TestFile<CR>
 map <Leader>mtr :TestLast<CR>
 map <Leader>mta :TestSuite<CR>
 map <Leader>mm :Dispatch! mix ecto.migrate<CR>
+map <Leader>ot :terminal<CR>A
 
 lua << EOF
 local neogit = require("neogit")
@@ -248,11 +250,12 @@ if has("unix")
 endif
 
 if g:daytime
-  colorscheme codedark
-  let g:airline_theme = 'atomic'
+  colorscheme base16-solarized-dark
 else
-  colorscheme base16-horizon-dark
+  colorscheme distinguished
 endif
+
+" colorscheme base16-solarized-dark
 
 set mouse=a
 
@@ -353,3 +356,5 @@ call coc#config('elixir', {
       \ 'filetypes': ['elixir', 'eelixir']
       \})
 call coc#config('elixir.pathToElixirLS', g:ElixirLS.lsp)
+
+nnoremap <Leader>mr :vert ter swift %<CR>a
