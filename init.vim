@@ -216,6 +216,7 @@ map <Leader>mtv :TestFile<CR>
 map <Leader>mtr :TestLast<CR>
 map <Leader>mta :TestSuite<CR>
 map <Leader>mm :Dispatch! mix ecto.migrate<CR>
+map <Leader>ot :term<cr>a
 
 lua << EOF
 local neogit = require("neogit")
@@ -267,6 +268,7 @@ let g:coc_snippet_prev = '<c-k>'
 
 " rustfmt on write using autoformat
 autocmd FileType rust autocmd BufWrite * :Autoformat
+autocmd FileType swift autocmd BufWritePost *.swift :silent exec "!swift-format -i %"
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
