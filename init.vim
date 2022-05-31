@@ -130,6 +130,7 @@ nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
+autocmd Filetype swift setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType yaml set inde=
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
 let g:terraform_fmt_on_save=1
@@ -248,12 +249,12 @@ if has("unix")
   let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
-if g:daytime
-  colorscheme codedark
-  let g:airline_theme = 'atomic'
-else
-  colorscheme base16-horizon-dark
-endif
+" if g:daytime
+"   colorscheme cobalt2
+"   let g:airline_theme = 'atomic'
+" else
+colorscheme atom
+" endif
 
 set mouse=a
 
