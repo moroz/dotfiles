@@ -698,5 +698,9 @@
   "editor.fontSize": 16,
   "svelte.enable-ts-plugin": true,
   "editor.fontFamily": "'FiraMono NF', 'monospace', monospace, 'Droid Sans Fallback'",
-  "workbench.colorTheme": "Cobalt2"
+  "workbench.colorTheme": "Cobalt2",
+  "window.zoomLevel": 1,
+  "[vue]": {
+    "editor.defaultFormatter": "johnsoncodehk.volar"
+  }
 }

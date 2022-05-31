@@ -130,6 +130,7 @@ nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
+autocmd Filetype swift setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType yaml set inde=
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
 let g:terraform_fmt_on_save=1
@@ -217,7 +218,7 @@ map <Leader>mtv :TestFile<CR>
 map <Leader>mtr :TestLast<CR>
 map <Leader>mta :TestSuite<CR>
 map <Leader>mm :Dispatch! mix ecto.migrate<CR>
-map <Leader>ot :terminal<CR>A
+map <Leader>ot :term<cr>a
 
 lua << EOF
 local neogit = require("neogit")
@@ -249,13 +250,7 @@ if has("unix")
   let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
-if g:daytime
-  colorscheme base16-solarized-dark
-else
-  colorscheme distinguished
-endif
-
-" colorscheme base16-solarized-dark
+colorscheme atom
 
 set mouse=a
 
@@ -270,6 +265,7 @@ let g:coc_snippet_prev = '<c-k>'
 
 " rustfmt on write using autoformat
 autocmd FileType rust autocmd BufWrite * :Autoformat
+autocmd FileType swift autocmd BufWritePost *.swift :silent exec "!swift-format -i %"
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort

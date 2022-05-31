@@ -1,0 +1,1 @@
+/home/debian/.dotfiles/.doom.d

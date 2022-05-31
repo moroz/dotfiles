@@ -21,6 +21,7 @@ PS1=$'%{\e[92;1m%}%m%{\e[m%}:%{\e[96;1m%}%~%{\e[m%}$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 export PATH="$HOME/.emacs.d/bin:$PATH"
+export GPG_TTY=$(tty)
 
 if [ "$system" = "Linux" ]; then
   alias ls="ls --color=auto -las"
