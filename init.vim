@@ -130,6 +130,7 @@ nnoremap <Space> <Nop>
 autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
+autocmd Filetype swift setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType yaml set inde=
 autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
 let g:terraform_fmt_on_save=1
@@ -165,7 +166,8 @@ let g:coc_global_extensions = [
       \ 'coc-css',
       \ 'coc-diagnostic',
       \ 'coc-snippets',
-      \ 'coc-vetur'
+      \ 'coc-vetur',
+      \ 'coc-sourcekit'
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -216,7 +218,7 @@ map <Leader>mtv :TestFile<CR>
 map <Leader>mtr :TestLast<CR>
 map <Leader>mta :TestSuite<CR>
 map <Leader>mm :Dispatch! mix ecto.migrate<CR>
-map <Leader>ot :terminal<CR>A
+map <Leader>ot :term<cr>a
 
 lua << EOF
 local neogit = require("neogit")
@@ -248,12 +250,7 @@ if has("unix")
   let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
-if g:daytime
-  colorscheme codedark
-  let g:airline_theme = 'atomic'
-else
-  colorscheme base16-horizon-dark
-endif
+colorscheme atom
 
 set mouse=a
 
@@ -268,6 +265,7 @@ let g:coc_snippet_prev = '<c-k>'
 
 " rustfmt on write using autoformat
 autocmd FileType rust autocmd BufWrite * :Autoformat
+autocmd FileType swift autocmd BufWritePost *.swift :silent exec "!swift-format -i %"
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
@@ -354,3 +352,5 @@ call coc#config('elixir', {
       \ 'filetypes': ['elixir', 'eelixir']
       \})
 call coc#config('elixir.pathToElixirLS', g:ElixirLS.lsp)
+
+nnoremap <Leader>mr :vert ter swift %<CR>a
