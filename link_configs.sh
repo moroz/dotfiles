@@ -36,7 +36,7 @@ if [[ "$os" == 'Darwin' ]]; then
   sudo cp "$HOME/.dotfiles/Dvorak Esperanto.keylayout" /Library/Keyboard\ Layouts
   defaults write -g ApplePressAndHoldEnabled -bool false
   mkdir -p $HOME/Pictures/screenshots
-  defaults write com.apple.screencapture location !$
+  defaults write com.apple.screencapture location $HOME/Pictures/screenshots
 elif [[ "$os" == 'Linux' ]]; then
   mkdir -p $HOME/.config/Code/User/
   ln -sf $HOME/.dotfiles/Code/User/settings.json $HOME/.config/Code/User/settings.json

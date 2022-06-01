@@ -70,6 +70,7 @@ alias gr='git rev-parse HEAD'
 alias gs='git status'
 alias vi="nvim"
 alias vim="echo 'Use vi'"
+alias brow="arch --x86_64 /usr/local/Homebrew/bin/brew"
 
 ee() {
     emacsclient --create-frame "${1:-.}"
@@ -96,8 +97,10 @@ alias down="docker compose down"
 mm() {
     if [ -f mix.exs ]; then
         mix ecto.migrate
+    elif [ -f Gemfile ]; then
+        bundle exec rake db:migrate
     elif [ -f composer.json ]; then
-      php artisan migrate
+        php artisan migrate
     elif [ -f package.json ]; then
         yarn db:migrate
     elif [ -f Cargo.toml ]; then
@@ -108,6 +111,8 @@ mm() {
 mr() {
     if [ -f mix.exs ]; then
         mix ecto.rollback
+    elif [ -f Gemfile ]; then
+        bundle exec rake db:migrate
     elif [ -f package.json ]; then
         yarn db:rollback
     elif [ -f Cargo.toml ]; then
@@ -126,6 +131,8 @@ mt() {
 im() {
   if [ -f mix.exs ]; then
     iex -S mix
+  elif [ -f Gemfile ]; then
+    bundle exec rails c
   elif [ -f package.json ]; then
     yarn run ts-node
   fi
@@ -148,6 +155,8 @@ ms() {
     mix phx.server
   elif [ -f composer.json ]; then
     php artisan serve
+  elif [ -f vue.config.js ]; then
+    yarn serve
   elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ]; then
     yarn dev
   elif [ -f package.json ]; then
@@ -156,6 +165,8 @@ ms() {
     rails server
   elif [ -f Cargo.toml ]; then
     cargo watch -x run
+  elif [ -f Procfile ]; then
+    foreman start
   fi
 }
 
