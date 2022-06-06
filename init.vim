@@ -267,12 +267,8 @@ let g:coc_snippet_prev = '<c-k>'
 autocmd FileType rust autocmd BufWrite * :Autoformat
 autocmd FileType swift autocmd BufWritePost *.swift :silent exec "!swift-format -i %"
 
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :CocAction<CR>
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)w
 
 " Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
