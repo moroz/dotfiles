@@ -273,6 +273,7 @@ autocmd BufWritePost *.swift :silent exec "!swift-format -i '%'"
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)w
+unmap <leader>au
 
 " Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
