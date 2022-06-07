@@ -28,7 +28,6 @@ Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'TimUntersberger/neogit', { 'commit': 'e507909518568d452ae48f117e5f2dc1ee620689' }
 Plug 'TimUntersberger/neogit'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-dispatch'
@@ -47,10 +46,11 @@ Plug 'flazz/vim-colorschemes'
 " Plug 'romgrk/doom-one.vim'
 " Plug 'ethantrithon/elementary.vim'
 " Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'catppuccin/nvim'
+" Plug 'catppuccin/nvim'
+Plug 'sainnhe/everforest'
 
 " Testing
-Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript'] }
+Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript', 'ruby'] }
 
 " Editing
 Plug 'easymotion/vim-easymotion'
@@ -72,7 +72,7 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'mhinz/vim-mix-format', { 'for': 'elixir' }
 Plug 'elixir-lsp/elixir-ls', { 'for': 'elixir','do': { -> g:ElixirLS.compile() }  }
 
-Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
+Plug 'SirVer/ultisnips', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'markdown', 'swift'] }
 Plug 'mlaursen/vim-react-snippets'
 
 Plug 'ludovicchabant/vim-gutentags', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir'] }
@@ -271,12 +271,8 @@ let g:coc_snippet_prev = '<c-k>'
 autocmd FileType rust autocmd BufWrite * :Autoformat
 autocmd BufWritePost *.swift :silent exec "!swift-format -i '%'"
 
-" Remap for do codeAction of selected region
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-xmap <silent> <leader>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <leader>a :CocAction<CR>
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)w
 
 " Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
