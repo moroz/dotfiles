@@ -10,7 +10,7 @@ if has("unix")
     let s:linux = 0
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/opt/homebrew/bin/python3'
-    let s:daytime = system("$HOME/.dotfiles/daytime.Darwin")
+    let s:daytime = system("$HOME/.dotfiles/darkmode.Darwin")
   else
     let s:linux = 1
     let s:daytime = system("$HOME/.dotfiles/daytime")
@@ -241,16 +241,20 @@ if has("unix")
     let s:linux = 0
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/opt/homebrew/bin/python3'
-    let s:daytime = system("$HOME/.dotfiles/daytime.Darwin")
+    let s:daytime = system("$HOME/.dotfiles/darkmode.Darwin")
   else
     let s:linux = 1
     let s:daytime = system("$HOME/.dotfiles/daytime")
   endif
 
-  let g:daytime = s:daytime == "DAYTIME\n"
+  let g:daytime = s:daytime == "DAYTIME\n" || s:daytime == "DAYTIME"
 endif
 
-colorscheme atom
+if g:daytime 
+  colorscheme atom
+else
+  colorscheme distinguished
+endif
 
 set mouse=a
 
@@ -265,7 +269,7 @@ let g:coc_snippet_prev = '<c-k>'
 
 " rustfmt on write using autoformat
 autocmd FileType rust autocmd BufWrite * :Autoformat
-autocmd FileType swift autocmd BufWritePost *.swift :silent exec "!swift-format -i %"
+autocmd BufWritePost *.swift :silent exec "!swift-format -i '%'"
 
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
