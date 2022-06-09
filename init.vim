@@ -107,6 +107,19 @@ Plug 'juliosueiras/vim-terraform-completion', { 'for': 'terraform' }
 
 call plug#end()
 
+let g:spacevim_enabled_layers = [
+  \ 'core/root',
+  \ 'core/behavior',
+  \ 'core/buffers',
+  \ 'core/files',
+  \ 'core/files/vim',
+  \ 'core/lisp',
+  \ 'core/quit',
+  \ 'core/windows',
+  \ 'core/zoom',
+  \ 'git'
+  \ ]
+
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -273,7 +286,6 @@ autocmd BufWritePost *.swift :silent exec "!swift-format -i '%'"
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)w
-unmap <leader>au
 
 " Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
