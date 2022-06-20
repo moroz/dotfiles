@@ -17,7 +17,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PS1=$'%{\e[92;1m%}%m%{\e[m%}:%{\e[96;1m%}%~%{\e[m%}$ '
+PS1=$'%{\e[01;32m%}%m%{\e[m%}:%{\e[01;34m%}%~%{\e[m%}$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 export PATH="$HOME/.emacs.d/bin:$PATH"
@@ -49,6 +49,7 @@ export LC_COLLATE=en_US.UTF-8
 export KERL_BUILD_DOCS="yes"
 
 alias ga='git add -A'
+alias giac="git init && git add -A && git commit -m 'Initial commit'"
 alias gac='git add -A; git commit'
 alias gc='git commit'
 alias gca='git commit --amend'
