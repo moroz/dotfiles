@@ -135,7 +135,7 @@ set smartindent
 set eol
 set autoread
 set nofoldenable
-" set guicursor=
+set guicursor=
 
 let mapleader = " "
 
