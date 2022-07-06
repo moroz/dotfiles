@@ -154,20 +154,18 @@ md() {
 ms() {
   if [ -f mix.exs ]; then
     mix phx.server
-  elif [ -f composer.json ]; then
-    php artisan serve
+  elif [ -f Gemfile ]; then 
+    bundle exec rails server
+  elif [ -f Procfile ]; then
+    foreman start
   elif [ -f vue.config.js ]; then
     yarn serve
   elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ]; then
     yarn dev
   elif [ -f package.json ]; then
     yarn start
-  elif [ -f Gemfile ]; then 
-    rails server
   elif [ -f Cargo.toml ]; then
     cargo watch -x run
-  elif [ -f Procfile ]; then
-    foreman start
   fi
 }
 
