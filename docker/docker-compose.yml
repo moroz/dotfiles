@@ -12,3 +12,10 @@ services:
       POSTGRES_PASSWORD: postgres
     volumes:
       - "./.data/pg:/var/lib/postgresql/data"
+
+  redis:
+    ports:
+      - 6379:6379
+    image: redis:7.0.4-bullseye
+    restart: unless-stopped
+
