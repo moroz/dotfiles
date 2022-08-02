@@ -1,0 +1,14 @@
+version: '3.9'
+
+services:
+  pg:
+    ports:
+      - 5432:5432
+    image: postgres:14.4-bullseye
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - "./.data/pg:/var/lib/postgresql/data"
