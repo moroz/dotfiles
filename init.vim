@@ -8,8 +8,8 @@ if has("unix")
   let s:uname = system("uname")
   if s:uname == "Darwin\n"
     let s:linux = 0
-    let g:python_host_prog = '/usr/local/bin/python2'
-    let g:python3_host_prog = '/opt/homebrew/bin/python3'
+    let g:python_host_prog = '$HOME/.asdf/shims/python3'
+    let g:python3_host_prog = "$HOME/.asdf/shims/python3"
     let s:daytime = system("$HOME/.dotfiles/darkmode.Darwin")
   else
     let s:linux = 1
@@ -289,6 +289,10 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)w
 
 " Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 if !s:linux
   let g:fern#renderer = "nerdfont"
