@@ -86,7 +86,6 @@ alias cdr="cd ~/rust"
 alias c="code ."
 
 alias ims="iex -S mix phx.server"
-alias mtf="mix test --trace --failed"
 alias imtf="iex -S mix test --failed"
 alias ml="mix compile"
 alias ya="yarn add "
@@ -113,7 +112,7 @@ mr() {
     if [ -f mix.exs ]; then
         mix ecto.rollback
     elif [ -f Gemfile ]; then
-        bundle exec rake db:migrate
+        bundle exec rake db:rollback
     elif [ -f package.json ]; then
         yarn db:rollback
     elif [ -f Cargo.toml ]; then
@@ -124,8 +123,18 @@ mr() {
 mt() {
   if [ -f mix.exs ]; then
     mix test --trace $@
+  elif [ -f Gemfile ]; then
+    bundle exec rspec $@
   elif [ -f package.json ]; then
     yarn test $@
+  fi
+}
+
+mtf() {
+  if [ -f mix.exs ]; then
+    mix test --trace --failed $@
+  elif [ -f Gemfile ]; then
+    bundle exec rspec --only-failures $@
   fi
 }
 
