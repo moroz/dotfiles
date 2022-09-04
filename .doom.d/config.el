@@ -25,7 +25,7 @@
   )
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq latin-font "MesloLGLDZ NF")
+(setq latin-font "JetBrainsMono NF")
 ;; (setq-default line-spacing 0.1)
 (setq sans-font "Arial")
 (setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
