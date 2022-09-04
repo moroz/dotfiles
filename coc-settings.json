@@ -18,7 +18,7 @@
     "elixir": ["mix_credo", "mix_credo_compile"],
     "eelixir": ["mix_credo", "mix_credo_compile"]
   },
-  "elixir.pathToElixirLS": "~/.vscode/extensions/jakebecker.elixir-ls-0.7.0/elixir-ls-release/language_server.sh",
+  "elixir.pathToElixirLS": "~/.vscode/extensions/jakebecker.elixir-ls-0.11.0/elixir-ls-release/language_server.sh",
   "stylelintplus.autoFixOnSave": true,
   "sourcekit.commandPath": "~/ios/usr/bin/sourcekit-lsp",
   "solargraph.diagnostics": true,
