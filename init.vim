@@ -180,6 +180,7 @@ let g:coc_global_extensions = [
       \ 'coc-diagnostic',
       \ 'coc-snippets',
       \ 'coc-solargraph',
+      \ 'coc-import-cost',
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -191,6 +192,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " Remap for rename current word
 nmap <F2> <Plug>(coc-rename)
+nmap <silent> <F5> :e!<CR>
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
@@ -263,7 +265,7 @@ if has("unix")
 endif
 
 if g:daytime 
-  colorscheme atom
+  colorscheme cobalt2
 else
   colorscheme distinguished
 endif
