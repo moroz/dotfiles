@@ -98,11 +98,9 @@ mm() {
     if [ -f mix.exs ]; then
         mix ecto.migrate
     elif [ -f Gemfile ]; then
-        bundle exec rake db:migrate
-    elif [ -f composer.json ]; then
-        php artisan migrate
+        bundle exec rake db:migrate $@
     elif [ -f package.json ]; then
-        yarn db:migrate
+        yarn db:migrate $@
     elif [ -f Cargo.toml ]; then
         diesel migration run
     fi
@@ -110,9 +108,9 @@ mm() {
 
 mr() {
     if [ -f mix.exs ]; then
-        mix ecto.rollback
+        mix ecto.rollback $@
     elif [ -f Gemfile ]; then
-        bundle exec rake db:rollback
+        bundle exec rake db:rollback $@
     elif [ -f package.json ]; then
         yarn db:rollback
     elif [ -f Cargo.toml ]; then
@@ -162,17 +160,17 @@ md() {
 
 ms() {
   if [ -f mix.exs ]; then
-    mix phx.server
+    mix phx.server $@
+  elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ]; then
+    yarn dev $@
   elif [ -f Gemfile ]; then 
-    bundle exec rails server
+    bundle exec rails server $@
   elif [ -f Procfile ]; then
     foreman start
   elif [ -f vue.config.js ]; then
     yarn serve
-  elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ]; then
-    yarn dev
   elif [ -f package.json ]; then
-    yarn start
+    yarn start $@
   elif [ -f Cargo.toml ]; then
     cargo watch -x run
   fi
