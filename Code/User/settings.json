@@ -695,12 +695,15 @@
   "files.associations": {
     "*.slimleex": "slim"
   },
-  "editor.fontSize": 16,
+  "editor.fontSize": 14,
   "svelte.enable-ts-plugin": true,
-  "editor.fontFamily": "'FiraMono NF', 'monospace', monospace, 'Droid Sans Fallback'",
+  "editor.fontFamily": "'JetBrainsMono NF', 'FiraMono NF', 'monospace', monospace, 'Droid Sans Fallback'",
   "workbench.colorTheme": "Cobalt2",
   "window.zoomLevel": 1,
   "[vue]": {
     "editor.defaultFormatter": "johnsoncodehk.volar"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }
