@@ -50,7 +50,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'sainnhe/everforest'
 
 " Testing
-Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript', 'ruby'] }
+Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript', 'ruby', 'javascript', 'javascriptreact'] }
 
 " Editing
 Plug 'easymotion/vim-easymotion'
@@ -171,7 +171,7 @@ let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-eslint',
       \ 'coc-stylelintplus',
-      \ 'coc-rls',
+      \ 'coc-rust-analyzer',
       \ 'coc-prettier',
       \ 'coc-json',
       \ 'coc-elixir',
