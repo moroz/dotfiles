@@ -25,6 +25,23 @@ const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
 export default $1;
 endsnippet
 
+snippet rav "function component default export (with prop interface)" b
+import React from "react";
+import Layout from "@views/Layout";
+
+interface Props {}
+
+const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
+	return (
+		<Layout title="$2">
+			$3
+		</Layout>
+	);
+};
+
+export default $1;
+endsnippet
+
 snippet router "nested router view for React Router v6" b
 import { Routes, Route } from "react-router-dom";
 
