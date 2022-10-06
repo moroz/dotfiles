@@ -23,7 +23,7 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/fern.vim'
+Plug 'lambdalisue/fern.vim', { 'branch': 'main' }
 Plug 'lambdalisue/fern-renderer-nerdfont.vim'
 Plug 'lambdalisue/fern-git-status.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -180,7 +180,6 @@ let g:coc_global_extensions = [
       \ 'coc-diagnostic',
       \ 'coc-snippets',
       \ 'coc-solargraph',
-      \ 'coc-import-cost',
       \ ]
 set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -256,18 +255,19 @@ if has("unix")
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/opt/homebrew/bin/python3'
     let s:daytime = system("$HOME/.dotfiles/darkmode.Darwin")
+
+    if g:daytime 
+      colorscheme cobalt2
+    else
+      colorscheme distinguished
+    endif
   else
     let s:linux = 1
     let s:daytime = system("$HOME/.dotfiles/daytime")
+    colorscheme base16-gruvbox-dark-hard
   endif
 
   let g:daytime = s:daytime == "DAYTIME\n" || s:daytime == "DAYTIME"
-endif
-
-if g:daytime 
-  colorscheme cobalt2
-else
-  colorscheme distinguished
 endif
 
 set mouse=a
