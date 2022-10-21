@@ -11,6 +11,7 @@ endglobal
 
 snippet rafce "function component default export (with prop interface)" b
 import React from "react";
+import styles from "./$1.module.sass";
 
 interface Props {}
 
@@ -19,6 +20,47 @@ const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
 		<div>
 			<p>Hello world!</p>
 		</div>
+	);
+};
+
+export default $1;
+endsnippet
+
+snippet rance "function component default export (with prop interface)" b
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+
+interface Props {}
+
+const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
+	return (
+		<View style={styles.root}>
+			<Text>Hello world!</Text>
+		</View>
+	);
+};
+
+const styles = StyleSheet.create({
+	root: {
+		flex: 1
+	}
+});
+
+export default $1;
+endsnippet
+
+
+snippet rav "function component default export (with prop interface)" b
+import React from "react";
+import Layout from "@views/Layout";
+
+interface Props {}
+
+const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
+	return (
+		<Layout title="$2">
+			$3
+		</Layout>
 	);
 };
 

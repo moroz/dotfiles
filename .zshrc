@@ -43,6 +43,7 @@ export LC_MESSAGES=en_US.UTF-8
 export LC_TIME=en_US.UTF-8
 export LC_COLLATE=en_US.UTF-8
 # export LC_CTYPE=zh_TW.UTF-8
+export DOCKER_BUILDKIT=1
 
 # https://mobile.twitter.com/bernheisel/status/1358201158507061250
 # compile erlang with docs using asdf/kerl
