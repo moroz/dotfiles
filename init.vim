@@ -85,6 +85,9 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'ervandew/supertab', { 'for': 'rust' }
 Plug 'Chiel92/vim-autoformat', { 'for': 'rust' }
 
+" Go
+Plug 'fatih/vim-go', { 'for': 'go' }
+
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
 Plug 'maxmellon/vim-jsx-pretty', { 'for': ['javascript', 'jsx', 'typescriptreact'] }
@@ -140,8 +143,7 @@ set guicursor=
 let mapleader = " "
 
 nnoremap <Space> <Nop>
-autocmd Filetype make setlocal tabstop=4 shiftwidth=4 noexpandtab
-autocmd Filetype c setlocal tabstop=4 shiftwidth=4 noexpandtab
+autocmd Filetype c,make,go,php setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype swift setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType yaml set inde=
@@ -282,7 +284,7 @@ let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-k>'
 
 " rustfmt on write using autoformat
-autocmd FileType rust autocmd BufWrite * :Autoformat
+autocmd FileType rust autocmd BufWrite *.rs :Autoformat
 autocmd BufWritePost *.swift :silent exec "!swift-format -i '%'"
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
