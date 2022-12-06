@@ -83,7 +83,10 @@ Plug 'tpope/vim-rails', { 'for': 'ruby' }
 " Rust
 Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'ervandew/supertab', { 'for': 'rust' }
-Plug 'Chiel92/vim-autoformat', { 'for': 'rust' }
+Plug 'Chiel92/vim-autoformat', { 'for': [ 'rust' , 'go'] }
+
+" GO
+Plug 'fatih/vim-go'
 
 " Go
 Plug 'fatih/vim-go', { 'for': 'go' }
@@ -111,17 +114,17 @@ Plug 'juliosueiras/vim-terraform-completion', { 'for': 'terraform' }
 call plug#end()
 
 let g:spacevim_enabled_layers = [
-  \ 'core/root',
-  \ 'core/behavior',
-  \ 'core/buffers',
-  \ 'core/files',
-  \ 'core/files/vim',
-  \ 'core/lisp',
-  \ 'core/quit',
-  \ 'core/windows',
-  \ 'core/zoom',
-  \ 'git'
-  \ ]
+      \ 'core/root',
+      \ 'core/behavior',
+      \ 'core/buffers',
+      \ 'core/files',
+      \ 'core/files/vim',
+      \ 'core/lisp',
+      \ 'core/quit',
+      \ 'core/windows',
+      \ 'core/zoom',
+      \ 'git'
+      \ ]
 
 set tabstop=2
 set shiftwidth=2
@@ -172,6 +175,7 @@ command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-eslint',
+      \ 'coc-go',
       \ 'coc-stylelintplus',
       \ 'coc-rust-analyzer',
       \ 'coc-prettier',
@@ -258,8 +262,10 @@ if has("unix")
     let g:python3_host_prog = '/opt/homebrew/bin/python3'
     let s:daytime = system("$HOME/.dotfiles/darkmode.Darwin")
 
-    if g:daytime 
-      colorscheme cobalt2
+    if g:daytime
+      " colorscheme cobalt2
+      " colorscheme borland
+      colorscheme cobalt
     else
       colorscheme distinguished
     endif
@@ -295,7 +301,7 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 " Make <CR> to accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 if !s:linux
   let g:fern#renderer = "nerdfont"
