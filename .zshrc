@@ -128,6 +128,8 @@ mt() {
     bundle exec rspec $@
   elif [ -f package.json ]; then
     yarn test $@
+  elif [ -f Cargo.toml ]; then
+    cargo test $@
   fi
 }
 
@@ -175,7 +177,9 @@ ms() {
   elif [ -f package.json ]; then
     yarn start $@
   elif [ -f Cargo.toml ]; then
-    cargo watch -x run
+    cargo watch -x run $@
+  elif [ -f go.mod ]; then
+    air $@
   fi
 }
 
