@@ -27,7 +27,7 @@
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq latin-font "JetBrainsMono NF")
 ;; (setq-default line-spacing 0.1)
-(setq sans-font "Arial")
+(setq sans-font "Roboto")
 (setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
 (setq cjk-scaling-factor (if (is-linux) (if (is-retina) 0.315 0.630) 1))
 (setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
@@ -38,7 +38,7 @@
 (setq doom-font common-face
       doom-variable-pitch-font sans-face
       doom-unicode-font cjk-face)
-(setq doom-theme (if (display-graphic-p) #'vscode-dark-plus #'distinguished))
+(setq doom-theme (if (display-graphic-p) #'cobalt2 #'distinguished))
 
 (setq display-line-numbers-type t)
 
