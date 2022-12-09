@@ -133,6 +133,8 @@ mt() {
   fi
 }
 
+alias mtw="cargo watch -x test"
+
 mtf() {
   if [ -f mix.exs ]; then
     mix test --trace --failed $@
