@@ -50,7 +50,7 @@ Plug 'flazz/vim-colorschemes'
 Plug 'sainnhe/everforest'
 
 " Testing
-Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript', 'ruby', 'javascript', 'javascriptreact'] }
+Plug 'vim-test/vim-test', { 'for': ['elixir', 'typescript', 'ruby', 'javascript', 'javascriptreact', 'rust', 'go'] }
 
 " Editing
 Plug 'easymotion/vim-easymotion'
