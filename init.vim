@@ -146,7 +146,7 @@ set guicursor=
 let mapleader = " "
 
 nnoremap <Space> <Nop>
-autocmd Filetype c,make,go,php setlocal tabstop=4 shiftwidth=4 noexpandtab
+autocmd Filetype c,make,go,php,rust setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
 autocmd Filetype swift setlocal tabstop=2 shiftwidth=2 expandtab
 autocmd FileType yaml set inde=
