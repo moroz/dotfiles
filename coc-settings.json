@@ -12,7 +12,8 @@
     "vue",
     "svelte",
     "swift",
-    "ruby"
+    "ruby",
+    "go"
   ],
   "diagnostic-languageserver.filetypes": {
     "elixir": ["mix_credo", "mix_credo_compile"],

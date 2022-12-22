@@ -85,11 +85,8 @@ Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'ervandew/supertab', { 'for': 'rust' }
 Plug 'Chiel92/vim-autoformat', { 'for': [ 'rust' , 'go'] }
 
-" GO
-Plug 'fatih/vim-go'
-
 " Go
-Plug 'fatih/vim-go', { 'for': 'go' }
+" Plug 'fatih/vim-go', { 'for': 'go' }
 
 " Javascript & React
 Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'jsx', 'typescript', 'typescriptreact'] }
