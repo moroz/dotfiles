@@ -258,21 +258,22 @@ if has("unix")
     let g:python_host_prog = '/usr/local/bin/python2'
     let g:python3_host_prog = '/opt/homebrew/bin/python3'
     let s:daytime = system("$HOME/.dotfiles/darkmode.Darwin")
-
-    if g:daytime
-      " colorscheme cobalt2
-      " colorscheme borland
-      colorscheme cobalt
-    else
-      colorscheme distinguished
-    endif
   else
     let s:linux = 1
     let s:daytime = system("$HOME/.dotfiles/daytime")
-    colorscheme base16-gruvbox-dark-hard
   endif
 
   let g:daytime = s:daytime == "DAYTIME\n" || s:daytime == "DAYTIME"
+
+  if g:daytime
+    colorscheme cobalt2
+  else
+    colorscheme distinguished
+  endif
+
+  if $VIM_COLORSCHEME != ""
+    colorscheme $VIM_COLORSCHEME
+  endif
 endif
 
 set mouse=a
