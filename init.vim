@@ -316,7 +316,6 @@ function! s:show_documentation()
 endfunction
 
 function! s:init_fern() abort
-  " Use 'select' instead of 'edit' for default 'open' action
   nmap <buffer> d <Plug>(fern-action-remove)
 endfunction
 
@@ -326,3 +325,17 @@ augroup fern-custom
 augroup END
 
 nnoremap <Leader>mr :vert ter swift %<CR>a
+
+func! s:my_colors_setup() abort
+  if exists('g:did_coc_loaded')
+    hi! CocFloating guifg=#eeeeee guibg=#222222
+    hi! CocMenuSel  guifg=#f1c40f guibg=#444444
+  endif
+endfunc
+
+call s:my_colors_setup()
+
+augroup colorscheme_coc_setup | au!
+  au ColorScheme * call s:my_colors_setup()
+augroup END
+
