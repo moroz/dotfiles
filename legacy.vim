@@ -5,19 +5,9 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
 endif
 
 if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    let s:linux = 0
-    let g:python_host_prog = '$HOME/.asdf/shims/python3'
-    let g:python3_host_prog = "$HOME/.asdf/shims/python3"
-    let s:daytime = system("$HOME/.dotfiles/darkmode.Darwin")
-  else
-    let s:linux = 1
-    let s:daytime = system("$HOME/.dotfiles/daytime")
-    let g:fcitx5_remote = '/usr/bin/fcitx5-remote'
+  if $VIM_COLORSCHEME != ""
+    colorscheme $VIM_COLORSCHEME
   endif
-
-  let g:daytime = s:daytime == "DAYTIME\n"
 endif
 
 call plug#begin('~/.config/nvim/plugged')
@@ -35,9 +25,9 @@ Plug 'tpope/vim-dispatch'
 Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
 Plug 'nvim-tree/nvim-tree.lua'
 
-if s:linux
-  Plug 'lilydjwg/fcitx.vim'
-endif
+" if s:linux
+"   Plug 'lilydjwg/fcitx.vim'
+" endif
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -115,17 +105,6 @@ call plug#end()
 let mapleader = " "
 
 nnoremap <Space> <Nop>
-autocmd Filetype c,make,go,php,rust setlocal tabstop=4 shiftwidth=4 noexpandtab
-autocmd Filetype php setlocal tabstop=4 shiftwidth=4 noexpandtab
-autocmd Filetype swift setlocal tabstop=2 shiftwidth=2 expandtab
-autocmd FileType yaml set inde=
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
-let g:terraform_fmt_on_save=1
-autocmd BufRead,BufNewFile *.slimleex set filetype=slim
-
-"" LaTeX
-autocmd Filetype tex nnoremap <Leader>mb <Leader>ll
-autocmd BufReadPre *.tex let b:vimtex_main = 'main.tex'
 
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let base16colorspace=256  "" Access colors present in 256 colorspace
@@ -135,60 +114,22 @@ autocmd StdinReadPre * let s:std_in=1
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 " coc config
-set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-autocmd FileType netrw set nolist
 inoremap <silent> <F9> <esc>
 
 " Select all occurrences of selected text
 vnoremap // y/\V<C-R>"<CR>
-
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
 
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 
 let test#strategy = "neovim"
 let test#neovim#term_position = "vert botright"
-
-if has("unix")
-  let s:uname = system("uname")
-  if s:uname == "Darwin\n"
-    let s:linux = 0
-    let g:python_host_prog = '/usr/local/bin/python2'
-    let g:python3_host_prog = '/opt/homebrew/bin/python3'
-    let s:daytime = system("$HOME/.dotfiles/darkmode.Darwin")
-  else
-    let s:linux = 1
-    let s:daytime = system("$HOME/.dotfiles/daytime")
-  endif
-
-  let g:daytime = s:daytime == "DAYTIME\n" || s:daytime == "DAYTIME"
-
-  if g:daytime
-    colorscheme cobalt2
-  else
-    colorscheme distinguished
-  endif
-
-  if $VIM_COLORSCHEME != ""
-    colorscheme $VIM_COLORSCHEME
-  endif
-endif
 
 set mouse=a
 

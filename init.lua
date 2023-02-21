@@ -16,6 +16,7 @@ vim.opt.eol = true
 vim.opt.autoread = true
 vim.opt.foldenable = false
 vim.opt.guicursor=""
+vim.opt.updatetime = 300
 
 -- disable netrw at the very start of your init.lua (strongly advised)
 vim.g.loaded_netrw = 1
@@ -59,8 +60,10 @@ vim.api.nvim_set_keymap('n', '<F5>', ':e!<CR>', { silent = true })
 vim.api.nvim_set_keymap('n', '<F9>', ':NvimTreeFindFileToggle<CR>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F10>', ':wqa<CR>', {})
 
+-- Use <c-space> to trigger completion.
+vim.api.nvim_set_keymap("i", "<C-Space>", "coc#refresh()", { silent = true, expr = true })
+
 vim.g.spacevim_enabled_layers = { 'core/root', 'core/behavior', 'core/buffers', 'core/files', 'core/files/vim', 'core/lisp', 'core/quit', 'core/windows', 'core/zoom', 'git' }
-vim.g.vimtex_view_method = 'skim'
 
 vim.g.coc_global_extensions = {
   'coc-tsserver',
@@ -84,6 +87,13 @@ vim.g.coc_snippet_prev = '<C-k>'
 vim.g.mix_format_on_save = 1
 vim.g.jsx_ext_required = 0
 vim.g.airline_powerline_fonts = 0
+vim.g.terraform_fmt_on_save = 1
+
+-- Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+vim.g.UltiSnipsExpandTrigger = "<tab>"
+vim.g.UltiSnipsJumpForwardTrigger = "<C-b>"
+vim.g.UltiSnipsJumpBackwardTrigger = "<C-z>"
+vim.g.UltiSnipsEditSplit = 'vertical'
 
 vim.g.AutoPairs = {
   ['('] = ')',
@@ -93,3 +103,43 @@ vim.g.AutoPairs = {
   ['```'] = '```',
   ['"""'] = '"""'
 }
+
+vim.api.nvim_create_autocmd({'Filetype'}, {
+  pattern = {'c', 'make', 'go', 'php', 'rust'},
+  command = 'setlocal tabstop=4 shiftwidth=4 noexpandtab'
+})
+
+vim.api.nvim_create_autocmd({'Filetype'}, {
+  pattern = {'swift'},
+  command = 'setlocal tabstop=2 shiftwidth=2 expandtab'
+})
+
+vim.api.nvim_create_autocmd({'Filetype'}, {
+  pattern = {'yaml'},
+  command = 'setlocal inde='
+})
+
+vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI'}, {
+  command = ':checktime'
+})
+
+if vim.fn.has("unix") then
+  local uname = vim.fn.system('uname')
+  local linux = true
+  local daytime = true
+  if uname == "Darwin\n" then
+    linux = false
+    vim.g.python_host_prog = '/usr/local/bin/python2'
+    vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
+    daytime = vim.fn.system("$HOME/.dotfiles/darkmode.Darwin") == "DAYTIME\n"
+  else
+    linux = true
+    daytime = vim.fn.system("$HOME/.dotfiles/daytime") == "DAYTIME\n"
+  end
+
+  if not daytime then
+    vim.cmd('colorscheme distinguished')
+  else
+    vim.cmd('colorscheme cobalt2')
+  end
+end
