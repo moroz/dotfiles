@@ -23,14 +23,17 @@ endif
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'lambdalisue/nerdfont.vim'
-Plug 'lambdalisue/fern.vim', { 'branch': 'main' }
-Plug 'lambdalisue/fern-renderer-nerdfont.vim'
-Plug 'lambdalisue/fern-git-status.vim'
+" Plug 'lambdalisue/fern.vim', { 'branch': 'main' }
+" Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+" Plug 'lambdalisue/fern-git-status.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'TimUntersberger/neogit'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'tpope/vim-dispatch'
+
+Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
+Plug 'nvim-tree/nvim-tree.lua'
 
 if s:linux
   Plug 'lilydjwg/fcitx.vim'
@@ -122,23 +125,6 @@ let g:spacevim_enabled_layers = [
       \ 'git'
       \ ]
 
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set number
-set hidden
-set laststatus=2
-set showcmd
-set noswapfile
-set incsearch
-set ignorecase
-set lbr
-set smartindent
-set eol
-set autoread
-set nofoldenable
-set guicursor=
-
 let mapleader = " "
 
 nnoremap <Space> <Nop>
@@ -150,24 +136,19 @@ autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * :checktime
 let g:terraform_fmt_on_save=1
 autocmd BufRead,BufNewFile *.slimleex set filetype=slim
 
-" LaTeX
+"" LaTeX
 autocmd Filetype tex nnoremap <Leader>mb <Leader>ll
 autocmd BufReadPre *.tex let b:vimtex_main = 'main.tex'
 let g:vimtex_view_method = 'skim'
 
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
-let base16colorspace=256  " Access colors present in 256 colorspace
-" lang zh_TW.UTF-8
+let base16colorspace=256  "" Access colors present in 256 colorspace
 
 autocmd StdinReadPre * let s:std_in=1
 
-if (has("termguicolors"))
-  set termguicolors
-endif
-
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-" coc config
+"" coc config
 let g:coc_global_extensions = [
       \ 'coc-tsserver',
       \ 'coc-eslint',
@@ -184,7 +165,7 @@ let g:coc_global_extensions = [
       \ 'coc-solargraph',
       \ 'coc-deno',
       \ ]
-set hidden " Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
+set hidden "" Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
@@ -208,7 +189,9 @@ nnoremap <C-p> :Files<cr>
 map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
 inoremap <silent> <F9> <esc>
-nnoremap <silent> <F9> :Fern . -drawer -reveal=% -toggle<CR>
+" nnoremap <silent> <F9> :Fern . -drawer -reveal=% -toggle<CR>
+nnoremap <silent> <F9> :NvimTreeFindFileToggle<CR>
+
 map <F10> :wqa<CR>
 " Select all occurrences of selected text
 vnoremap // y/\V<C-R>"<CR>
@@ -294,10 +277,10 @@ autocmd BufWritePost *.swift :silent exec "!swift-format -i '%'"
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)w
 
-" Use sd to show documentation in preview window
+"" Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-" Make <CR> to accept selected completion item or notify coc.nvim to format
-" <C-g>u breaks current undo, please make your own choice.
+"" Make <CR> to accept selected completion item or notify coc.nvim to format
+"" <C-g>u breaks current undo, please make your own choice.
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
