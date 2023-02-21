@@ -112,19 +112,6 @@ Plug 'juliosueiras/vim-terraform-completion', { 'for': 'terraform' }
 
 call plug#end()
 
-let g:spacevim_enabled_layers = [
-      \ 'core/root',
-      \ 'core/behavior',
-      \ 'core/buffers',
-      \ 'core/files',
-      \ 'core/files/vim',
-      \ 'core/lisp',
-      \ 'core/quit',
-      \ 'core/windows',
-      \ 'core/zoom',
-      \ 'git'
-      \ ]
-
 let mapleader = " "
 
 nnoremap <Space> <Nop>
@@ -139,7 +126,6 @@ autocmd BufRead,BufNewFile *.slimleex set filetype=slim
 "" LaTeX
 autocmd Filetype tex nnoremap <Leader>mb <Leader>ll
 autocmd BufReadPre *.tex let b:vimtex_main = 'main.tex'
-let g:vimtex_view_method = 'skim'
 
 au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
 let base16colorspace=256  "" Access colors present in 256 colorspace
@@ -148,24 +134,7 @@ autocmd StdinReadPre * let s:std_in=1
 
 command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
-"" coc config
-let g:coc_global_extensions = [
-      \ 'coc-tsserver',
-      \ 'coc-eslint',
-      \ 'coc-go',
-      \ 'coc-stylelintplus',
-      \ 'coc-rust-analyzer',
-      \ 'coc-prettier',
-      \ 'coc-json',
-      \ 'coc-elixir',
-      \ 'coc-emmet',
-      \ 'coc-css',
-      \ 'coc-diagnostic',
-      \ 'coc-snippets',
-      \ 'coc-solargraph',
-      \ 'coc-deno',
-      \ ]
-set hidden "" Some servers have issues with backup files, see #649 set nobackup set nowritebackup " Better display for messages set cmdheight=2 " You will have bad experience for diagnostic messages when it's default 4000.
+" coc config
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
@@ -173,26 +142,12 @@ set signcolumn=yes
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
-" Remap for rename current word
-nmap <F2> <Plug>(coc-rename)
-nmap <silent> <F5> :e!<CR>
-
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-nnoremap <C-c> "+yy
-nnoremap j gj
-nnoremap k gk
-inoremap <C-s> <esc>:w<cr>
-nnoremap <C-s> :w<cr>
-nnoremap <C-p> :Files<cr>
-map <silent> <Esc><Esc> :noh<CR>
 autocmd FileType netrw set nolist
 inoremap <silent> <F9> <esc>
-" nnoremap <silent> <F9> :Fern . -drawer -reveal=% -toggle<CR>
-nnoremap <silent> <F9> :NvimTreeFindFileToggle<CR>
 
-map <F10> :wqa<CR>
 " Select all occurrences of selected text
 vnoremap // y/\V<C-R>"<CR>
 
@@ -204,32 +159,8 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-map <Leader>wd :q<cr>
-map <Leader>Ts :Colors<cr>
-map <Leader>fer :source $MYVIMRC<cr>
-map <Leader>pi :PlugInstall<cr>
-map <Leader>pg :Tags<cr>
-
-map <Leader>gg :Neogit<cr>
-map <Leader>gp :NeogitPushPopup<cr>
-map <Leader>wm :only<cr>
-map <Leader>mtv :TestFile<CR>
-map <Leader>mtr :TestLast<CR>
-map <Leader>mta :TestSuite<CR>
-map <Leader>mm :Dispatch! mix ecto.migrate<CR>
-map <Leader>ot :term<cr>a
-
-lua << EOF
-local neogit = require("neogit")
-
-vim.api.nvim_set_keymap('n', '<leader>gp', '<Cmd>Neogit push<CR>', { noremap = true, silent = true })
-EOF
-
-let g:jsx_ext_required = 0
-let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:mix_format_on_save = 1
 
 let test#strategy = "neovim"
 let test#neovim#term_position = "vert botright"
@@ -264,12 +195,6 @@ set mouse=a
 " Press Tab to scroll _down_ a list of auto-completions
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-n>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-k>'
-
 " rustfmt on write using autoformat
 autocmd FileType rust autocmd BufWrite *.rs :Autoformat
 autocmd BufWritePost *.swift :silent exec "!swift-format -i '%'"
@@ -284,12 +209,6 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
       \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-if !s:linux
-  let g:fern#renderer = "nerdfont"
-endif
-
-let g:AutoPairs = {'(':')', '[':']', '{':'}', "`":"`", '```':'```', '"""':'"""'}
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -297,15 +216,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-function! s:init_fern() abort
-  nmap <buffer> d <Plug>(fern-action-remove)
-endfunction
-
-augroup fern-custom
-  autocmd! *
-  autocmd FileType fern call s:init_fern()
-augroup END
 
 nnoremap <Leader>mr :vert ter swift %<CR>a
 
