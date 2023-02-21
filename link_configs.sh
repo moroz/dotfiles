@@ -1,8 +1,9 @@
 #!/bin/bash
 
-if [[ ! -f $HOME/.config/nvim/init.vim ]]; then
+if [[ ! -f $HOME/.config/nvim/init.lua ]]; then
   mkdir -p $HOME/.config/nvim
-  ln -s $HOME/.dotfiles/init.vim $HOME/.config/nvim/init.vim
+  ln -s $HOME/.dotfiles/init.lua $HOME/.config/nvim/init.lua
+  ln -s $HOME/.dotfiles/legacy.vim $HOME/.config/nvim/legacy.vim
 fi
 
 [[ -f $HOME/.tmux.conf ]] || ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
