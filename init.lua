@@ -1,5 +1,100 @@
 vim.cmd('source $HOME/.config/nvim/legacy.vim')
 
+require('packer').startup(function (use)
+  use 'nvim-tree/nvim-web-devicons'
+  use 'nvim-tree/nvim-tree.lua'
+  use 'junegunn/fzf.vim'
+  use 'TimUntersberger/neogit'
+  use 'nvim-lua/plenary.nvim'
+  use 'tpope/vim-dispatch'
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
+  use 'chriskempson/base16-vim'
+  use 'flazz/vim-colorschemes'
+
+  -- Editing
+  use 'easymotion/vim-easymotion'
+  use 'tpope/vim-commentary'
+  use 'ctjhoa/spacevim'
+  use 'tpope/vim-surround'
+  use 'tpope/vim-abolish'
+  use 'airblade/vim-gitgutter'
+  use 'jiangmiao/auto-pairs'
+  use 'tmux-plugins/vim-tmux-focus-events'
+  use 'elixir-editors/vim-elixir'
+  use 'mlaursen/vim-react-snippets'
+
+  use 'fatih/vim-go'
+
+  use {
+    'mhinz/vim-mix-format', ft = { 'elixir' }
+  }
+
+  -- Javascript & React
+  use {
+    'pangloss/vim-javascript',
+    ft = { 'javascript', 'jsx', 'typescript', 'typescriptreact' }
+  }
+  use {
+    'maxmellon/vim-jsx-pretty',
+    ft = { 'javascript', 'jsx', 'typescriptreact' }
+  }
+  use {
+   'mattn/emmet-vim',
+   ft = { 'javascript', 'jsx', 'typescriptreact', 'html', 'eelixir' }
+  }
+  use {
+    'HerringtonDarkholme/yats.vim',
+    ft = { 'typescript', 'typescriptreact' }
+  }
+  use {
+    'cakebaker/scss-syntax.vim',
+    ft = { 'sass' }
+  }
+  use {
+    'jparise/vim-graphql',
+    ft = { 'javascript', 'typescript', 'jsx' }
+  }
+  use { 'Shougo/vimproc.vim', run = 'make' }
+
+  use {'neoclide/coc.nvim', branch = 'release'}
+  use 'lambdalisue/nerdfont.vim'
+  use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
+
+  -- if s:linux
+  --   use 'lilydjwg/fcitx.vim'
+  -- end
+
+  -- Color schemes
+  use {'sonph/onehalf', rtp = 'vim'}
+
+  -- Testing
+  use {'vim-test/vim-test', ft = {'elixir', 'typescript', 'ruby', 'javascript', 'javascriptreact', 'rust', 'go'}}
+
+  -- Editing
+  use {'tpope/vim-endwise', ft = {'elixir', 'ruby'}}
+  use {'lervag/vimtex', ft = 'tex'}
+  use {'lifepillar/pgsql.vim', ft = 'sql'}
+
+  -- Elixir
+  use {'SirVer/ultisnips', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'markdown', 'swift'}}
+  use {'ludovicchabant/vim-gutentags', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir', 'rust', 'go'}}
+
+  -- Ruby
+  use {'tpope/vim-rails', ft = 'ruby'}
+
+  -- Rust
+  use {'rust-lang/rust.vim', ft = 'rust'}
+  use 'ervandew/supertab'
+  use {'Chiel92/vim-autoformat', ft = {'rust', 'go'}}
+
+  -- Terraform
+  use {'hashivim/vim-terraform', ft = 'terraform'}
+  use {'rhadley-recurly/vim-terragrunt', ft = 'terraform'}
+  use {'juliosueiras/vim-terraform-completion', ft = 'terraform'}
+
+end)
+
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
