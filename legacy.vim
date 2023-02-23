@@ -1,31 +1,9 @@
-if has("unix")
-  if $VIM_COLORSCHEME != ""
-    colorscheme $VIM_COLORSCHEME
-  endif
-endif
-
-let mapleader = " "
-
-nnoremap <Space> <Nop>
-
-au BufRead,BufNewFile all set wrap linebreak nolist textwidth=0 wrapmargin=0
-let base16colorspace=256  "" Access colors present in 256 colorspace
-
 autocmd StdinReadPre * let s:std_in=1
-
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-
-" coc config
-set shortmess+=c
-set signcolumn=yes
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-inoremap <silent> <F9> <esc>
-
-" Select all occurrences of selected text
-vnoremap // y/\V<C-R>"<CR>
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
 
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'

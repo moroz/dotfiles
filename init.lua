@@ -238,3 +238,26 @@ if vim.fn.has("unix") then
     vim.cmd('colorscheme cobalt2')
   end
 end
+
+if vim.fn.has('unix') == 1 then
+  if not vim.env.VIM_COLORSCHEME == "" then
+    vim.cmd('colorscheme ' .. vim.env.VIM_COLORSCHEME)
+  end
+end
+
+vim.g.mapleader = ' '
+
+vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
+
+vim.api.nvim_create_autocmd({'BufRead','BufNewFile'}, {
+  pattern = '*',
+  command = 'set wrap linebreak nolist textwidth=0 wrapmargin=0'
+})
+
+vim.g.base16colorspace = 256
+
+-- coc config
+vim.opt.shortmess:append('c')
+vim.opt.signcolumn = 'yes'
+
+vim.api.nvim_set_keymap('i', '<F9>', '<esc>', { silent = true })
