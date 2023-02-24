@@ -24,11 +24,8 @@ require('packer').startup(function (use)
   use 'elixir-editors/vim-elixir'
   use 'mlaursen/vim-react-snippets'
 
+  use 'wuelnerdotexe/vim-astro'
   use 'fatih/vim-go'
-
-  use {
-    'mhinz/vim-mix-format', ft = { 'elixir' }
-  }
 
   -- Javascript & React
   use {
@@ -79,6 +76,9 @@ require('packer').startup(function (use)
   -- Elixir
   use {'SirVer/ultisnips', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'markdown', 'swift'}}
   use {'ludovicchabant/vim-gutentags', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir', 'rust', 'go'}}
+  use {
+    'elixir-lsp/coc-elixir', run = 'yarn install && yarn prepack'
+  }
 
   -- Ruby
   use {'tpope/vim-rails', ft = 'ruby'}
@@ -124,6 +124,8 @@ vim.opt.termguicolors = true
 require("nvim-tree").setup()
 
 local neogit = require("neogit")
+
+vim.g.mapleader = ' '
 
 vim.api.nvim_set_keymap('n', '<leader>gp', '<Cmd>Neogit push<CR>', { noremap = true, silent = true })
 
@@ -179,7 +181,6 @@ vim.g.coc_global_extensions = {
 vim.g.coc_snippet_next = '<C-n>'
 vim.g.coc_snippet_prev = '<C-k>'
 
-vim.g.mix_format_on_save = 1
 vim.g.jsx_ext_required = 0
 vim.g.airline_powerline_fonts = 0
 vim.g.terraform_fmt_on_save = 1
@@ -245,9 +246,9 @@ if vim.fn.has('unix') == 1 then
   end
 end
 
-vim.g.mapleader = ' '
+vim.g.astro_typescript = 'enable'
 
-vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
 
 vim.api.nvim_create_autocmd({'BufRead','BufNewFile'}, {
   pattern = '*',

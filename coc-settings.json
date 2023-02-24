@@ -1,19 +1,15 @@
 {
   "suggest.noselect": false,
   "suggest.minTriggerInputLength": 3,
-  "coc.preferences.formatOnSaveFiletypes": [
-    "javascript",
-    "typescript",
-    "typescriptreact",
-    "json",
-    "javascriptreact",
-    "typescript.tsx",
-    "graphql",
-    "vue",
-    "svelte",
-    "swift",
-    "ruby"
-  ],
+  "[javascript][typescript][typescriptreact][json][javascriptreact]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[graphql][vue][svelte][typescript.tsx]": {
+    "coc.preferences.formatOnSave": true
+  },
+  "[elixir][ruby][swift]": {
+    "coc.preferences.formatOnSave": true
+  },
   "diagnostic-languageserver.filetypes": {
     "elixir": ["mix_credo", "mix_credo_compile"],
     "eelixir": ["mix_credo", "mix_credo_compile"]
