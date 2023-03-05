@@ -53,6 +53,7 @@ require('packer').startup(function (use)
     ft = { 'javascript', 'typescript', 'jsx' }
   }
   use { 'Shougo/vimproc.vim', run = 'make' }
+  use { 'evanleck/vim-svelte', ft = 'svelte' }
 
   use {'neoclide/coc.nvim', branch = 'release'}
   use 'lambdalisue/nerdfont.vim'
@@ -86,7 +87,7 @@ require('packer').startup(function (use)
   -- Rust
   use {'rust-lang/rust.vim', ft = 'rust'}
   use 'ervandew/supertab'
-  use {'Chiel92/vim-autoformat', ft = {'rust', 'go'}}
+  use {'Chiel92/vim-autoformat', ft = 'rust'}
 
   -- Terraform
   use {'hashivim/vim-terraform', ft = 'terraform'}
@@ -238,21 +239,24 @@ if vim.fn.has("unix") then
   else
     vim.cmd('colorscheme cobalt2')
   end
-end
 
-if vim.fn.has('unix') == 1 then
-  if not vim.env.VIM_COLORSCHEME == "" then
-    vim.cmd('colorscheme ' .. vim.env.VIM_COLORSCHEME)
+  if os.getenv("VIM_COLORSCHEME") then
+    vim.cmd('colorscheme ' .. os.getenv("VIM_COLORSCHEME"))
   end
 end
 
 vim.g.astro_typescript = 'enable'
 
--- vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<Space>', '<Nop>', { noremap = true })
 
 vim.api.nvim_create_autocmd({'BufRead','BufNewFile'}, {
   pattern = '*',
   command = 'set wrap linebreak nolist textwidth=0 wrapmargin=0'
+})
+
+vim.api.nvim_create_autocmd({'BufRead','BufNewFile'}, {
+  pattern = "*.gohtml",
+  command = 'set ft=gohtmltmpl'
 })
 
 vim.g.base16colorspace = 256
@@ -262,3 +266,6 @@ vim.opt.shortmess:append('c')
 vim.opt.signcolumn = 'yes'
 
 vim.api.nvim_set_keymap('i', '<F9>', '<esc>', { silent = true })
+
+vim.api.nvim_set_keymap('x', "<leader>a", "<Plug>(coc-codeaction-selected)", { silent = true })
+vim.api.nvim_set_keymap('n', "<leader>a", "<Plug>(coc-codeaction-selected)w", { silent = true })

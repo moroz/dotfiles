@@ -20,9 +20,6 @@ let g:SuperTabDefaultCompletionType = "<c-n>"
 autocmd FileType rust autocmd BufWrite *.rs :Autoformat
 autocmd BufWritePost *.swift :silent exec "!swift-format -i '%'"
 
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)w
-
 "" Use sd to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 "" Make <CR> to accept selected completion item or notify coc.nvim to format
@@ -37,8 +34,6 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-
-nnoremap <Leader>mr :vert ter swift %<CR>a
 
 func! s:my_colors_setup() abort
   hi! CocFloating guifg=#eeeeee guibg=#222222
