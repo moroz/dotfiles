@@ -7,7 +7,7 @@
   "[graphql][vue][svelte][typescript.tsx]": {
     "coc.preferences.formatOnSave": true
   },
-  "[elixir][ruby][swift]": {
+  "[elixir][ruby][swift][astro]": {
     "coc.preferences.formatOnSave": true
   },
   "diagnostic-languageserver.filetypes": {
@@ -20,5 +20,6 @@
   "solargraph.diagnostics": true,
   "solargraph.autoformat": true,
   "solargraph.formatting": true,
-  "solargraph.hover": true
+  "solargraph.hover": true,
+  "prettier.documentSelectors": ["**/*.astro", "**/*.svelte"]
 }
