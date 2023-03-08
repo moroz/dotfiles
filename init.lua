@@ -1,5 +1,10 @@
 vim.cmd('source $HOME/.config/nvim/legacy.vim')
 
+if vim.fn.has("unix") then
+  local uname = vim.fn.system('uname')
+  is_linux = uname ~= "Darwin\n"
+end
+
 require('packer').startup(function (use)
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'
@@ -59,9 +64,10 @@ require('packer').startup(function (use)
   use 'lambdalisue/nerdfont.vim'
   use {'junegunn/fzf', dir = '~/.fzf', run = './install --all'}
 
-  -- if s:linux
-  --   use 'lilydjwg/fcitx.vim'
-  -- end
+  if is_linux then
+    -- use 'lilydjwg/fcitx.vim'
+    use 'h-hg/fcitx.nvim'
+  end
 
   -- Color schemes
   use {'sonph/onehalf', rtp = 'vim'}
@@ -70,7 +76,7 @@ require('packer').startup(function (use)
   use {'vim-test/vim-test', ft = {'elixir', 'typescript', 'ruby', 'javascript', 'javascriptreact', 'rust', 'go'}}
 
   -- Editing
-  use {'tpope/vim-endwise', ft = {'elixir', 'ruby'}}
+  use 'tpope/vim-endwise'
   use {'lervag/vimtex', ft = 'tex'}
   use {'lifepillar/pgsql.vim', ft = 'sql'}
 
@@ -221,27 +227,26 @@ vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter', 'CursorHold', 'CursorHol
 })
 
 if vim.fn.has("unix") then
-  local uname = vim.fn.system('uname')
-  local linux = true
   local daytime = true
-  if uname == "Darwin\n" then
-    linux = false
+  if not is_linux then
     vim.g.python_host_prog = '/usr/local/bin/python2'
     vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
-    daytime = vim.fn.system("$HOME/.dotfiles/darkmode.Darwin") == "DAYTIME\n"
-  else
-    linux = true
-    daytime = vim.fn.system("$HOME/.dotfiles/daytime") == "DAYTIME\n"
-  end
-
-  if not daytime then
-    vim.cmd('colorscheme distinguished')
-  else
-    vim.cmd('colorscheme cobalt2')
   end
 
   if os.getenv("VIM_COLORSCHEME") then
     vim.cmd('colorscheme ' .. os.getenv("VIM_COLORSCHEME"))
+  else
+    if is_linux then
+      daytime = vim.fn.system("$HOME/.dotfiles/daytime") == "DAYTIME\n"
+    else
+      daytime = vim.fn.system("$HOME/.dotfiles/darkmode.Darwin") == "DAYTIME\n"
+    end
+
+    if not daytime then
+      vim.cmd('colorscheme jellybeans')
+    else
+      vim.cmd('colorscheme cobalt2')
+    end
   end
 end
 
