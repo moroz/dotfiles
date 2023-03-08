@@ -180,6 +180,8 @@ ms() {
     yarn start $@
   elif [ -f Cargo.toml ]; then
     cargo watch -x run $@
+  elif [ -f modd.conf ]; then
+    modd $@
   elif [ -f go.mod ]; then
     air $@
   fi
