@@ -17,7 +17,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PS1=$'%{\e[01;32m%}%m%{\e[m%}:%{\e[01;34m%}%~%{\e[m%}$ '
+PS1=$'%{\e[01;32m%}%m%{\e[m%}:%{\e[01;34m%}%/%{\e[m%}$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
 export PATH="$HOME/.emacs.d/bin:$HOME/.fzf/bin:$PATH"
