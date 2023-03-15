@@ -228,10 +228,6 @@ vim.api.nvim_create_autocmd({'FocusGained', 'BufEnter', 'CursorHold', 'CursorHol
 
 if vim.fn.has("unix") then
   local daytime = true
-  if not is_linux then
-    vim.g.python_host_prog = '/usr/local/bin/python2'
-    vim.g.python3_host_prog = '/opt/homebrew/bin/python3'
-  end
 
   if os.getenv("VIM_COLORSCHEME") then
     vim.cmd('colorscheme ' .. os.getenv("VIM_COLORSCHEME"))
