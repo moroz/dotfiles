@@ -10,6 +10,9 @@
   "[elixir][ruby][swift][astro]": {
     "coc.preferences.formatOnSave": true
   },
+  "[css][scss][sass][html]": {
+    "coc.preferences.formatOnSave": true
+  },
   "diagnostic-languageserver.filetypes": {
     "elixir": ["mix_credo", "mix_credo_compile"],
     "eelixir": ["mix_credo", "mix_credo_compile"]
