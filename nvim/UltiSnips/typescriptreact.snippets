@@ -26,6 +26,25 @@ const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
 export default $1;
 endsnippet
 
+snippet sfce "Solid function component default export (with prop interface)" b
+import { Component } from "solid-js";
+
+import styles from "./$1.module.scss";
+
+interface Props {}
+
+const ${1:`!p snip.rv = module_name()`}: Component<Props> = () => {
+	return (
+		<div>
+			<p>Hello world!</p>
+		</div>
+	);
+};
+
+export default $1;
+endsnippet
+
+
 snippet rance "function component default export (with prop interface)" b
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
