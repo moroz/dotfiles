@@ -69,12 +69,14 @@ require('packer').startup(function (use)
   use {'sonph/onehalf', rtp = 'vim'}
 
   -- Testing
-  use {'vim-test/vim-test', ft = {'elixir', 'typescript', 'ruby', 'javascript', 'javascriptreact', 'rust', 'go'}}
+  use {'vim-test/vim-test', ft = {'elixir', 'typescript', 'typescriptreact', 'ruby', 'javascript', 'javascriptreact', 'rust', 'go'}}
 
   -- Editing
   use 'tpope/vim-endwise'
   use {'lervag/vimtex', ft = 'tex'}
   use {'lifepillar/pgsql.vim', ft = 'sql'}
+
+  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Elixir
   use {'SirVer/ultisnips', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'markdown', 'swift'}}
@@ -253,6 +255,11 @@ vim.api.nvim_create_autocmd({'BufRead','BufNewFile'}, {
   command = 'set ft=html'
 })
 
+vim.api.nvim_create_autocmd({'BufRead','BufNewFile'}, {
+  pattern = "*.heex",
+  command = 'set ft=eelixir'
+})
+
 vim.g.base16colorspace = 256
 
 -- coc config
@@ -263,3 +270,11 @@ vim.api.nvim_set_keymap('i', '<F9>', '<esc>', { silent = true })
 
 vim.api.nvim_set_keymap('x', "<leader>a", "<Plug>(coc-codeaction-selected)", { silent = true })
 vim.api.nvim_set_keymap('n', "<leader>a", "<Plug>(coc-codeaction-selected)w", { silent = true })
+
+require'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = {"elixir", "typescript", "ruby", "css", "scss", "sql", "terraform", "html"},
+  highlight = {
+    enable = true,
+  }
+}
