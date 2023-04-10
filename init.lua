@@ -42,10 +42,6 @@ require('packer').startup(function (use)
     ft = { 'javascript', 'jsx', 'typescriptreact' }
   }
   use {
-   'mattn/emmet-vim',
-   ft = { 'javascript', 'jsx', 'typescriptreact', 'html', 'eelixir' }
-  }
-  use {
     'HerringtonDarkholme/yats.vim',
     ft = { 'typescript', 'typescriptreact' }
   }
@@ -83,9 +79,6 @@ require('packer').startup(function (use)
   -- Elixir
   use {'SirVer/ultisnips', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'markdown', 'swift'}}
   use {'ludovicchabant/vim-gutentags', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir', 'rust', 'go'}}
-  use {
-    'elixir-lsp/coc-elixir', run = 'yarn install && yarn prepack'
-  }
 
   -- Ruby
   use {'tpope/vim-rails', ft = 'ruby'}
@@ -257,7 +250,7 @@ vim.api.nvim_create_autocmd({'BufRead','BufNewFile'}, {
 
 vim.api.nvim_create_autocmd({'BufRead','BufNewFile'}, {
   pattern = "*.gohtml",
-  command = 'set ft=gohtmltmpl'
+  command = 'set ft=html'
 })
 
 vim.g.base16colorspace = 256
