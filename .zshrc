@@ -92,10 +92,10 @@ alias ml="mix compile"
 alias ya="yarn add "
 alias yad="yarn add -D "
 alias ap="ansible-playbook -v site.yml"
-alias up="docker compose up"
-alias down="docker compose down"
+alias up="docker-compose up"
+alias down="docker-compose down"
 alias tf="terraform"
-alias build="docker compose build"
+alias build="docker-compose build"
 
 mm() {
     if [ -f mix.exs ]; then
