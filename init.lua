@@ -76,8 +76,6 @@ require('packer').startup(function (use)
   use {'lervag/vimtex', ft = 'tex'}
   use {'lifepillar/pgsql.vim', ft = 'sql'}
 
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-
   -- Elixir
   use {'SirVer/ultisnips', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'markdown', 'swift'}}
   use {'ludovicchabant/vim-gutentags', ft = {'javascript', 'jsx', 'typescript', 'typescriptreact', 'elixir', 'rust', 'go'}}
@@ -270,11 +268,3 @@ vim.api.nvim_set_keymap('i', '<F9>', '<esc>', { silent = true })
 
 vim.api.nvim_set_keymap('x', "<leader>a", "<Plug>(coc-codeaction-selected)", { silent = true })
 vim.api.nvim_set_keymap('n', "<leader>a", "<Plug>(coc-codeaction-selected)w", { silent = true })
-
-require'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = {"elixir", "typescript", "ruby", "css", "scss", "sql", "terraform", "html"},
-  highlight = {
-    enable = true,
-  }
-}
