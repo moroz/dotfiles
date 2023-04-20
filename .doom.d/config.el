@@ -19,8 +19,8 @@
   (string-equal (string-trim (shell-command-to-string (daytime-command))) "DAYTIME"))
 
 (defun km/get-font-size ()
-  (setq base-size 18)
-  (setq scaling-factor (if (is-retina) 2 1))
+  (setq base-size 17)
+  (setq scaling-factor 2)
   (* scaling-factor base-size)
   )
 
@@ -31,14 +31,14 @@
 (setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
 (setq cjk-scaling-factor (if (is-linux) (if (is-retina) 0.315 0.630) 1))
 (setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
-;; (setq doom-theme #'doom-city-lights)
+(setq doom-theme #'cobalt2)
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
 (setq cjk-face (font-spec :family cjk-font :size cjk-font-size))
 (setq sans-face (font-spec :family sans-font :size (- (km/get-font-size) 1)))
 (setq doom-font common-face
-      doom-variable-pitch-font sans-face
+      ;; doom-variable-pitch-font sans-face
       doom-unicode-font cjk-face)
-(setq doom-theme (if (display-graphic-p) #'cobalt2 #'distinguished))
+;; (setq doom-theme (if (display-graphic-p) #'cobalt2 #'distinguished))
 
 (setq display-line-numbers-type t)
 
@@ -133,3 +133,8 @@
     (TeX-command latex-build-command 'TeX-master-file -1)))
 
 (add-to-list 'auto-mode-alist '("\\.slimleex\\'" . slim-mode))
+
+(setq-hook! 'js2-mode-hook +format-with 'prettier)
+(setq-hook! 'js2-mode-hook +format-with-lsp nil)
+(setq-hook! 'typescript-mode-hook +format-with-lsp nil)
+(setq-hook! 'javascript-mode-hook +format-with-lsp nil)
