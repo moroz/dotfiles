@@ -67,6 +67,7 @@ require('packer').startup(function (use)
 
   -- Color schemes
   use {'sonph/onehalf', rtp = 'vim'}
+  use 'folke/tokyonight.nvim'
 
   -- Testing
   use {'vim-test/vim-test', ft = {'elixir', 'typescript', 'typescriptreact', 'ruby', 'javascript', 'javascriptreact', 'rust', 'go'}}
