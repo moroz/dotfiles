@@ -20,7 +20,7 @@
 
 (defun km/get-font-size ()
   (setq base-size 17)
-  (setq scaling-factor 2)
+  (setq scaling-factor (if (is-linux) 2 1))
   (* scaling-factor base-size)
   )
 
