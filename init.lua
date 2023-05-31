@@ -67,6 +67,7 @@ require('packer').startup(function (use)
 
   -- Color schemes
   use {'sonph/onehalf', rtp = 'vim'}
+  use "folke/tokyonight.nvim"
 
   -- Testing
   use {'vim-test/vim-test', ft = {'elixir', 'typescript', 'typescriptreact', 'ruby', 'javascript', 'javascriptreact', 'rust', 'go'}}
@@ -176,7 +177,8 @@ vim.g.coc_global_extensions = {
   'coc-diagnostic',
   'coc-snippets',
   'coc-solargraph',
-  'coc-deno'
+  'coc-deno',
+  'coc-svelte'
 }
 vim.g.coc_snippet_next = '<C-n>'
 vim.g.coc_snippet_prev = '<C-k>'
@@ -225,17 +227,18 @@ if vim.fn.has("unix") then
   if os.getenv("VIM_COLORSCHEME") then
     vim.cmd('colorscheme ' .. os.getenv("VIM_COLORSCHEME"))
   else
-    if is_linux then
-      daytime = vim.fn.system("$HOME/.dotfiles/daytime") == "DAYTIME\n"
-    else
-      daytime = vim.fn.system("$HOME/.dotfiles/darkmode.Darwin") == "DAYTIME\n"
-    end
+    -- if is_linux then
+    --   daytime = vim.fn.system("$HOME/.dotfiles/daytime") == "DAYTIME\n"
+    -- else
+    --   daytime = vim.fn.system("$HOME/.dotfiles/darkmode.Darwin") == "DAYTIME\n"
+    -- end
 
-    if not daytime then
-      vim.cmd('colorscheme jellybeans')
-    else
-      vim.cmd('colorscheme cobalt2')
-    end
+    -- if not daytime then
+    --   vim.cmd('colorscheme jellybeans')
+    -- else
+    --   vim.cmd('colorscheme cobalt2')
+    -- end
+    vim.cmd('colorscheme tokyonight')
   end
 end
 
