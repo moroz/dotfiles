@@ -690,15 +690,14 @@
     "gitlens.codeLens.scopes": ["document"]
   },
   "[elixir]": {
-    "editor.defaultFormatter": "JakeBecker.elixir-ls"
+    "editor.defaultFormatter": "saratravi.elixir-formatter"
   },
   "files.associations": {
     "*.slimleex": "slim"
   },
-  "editor.fontSize": 14,
   "svelte.enable-ts-plugin": true,
-  "editor.fontFamily": "'JetBrainsMono NF', 'FiraMono NF', 'monospace', monospace, 'Droid Sans Fallback'",
-  "workbench.colorTheme": "Cobalt2",
+  "editor.fontFamily": "JetBrainsMono NF",
+  "workbench.colorTheme": "Solarized Light",
   "window.zoomLevel": 1,
   "[vue]": {
     "editor.defaultFormatter": "johnsoncodehk.volar"
