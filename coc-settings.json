@@ -27,5 +27,6 @@
   "prettier.documentSelectors": ["**/*.astro", "**/*.svelte"],
   "emmet.includeLanguages": {
     "gohtmltmpl": "html"
-  }
+  },
+  "svelte.enable-ts-plugin": true
 }

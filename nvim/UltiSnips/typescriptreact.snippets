@@ -11,7 +11,7 @@ endglobal
 
 snippet rafce "function component default export (with prop interface)" b
 import React from "react";
-import styles from "./$1.module.scss";
+import styles from "./$1.module.sass";
 
 interface Props {}
 
@@ -20,6 +20,23 @@ const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
 		<div className={styles.root}>
 			<p>Hello world!</p>
 		</div>
+	);
+};
+
+export default $1;
+endsnippet
+
+snippet rals "landing section" b
+import React from "react";
+import styles from "./$1.module.sass";
+
+interface Props {}
+
+const ${1:`!p snip.rv = module_name()`}: React.FC<Props> = () => {
+	return (
+		<section className={styles.section}>
+			<h2>$1</h2>
+		</section>
 	);
 };
 
