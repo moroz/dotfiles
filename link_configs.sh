@@ -1,7 +1,8 @@
 #!/bin/bash
 
+mkdir -p $HOME/.config/{nvim,kitty}
+
 if [[ ! -f $HOME/.config/nvim/init.lua ]]; then
-  mkdir -p $HOME/.config/nvim
   ln -s $HOME/.dotfiles/init.lua $HOME/.config/nvim/init.lua
   ln -s $HOME/.dotfiles/legacy.vim $HOME/.config/nvim/legacy.vim
 fi
@@ -13,6 +14,7 @@ fi
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
 [[ -f $HOME/.zshrc ]] || ln -s $HOME/.dotfiles/.psqlrc $HOME/.psqlrc
 [[ -f $HOME/.gitignore ]] || ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
+[[ -f $HOME/.config/kitty/kitty.conf ]] || ln -s $HOME/.dotfiles/kitty.conf $HOME/.config/kitty/kitty.conf
 [[ -f $HOME/.config/nvim/coc-settings.json ]] || ln -s $HOME/.dotfiles/coc-settings.json $HOME/.config/nvim/coc-settings.json
 [[ -d $HOME/.config/nvim/UltiSnips ]] || ln -s $HOME/.dotfiles/nvim/UltiSnips $HOME/.config/nvim/UltiSnips
 git config --global core.excludesfile ~/.gitignore
