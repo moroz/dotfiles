@@ -23,7 +23,7 @@ git config --global core.excludesfile ~/.gitignore
 mkdir -p ~/.ctags.d
 [[ -f $HOME/.ctags.d/default.ctags ]] || ln -s $HOME/.dotfiles/.ctags $HOME/.ctags.d/default.ctags
 
-ln -s $HOME/.dotfiles/.doom.d $HOME/.doom.d
+[[ -d $HOME/.doom.d ]] || ln -s $HOME/.dotfiles/.doom.d $HOME/.doom.d
 
 os="`uname`"
 if [[ "$os" == 'Darwin' ]]; then
