@@ -9,7 +9,7 @@ require('packer').startup(function (use)
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'
   use 'junegunn/fzf.vim'
-  use 'TimUntersberger/neogit'
+  use 'NeogitOrg/neogit'
   use 'nvim-lua/plenary.nvim'
   use 'tpope/vim-dispatch'
   use 'vim-airline/vim-airline'
@@ -238,7 +238,7 @@ if vim.fn.has("unix") then
     -- else
     --   vim.cmd('colorscheme cobalt2')
     -- end
-    vim.cmd('colorscheme tokyonight')
+    vim.cmd('colorscheme codedark')
   end
 end
 
@@ -271,3 +271,7 @@ vim.api.nvim_set_keymap('i', '<F9>', '<esc>', { silent = true })
 
 vim.api.nvim_set_keymap('x', "<leader>a", "<Plug>(coc-codeaction-selected)", { silent = true })
 vim.api.nvim_set_keymap('n', "<leader>a", "<Plug>(coc-codeaction-selected)w", { silent = true })
+
+local neogit = require('neogit')
+
+neogit.setup {}
