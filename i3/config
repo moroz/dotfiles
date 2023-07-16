@@ -184,3 +184,7 @@ bindsym $mod+p mode "resize"
 bar {
         status_command i3status
 }
+
+bindsym Ctrl+Space exec --no-startup-id "rofi -show combi"
+exec xinput set-prop 13 "libinput Tapping Enabled" 1
+
