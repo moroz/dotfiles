@@ -189,6 +189,17 @@ magit() {
   emacsclient -t --eval "(call-interactively #'magit-status)" -a "emacs -nw --eval \"(call-interactively #'magit-status)\""
 }
 
+gensecret() {
+  LENGTH="${@[0]:-32}"
+  SECRET="$(openssl rand -base64 $LENGTH)"
+
+  if [ "$system" = "Darwin" ]; then
+    echo $SECRET | tr -d '\n' | pbcopy
+  else
+    echo $SECRET | tr -d '\n' | xclip -sel c
+  fi
+}
+
 gpd() {
   branch="$(git rev-parse --abbrev-ref HEAD)"
   git push -u origin "$branch"
