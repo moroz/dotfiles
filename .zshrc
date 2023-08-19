@@ -74,10 +74,6 @@ alias vi="nvim"
 alias vim="echo 'Use vi'"
 alias brow="arch --x86_64 /usr/local/Homebrew/bin/brew"
 
-ee() {
-    emacsclient --create-frame "${1:-.}"
-}
-
 alias cd..="cd .."
 
 alias cdw="cd ~/working"
