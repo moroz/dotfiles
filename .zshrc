@@ -85,8 +85,6 @@ alias c="code ."
 alias ims="iex -S mix phx.server"
 alias imtf="iex -S mix test --failed"
 alias ml="mix compile"
-alias ya="yarn add "
-alias yad="yarn add -D "
 alias ap="ansible-playbook -v site.yml"
 alias up="docker-compose up"
 alias down="docker-compose down"
@@ -99,7 +97,7 @@ mm() {
     elif [ -f Gemfile ]; then
         bundle exec rake db:migrate $@
     elif [ -f package.json ]; then
-        yarn db:migrate $@
+        pnpm db:migrate $@
     elif [ -f Cargo.toml ]; then
         diesel migration run
     fi
@@ -111,7 +109,7 @@ mr() {
     elif [ -f Gemfile ]; then
         bundle exec rake db:rollback $@
     elif [ -f package.json ]; then
-        yarn db:rollback
+        pnpm db:rollback
     elif [ -f Cargo.toml ]; then
       diesel migration revert
     fi
@@ -123,7 +121,7 @@ mt() {
   elif [ -f Gemfile ]; then
     bundle exec rspec $@
   elif [ -f package.json ]; then
-    yarn test $@
+    pnpm test $@
   elif [ -f Cargo.toml ]; then
     cargo test $@
   fi
@@ -145,7 +143,7 @@ im() {
   elif [ -f Gemfile ]; then
     bundle exec rails c
   elif [ -f package.json ]; then
-    yarn run ts-node
+    pnpm run ts-node
   fi
 }
 
@@ -157,7 +155,7 @@ md() {
   elif [ -f Gemfile ]; then 
     bundle
   elif [ -f package.json ]; then
-    yarn
+    pnpm
   fi
 }
 
@@ -165,15 +163,15 @@ ms() {
   if [ -f mix.exs ]; then
     mix phx.server $@
   elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ] || [ -f vite.config.mjs ]; then
-    yarn dev $@
+    pnpm dev $@
   elif [ -f Gemfile ]; then 
     bundle exec rails server $@
   elif [ -f Procfile ]; then
     foreman start
   elif [ -f vue.config.js ]; then
-    yarn serve
+    pnpm serve
   elif [ -f package.json ]; then
-    yarn start $@
+    pnpm start $@
   elif [ -f Cargo.toml ]; then
     cargo watch -x run $@
   elif [ -f modd.conf ]; then
@@ -185,6 +183,17 @@ ms() {
 
 magit() {
   emacsclient -t --eval "(call-interactively #'magit-status)" -a "emacs -nw --eval \"(call-interactively #'magit-status)\""
+}
+
+gensecret() {
+  LENGTH="${@[0]:-32}"
+  SECRET="$(openssl rand -base64 $LENGTH)"
+
+  if [ "$system" = "Darwin" ]; then
+    echo $SECRET | tr -d '\n' | pbcopy
+  else
+    echo $SECRET | tr -d '\n' | xclip -sel c
+  fi
 }
 
 gpd() {
