@@ -1,0 +1,5 @@
+require("settings")
+require("packages")
+require("keymappings")
+require("lsp")
+vim.cmd('colorscheme codedark')

@@ -1,21 +1,15 @@
 #!/bin/bash
 
-mkdir -p $HOME/.config/{nvim,fontconfig}
+mkdir -p $HOME/.config/fontconfig
 
-if [[ ! -f $HOME/.config/nvim/init.lua ]]; then
-  ln -s $HOME/.dotfiles/init.lua $HOME/.config/nvim/init.lua
-  ln -s $HOME/.dotfiles/legacy.vim $HOME/.config/nvim/legacy.vim
-fi
-
+ln -sf $HOME/.dotfiles/nvim $HOME/.config/nvim
 [[ -f $HOME/.tmux.conf ]] || ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
 [[ -f $HOME/.prettierrc.js ]] || ln -s $HOME/.dotfiles/.prettierrc.js $HOME/.prettierrc.js
 [[ -f $HOME/.eslintrc.js ]] || ln -s $HOME/.dotfiles/.eslintrc.js $HOME/.eslintrc.js
 [[ -f $HOME/.spacemacs ]] || ln -s $HOME/.dotfiles/.spacemacs $HOME/.spacemacs
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
-[[ -f $HOME/.zshrc ]] || ln -s $HOME/.dotfiles/.psqlrc $HOME/.psqlrc
+[[ -f $HOME/.psqlrc ]] || ln -s $HOME/.dotfiles/.psqlrc $HOME/.psqlrc
 [[ -f $HOME/.gitignore ]] || ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
-[[ -f $HOME/.config/nvim/coc-settings.json ]] || ln -s $HOME/.dotfiles/coc-settings.json $HOME/.config/nvim/coc-settings.json
-[[ -d $HOME/.config/nvim/UltiSnips ]] || ln -s $HOME/.dotfiles/nvim/UltiSnips $HOME/.config/nvim/UltiSnips
 [[ -f $HOME/.config/fontconfig/fonts.confi ]] || ln -s $HOME/.dotfiles/fonts.conf $HOME/.config/fontconfig/fonts.conf
 git config --global core.excludesfile ~/.gitignore
 
