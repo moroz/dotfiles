@@ -29,3 +29,4 @@ vim.api.nvim_create_autocmd({'Filetype'}, {
 })
 
 vim.g.mapleader = ' '
+vim.cmd.colorscheme('codedark')
