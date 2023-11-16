@@ -201,6 +201,10 @@ gpd() {
   git push -u origin "$branch"
 }
 
+glc() {
+  git log --format=%B -n 1 | tr -d '\n'
+}
+
 if [ "$system" = "Darwin" ]; then
   # enable Erlang builds on Catalina
   export CFLAGS="-O2 -g -fno-stack-check"
