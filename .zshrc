@@ -29,6 +29,8 @@ else;
   alias ls="ls -G -las"
 fi
 
+alias rg="rg -i"
+
 export QUOTING_STYLE=literal
 # export FZF_DEFAULT_COMMAND="ag -g ."
 export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git'"
@@ -83,7 +85,7 @@ alias cdr="cd ~/rust"
 alias c="code ."
 
 alias ims="iex -S mix phx.server"
-alias imtf="iex -S mix test --failed"
+alias imtf="iex --dbg pry -S mix test --failed"
 alias ml="mix compile"
 alias ap="ansible-playbook -v site.yml"
 alias up="docker-compose up"
