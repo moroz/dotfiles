@@ -1,5 +1,4 @@
 local telescope = require('telescope.builtin')
-vim.keymap.set('n', '<C-p>', telescope.git_files, { noremap = true })
 vim.keymap.set('n', '<Leader>Ts', telescope.colorscheme, { noremap = true })
 vim.keymap.set('n', '<Leader>bb', telescope.buffers, { noremap = true })
 vim.api.nvim_set_keymap('n', "<C-s>", ":w<cr>", { silent=true, noremap=true })
@@ -11,3 +10,12 @@ vim.api.nvim_set_keymap('', '<Leader>wd', ':q<cr>', { silent = true, noremap = t
 vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
 vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
 
+local function find_with_rg()
+  telescope.find_files({
+    find_command = {
+      "rg", "--files", "--hidden", "--ignore", "-g", "!.git"
+    }
+  })
+end
+
+vim.keymap.set('n', '<C-p>', find_with_rg, { noremap = true })

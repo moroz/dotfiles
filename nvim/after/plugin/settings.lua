@@ -20,7 +20,6 @@ vim.opt.updatetime = 300
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
--- set termguicolors to enable highlight groups
 vim.opt.termguicolors = true
 
 vim.api.nvim_create_autocmd({'Filetype'}, {
