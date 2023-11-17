@@ -10,6 +10,7 @@ vim.opt.showcmd = true
 vim.opt.swapfile = false
 vim.opt.incsearch = true
 vim.opt.ignorecase = true
+vim.o.smartcase = true
 vim.opt.lbr = true
 vim.opt.smartindent = true
 vim.opt.eol = true
