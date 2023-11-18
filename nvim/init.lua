@@ -27,10 +27,10 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'tpope/vim-rhubarb',
-	'tpope/vim-surround',
-	'tpope/vim-abolish',
-	'chriskempson/base16-vim',
-	'flazz/vim-colorschemes',
+  'tpope/vim-surround',
+  'tpope/vim-abolish',
+  'chriskempson/base16-vim',
+  'flazz/vim-colorschemes',
 
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
@@ -129,7 +129,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',  opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -165,8 +165,9 @@ require('lazy').setup({
   'nvim-tree/nvim-tree.lua',
   'h-hg/fcitx.nvim',
   'elixir-editors/vim-elixir',
-  {'hashivim/vim-terraform', ft = 'terraform'},
+  { 'hashivim/vim-terraform', ft = 'terraform' },
   "lukas-reineke/lsp-format.nvim",
+  'fatih/vim-go',
 }, {})
 
 -- Set highlight on search
@@ -211,4 +212,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
