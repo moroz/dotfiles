@@ -48,10 +48,21 @@ local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
     require('telescope.builtin').live_grep({
-      search_dirs = {git_root},
+      search_dirs = { git_root },
     })
   end
 end
+
+local telescope = require('telescope.builtin')
+local function find_with_rg()
+  telescope.find_files({
+    find_command = {
+      "rg", "--files", "--hidden", "--ignore", "-g", "!.git"
+    }
+  })
+end
+
+vim.keymap.set('n', '<C-p>', find_with_rg, { noremap = true })
 
 vim.api.nvim_create_user_command('LiveGrepGitRoot', live_grep_git_root, {})
 
