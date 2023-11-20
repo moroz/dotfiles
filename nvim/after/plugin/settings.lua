@@ -25,3 +25,5 @@ vim.opt.termguicolors = true
 
 vim.g.mapleader = ' '
 vim.cmd.colorscheme('codedark')
+
+vim.g.neoformat_only_msg_on_error = true

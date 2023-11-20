@@ -50,9 +50,11 @@ local servers = {
   gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs'} },
   terraformls = {},
+  templ = {},
+  elixirls = {},
 
   lua_ls = {
     Lua = {

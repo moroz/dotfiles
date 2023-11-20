@@ -67,6 +67,13 @@ require('lazy').setup({
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
+
+      {
+        "quangnguyen30192/cmp-nvim-ultisnips",
+        config = function()
+          require("cmp_nvim_ultisnips").setup {}
+        end
+      },
     },
   },
 
@@ -168,6 +175,23 @@ require('lazy').setup({
   { 'hashivim/vim-terraform', ft = 'terraform' },
   "lukas-reineke/lsp-format.nvim",
   'fatih/vim-go',
+  'joerdav/templ.vim',
+  'sbdchd/neoformat',
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",         -- required
+      "nvim-telescope/telescope.nvim", -- optional
+      "sindrets/diffview.nvim",        -- optional
+      "ibhagwan/fzf-lua",              -- optional
+    },
+    config = true
+  },
+  'SirVer/ultisnips',
+  'honza/vim-snippets',
+  'vim-test/vim-test',
+  'dcampos/cmp-emmet-vim',
+  'mattn/emmet-vim',
 }, {})
 
 -- Set highlight on search
