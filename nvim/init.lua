@@ -15,6 +15,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local function is_linux()
+  if vim.fn.has("unix") then
+    local uname = vim.fn.system('uname')
+    return uname ~= "Darwin\n"
+  end
+  return false
+end
+
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -136,7 +144,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',   opts = {} },
+  { 'numToStr/Comment.nvim',     opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -169,8 +177,8 @@ require('lazy').setup({
   },
 
   'ctjhoa/spacevim',
-  { 'nvim-tree/nvim-tree.lua', cmd = 'NvimTreeFindFileToggle', config = true },
-  'h-hg/fcitx.nvim',
+  { 'nvim-tree/nvim-tree.lua',   cmd = 'NvimTreeFindFileToggle', config = true },
+  { 'h-hg/fcitx.nvim',           cond = is_linux },
   { 'elixir-editors/vim-elixir', ft = 'elixir' },
   { 'hashivim/vim-terraform',    ft = 'terraform' },
   "lukas-reineke/lsp-format.nvim",
