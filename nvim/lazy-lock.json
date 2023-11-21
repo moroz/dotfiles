@@ -42,6 +42,7 @@
   "vim-sleuth": { "branch": "master", "commit": "1cc4557420f215d02c4d2645a748a816c220e99b" },
   "vim-snippets": { "branch": "master", "commit": "b039190177d97a968d80518470910aae7faf182a" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
+  "vim-svelte-plugin": { "branch": "master", "commit": "612b34640919c29b5cf2d85289dbc762b099858a" },
   "vim-terraform": { "branch": "master", "commit": "d37ae7e7828aa167877e338dea5d4e1653ed3eb1" },
   "vim-test": { "branch": "master", "commit": "6d054a713d601291c01c42197796644cf00ca9f2" }
 }

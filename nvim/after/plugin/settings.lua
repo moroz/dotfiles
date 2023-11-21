@@ -24,6 +24,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 vim.g.mapleader = ' '
-vim.cmd.colorscheme('codedark')
+vim.cmd.colorscheme('tender')
 
 vim.g.neoformat_only_msg_on_error = true
+
+vim.g.vim_svelte_plugin_use_typescript = true

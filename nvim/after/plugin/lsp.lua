@@ -51,10 +51,11 @@ local servers = {
   -- pyright = {},
   -- rust_analyzer = {},
   tsserver = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs'} },
+  html = { filetypes = { 'html', 'twig', 'hbs' } },
   terraformls = {},
   templ = {},
   elixirls = {},
+  svelte = {},
 
   lua_ls = {
     Lua = {
@@ -66,7 +67,6 @@ local servers = {
 
 -- Setup neovim lua configuration
 require('neodev').setup()
-require('nvim-tree').setup()
 
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()

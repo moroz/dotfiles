@@ -136,7 +136,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',  opts = {} },
+  { 'numToStr/Comment.nvim',   opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -169,13 +169,13 @@ require('lazy').setup({
   },
 
   'ctjhoa/spacevim',
-  'nvim-tree/nvim-tree.lua',
+  { 'nvim-tree/nvim-tree.lua', cmd = 'NvimTreeFindFileToggle', config = true },
   'h-hg/fcitx.nvim',
-  'elixir-editors/vim-elixir',
-  { 'hashivim/vim-terraform', ft = 'terraform' },
+  { 'elixir-editors/vim-elixir', ft = 'elixir' },
+  { 'hashivim/vim-terraform',    ft = 'terraform' },
   "lukas-reineke/lsp-format.nvim",
-  'fatih/vim-go',
-  'joerdav/templ.vim',
+  { 'fatih/vim-go',      ft = 'go' },
+  { 'joerdav/templ.vim', ft = 'templ' },
   'sbdchd/neoformat',
   {
     "NeogitOrg/neogit",
@@ -192,6 +192,7 @@ require('lazy').setup({
   'vim-test/vim-test',
   'dcampos/cmp-emmet-vim',
   'mattn/emmet-vim',
+  { 'leafOfTree/vim-svelte-plugin', ft = 'svelte' }
 }, {})
 
 -- Set highlight on search
