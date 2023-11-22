@@ -28,4 +28,5 @@ vim.cmd.colorscheme('tender')
 
 vim.g.neoformat_only_msg_on_error = true
 
-vim.g.vim_svelte_plugin_use_typescript = true
+vim.g.vim_svelte_plugin_use_typescript = 1
+vim.g.vim_svelte_plugin_use_sass = 1

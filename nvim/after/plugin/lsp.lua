@@ -1,12 +1,6 @@
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(client, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
   local nmap = function(keys, func, desc)
     if desc then
       desc = 'LSP: ' .. desc
@@ -32,11 +26,6 @@ local on_attach = function(client, bufnr)
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-  -- Create a command `:Format` local to the LSP buffer
-  vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-    vim.lsp.buf.format()
-  end, { desc = 'Format current buffer with LSP' })
-
   require("lsp-format").on_attach(client, bufnr)
 end
 
@@ -45,11 +34,23 @@ end
 require('mason').setup()
 require('mason-lspconfig').setup()
 
+local prettier = {
+  formatCommand = [[prettier --stdin-filepath ${INPUT}]],
+  formatStdin = true,
+}
+
 local servers = {
   -- clangd = {},
   gopls = {},
   -- pyright = {},
   -- rust_analyzer = {},
+  efm = {
+    init_options = { documentFormatting = true },
+    languages = {
+      typescript = { prettier },
+      typescriptreact = { prettier },
+    }
+  },
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
   terraformls = {},
@@ -86,6 +87,7 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
+      init_options = (servers[server_name] or {}).init_options,
     }
   end,
 }
