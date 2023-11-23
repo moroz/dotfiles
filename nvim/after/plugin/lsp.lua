@@ -39,6 +39,11 @@ local prettier = {
   formatStdin = true,
 }
 
+local terraformformat = {
+  formatCommand = [[terraform fmt -]],
+  formatStdin = true,
+}
+
 local servers = {
   -- clangd = {},
   gopls = {},
@@ -49,11 +54,12 @@ local servers = {
     languages = {
       typescript = { prettier },
       typescriptreact = { prettier },
+      terraform = { terraformformat },
     }
   },
   tsserver = {},
   html = { filetypes = { 'html', 'twig', 'hbs' } },
-  terraformls = {},
+  -- terraformls = {},
   templ = {},
   elixirls = {},
   svelte = {},

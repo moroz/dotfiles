@@ -200,7 +200,8 @@ require('lazy').setup({
   'vim-test/vim-test',
   'dcampos/cmp-emmet-vim',
   'mattn/emmet-vim',
-  { 'leafOfTree/vim-svelte-plugin', ft = 'svelte' }
+  { 'leafOfTree/vim-svelte-plugin', ft = 'svelte' },
+  "ludovicchabant/vim-gutentags"
 }, {})
 
 -- Set highlight on search
