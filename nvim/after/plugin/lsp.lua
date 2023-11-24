@@ -54,6 +54,9 @@ local servers = {
     languages = {
       typescript = { prettier },
       typescriptreact = { prettier },
+      json = { prettier },
+      javascript = { prettier },
+      javascriptreact = { prettier },
       terraform = { terraformformat },
     }
   },
@@ -63,6 +66,7 @@ local servers = {
   templ = {},
   elixirls = {},
   svelte = {},
+  rubocop = {},
 
   lua_ls = {
     Lua = {

@@ -30,18 +30,10 @@ end
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
-  -- NOTE: First, some plugins that don't require any configuration
-
-  -- Git related plugins
-  'tpope/vim-fugitive',
-  'tpope/vim-rhubarb',
   'tpope/vim-surround',
   'tpope/vim-abolish',
   'chriskempson/base16-vim',
   'flazz/vim-colorschemes',
-
-  -- Detect tabstop and shiftwidth automatically
-  'tpope/vim-sleuth',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -75,13 +67,6 @@ require('lazy').setup({
 
       -- Adds a number of user-friendly snippets
       'rafamadriz/friendly-snippets',
-
-      {
-        "quangnguyen30192/cmp-nvim-ultisnips",
-        config = function()
-          require("cmp_nvim_ultisnips").setup {}
-        end
-      },
     },
   },
 
@@ -195,8 +180,6 @@ require('lazy').setup({
     },
     config = true
   },
-  'SirVer/ultisnips',
-  'honza/vim-snippets',
   'vim-test/vim-test',
   'dcampos/cmp-emmet-vim',
   'mattn/emmet-vim',
