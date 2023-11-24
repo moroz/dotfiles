@@ -101,3 +101,5 @@ mason_lspconfig.setup_handlers {
     }
   end,
 }
+
+vim.lsp.set_log_level("off")
