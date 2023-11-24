@@ -24,7 +24,7 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 vim.g.mapleader = ' '
-vim.cmd.colorscheme('tender')
+vim.cmd.colorscheme('atom')
 
 vim.g.neoformat_only_msg_on_error = true
 
