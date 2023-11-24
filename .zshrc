@@ -56,33 +56,16 @@ alias giac="git init && git add -A && git commit -m 'Initial commit'"
 alias gac='git add -A; git commit'
 alias gc='git commit'
 alias gca='git commit --amend'
-alias gcfd='git clean -fd'
 alias gd='git diff'
 alias gf='git checkout'
-alias gfb='git checkout beta'
-alias gfm='git checkout master'
-alias gfo='git fetch origin'
-alias gfp='git checkout production'
-alias gfs='git checkout staging'
 alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gm="git merge"
-alias gmm="git merge master"
-alias gms="git merge staging"
 alias gp='git push'
-alias gpu='git pull'
-alias gr='git rev-parse HEAD'
 alias gs='git status'
 alias vi="nvim"
-alias vim="echo 'Use vi'"
-alias brow="arch --x86_64 /usr/local/Homebrew/bin/brew"
-
-alias cd..="cd .."
 
 alias cdw="cd ~/working"
-alias cde="cd ~/elixir"
 alias cdd="cd ~/Downloads"
-alias cdr="cd ~/rust"
-alias c="code ."
 
 alias ims="iex -S mix phx.server"
 alias imtf="iex --dbg pry -S mix test --failed"
