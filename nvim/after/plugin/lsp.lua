@@ -55,6 +55,7 @@ local servers = {
       typescript = { prettier },
       typescriptreact = { prettier },
       json = { prettier },
+      css = { prettier },
       javascript = { prettier },
       javascriptreact = { prettier },
       terraform = { terraformformat },
