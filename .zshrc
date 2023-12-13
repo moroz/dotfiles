@@ -149,6 +149,8 @@ ms() {
     mix phx.server $@
   elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ] || [ -f vite.config.mjs ]; then
     pnpm dev $@
+  elif [ -f book.toml ]; then
+    mdbook serve -p 3001 $@
   elif [ -f Gemfile ]; then 
     bundle exec rails server $@
   elif [ -f Procfile ]; then
