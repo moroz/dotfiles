@@ -44,6 +44,11 @@ local terraformformat = {
   formatStdin = true,
 }
 
+local goformat = {
+  formatCommand = [[goimports]],
+  formatStdin = true,
+}
+
 local servers = {
   -- clangd = {},
   gopls = {},
@@ -59,6 +64,7 @@ local servers = {
       javascript = { prettier },
       javascriptreact = { prettier },
       terraform = { terraformformat },
+      go = { goformat },
     }
   },
   tsserver = {},
