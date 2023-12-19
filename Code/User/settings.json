@@ -696,7 +696,7 @@
     "*.slimleex": "slim"
   },
   "svelte.enable-ts-plugin": true,
-  "editor.fontFamily": "JetBrainsMono NF",
+  "editor.fontFamily": "JetBrainsMono NF, sans-serif",
   "workbench.colorTheme": "Cobalt2",
   "[vue]": {
     "editor.defaultFormatter": "johnsoncodehk.volar"
@@ -707,5 +707,7 @@
   "[astro]": {
     "editor.defaultFormatter": "astro-build.astro-vscode"
   },
-  "window.zoomLevel": 1
+  "window.zoomLevel": 1,
+  "editor.fontSize": 14,
+  "git.openRepositoryInParentFolders": "always"
 }
