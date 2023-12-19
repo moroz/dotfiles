@@ -64,6 +64,7 @@ require('lazy').setup({
 
       -- Adds LSP completion capabilities
       'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-path',
     },
   },
 
@@ -160,11 +161,11 @@ require('lazy').setup({
 
   'ctjhoa/spacevim',
   { 'nvim-tree/nvim-tree.lua',   cmd = 'NvimTreeFindFileToggle', config = true },
-  { 'h-hg/fcitx.nvim',           cond = is_linux },
+  { 'h-hg/fcitx.nvim' },
   { 'elixir-editors/vim-elixir', ft = 'elixir' },
   { 'hashivim/vim-terraform',    ft = 'terraform' },
   "lukas-reineke/lsp-format.nvim",
-  { 'fatih/vim-go',      ft = 'go' },
+  { 'fatih/vim-go',      ft = { 'go', 'gohtmltmpl' } },
   { 'joerdav/templ.vim', ft = 'templ' },
   'sbdchd/neoformat',
   {

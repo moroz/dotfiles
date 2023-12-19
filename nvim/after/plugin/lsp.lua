@@ -44,6 +44,11 @@ local terraformformat = {
   formatStdin = true,
 }
 
+local prettierHTML = {
+  formatCommand = [[prettier --parser html --stdin-filepath ${INPUT}]],
+  formatStdin = true,
+}
+
 local servers = {
   -- clangd = {},
   gopls = {},
@@ -59,6 +64,7 @@ local servers = {
       javascript = { prettier },
       javascriptreact = { prettier },
       terraform = { terraformformat },
+      gohtmltmpl = { prettierHTML },
     }
   },
   tsserver = {},

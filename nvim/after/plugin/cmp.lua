@@ -45,6 +45,7 @@ cmp.setup {
     { name = 'nvim_lsp' },
     { name = 'luasnip' },
     { name = 'ultisnips' },
-    { name = "emmet_vim" }
+    { name = "emmet_vim" },
+    { name = "path" },
   },
 }
