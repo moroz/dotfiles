@@ -44,13 +44,18 @@ local terraformformat = {
   formatStdin = true,
 }
 
-<<<<<<< HEAD
 local prettierHTML = {
   formatCommand = [[prettier --parser html --stdin-filepath ${INPUT}]],
-=======
+  formatStdin = true,
+}
+
 local goformat = {
   formatCommand = [[goimports]],
->>>>>>> 1b5e22104a1c235d110ad6a4fcc479f5aac8c8b0
+  formatStdin = true,
+}
+
+local elixirformat = {
+  formatCommand = [[mix format -]],
   formatStdin = true,
 }
 
@@ -69,11 +74,9 @@ local servers = {
       javascript = { prettier },
       javascriptreact = { prettier },
       terraform = { terraformformat },
-<<<<<<< HEAD
       gohtmltmpl = { prettierHTML },
-=======
       go = { goformat },
->>>>>>> 1b5e22104a1c235d110ad6a4fcc479f5aac8c8b0
+      elixir = { elixirformat },
     }
   },
   tsserver = {},

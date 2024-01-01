@@ -182,7 +182,26 @@ require('lazy').setup({
   'dcampos/cmp-emmet-vim',
   'mattn/emmet-vim',
   { 'leafOfTree/vim-svelte-plugin', ft = 'svelte' },
-  "ludovicchabant/vim-gutentags"
+  "ludovicchabant/vim-gutentags",
+  {
+    'kristijanhusak/vim-dadbod-ui',
+    dependencies = {
+      { 'tpope/vim-dadbod',                     lazy = true },
+      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
+    },
+    cmd = {
+      'DBUI',
+      'DBUIToggle',
+      'DBUIAddConnection',
+      'DBUIFindBuffer',
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+      vim.g.db_ui_env_variable_url = 'DATABASE_URL'
+      vim.g.db_ui_env_variable_name = 'DATABASE_NAME'
+    end,
+  }
 }, {})
 
 -- Set highlight on search
