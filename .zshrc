@@ -32,19 +32,11 @@ fi
 alias rg="rg -i"
 
 export QUOTING_STYLE=literal
-# export FZF_DEFAULT_COMMAND="ag -g ."
 export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
 export ERL_AFLAGS="-kernel shell_history enabled"
-export LANG=de_DE.UTF-8
-export LC_NUMERIC=de_DE.UTF-8
-export LC_MONETARY=de_DE.UTF-8
-export LC_MESSAGES=de_DE.UTF-8
-export LC_TIME=de_DE.UTF-8
-export LC_COLLATE=de_DE.UTF-8
-# export LC_CTYPE=zh_TW.UTF-8
 export DOCKER_BUILDKIT=1
 
 # https://mobile.twitter.com/bernheisel/status/1358201158507061250
