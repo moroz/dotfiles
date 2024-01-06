@@ -20,7 +20,7 @@ compinit
 PS1=$'%{\e[01;32m%}%m%{\e[m%}:%{\e[01;34m%}%~%{\e[m%}$ '
 RPROMPT='%(0?,,%?)'
 ENABLE_CORRECTION="true"
-export PATH="$HOME/.emacs.d/bin:$HOME/.fzf/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.emacs.d/bin:$HOME/.fzf/bin:$PATH"
 export GPG_TTY=$(tty)
 
 if [ "$system" = "Linux" ]; then
