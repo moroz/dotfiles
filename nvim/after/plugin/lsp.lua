@@ -45,7 +45,7 @@ local terraformformat = {
 }
 
 local prettierHTML = {
-  formatCommand = [[prettier --parser html --stdin-filepath ${INPUT}]],
+  formatCommand = [[echo "${INPUT}" | grep -iqe '\.html.tmpl' && prettier --parser html --stdin-filepath ${INPUT}]],
   formatStdin = true,
 }
 
