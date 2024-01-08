@@ -32,6 +32,7 @@ end
 require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-abolish',
+  'tpope/vim-endwise',
   'chriskempson/base16-vim',
   'flazz/vim-colorschemes',
 
