@@ -45,7 +45,7 @@ local terraformformat = {
 }
 
 local prettierHTML = {
-  formatCommand = [[echo "${INPUT}" | grep -iqe '\.html.tmpl' && prettier --parser html --stdin-filepath ${INPUT}]],
+  formatCommand = [[echo "${INPUT}" | grep -iqe '\.html\.tmpl$' && prettier --parser html --stdin-filepath ${INPUT}]],
   formatStdin = true,
 }
 
@@ -106,7 +106,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = {"gopls", "tsserver", "html", "elixirls", "svelte", },
+  ensure_installed = { "gopls", "tsserver", "html", "elixirls", "svelte", },
 }
 
 mason_lspconfig.setup_handlers {
