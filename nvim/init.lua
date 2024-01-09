@@ -180,8 +180,14 @@ require('lazy').setup({
     config = true
   },
   'vim-test/vim-test',
-  'dcampos/cmp-emmet-vim',
-  'mattn/emmet-vim',
+  {
+    'mattn/emmet-vim',
+    init = function()
+      vim.cmd([[
+        imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+      ]])
+    end
+  },
   { 'leafOfTree/vim-svelte-plugin', ft = 'svelte' },
   "ludovicchabant/vim-gutentags",
   {
