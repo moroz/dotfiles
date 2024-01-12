@@ -9,3 +9,4 @@ set softtabstop=4
 set shiftwidth=4
 set hidden
 set noswapfile
+colorscheme evening
