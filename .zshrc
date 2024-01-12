@@ -124,8 +124,6 @@ im() {
   fi
 }
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 md() {
   if [ -f mix.exs ]; then
     mix deps.get
