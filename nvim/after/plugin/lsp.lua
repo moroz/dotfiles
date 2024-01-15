@@ -59,6 +59,11 @@ local elixirformat = {
   formatStdin = true,
 }
 
+local rubyformat = {
+  formatCommand = [[rubocop -a -f fi -s ${INPUT} --stderr]],
+  formatStdin = true,
+}
+
 local servers = {
   -- clangd = {},
   gopls = {},
@@ -77,6 +82,7 @@ local servers = {
       gohtmltmpl = { prettierHTML },
       go = { goformat },
       elixir = { elixirformat },
+      ruby = { rubyformat },
     }
   },
   tsserver = {},
@@ -121,4 +127,4 @@ mason_lspconfig.setup_handlers {
   end,
 }
 
-vim.lsp.set_log_level("off")
+vim.lsp.set_log_level("ERROR")
