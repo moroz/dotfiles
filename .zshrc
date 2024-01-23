@@ -29,7 +29,7 @@ else;
   alias ls="ls -G -las"
 fi
 
-alias rg="rg -i"
+alias rg="rg -s"
 
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git'"
@@ -163,7 +163,7 @@ magit() {
 }
 
 gensecret() {
-  LENGTH="${@[0]:-32}"
+  LENGTH="${1:-32}"
   SECRET="$(openssl rand -base64 $LENGTH)"
 
   if [ "$system" = "Darwin" ]; then
