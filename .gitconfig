@@ -1,0 +1,10 @@
+[core]
+	excludesfile = ~/.gitignore
+[user]
+	name = Karol Moroz
+	email = karol@moroz.dev
+	signingkey = BA266278CB48B02B
+[pull]
+	rebase = false
+[commit]
+	gpgsign = true
