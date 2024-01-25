@@ -18,7 +18,23 @@ vim.keymap.set('n', '<Leader>gg', neogit.open)
 
 vim.keymap.set('n', '<Leader>mtv', ':TestFile<CR>', { silent = true, noremap = true })
 
+local function get_git_root()
+  local dot_git_path = vim.fn.finddir(".git", ".;")
+  return vim.fn.fnamemodify(dot_git_path, ":p:h:h")
+end
+
+local function dlv_debug_git_root()
+  local git_root = get_git_root()
+  vim.fn['delve#runCommand']("debug", "", git_root)
+end
+
 vim.cmd [[
   autocmd FileType go nnoremap <buffer> <silent> <F8> :DlvToggleBreakpoint<CR>
-  autocmd FileType go nnoremap <buffer> <silent> <F12> :DlvDebug<CR>
 ]]
+
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    vim.keymap.set('n', '<F12>', dlv_debug_git_root, { noremap = true, buffer = true })
+  end,
+  pattern = { 'go' }
+})
