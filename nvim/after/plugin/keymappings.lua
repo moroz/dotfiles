@@ -16,3 +16,8 @@ local neogit = require("neogit")
 vim.keymap.set('n', '<Leader>gg', neogit.open)
 
 vim.keymap.set('n', '<Leader>mtv', ':TestFile<CR>', { silent = true, noremap = true })
+
+vim.cmd [[
+  autocmd FileType go nnoremap <buffer> <silent> <F8> :DlvToggleBreakpoint<CR>
+  autocmd FileType go nnoremap <buffer> <silent> <F12> :DlvDebug<CR>
+]]

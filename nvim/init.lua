@@ -167,6 +167,13 @@ require('lazy').setup({
   { 'hashivim/vim-terraform',    ft = 'terraform' },
   "lukas-reineke/lsp-format.nvim",
   { 'fatih/vim-go',      ft = { 'go', 'gohtmltmpl' } },
+  {
+    'sebdah/vim-delve',
+    ft = 'go',
+    init = function()
+      vim.g.delve_new_command = "vnew"
+    end
+  },
   { 'joerdav/templ.vim', ft = 'templ' },
   'sbdchd/neoformat',
   {

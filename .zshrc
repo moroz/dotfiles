@@ -29,7 +29,7 @@ else;
   alias ls="ls -G -las"
 fi
 
-alias rg="rg -i"
+alias rg="rg -S"
 
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git'"
