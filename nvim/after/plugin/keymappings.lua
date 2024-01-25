@@ -28,12 +28,9 @@ local function dlv_debug_git_root()
   vim.fn['delve#runCommand']("debug", "", git_root)
 end
 
-vim.cmd [[
-  autocmd FileType go nnoremap <buffer> <silent> <F8> :DlvToggleBreakpoint<CR>
-]]
-
 vim.api.nvim_create_autocmd('FileType', {
   callback = function()
+    vim.keymap.set('n', '<F8>', ':DlvToggleBreakpoint<CR>', { buffer = true, silent = true, noremap = true })
     vim.keymap.set('n', '<F12>', dlv_debug_git_root, { noremap = true, buffer = true })
   end,
   pattern = { 'go' }
