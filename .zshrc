@@ -163,7 +163,7 @@ magit() {
 }
 
 gensecret() {
-  LENGTH="${@[0]:-32}"
+  LENGTH="${1:-32}"
   SECRET="$(openssl rand -base64 $LENGTH)"
 
   if [ "$system" = "Darwin" ]; then
