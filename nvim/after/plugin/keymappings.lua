@@ -31,7 +31,12 @@ end
 vim.api.nvim_create_autocmd('FileType', {
   callback = function()
     vim.keymap.set('n', '<F8>', ':DlvToggleBreakpoint<CR>', { buffer = true, silent = true, noremap = true })
-    vim.keymap.set('n', '<F12>', dlv_debug_git_root, { noremap = true, buffer = true })
+    local bufname = vim.api.nvim_buf_get_name(0)
+    if bufname:match('_test.go') then
+      vim.keymap.set('n', '<F12>', ':DlvTest<CR>', { noremap = true, buffer = true })
+    else
+      vim.keymap.set('n', '<F12>', dlv_debug_git_root, { noremap = true, buffer = true })
+    end
   end,
   pattern = { 'go' }
 })

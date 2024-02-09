@@ -171,7 +171,7 @@ require('lazy').setup({
     'sebdah/vim-delve',
     ft = 'go',
     init = function()
-      vim.g.delve_new_command = "vnew"
+      vim.g.delve_new_command = "tabnew"
     end
   },
   { 'joerdav/templ.vim', ft = 'templ' },

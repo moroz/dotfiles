@@ -24,7 +24,8 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 vim.g.mapleader = ' '
-vim.cmd.colorscheme('kanagawa')
+
+vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'kanagawa')
 
 vim.g.neoformat_only_msg_on_error = true
 
