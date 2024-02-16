@@ -10,7 +10,7 @@ ln -sf $HOME/.dotfiles/nvim $HOME/.config/nvim
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
 [[ -f $HOME/.psqlrc ]] || ln -s $HOME/.dotfiles/.psqlrc $HOME/.psqlrc
 [[ -f $HOME/.gitignore ]] || ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
-[[ -f $HOME/.config/fontconfig/fonts.confi ]] || ln -s $HOME/.dotfiles/fonts.conf $HOME/.config/fontconfig/fonts.conf
+[[ -f $HOME/.config/fontconfig/fonts.conf ]] || ln -s $HOME/.dotfiles/fonts.conf $HOME/.config/fontconfig/fonts.conf
 git config --global core.excludesfile ~/.gitignore
 
 mkdir -p ~/.ctags.d
