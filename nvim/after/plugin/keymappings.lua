@@ -35,3 +35,12 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
   pattern = { 'go' }
 })
+
+local function get_path_relative_to_git_root()
+  local git_root = get_git_root()
+  local file = vim.fn.expand('%:p')
+  local relative = file:gsub(git_root, "")
+  vim.fn.setreg("+", relative)
+end
+
+vim.api.nvim_create_user_command('CopyFilename', get_path_relative_to_git_root, {})
