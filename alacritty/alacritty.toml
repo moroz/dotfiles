@@ -1,0 +1,24 @@
+import = ["~/.config/alacritty/gotham.toml"]
+
+[shell]
+program = "zsh"
+args = ["-l", "-c", "tmux && exec zsh"]
+
+[font]
+size = 16
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Regular"
+
+[keyboard]
+bindings = [
+  { key = "A", mods = "Command", chars = "\u0001" },
+  { key = "C", mods = "Command", chars = "\u0003" },
+  { key = "D", mods = "Command", chars = "\u0004" },
+  { key = "R", mods = "Command", chars = "\u0012" },
+  { key = "S", mods = "Command", chars = "\u0013" },
+  { key = "T", mods = "Command", chars = "\u0015" },
+  { key = "U", mods = "Command", chars = "\u0016" },
+  { key = "Z", mods = "Command", chars = "\u0015" },
+]
