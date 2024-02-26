@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/gotham.toml"]
+import = ["~/.config/alacritty/solarized.toml"]
 
 [shell]
 program = "zsh"
