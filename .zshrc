@@ -64,6 +64,7 @@ alias vi="nvim"
 
 alias cdw="cd ~/working"
 alias cdd="cd ~/Downloads"
+alias cdf="cd ~/.dotfiles"
 
 alias ims="iex -S mix phx.server"
 alias imtf="iex --dbg pry -S mix test --failed"

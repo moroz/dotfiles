@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/solarized.toml"]
+import = ["~/.config/alacritty/ayu_dark.toml"]
 
 [shell]
 program = "zsh"
@@ -8,8 +8,8 @@ args = ["-l", "-c", "tmux && exec zsh"]
 size = 16
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Regular"
+family = "DejaVuSansMono Nerd Font Mono"
+style = "Book"
 
 [keyboard]
 bindings = [

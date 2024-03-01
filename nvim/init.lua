@@ -161,7 +161,6 @@ require('lazy').setup({
   },
 
   'ctjhoa/spacevim',
-  { 'nvim-tree/nvim-tree.lua',   cmd = 'NvimTreeFindFileToggle', config = true },
   { 'h-hg/fcitx.nvim' },
   { 'elixir-editors/vim-elixir', ft = 'elixir' },
   { 'hashivim/vim-terraform',    ft = 'terraform' },
@@ -216,7 +215,11 @@ require('lazy').setup({
       vim.g.db_ui_env_variable_name = 'DATABASE_NAME'
     end,
   },
-  "rebelot/kanagawa.nvim"
+  "rebelot/kanagawa.nvim",
+  {
+    "nvim-telescope/telescope-file-browser.nvim",
+    dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+  }
 }, {})
 
 -- Set highlight on search
