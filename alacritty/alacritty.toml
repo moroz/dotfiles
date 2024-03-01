@@ -37,4 +37,5 @@ bindings = [
   { key = "T", mods = "Command", chars = "\u0014" },
   { key = "U", mods = "Command", chars = "\u0015" },
   { key = "Z", mods = "Command", chars = "\u001a" },
+  { key = "N" , "mods" = "Command|Shift", action = "CreateNewWindow" },
 ]
