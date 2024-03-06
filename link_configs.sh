@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/bash -eu
 
 mkdir -p $HOME/.config/fontconfig
 
-[[ -L $HOME/.config/nvim ]] || ls -s $HOME/.dotfiles/nvim $HOME/.config/nvim
+[[ -L $HOME/.config/nvim ]] || ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
 [[ -L $HOME/.tmux.conf ]] || ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
 [[ -L $HOME/.prettierrc.js ]] || ln -s $HOME/.dotfiles/.prettierrc.js $HOME/.prettierrc.js
 [[ -L $HOME/.eslintrc.js ]] || ln -s $HOME/.dotfiles/.eslintrc.js $HOME/.eslintrc.js
