@@ -23,7 +23,7 @@ ENABLE_CORRECTION="true"
 export PATH="$HOME/bin:$HOME/.emacs.d/bin:$HOME/.fzf/bin:$PATH"
 export GPG_TTY=$(tty)
 
-if which eza >/dev/null; then
+if which eza >/dev/null 2>&1; then
   alias ls="eza -la"
 elif [ "$system" = "Linux" ]; then
   alias ls="ls --color=auto -las"
@@ -31,7 +31,7 @@ else;
   alias ls="ls -G -las"
 fi
 
-if which bat >/dev/null; then
+if which bat >/dev/null 2>&1; then
   alias cat="bat"
 fi
 
