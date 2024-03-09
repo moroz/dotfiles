@@ -19,16 +19,16 @@ mkdir -p ~/.ctags.d
 [[ -d $HOME/.doom.d ]] || ln -s $HOME/.dotfiles/.doom.d $HOME/.doom.d
 
 if [[ "$(uname)" == 'Darwin' ]]; then
-  if which brew >/dev/null; then
-    brew install zsh tmux reattach-to-user-namespace mc ag neovim wget curl postgresql python3 nodejs direnv aws-vault ripgrep universal-ctags
-    brew install --cask firefox google-chrome iterm2 spectacle karabiner-elements signal slack tableplus
-    sudo echo $(which zsh) >> /etc/shells
-    sudo chsh -s $(which zsh) $USER
-  fi
   sudo cp "$HOME/.dotfiles/Custom Dvorak.keylayout" /Library/Keyboard\ Layouts
   sudo cp "$HOME/.dotfiles/Dvorak Esperanto.keylayout" /Library/Keyboard\ Layouts
   defaults write -g ApplePressAndHoldEnabled -bool false
   mkdir -p $HOME/Pictures/screenshots
   defaults write com.apple.screencapture location $HOME/Pictures/screenshots
   [[ -L $HOME/.config/alacritty ]] || ln -s $HOME/.dotfiles/alacritty $HOME/.config/alacritty
+  if which brew >/dev/null; then
+    brew install zsh tmux reattach-to-user-namespace mc ag neovim wget curl direnv aws-vault ripgrep universal-ctags
+    brew install --cask firefox google-chrome spectacle karabiner-elements signal slack tableplus
+    sudo bash -c "echo $(which zsh) >> /etc/shells"
+    sudo chsh -s $(which zsh) $USER
+  fi
 fi
