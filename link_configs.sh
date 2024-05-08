@@ -31,4 +31,7 @@ if [[ "$(uname)" == 'Darwin' ]]; then
     sudo bash -c "echo $(which zsh) >> /etc/shells"
     sudo chsh -s $(which zsh) $USER
   fi
+else
+  sudo apt install -y tmux zsh neovim git direnv mc wget curl ripgrep silversearcher-ag chromium xclip copyq build-essential htop 
+  [[ -d $HOME/.fzf ]] || (git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf; ~/.fzf/install)
 fi
