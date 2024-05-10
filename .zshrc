@@ -70,10 +70,10 @@ alias ims="iex -S mix phx.server"
 alias imtf="iex --dbg pry -S mix test --failed"
 alias ml="mix compile"
 alias ap="ansible-playbook -v site.yml"
-alias up="docker-compose up"
-alias down="docker-compose down"
+alias up="docker compose up"
+alias down="docker compose down"
 alias tf="terraform"
-alias build="docker-compose build"
+alias build="docker compose build"
 
 mm() {
     if [ -f mix.exs ]; then
@@ -146,6 +146,8 @@ ms() {
     mix phx.server $@
   elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ] || [ -f vite.config.mjs ]; then
     pnpm dev $@
+  elif [ -f hugo.toml ]; then
+    hugo server -D
   elif [ -f book.toml ]; then
     mdbook serve -p 3001 $@
   elif [ -f Gemfile ]; then 
