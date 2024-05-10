@@ -696,7 +696,7 @@
     "*.slimleex": "slim"
   },
   "svelte.enable-ts-plugin": true,
-  "editor.fontFamily": "JetBrainsMono NF, sans-serif",
+  "editor.fontFamily": "Consolas NF, sans-serif",
   "workbench.colorTheme": "Cobalt2",
   "[vue]": {
     "editor.defaultFormatter": "johnsoncodehk.volar"
