@@ -8,8 +8,7 @@ args = ["-l", "-c", "tmux && exec zsh"]
 size = 16
 
 [font.normal]
-family = "JetBrainsMono Nerd Font"
-style = "Regular"
+family = "Consolas NF"
 
 [keyboard]
 bindings = [
