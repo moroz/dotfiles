@@ -25,7 +25,7 @@
   )
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq latin-font "JetBrainsMono NF")
+(setq latin-font "Consolas NF")
 ;; (setq-default line-spacing 0.1)
 (setq sans-font "Roboto")
 (setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
@@ -132,9 +132,8 @@
       (TeX-save-document (TeX-master-file)))
     (TeX-command latex-build-command 'TeX-master-file -1)))
 
-(add-to-list 'auto-mode-alist '("\\.slimleex\\'" . slim-mode))
-
 (setq-hook! 'js2-mode-hook +format-with 'prettier)
 (setq-hook! 'js2-mode-hook +format-with-lsp nil)
 (setq-hook! 'typescript-mode-hook +format-with-lsp nil)
 (setq-hook! 'javascript-mode-hook +format-with-lsp nil)
+(setq-hook! 'ruby-mode-hook +format-with-lsp nil)
