@@ -146,6 +146,8 @@ ms() {
     mix phx.server $@
   elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ] || [ -f vite.config.mjs ]; then
     pnpm dev $@
+  elif [ -f modd.conf ]; then
+    modd $@
   elif [ -f hugo.toml ]; then
     hugo server -D
   elif [ -f book.toml ]; then
@@ -160,8 +162,6 @@ ms() {
     pnpm start $@
   elif [ -f Cargo.toml ]; then
     cargo watch -x run $@
-  elif [ -f modd.conf ]; then
-    modd $@
   elif [ -f go.mod ]; then
     air $@
   fi
