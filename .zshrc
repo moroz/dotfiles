@@ -35,6 +35,7 @@ if which bat >/dev/null 2>&1; then
 fi
 
 alias rg="rg -S"
+alias ...="cd ../.."
 
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git'"
@@ -163,7 +164,7 @@ ms() {
   elif [ -f Cargo.toml ]; then
     cargo watch -x run $@
   elif [ -f go.mod ]; then
-    air $@
+    go run . $@
   fi
 }
 
