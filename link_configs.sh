@@ -11,6 +11,7 @@ mkdir -p $HOME/.config/fontconfig
 [[ -L $HOME/.psqlrc ]] || ln -s $HOME/.dotfiles/.psqlrc $HOME/.psqlrc
 [[ -L $HOME/.gitignore ]] || ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
 [[ -L $HOME/.config/fontconfig/fonts.conf ]] || ln -s $HOME/.dotfiles/fonts.conf $HOME/.config/fontconfig/fonts.conf
+[[ -L $HOME/.config/i3 ]] || ln -s $HOME/.dotfiles/i3 $HOME/.config/i3
 [[ -L $HOME/.Xresources ]] || ln -s $HOME/.dotfiles/.Xresources $HOME/.Xresources
 git config --global core.excludesfile ~/.gitignore
 
