@@ -15,10 +15,10 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local function is_linux()
+local function is_bsd()
   if vim.fn.has("unix") then
     local uname = vim.fn.system('uname')
-    return uname ~= "Darwin\n"
+    return uname ~= "FreeBSD"
   end
   return false
 end
@@ -177,6 +177,7 @@ require('lazy').setup({
   'sbdchd/neoformat',
   {
     "NeogitOrg/neogit",
+    tag = (is_bsd() and 'v0.0.1' or 'v1.0.0'),
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
       "nvim-telescope/telescope.nvim", -- optional
@@ -268,3 +269,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+print("Hello")
