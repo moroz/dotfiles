@@ -1,2 +1,8 @@
-*dpi: 192
-Xft.dpi: 192
+UXTerm.termName: xterm-256color
+UXTerm.vt100.metaSendsEscape: true
+UXTerm.vt100.saveLines: 4096
+UXTerm.selectToClipboard: true
+UXTerm.vt100.locale: true
+
+#include ".dotfiles/Xresources.d/font.xresources"
+#include ".dotfiles/Xresources.d/catpuccin.xresources"
