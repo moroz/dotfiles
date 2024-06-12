@@ -4,5 +4,13 @@ UXTerm.vt100.saveLines: 4096
 UXTerm.selectToClipboard: true
 UXTerm.vt100.locale: true
 
+Xft.autohint: 0
+Xft.antialias: 1
+Xft.hinting: true
+Xft.hintstyle: hintslight
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.lcdfilter: lcddefault
+
 #include ".dotfiles/Xresources.d/font.xresources"
 #include ".dotfiles/Xresources.d/catpuccin.xresources"
