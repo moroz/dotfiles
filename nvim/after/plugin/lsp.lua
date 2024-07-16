@@ -115,20 +115,14 @@ local mason_lspconfig = require 'mason-lspconfig'
 local function is_bsd()
   if vim.fn.has("unix") then
     local uname = vim.fn.system('uname')
-    return uname ~= "FreeBSD"
+    return uname == "FreeBSD\n"
   end
   return false
 end
 
-if is_bsd() then
-  mason_lspconfig.setup {
-    ensure_installed = { "gopls", "tsserver", "elixirls", "svelte", "cssls", "ruby_lsp" },
-  }
-else
-  mason_lspconfig.setup {
-    ensure_installed = { "gopls", "tsserver", "elixirls", "svelte", "templ", "efm", "cssls", "ruby_lsp" },
-  }
-end
+mason_lspconfig.setup {
+  ensure_installed = { "gopls", "tsserver", "elixirls", "svelte", "templ", "efm", "cssls", "ruby_lsp", "lua_ls" },
+}
 
 mason_lspconfig.setup_handlers {
   function(server_name)

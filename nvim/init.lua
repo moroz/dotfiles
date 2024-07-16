@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 local function is_bsd()
   if vim.fn.has("unix") then
     local uname = vim.fn.system('uname')
-    return uname ~= "FreeBSD"
+    return uname == "FreeBSD\n"
   end
   return false
 end
@@ -270,4 +270,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
-print("Hello")
