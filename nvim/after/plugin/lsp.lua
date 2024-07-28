@@ -64,6 +64,11 @@ local rubyformat = {
   formatStdin = true,
 }
 
+local csharp_format = {
+  formatCommand = [[dotnet csharpier --write-stdout --fast]],
+  formatStdin = true,
+}
+
 local servers = {
   -- clangd = {},
   gopls = {},
@@ -84,6 +89,7 @@ local servers = {
       go = { goformat },
       elixir = { elixirformat },
       ruby = { rubyformat },
+      cs = { csharp_format },
     }
   },
   tsserver = {},
@@ -112,16 +118,8 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
-local function is_bsd()
-  if vim.fn.has("unix") then
-    local uname = vim.fn.system('uname')
-    return uname == "FreeBSD\n"
-  end
-  return false
-end
-
 mason_lspconfig.setup {
-  ensure_installed = { "gopls", "tsserver", "elixirls", "svelte", "templ", "efm", "cssls", "ruby_lsp", "lua_ls" },
+  ensure_installed = { "gopls", "tsserver", "elixirls", "svelte", "templ", "efm", "cssls", "ruby_lsp", "lua_ls", "omnisharp" },
 }
 
 mason_lspconfig.setup_handlers {
