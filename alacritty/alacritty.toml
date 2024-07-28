@@ -1,4 +1,4 @@
-import = ["~/.config/alacritty/nord.toml"]
+import = ["~/.config/alacritty/base16_default_dark.toml"]
 
 [shell]
 program = "zsh"
@@ -9,6 +9,10 @@ size = 16
 
 [font.normal]
 family = "Consolas NF"
+
+[font.bold]
+family = "Consolas NF"
+style = "Regular"
 
 [keyboard]
 bindings = [
