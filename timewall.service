@@ -1,0 +1,9 @@
+[Unit]
+Description=Dynamic wallpapers daemon
+
+[Service]
+Type=simple
+ExecStart=/home/karol/bin/timewall set --daemon
+
+[Install]
+WantedBy=graphical-session.target
