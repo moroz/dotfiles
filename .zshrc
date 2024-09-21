@@ -157,14 +157,20 @@ ms() {
     bundle exec rails server $@
   elif [ -f Procfile ]; then
     foreman start
-  elif [ -f vue.config.js ]; then
-    pnpm serve
   elif [ -f package.json ]; then
     pnpm start $@
   elif [ -f Cargo.toml ]; then
     cargo watch -x run $@
   elif [ -f go.mod ]; then
     go run . $@
+  fi
+}
+
+msa() {
+  if [ -f vite.config.ts ]; then
+    pnpm dev $@
+  else
+    cd assets && pnpm dev $@
   fi
 }
 
