@@ -92,7 +92,7 @@ local servers = {
       cs = { csharp_format },
     }
   },
-  tsserver = {},
+  ts_ls = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs' }, format = { templating = true } },
   -- terraformls = {},
   templ = {},
@@ -119,7 +119,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = { "gopls", "tsserver", "elixirls", "svelte", "templ", "efm", "cssls", "ruby_lsp", "lua_ls", "omnisharp" },
+  ensure_installed = { "gopls", "ts_ls", "elixirls", "svelte", "templ", "efm", "cssls", "ruby_lsp", "lua_ls", "omnisharp" },
 }
 
 mason_lspconfig.setup_handlers {

@@ -224,7 +224,7 @@ require('lazy').setup({
       'NvimTreeOpen',
     },
     config = true,
-  }
+  },
 }, {})
 
 -- Set highlight on search
