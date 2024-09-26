@@ -1,5 +1,4 @@
 vim.opt.nu = true
-vim.g.base16colorspace = 256
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
@@ -24,8 +23,6 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 vim.g.mapleader = ' '
-
-vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'kanagawa')
 
 vim.g.neoformat_only_msg_on_error = true
 

@@ -15,14 +15,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-local function is_bsd()
-  if vim.fn.has("unix") then
-    local uname = vim.fn.system('uname')
-    return uname == "FreeBSD\n"
-  end
-  return false
-end
-
 -- [[ Configure plugins ]]
 -- NOTE: Here is where you install your plugins.
 --  You can configure plugins using the `config` key.
@@ -33,8 +25,6 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-abolish',
   'tpope/vim-endwise',
-  'chriskempson/base16-vim',
-  'flazz/vim-colorschemes',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -74,44 +64,6 @@ require('lazy').setup({
     event = "InsertEnter",
     opts = {} -- this is equalent to setup({}) function
   },
-  {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
-    'lewis6991/gitsigns.nvim',
-    opts = {
-      -- See `:help gitsigns.txt`
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      },
-      on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk, { buffer = bufnr, desc = 'Preview git hunk' })
-
-        -- don't override the built-in and fugitive keymaps
-        local gs = package.loaded.gitsigns
-        vim.keymap.set({ 'n', 'v' }, ']c', function()
-          if vim.wo.diff then
-            return ']c'
-          end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' })
-        vim.keymap.set({ 'n', 'v' }, '[c', function()
-          if vim.wo.diff then
-            return '[c'
-          end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return '<Ignore>'
-        end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
-      end,
-    },
-  },
 
   {
     -- Set lualine as statusline
@@ -120,7 +72,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        -- theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },
@@ -151,15 +103,6 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
-    dependencies = {
-      'nvim-treesitter/nvim-treesitter-textobjects',
-    },
-    build = ':TSUpdate',
-  },
-
   'ctjhoa/spacevim',
   { 'h-hg/fcitx.nvim' },
   { 'elixir-editors/vim-elixir', ft = 'elixir' },
@@ -177,7 +120,7 @@ require('lazy').setup({
   'sbdchd/neoformat',
   {
     "NeogitOrg/neogit",
-    tag = (is_bsd() and 'v0.0.1' or 'v1.0.0'),
+    tag = 'v1.0.0',
     dependencies = {
       "nvim-lua/plenary.nvim",         -- required
       "nvim-telescope/telescope.nvim", -- optional
@@ -197,26 +140,6 @@ require('lazy').setup({
   },
   { 'leafOfTree/vim-svelte-plugin', ft = 'svelte' },
   "ludovicchabant/vim-gutentags",
-  {
-    'kristijanhusak/vim-dadbod-ui',
-    dependencies = {
-      { 'tpope/vim-dadbod',                     lazy = true },
-      { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true },
-    },
-    cmd = {
-      'DBUI',
-      'DBUIToggle',
-      'DBUIAddConnection',
-      'DBUIFindBuffer',
-    },
-    init = function()
-      -- Your DBUI configuration
-      vim.g.db_ui_use_nerd_fonts = 1
-      vim.g.db_ui_env_variable_url = 'DATABASE_URL'
-      vim.g.db_ui_env_variable_name = 'DATABASE_NAME'
-    end,
-  },
-  "rebelot/kanagawa.nvim",
   {
     "nvim-tree/nvim-tree.lua",
     cmd = {
@@ -269,3 +192,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+vim.cmd("syntax off")
