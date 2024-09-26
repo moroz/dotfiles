@@ -92,7 +92,7 @@ local servers = {
       cs = { csharp_format },
     }
   },
-  tsserver = {},
+  ts_ls = {},
   -- html = { filetypes = { 'html', 'twig', 'hbs' }, format = { templating = true } },
   -- terraformls = {},
   templ = {},
