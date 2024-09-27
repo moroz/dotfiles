@@ -25,6 +25,8 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-abolish',
   'tpope/vim-endwise',
+  'chriskempson/base16-vim',
+  'Lokaltog/vim-monotone',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -72,7 +74,6 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        -- theme = 'onedark',
         component_separators = '|',
         section_separators = '',
       },

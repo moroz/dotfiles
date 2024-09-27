@@ -17,7 +17,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PS1=$'%{\e[01;32m%}%m%{\e[m%}:%{\e[01;34m%}%~%{\e[m%}$ '
+PROMPT='%m:%~$ '
 ENABLE_CORRECTION="true"
 export PATH="$HOME/bin:$HOME/.emacs.d/bin:$HOME/.fzf/bin:$PATH"
 export GPG_TTY=$(tty)
@@ -62,6 +62,7 @@ alias gm="git merge"
 alias gp='git push'
 alias gs='git status'
 alias vi="nvim"
+alias r=". ~/.zshrc"
 
 alias cdw="cd ~/working"
 alias cdd="cd ~/Downloads"
@@ -81,8 +82,6 @@ mm() {
         mix ecto.migrate
     elif [ -f Gemfile ]; then
         bundle exec rake db:migrate $@
-    elif [ -f package.json ]; then
-        pnpm db:migrate $@
     elif [ -f Cargo.toml ]; then
         diesel migration run
     fi
@@ -93,8 +92,6 @@ mr() {
         mix ecto.rollback $@
     elif [ -f Gemfile ]; then
         bundle exec rake db:rollback $@
-    elif [ -f package.json ]; then
-        pnpm db:rollback
     elif [ -f Cargo.toml ]; then
       diesel migration revert
     fi
@@ -105,8 +102,6 @@ mt() {
     mix test --trace $@
   elif [ -f Gemfile ]; then
     bundle exec rspec $@
-  elif [ -f package.json ]; then
-    pnpm test $@
   elif [ -f Cargo.toml ]; then
     cargo test $@
   fi
@@ -127,8 +122,6 @@ im() {
     iex -S mix
   elif [ -f Gemfile ]; then
     bundle exec rails c
-  elif [ -f package.json ]; then
-    pnpm run ts-node
   fi
 }
 
@@ -136,9 +129,9 @@ md() {
   if [ -f mix.exs ]; then
     mix deps.get
   elif [ -f Gemfile ]; then 
-    bundle
+    bundle install $@
   elif [ -f package.json ]; then
-    pnpm
+    pnpm install $@
   fi
 }
 

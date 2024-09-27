@@ -26,6 +26,8 @@ local on_attach = function(client, bufnr)
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+  client.server_capabilities.semanticTokensProvider = nil
+
   require("lsp-format").on_attach(client, bufnr)
 end
 
