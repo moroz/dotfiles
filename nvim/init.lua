@@ -164,12 +164,12 @@ require('lazy').setup({
                 arrow_closed = "+"
               },
               git = {
-                unstaged = "U",
+                unstaged = "[U]",
                 staged = "✓",
                 unmerged = " ",
                 renamed = "R",
                 untracked = "[?]",
-                deleted = "D",
+                deleted = "[D]",
                 ignored = "◌",
               },
             },
