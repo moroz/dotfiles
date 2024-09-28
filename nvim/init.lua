@@ -26,7 +26,6 @@ require('lazy').setup({
   'tpope/vim-abolish',
   'tpope/vim-endwise',
   'chriskempson/base16-vim',
-  'Lokaltog/vim-monotone',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -147,7 +146,37 @@ require('lazy').setup({
       'NvimTreeToggle',
       'NvimTreeOpen',
     },
-    config = true,
+    config = function()
+      require('nvim-tree').setup({
+        renderer = {
+          icons = {
+            glyphs = {
+              default = "",
+              symlink = "",
+              folder = {
+                default = "",
+                empty = "",
+                empty_open = "",
+                open = "",
+                symlink = "",
+                symlink_open = "",
+                arrow_open = "-",
+                arrow_closed = "+"
+              },
+              git = {
+                unstaged = "U",
+                staged = "✓",
+                unmerged = " ",
+                renamed = "R",
+                untracked = "[?]",
+                deleted = "D",
+                ignored = "◌",
+              },
+            },
+          }
+        }
+      })
+    end
   },
 }, {})
 
@@ -162,9 +191,6 @@ vim.o.breakindent = true
 
 -- Save undo history
 vim.o.undofile = true
-
--- Keep signcolumn on by default
-vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
 vim.o.updatetime = 250
