@@ -19,6 +19,7 @@ vim.opt.guicursor = ""
 vim.opt.updatetime = 300
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.wo.signcolumn = 'yes'
 
 vim.opt.termguicolors = true
 
@@ -30,19 +31,4 @@ vim.g.vim_svelte_plugin_use_typescript = 1
 vim.g.vim_svelte_plugin_use_sass = 1
 vim.g.go_fmt_autosave = 0
 
-local function is_dark_theme()
-  if vim.loop.os_uname().sysname == "Darwin" then
-    return nil
-  end
-
-  local handle = io.popen("gsettings get org.gnome.desktop.interface color-scheme")
-  local theme = handle:read("*a")
-  handle:close()
-
-  theme = theme:gsub('\n', '')
-  return theme == "'prefer-dark'"
-end
-
-local is_dark = is_dark_theme()
-
-vim.cmd.colorscheme('default')
+vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'default')
