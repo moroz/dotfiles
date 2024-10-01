@@ -36,67 +36,9 @@ end
 require('mason').setup()
 require('mason-lspconfig').setup()
 
-local prettier = {
-  formatCommand = [[prettier --stdin-filepath ${INPUT}]],
-  formatStdin = true,
-}
-
-local terraformformat = {
-  formatCommand = [[terraform fmt -]],
-  formatStdin = true,
-}
-
-local prettierHTML = {
-  formatCommand = [[echo "${INPUT}" | grep -iqe '\.html\.tmpl$' && prettier --parser html --stdin-filepath ${INPUT}]],
-  formatStdin = true,
-}
-
-local goformat = {
-  formatCommand = [[goimports]],
-  formatStdin = true,
-}
-
-local elixirformat = {
-  formatCommand = [[mix format -]],
-  formatStdin = true,
-}
-
-local rubyformat = {
-  formatCommand = [[rubocop -a -f fi -s ${INPUT} --stderr]],
-  formatStdin = true,
-}
-
-local csharp_format = {
-  formatCommand = [[dotnet csharpier --write-stdout --fast]],
-  formatStdin = true,
-}
-
 local servers = {
-  -- clangd = {},
   gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  efm = {
-    init_options = { documentFormatting = true },
-    languages = {
-      typescript = { prettier },
-      typescriptreact = { prettier },
-      json = { prettier },
-      css = { prettier },
-      scss = { prettier },
-      javascript = { prettier },
-      javascriptreact = { prettier },
-      terraform = { terraformformat },
-      gohtmltmpl = { prettierHTML },
-      go = { goformat },
-      elixir = { elixirformat },
-      ruby = { rubyformat },
-      cs = { csharp_format },
-    }
-  },
   ts_ls = {},
-  -- html = { filetypes = { 'html', 'twig', 'hbs' }, format = { templating = true } },
-  -- terraformls = {},
   templ = {},
   elixirls = {},
   svelte = {},
@@ -121,7 +63,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = { "gopls", "ts_ls", "svelte", "templ", "efm", "cssls", "lua_ls", },
+  ensure_installed = { "ts_ls", "svelte", "templ", "lua_ls", },
 }
 
 mason_lspconfig.setup_handlers {
