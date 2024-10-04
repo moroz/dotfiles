@@ -25,7 +25,6 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-abolish',
   'tpope/vim-endwise',
-  'chriskempson/base16-vim',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -180,24 +179,6 @@ require('lazy').setup({
   },
 }, {})
 
--- Set highlight on search
-vim.o.hlsearch = false
-
--- Enable mouse mode
-vim.o.mouse = 'a'
-
--- Enable break indent
-vim.o.breakindent = true
-
--- Save undo history
-vim.o.undofile = true
-
--- Decrease update time
-vim.o.updatetime = 250
-vim.o.timeoutlen = 300
-
--- Set completeopt to have a better completion experience
-vim.o.completeopt = 'menuone,noselect'
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`

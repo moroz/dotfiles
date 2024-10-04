@@ -70,12 +70,12 @@ alias cdf="cd ~/.dotfiles"
 
 alias ims="iex -S mix phx.server"
 alias imtf="iex --dbg pry -S mix test --failed"
-alias ml="mix compile"
 alias ap="ansible-playbook -v site.yml"
 alias up="docker compose up"
 alias down="docker compose down"
-alias tf="terraform"
 alias build="docker compose build"
+alias tf="terraform"
+alias mc="mc -b"
 
 mm() {
     if [ -f mix.exs ]; then

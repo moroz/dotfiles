@@ -4,6 +4,7 @@ local actions = require('telescope.actions')
 
 require('telescope').setup {
   defaults = {
+    previewer = false,
     mappings = {
       i = {
         ['<C-u>'] = false,

@@ -31,4 +31,23 @@ vim.g.vim_svelte_plugin_use_typescript = 1
 vim.g.vim_svelte_plugin_use_sass = 1
 -- vim.g.go_fmt_autosave = 0
 
-vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'default')
+-- Set highlight on search
+vim.o.hlsearch = false
+
+-- Enable mouse mode
+vim.o.mouse = 'a'
+
+-- Enable break indent
+vim.o.breakindent = true
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = 'menuone,noselect'
+
+vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'vim')
