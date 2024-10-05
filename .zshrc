@@ -84,6 +84,8 @@ mm() {
         bundle exec rake db:migrate $@
     elif [ -f Cargo.toml ]; then
         diesel migration run
+    elif [ -n "${GOOSE_DBSTRING}" ]; then
+        goose up
     fi
 }
 
