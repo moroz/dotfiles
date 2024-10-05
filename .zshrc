@@ -96,6 +96,8 @@ mr() {
         bundle exec rake db:rollback $@
     elif [ -f Cargo.toml ]; then
       diesel migration revert
+    elif [ -n "${GOOSE_DBSTRING}" ]; then
+        goose down
     fi
 }
 
