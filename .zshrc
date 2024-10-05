@@ -134,6 +134,8 @@ md() {
     bundle install $@
   elif [ -f package.json ]; then
     pnpm install $@
+  elif [ -f Makefile ] && grep -q '^install:' Makefile; then
+    make install
   fi
 }
 
