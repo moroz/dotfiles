@@ -25,6 +25,7 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-abolish',
   'tpope/vim-endwise',
+  'chriskempson/base16-vim',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
