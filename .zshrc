@@ -60,6 +60,7 @@ alias gf='git checkout'
 alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gm="git merge"
 alias gp='git push'
+alias gpd="git push -u origin HEAD"
 alias gs='git status'
 alias vi="nvim"
 alias r=". ~/.zshrc"
@@ -186,11 +187,6 @@ gensecret() {
   else
     echo $SECRET | tr -d '\n' | xclip -sel c
   fi
-}
-
-gpd() {
-  branch="$(git rev-parse --abbrev-ref HEAD)"
-  git push -u origin "$branch"
 }
 
 glc() {
