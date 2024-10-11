@@ -1,0 +1,37 @@
+! special
+UXTerm*foreground:   #d0d0d0
+UXTerm*background:   #151515
+UXTerm*cursorColor:  #d0d0d0
+
+! black
+UXTerm*color0:       #151515
+UXTerm*color8:       #505050
+
+! red
+UXTerm*color1:       #ac4142
+UXTerm*color9:       #ac4142
+
+! green
+UXTerm*color2:       #90a959
+UXTerm*color10:      #90a959
+
+! yellow
+UXTerm*color3:       #f4bf75
+UXTerm*color11:      #f4bf75
+
+! blue
+UXTerm*color4:       #6a9fb5
+UXTerm*color12:      #6a9fb5
+
+! magenta
+UXTerm*color5:       #aa759f
+UXTerm*color13:      #aa759f
+
+! cyan
+UXTerm*color6:       #75b5aa
+UXTerm*color14:      #75b5aa
+
+! white
+UXTerm*color7:       #d0d0d0
+UXTerm*color15:      #f5f5f5
+

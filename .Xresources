@@ -13,4 +13,4 @@ Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
 #include ".dotfiles/Xresources.d/font.xresources"
-#include ".dotfiles/Xresources.d/catpuccin.xresources"
+#include ".dotfiles/Xresources.d/base16-default-dark.xresources"
