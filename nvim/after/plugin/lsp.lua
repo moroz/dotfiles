@@ -27,8 +27,6 @@ local on_attach = function(client, bufnr)
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
   client.server_capabilities.semanticTokensProvider = nil
-
-  require("lsp-format").on_attach(client, bufnr)
 end
 
 -- mason-lspconfig requires that these setup functions are called in this order
