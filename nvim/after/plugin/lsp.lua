@@ -29,10 +29,10 @@ local on_attach = function(server_name)
 
     client.server_capabilities.semanticTokensProvider = nil
 
-    local enable_format_lsps = {'svelte', 'lua_ls'}
+    local enable_format_lsps = { 'svelte', 'lua_ls' }
     local enable_format = false
-    for name in enable_format_lsps do
-      if name == server_name then
+    for i = 1, #enable_format_lsps, 1 do
+      if enable_format_lsps[i] == server_name then
         enable_format = true
       end
     end
