@@ -109,6 +109,8 @@ mt() {
     bundle exec rspec $@
   elif [ -f Cargo.toml ]; then
     cargo test $@
+  elif [ -f Makefile ]; then
+    make test $@
   fi
 }
 
