@@ -3,5 +3,5 @@
 
 augroup fmt
   autocmd!
-  autocmd BufWritePre *.rb,*.js,*.jsx,*.ts,*.tsx,*.svelte,*.scss,*.sass,*.lua,*.erb,*.json,*.ex,*.exs undojoin | Neoformat
+  autocmd BufWritePre *.rb,*.js,*.jsx,*.ts,*.tsx,*.svelte,*.scss,*.sass,*.lua,*.erb,*.json,*.ex,*.exs,*.css,*.html,*.tf undojoin | Neoformat
 augroup END
