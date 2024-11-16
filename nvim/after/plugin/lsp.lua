@@ -29,7 +29,7 @@ local on_attach = function(server_name)
 
     client.server_capabilities.semanticTokensProvider = nil
 
-    local enable_format_lsps = { 'svelte', 'lua_ls' }
+    local enable_format_lsps = { 'svelte', 'lua_ls', 'efm', 'elixirls', 'elixir-ls' }
     local enable_format = false
     for i = 1, #enable_format_lsps, 1 do
       if enable_format_lsps[i] == server_name then
@@ -50,7 +50,18 @@ end
 require('mason').setup()
 require('mason-lspconfig').setup()
 
+local elixirformat = {
+  formatCommand = [[mix format -]],
+  formatStdin = true,
+}
+
 local servers = {
+  efm = {
+    init_options = { documentFormatting = true },
+    languages = {
+      elixir = { elixirformat }
+    }
+  },
   gopls = {},
   ts_ls = {},
   templ = {},
@@ -77,7 +88,7 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = { "ts_ls", "svelte", "templ", "lua_ls", "gopls", },
+  ensure_installed = { "ts_ls", "svelte", "templ", "lua_ls", "gopls", "elixirls", "efm" },
 }
 
 mason_lspconfig.setup_handlers {
