@@ -50,4 +50,5 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'default')
+-- vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'default')
+vim.cmd.colorscheme('base16-dracula')
