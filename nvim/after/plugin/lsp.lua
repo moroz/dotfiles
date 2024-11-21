@@ -51,7 +51,7 @@ require('mason').setup()
 require('mason-lspconfig').setup()
 
 local elixirformat = {
-  formatCommand = [[mix format -]],
+  formatCommand = [[env MIX_QUIET=1 mix format -]],
   formatStdin = true,
 }
 
