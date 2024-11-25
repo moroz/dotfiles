@@ -69,7 +69,7 @@ alias cdw="cd ~/working"
 alias cdd="cd ~/Downloads"
 alias cdf="cd ~/.dotfiles"
 
-alias ims="iex -S mix phx.server"
+alias ims="iex --dbg pry -S mix phx.server"
 alias imtf="iex --dbg pry -S mix test --failed"
 alias ap="ansible-playbook -v site.yml"
 alias up="docker compose up"
