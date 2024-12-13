@@ -27,6 +27,7 @@ require('lazy').setup({
   'tpope/vim-endwise',
   'huyvohcmc/atlas.vim',
   'chriskempson/base16-vim',
+  'Lokaltog/vim-distinguished',
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -202,5 +203,3 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
-
-vim.cmd("syntax off")
