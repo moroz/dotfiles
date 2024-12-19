@@ -66,8 +66,8 @@ alias vi="nvim"
 alias r=". ~/.zshrc"
 
 alias cdw="cd ~/working"
-alias cdd="cd ~/Downloads"
-alias cdf="cd ~/.dotfiles"
+alias cdd="pushd ~/Downloads"
+alias cdf="pushd ~/.dotfiles"
 
 alias ims="iex --dbg pry -S mix phx.server"
 alias imtf="iex --dbg pry -S mix test --failed"

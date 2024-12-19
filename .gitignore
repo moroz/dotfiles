@@ -13,3 +13,5 @@ yarn-error.log
 /.log
 /.envrc
 .~lock.*
+.mise.local.toml
+.mise.*.local.toml
