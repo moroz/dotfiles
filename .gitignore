@@ -15,3 +15,5 @@ yarn-error.log
 .~lock.*
 .mise.local.toml
 .mise.*.local.toml
+mise.local.toml
+mise.*.local.toml
