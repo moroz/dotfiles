@@ -28,6 +28,7 @@ require('lazy').setup({
   'huyvohcmc/atlas.vim',
   'chriskempson/base16-vim',
   'Lokaltog/vim-distinguished',
+  "protesilaos/tempus-themes-vim",
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
