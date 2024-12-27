@@ -50,18 +50,10 @@ export BAT_THEME=zenburn
 # compile erlang with docs using asdf/kerl
 export KERL_BUILD_DOCS="yes"
 
-alias ga='git add -A'
+# TODO: Find an equivalent commit chain for jj
 alias giac="git init && git add -A && git commit -m 'Initial commit'"
-alias gac='git add -A; git commit'
-alias gc='git commit'
-alias gca='git commit --amend'
-alias gd='git diff'
-alias gf='git checkout'
-alias glol="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-alias gm="git merge"
-alias gp='git push'
-alias gpd="git push -u origin HEAD"
-alias gs='git status'
+alias gd='jj diff'
+alias gs='jj st'
 alias vi="nvim"
 alias r=". ~/.zshrc"
 
@@ -71,12 +63,16 @@ alias cdf="pushd ~/.dotfiles"
 
 alias ims="iex --dbg pry -S mix phx.server"
 alias imtf="iex --dbg pry -S mix test --failed"
-alias ap="ansible-playbook -v site.yml"
 alias up="docker compose up"
 alias down="docker compose down"
 alias build="docker compose build"
 alias tf="terraform"
 alias mc="mc -b"
+
+ap() {
+  playbook="${1:-site.yml}"
+  ansible-playbook -v $playbook
+}
 
 mm() {
     if [ -f mix.exs ]; then
@@ -176,10 +172,6 @@ msa() {
   fi
 }
 
-magit() {
-  emacsclient -t --eval "(call-interactively #'magit-status)" -a "emacs -nw --eval \"(call-interactively #'magit-status)\""
-}
-
 gensecret() {
   LENGTH="${1:-32}"
   SECRET="$(openssl rand -base64 $LENGTH)"
@@ -189,10 +181,6 @@ gensecret() {
   else
     echo $SECRET | tr -d '\n' | xclip -sel c
   fi
-}
-
-glc() {
-  git log --format=%B -n 1 | tr -d '\n'
 }
 
 if [ "$system" = "Darwin" ]; then
