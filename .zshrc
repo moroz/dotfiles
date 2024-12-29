@@ -54,12 +54,13 @@ export KERL_BUILD_DOCS="yes"
 alias giac="git init && git add -A && git commit -m 'Initial commit'"
 alias gd='jj diff'
 alias gs='jj st'
+alias gc="jj commit"
 alias vi="nvim"
 alias r=". ~/.zshrc"
 
 alias cdw="cd ~/working"
-alias cdd="pushd ~/Downloads"
-alias cdf="pushd ~/.dotfiles"
+alias cdd="cd ~/Downloads"
+alias cdf="cd ~/.dotfiles"
 
 alias ims="iex --dbg pry -S mix phx.server"
 alias imtf="iex --dbg pry -S mix test --failed"
