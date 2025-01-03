@@ -51,3 +51,7 @@ vim.o.timeoutlen = 300
 vim.o.completeopt = 'menuone,noselect'
 
 vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'default')
+
+if os.getenv('NO_SYNTAX') == 'true' then
+  vim.cmd.syntax('off')
+end

@@ -55,6 +55,7 @@ alias giac="git init && git add -A && git commit -m 'Initial commit'"
 alias gd='jj diff'
 alias gs='jj st'
 alias gc="jj commit"
+alias gpd="jj git push --allow-new"
 alias vi="nvim"
 alias r=". ~/.zshrc"
 
