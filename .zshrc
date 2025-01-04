@@ -38,7 +38,7 @@ alias rg="rg -S"
 alias ...="cd ../.."
 
 export QUOTING_STYLE=literal
-export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git'"
+export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git' -g '!.jj'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_TMUX=1
 export EDITOR=nvim
