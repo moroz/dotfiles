@@ -52,9 +52,6 @@ export KERL_BUILD_DOCS="yes"
 
 # TODO: Find an equivalent commit chain for jj
 alias giac="git init && git add -A && git commit -m 'Initial commit'"
-alias gd='jj diff'
-alias gs='jj st'
-alias gc="jj commit"
 alias gpd="jj git push --allow-new"
 alias vi="nvim"
 alias r=". ~/.zshrc"
@@ -70,6 +67,43 @@ alias down="docker compose down"
 alias build="docker compose build"
 alias tf="terraform"
 alias mc="mc -b"
+
+is_jj_repo() {
+  dir="$(pwd)"
+
+  while [[ "$dir" != "/" ]]; do
+    if [[ -d "$dir/.jj" ]]; then
+      return 0
+    fi
+    dir="$(dirname "$dir")"
+  done
+
+  return 1
+}
+
+gs() {
+  if is_jj_repo; then 
+    jj st $@
+  else
+    git status $@
+  fi
+}
+
+gd() {
+  if is_jj_repo; then
+    jj diff $@
+  else
+    git diff $@
+  fi
+}
+
+gc() {
+  if is_jj_repo; then
+    jj commit $@
+  else
+    git commit $@
+  fi
+}
 
 ap() {
   playbook="${1:-site.yml}"
