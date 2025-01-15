@@ -225,3 +225,6 @@ if [ "$system" = "Darwin" ]; then
   # Uncomment this line to build (takes too much time when not building)
   # export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"
 fi
+
+alias dark="dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\""
+alias light="dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\""
