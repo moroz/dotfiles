@@ -1,7 +1,7 @@
 configuration {
   modes: [ combi ];
   combi-modes: [ window, drun, run ];
-  font: "DejaVu Sans Book 16";
+  font: "DejaVu Sans Book 32";
 }
 
 @theme "gruvbox-dark-hard"
