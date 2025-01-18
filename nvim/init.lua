@@ -143,7 +143,7 @@ require('lazy').setup({
     end
   },
   { 'leafOfTree/vim-svelte-plugin', ft = 'svelte' },
-  "ludovicchabant/vim-gutentags",
+  -- "ludovicchabant/vim-gutentags",
   {
     "nvim-tree/nvim-tree.lua",
     cmd = {

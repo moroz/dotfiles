@@ -58,7 +58,7 @@ local telescope = require('telescope.builtin')
 local function find_with_rg()
   telescope.find_files({
     find_command = {
-      "rg", "--files", "--hidden", "--ignore", "-g", "!.git"
+      "rg", "--files", "--hidden", "--ignore", "-g", "!.git", "-g", "!.jj",
     }
   })
 end

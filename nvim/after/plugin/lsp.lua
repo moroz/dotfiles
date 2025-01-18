@@ -88,7 +88,8 @@ capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
-  ensure_installed = { "ts_ls", "svelte", "templ", "lua_ls", "gopls", "elixirls", "efm" },
+  -- ensure_installed = { "ts_ls", "svelte", "templ", "lua_ls", "gopls", "elixirls", "efm" },
+  ensure_installed = { "ts_ls", "svelte", "gopls", "elixirls", },
 }
 
 mason_lspconfig.setup_handlers {
