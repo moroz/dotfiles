@@ -105,6 +105,8 @@ gc() {
   fi
 }
 
+alias gb="jj bookmark set -r @- $@"
+
 ap() {
   playbook="${1:-site.yml}"
   ansible-playbook -v $playbook
