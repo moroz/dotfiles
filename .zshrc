@@ -89,6 +89,14 @@ gs() {
   fi
 }
 
+gf() {
+  if is_jj_repo; then 
+    jj new $@
+  else
+    git checkout $@
+  fi
+}
+
 gd() {
   if is_jj_repo; then
     jj diff $@
@@ -106,6 +114,7 @@ gc() {
 }
 
 alias gb="jj bookmark set -r @-"
+alias gci="jj commit -i"
 
 ap() {
   playbook="${1:-site.yml}"
