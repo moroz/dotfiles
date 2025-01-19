@@ -18,3 +18,4 @@ yarn-error.log
 mise.local.toml
 mise.*.local.toml
 /.jj
+.env.development
