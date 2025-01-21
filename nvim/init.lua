@@ -122,17 +122,6 @@ require('lazy').setup({
   },
   { 'joerdav/templ.vim', ft = 'templ' },
   'sbdchd/neoformat',
-  {
-    "NeogitOrg/neogit",
-    tag = 'v1.0.0',
-    dependencies = {
-      "nvim-lua/plenary.nvim",         -- required
-      "nvim-telescope/telescope.nvim", -- optional
-      "sindrets/diffview.nvim",        -- optional
-      "ibhagwan/fzf-lua",              -- optional
-    },
-    config = true
-  },
   'vim-test/vim-test',
   {
     'mattn/emmet-vim',
