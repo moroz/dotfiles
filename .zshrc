@@ -51,8 +51,16 @@ export BAT_THEME=zenburn
 export KERL_BUILD_DOCS="yes"
 
 # TODO: Find an equivalent commit chain for jj
-alias giac="git init && git add -A && git commit -m 'Initial commit'"
+alias giac="git init && git add -A && git commit -m 'Initial commit' && jj git init --colocate"
 alias gpd="jj git push --allow-new"
+alias gb="jj bookmark set -r @-"
+alias gci="jj commit -i"
+
+jj-clone() {
+  origin="$(gh repo view --json sshUrl $1 | jq -r .sshUrl)"
+  jj git clone $origin
+}
+
 alias vi="nvim"
 alias r=". ~/.zshrc"
 
@@ -112,9 +120,6 @@ gc() {
     git commit $@
   fi
 }
-
-alias gb="jj bookmark set -r @-"
-alias gci="jj commit -i"
 
 ap() {
   playbook="${1:-site.yml}"

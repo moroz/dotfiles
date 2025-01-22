@@ -12,7 +12,7 @@
 
 (defun daytime-command ()
   (if (is-linux)
-    "$HOME/.dotfiles/daytime"
+      "$HOME/.dotfiles/daytime"
     "$HOME/.dotfiles/daytime.Darwin"))
 
 (defun is-daytime ()
@@ -132,8 +132,5 @@
       (TeX-save-document (TeX-master-file)))
     (TeX-command latex-build-command 'TeX-master-file -1)))
 
-(setq-hook! 'js2-mode-hook +format-with 'prettier)
-(setq-hook! 'js2-mode-hook +format-with-lsp nil)
-(setq-hook! 'typescript-mode-hook +format-with-lsp nil)
-(setq-hook! 'javascript-mode-hook +format-with-lsp nil)
-(setq-hook! 'ruby-mode-hook +format-with-lsp nil)
+(after! apheleia
+  (setf (alist-get 'ruby-mode apheleia-mode-alist) 'rubocop))
