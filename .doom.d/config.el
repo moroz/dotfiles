@@ -19,25 +19,19 @@
   (string-equal (string-trim (shell-command-to-string (daytime-command))) "DAYTIME"))
 
 (defun km/get-font-size ()
-  (setq base-size 17)
+  (setq base-size 22)
   (setq scaling-factor (if (is-linux) 2 1))
   (* scaling-factor base-size)
   )
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq latin-font "Consolas NF")
+(setq latin-font "JetBrainsMono Nerd Font")
 ;; (setq-default line-spacing 0.1)
 (setq sans-font "Roboto")
-(setq cjk-font (if (is-linux) "Noto Sans CJK TC Medium" "PingFang TC"))
-(setq cjk-scaling-factor (if (is-linux) (if (is-retina) 0.315 0.630) 1))
-(setq cjk-font-size (* (km/get-font-size) cjk-scaling-factor))
-(setq doom-theme #'cobalt2)
+
+(setq doom-theme (intern (or (getenv "EMACS_COLORSCHEME") "doom-dracula")))
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
-(setq cjk-face (font-spec :family cjk-font :size cjk-font-size))
-(setq sans-face (font-spec :family sans-font :size (- (km/get-font-size) 1)))
-(setq doom-font common-face
-      ;; doom-variable-pitch-font sans-face
-      doom-unicode-font cjk-face)
+(setq doom-font common-face)
 ;; (setq doom-theme (if (display-graphic-p) #'cobalt2 #'distinguished))
 
 (setq display-line-numbers-type t)
@@ -134,3 +128,6 @@
 
 (after! apheleia
   (setf (alist-get 'ruby-mode apheleia-mode-alist) 'rubocop))
+
+(after! company
+  (add-hook 'markdown-mode-hook (lambda () (company-mode -1))))

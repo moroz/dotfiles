@@ -62,6 +62,7 @@ jj-clone() {
 }
 
 alias vi="nvim"
+alias ee="emacs -nw"
 alias r=". ~/.zshrc"
 
 alias cdw="cd ~/working"
