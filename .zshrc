@@ -53,7 +53,7 @@ export KERL_BUILD_DOCS="yes"
 # TODO: Find an equivalent commit chain for jj
 alias giac="git init && git add -A && git commit -m 'Initial commit' && jj git init --colocate"
 alias gpd="jj git push --allow-new"
-alias gb="jj bookmark set -r @-"
+alias gb="jj bookmark move --to @-"
 alias gci="jj commit -i"
 
 jj-clone() {
