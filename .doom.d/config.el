@@ -131,3 +131,13 @@
 
 (after! company
   (add-hook 'markdown-mode-hook (lambda () (company-mode -1))))
+
+(use-package! xclip
+  :config
+  (setq xclip-select-enable-clipboard t)
+  (setq xclip-mode t))
+
+(setq xclip-select-enable-clipboard t)
+
+(remove-hook 'doom-first-input-hook
+             #'evil-snipe-mode)

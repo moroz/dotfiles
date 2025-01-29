@@ -55,3 +55,4 @@
 (package! exec-path-from-shell)
 (package! ctags-update)
 (package! mise)
+(package! xclip)
