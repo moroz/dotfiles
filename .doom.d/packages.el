@@ -56,3 +56,4 @@
 (package! ctags-update)
 (package! mise)
 (package! xclip)
+(package! modus-themes)
