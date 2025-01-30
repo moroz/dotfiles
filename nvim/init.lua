@@ -29,6 +29,7 @@ require('lazy').setup({
   'chriskempson/base16-vim',
   'Lokaltog/vim-distinguished',
   "protesilaos/tempus-themes-vim",
+  "miikanissi/modus-themes.nvim",
   "flazz/vim-colorschemes",
 
   -- NOTE: This is where your plugins related to LSP can be installed.

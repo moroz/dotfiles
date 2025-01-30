@@ -1,0 +1,8 @@
+[user]
+name = "Karol Moroz"
+email = "karol@moroz.dev"
+
+[signing]
+sign-all = true
+backend = "gpg"
+key = "9643ACD937ED3E82E9E25B8FBA266278CB48B02B"
