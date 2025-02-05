@@ -84,12 +84,17 @@ require('neodev').setup()
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
+-- Restrict offsetEncoding to 'utf-16' to suppress `warning: multiple different client offset_encodings detected`
+-- in clangd
+capabilities['offsetEncoding'] = 'utf-16'
+
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   -- ensure_installed = { "ts_ls", "svelte", "templ", "lua_ls", "gopls", "elixirls", "efm" },
-  ensure_installed = { "ts_ls", "svelte", "gopls", "elixirls", },
+  ensure_installed = { "ts_ls", "svelte", "gopls", "elixirls", "clangd", },
+  automatic_installation = true,
 }
 
 mason_lspconfig.setup_handlers {
