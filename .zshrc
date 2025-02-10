@@ -243,5 +243,14 @@ if [ "$system" = "Darwin" ]; then
   # export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"
 fi
 
-alias dark="dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-dark'\""
-alias light="dconf write /org/gnome/desktop/interface/color-scheme \"'prefer-light'\""
+dark() {
+  dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+  gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-Y-Dark-Aqua'
+  gsettings set org.cinnamon.theme name 'Mint-Y-Dark-Aqua'
+}
+
+light() {
+  dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+  gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-Y-Aqua'
+  gsettings set org.cinnamon.theme name 'Mint-Y-Aqua'
+}
