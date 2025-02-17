@@ -10,14 +10,6 @@
   (and (is-linux) (string-equal (shell-command-to-string "gsettings get org.cinnamon.desktop.interface scaling-factor") "uint32 2\n"))
   )
 
-(defun daytime-command ()
-  (if (is-linux)
-      "$HOME/.dotfiles/daytime"
-    "$HOME/.dotfiles/daytime.Darwin"))
-
-(defun is-daytime ()
-  (string-equal (string-trim (shell-command-to-string (daytime-command))) "DAYTIME"))
-
 (defun km/get-font-size ()
   (setq base-size 22)
   (setq scaling-factor (if (is-linux) 2 1))
@@ -26,13 +18,21 @@
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq latin-font "JetBrainsMono Nerd Font")
-;; (setq-default line-spacing 0.1)
 (setq sans-font "Roboto")
 
-(setq doom-theme (intern (or (getenv "EMACS_COLORSCHEME") "doom-dracula")))
+(defun get-preferred-color-scheme()
+  (let ((preferred (string-trim (shell-command-to-string "dconf read /org/gnome/desktop/interface/color-scheme"))))
+    (cond ((string= preferred "'prefer-light'") (or (getenv "EMACS_LIGHT_COLORSCHEME") "modus-operandi-tinted"))
+          ((string= preferred "'prefer-dark'") (or (getenv "EMACS_DARK_COLORSCHEME") "modus-vivendi-tinted"))
+          (t (or (getenv "EMACS_COLORSCHEME") "doom-dracula"))
+          )
+    )
+  )
+
+(setq doom-theme (intern (get-preferred-color-scheme)))
+
 (setq common-face (font-spec :family latin-font :size (km/get-font-size)))
 (setq doom-font common-face)
-;; (setq doom-theme (if (display-graphic-p) #'cobalt2 #'distinguished))
 
 (setq display-line-numbers-type t)
 
