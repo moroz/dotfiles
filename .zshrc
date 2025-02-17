@@ -243,11 +243,17 @@ if [ "$system" = "Darwin" ]; then
   # export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"
 fi
 
+set_wallpaper() {
+  local path="$(realpath $1)"
+  /usr/bin/gsettings set org.cinnamon.desktop.background picture-uri \'file://${path}\'
+}
+
 dark() {
   dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
   gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-Y-Dark-Aqua'
   gsettings set org.cinnamon.theme name 'Mint-Y-Dark-Aqua'
   ln -sf $HOME/.config/ghostty/theme-dark $HOME/.config/ghostty/theme
+  set_wallpaper $DARK_WALLPAPER
 }
 
 light() {
@@ -255,4 +261,5 @@ light() {
   gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-Y-Aqua'
   gsettings set org.cinnamon.theme name 'Mint-Y-Aqua'
   ln -sf $HOME/.config/ghostty/theme-light $HOME/.config/ghostty/theme
+  set_wallpaper $LIGHT_WALLPAPER
 }
