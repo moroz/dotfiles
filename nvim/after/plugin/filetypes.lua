@@ -13,4 +13,12 @@ vim.api.nvim_create_autocmd({ 'Filetype' }, {
   command = 'setlocal tabstop=2 shiftwidth=2 noexpandtab'
 })
 
-vim.cmd([[source ~/.config/nvim/after/plugin/neoformat.vim]])
+-- gem install htmlbeautifier
+-- npm i -g prettier
+
+vim.cmd([[
+augroup fmt
+  autocmd!
+  autocmd BufWritePre *.rb,*.js,*.jsx,*.ts,*.mjs,*.tsx,*.svelte,*.scss,*.sass,*.lua,*.erb,*.json,*.css,*.html,*.tf,*.c,*.h undojoin | Neoformat
+augroup END
+]])

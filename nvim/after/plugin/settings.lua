@@ -53,7 +53,11 @@ vim.o.completeopt = 'menuone,noselect'
 local lightscheme = os.getenv('VIM_LIGHT_COLORSCHEME') or 'modus_operandi'
 local darkscheme = os.getenv('VIM_DARK_COLORSCHEME') or 'modus_vivendi'
 
-local preferred = vim.fn.system('dconf read /org/gnome/desktop/interface/color-scheme'):gsub("%s+", "")
+local preferred = ''
+
+if vim.fn.has('unix') == 1 then
+  preferred = vim.fn.system('dconf read /org/gnome/desktop/interface/color-scheme'):gsub("%s+", "")
+end
 
 if preferred == "'prefer-light'" then
   vim.cmd.colorscheme(lightscheme)
