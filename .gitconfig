@@ -1,4 +1,5 @@
 [core]
+  editor = nvim
 	excludesfile = ~/.gitignore
 [user]
 	name = Karol Moroz

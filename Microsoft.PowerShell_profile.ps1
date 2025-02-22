@@ -1,3 +1,4 @@
+$env:PATH = "$env:USERPROFILE\bin;$env:PATH"
 $env:PATH += ';C:\Program Files (x86)\Midnight Commander'
 
 function Is-JJ-Repo {
@@ -38,3 +39,4 @@ function cdw { Set-Location $Env:USERPROFILE\working }
 function cdd { Set-Location $Env:USERPROFILE\Downloads }
 
 Set-Alias -Name vi -Value nvim
+
