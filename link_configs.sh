@@ -1,6 +1,6 @@
 #!/usr/bin/env -S bash -eu
 
-mkdir -p $HOME/.config/{fontconfig,rofi}
+mkdir -p $HOME/.config/{fontconfig,rofi,powershell}
 
 [[ -L $HOME/.config/nvim ]] || ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
 [[ -L $HOME/.tmux.conf ]] || ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
@@ -8,6 +8,7 @@ mkdir -p $HOME/.config/{fontconfig,rofi}
 [[ -L $HOME/.eslintrc.js ]] || ln -s $HOME/.dotfiles/.eslintrc.js $HOME/.eslintrc.js
 [[ -L $HOME/.spacemacs ]] || ln -s $HOME/.dotfiles/.spacemacs $HOME/.spacemacs
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
+[[ -f $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 ]] || ln -s $HOME/.dotfiles/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 [[ -L $HOME/.psqlrc ]] || ln -s $HOME/.dotfiles/.psqlrc $HOME/.psqlrc
 [[ -L $HOME/.gitignore ]] || ln -s $HOME/.dotfiles/.gitignore $HOME/.gitignore
 [[ -L $HOME/.config/fontconfig/fonts.conf ]] || ln -s $HOME/.dotfiles/fonts.conf $HOME/.config/fontconfig/fonts.conf
