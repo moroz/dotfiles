@@ -1,10 +1,10 @@
-if ($IsWindows) {
-  $myHome = "$env:USERPROFILE"
-  $env:PATH = "$env:USERPROFILE\bin;$env:PATH"
+if ($Env:OS -eq "Windows_NT") {
+  $env:PATH = "$env:USERPROFILE\bin;C:\Program Files\LLVM\bin;$env:PATH"
   $env:PATH += ';C:\Program Files (x86)\Midnight Commander'
+  $env:PATH += ';C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx86\x86'
 } 
+
 if ($IsLinux) {
-  $myHome = "$HOME"
   $env:PATH = "$HOME/bin:/home/linuxbrew/.linuxbrew/bin:$env:PATH"
   mise activate pwsh | Out-String | Invoke-Expression
 }
@@ -12,13 +12,7 @@ if ($IsLinux) {
 function Is-JJ-Repo {
   $dir = Get-Location
 
-  if ($IsWindows) {
-    $homeDir = [System.IO.Path]::GetFullPath($env:USERPROFILE)
-  } else {
-    $homeDir = $HOME
-  }
-
-  while ([System.IO.Path]::GetFullPath($dir).StartsWith($homeDir)) {
+  while ([System.IO.Path]::GetFullPath($dir).StartsWith($HOME)) {
     $jjDir = Join-Path -Path $dir -ChildPath '.jj'
 
     if (Test-Path -Path $jjDir -PathType Container) {
@@ -39,6 +33,7 @@ function gs {
   }
 }
 
+del alias:gc -Force
 function gc {
   if (Is-JJ-Repo) {
     jj commit @args
@@ -55,9 +50,17 @@ function gd {
   }
 }
 
-function cdw { Set-Location $myHome\working }
-function cdd { Set-Location $myHome\Downloads }
-function cdf { Set-Location $myHome\.dotfiles }
+function gpd {
+  if (Is-JJ-Repo) {
+    jj git push --allow-new -r '@-'
+  } else {
+    git push -u origin HEAD
+  }
+}
+
+function cdw { Set-Location $HOME\working }
+function cdd { Set-Location $HOME\Downloads }
+function cdf { Set-Location $HOME\.dotfiles }
+function gb { jj bookmark move --to '@-' @args }
 
 Set-Alias -Name vi -Value nvim
-

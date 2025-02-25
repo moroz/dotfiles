@@ -20,6 +20,7 @@ vim.opt.updatetime = 300
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.wo.signcolumn = 'yes'
+vim.o.fileformat = 'unix'
 
 vim.opt.termguicolors = true
 
@@ -61,10 +62,8 @@ end
 
 if preferred == "'prefer-light'" then
   vim.cmd.colorscheme(lightscheme)
-elseif preferred == "'prefer-dark'" then
-  vim.cmd.colorscheme(darkscheme)
 else
-  vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'default')
+  vim.cmd.colorscheme(darkscheme)
 end
 
 if os.getenv('NO_SYNTAX') == 'true' then
