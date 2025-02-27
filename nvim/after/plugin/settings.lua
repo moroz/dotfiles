@@ -56,7 +56,12 @@ local darkscheme = os.getenv('VIM_DARK_COLORSCHEME') or 'modus_vivendi'
 
 local preferred = ''
 
-if vim.fn.has('unix') then
+local is_wsl = function()
+  local output = vim.fn.system('uname -r')
+  return output:lower():match('microsoft') ~= nil
+end
+
+if jit.os == "Linux" then
   preferred = vim.fn.system('dconf read /org/gnome/desktop/interface/color-scheme'):gsub("%s+", "")
 end
 
@@ -70,7 +75,7 @@ if os.getenv('NO_SYNTAX') == 'true' then
   vim.cmd.syntax('off')
 end
 
-if vim.fn.has('wsl') then
+if vim.fn.has('wsl') and jit.os ~= "OSX" then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
