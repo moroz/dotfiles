@@ -1,3 +1,5 @@
+Invoke-Expression (& { (zoxide init powershell | Out-String) })
+
 if ($Env:OS -eq "Windows_NT") {
   $env:PATH = "$env:USERPROFILE\bin;C:\Program Files\LLVM\bin;$env:PATH"
   $env:PATH += ';C:\Program Files (x86)\Midnight Commander'
@@ -34,6 +36,7 @@ function gs {
 }
 
 del alias:gc -Force
+del alias:cd -Force
 function gc {
   if (Is-JJ-Repo) {
     jj commit @args
@@ -64,3 +67,4 @@ function cdf { Set-Location $HOME\.dotfiles }
 function gb { jj bookmark move --to '@-' @args }
 
 Set-Alias -Name vi -Value nvim
+Set-Alias -Name cd -Value z
