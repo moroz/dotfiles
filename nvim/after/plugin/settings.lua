@@ -56,7 +56,7 @@ local darkscheme = os.getenv('VIM_DARK_COLORSCHEME') or 'modus_vivendi'
 
 local preferred = ''
 
-if vim.fn.has('unix') == 1 then
+if vim.fn.has('unix') then
   preferred = vim.fn.system('dconf read /org/gnome/desktop/interface/color-scheme'):gsub("%s+", "")
 end
 
@@ -68,4 +68,19 @@ end
 
 if os.getenv('NO_SYNTAX') == 'true' then
   vim.cmd.syntax('off')
+end
+
+if vim.fn.has('wsl') then
+  vim.g.clipboard = {
+    name = 'WslClipboard',
+    copy = {
+      ['+'] = 'clip.exe',
+      ['*'] = 'clip.exe',
+    },
+    paste = {
+      ['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+      ['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+    },
+    cache_enabled = 0,
+  }
 end
