@@ -65,7 +65,11 @@ if jit.os == "Linux" then
   preferred = vim.fn.system('dconf read /org/gnome/desktop/interface/color-scheme'):gsub("%s+", "")
 end
 
-if preferred == "'prefer-light'" then
+if jit.os == "OSX" then
+  preferred = vim.fn.system("~/.dotfiles/darkmode.Darwin"):gsub("%s+", "")
+end
+
+if preferred == "'prefer-light'" or preferred == "DAYTIME" then
   vim.cmd.colorscheme(lightscheme)
 else
   vim.cmd.colorscheme(darkscheme)
