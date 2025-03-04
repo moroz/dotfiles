@@ -79,7 +79,7 @@ if os.getenv('NO_SYNTAX') == 'true' then
   vim.cmd.syntax('off')
 end
 
-if vim.fn.has('wsl') and jit.os ~= "OSX" then
+if is_wsl() then
   vim.g.clipboard = {
     name = 'WslClipboard',
     copy = {
