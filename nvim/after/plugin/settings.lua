@@ -51,32 +51,35 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-local lightscheme = os.getenv('VIM_LIGHT_COLORSCHEME') or 'modus_operandi'
-local darkscheme = os.getenv('VIM_DARK_COLORSCHEME') or 'modus_vivendi'
+function resolve_colorscheme()
+  local master = os.getenv('VIM_COLORSCHEME') 
 
-local preferred = ''
+  if master then
+    return master
+  end
+
+  local preferred = ''
+
+  if vim.fn.has('unix') then
+    preferred = vim.fn.system('dconf read /org/gnome/desktop/interface/color-scheme'):gsub("%s+", "")
+  end
+
+  if preferred == "'prefer-light'" then
+    return os.getenv('VIM_LIGHT_COLORSCHEME') or 'modus_operandi'
+  else
+    return os.getenv('VIM_DARK_COLORSCHEME') or 'modus_vivendi'
+  end
+end
+
+vim.cmd.colorscheme(resolve_colorscheme())
+
+if os.getenv('NO_SYNTAX') == 'true' then
+  vim.cmd.syntax('off')
+end
 
 local is_wsl = function()
   local output = vim.fn.system('uname -r')
   return output:lower():match('microsoft') ~= nil
-end
-
-if jit.os == "Linux" then
-  preferred = vim.fn.system('dconf read /org/gnome/desktop/interface/color-scheme'):gsub("%s+", "")
-end
-
-if jit.os == "OSX" then
-  preferred = vim.fn.system("~/.dotfiles/darkmode.Darwin"):gsub("%s+", "")
-end
-
-if preferred == "'prefer-light'" or preferred == "DAYTIME" then
-  vim.cmd.colorscheme(lightscheme)
-else
-  vim.cmd.colorscheme(darkscheme)
-end
-
-if os.getenv('NO_SYNTAX') == 'true' then
-  vim.cmd.syntax('off')
 end
 
 if is_wsl() then
