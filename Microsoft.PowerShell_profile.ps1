@@ -8,6 +8,13 @@ if ($Env:OS -eq "Windows_NT") {
 
 if ($IsLinux -or $IsMacOs) {
   $env:PATH = "$HOME/bin:/home/linuxbrew/.linuxbrew/bin:$env:PATH"
+}
+
+if ($IsMacOs) {
+  $env:PATH = "$HOME/bin:/opt/homebrew/bin:$env:PATH"
+}
+
+if ($IsLinux -or $IsMacOs) {
   mise activate pwsh | Out-String | Invoke-Expression
 }
 
