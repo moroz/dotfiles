@@ -6,7 +6,7 @@ if ($Env:OS -eq "Windows_NT") {
   $env:PATH += ';C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.43.34808\bin\Hostx86\x86'
 } 
 
-if ($IsLinux) {
+if ($IsLinux -or $IsMacOs) {
   $env:PATH = "$HOME/bin:/home/linuxbrew/.linuxbrew/bin:$env:PATH"
   mise activate pwsh | Out-String | Invoke-Expression
 }
