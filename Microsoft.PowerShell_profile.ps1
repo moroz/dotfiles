@@ -68,3 +68,8 @@ function gb { jj bookmark move --to '@-' @args }
 
 Set-Alias -Name vi -Value nvim
 Set-Alias -Name cd -Value z
+Set-PSReadlineOption -EditMode vi
+
+Set-PSReadLineOption -Colors @{
+  Operator = $Host.UI.RawUI.ForegroundColor
+}
