@@ -71,5 +71,7 @@ Set-Alias -Name cd -Value z
 Set-PSReadlineOption -EditMode vi
 
 Set-PSReadLineOption -Colors @{
-  Operator = $Host.UI.RawUI.ForegroundColor
+  Operator  = $Host.UI.RawUI.ForegroundColor
+  Parameter = $Host.UI.RawUI.ForegroundColor
+  Command   = $Host.UI.RawUI.ForegroundColor
 }
