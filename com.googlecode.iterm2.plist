@@ -4357,7 +4357,7 @@
 			<key>Non-ASCII Ligatures</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>CaskaydiaMonoNF-Regular 17</string>
+			<string>CaskaydiaMonoNFM-Regular 17</string>
 			<key>Option Key Sends</key>
 			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>

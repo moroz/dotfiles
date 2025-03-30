@@ -196,7 +196,7 @@ md() {
 ms() {
   if [ -f mix.exs ]; then
     mix phx.server $@
-  elif [ -f next.config.js ] || [ -f vite.config.ts ] || [ -f vite.config.js ] || [ -f vite.config.mjs ]; then
+  elif [ -f next.config.js ] || [ -f next.config.ts ] || [ -f vite.config.ts ] || [ -f vite.config.js ] || [ -f vite.config.mjs ]; then
     pnpm dev $@
   elif [ -f modd.conf ]; then
     modd $@
