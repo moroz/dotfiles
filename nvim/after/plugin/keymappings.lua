@@ -15,8 +15,8 @@ vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
 vim.keymap.set('n', '<Leader>mtv', ':TestFile<CR>', { silent = true, noremap = true })
 
 local function get_git_root()
-  local dot_git_path = vim.fn.finddir(".git", ".;")
-  return vim.fn.fnamemodify(dot_git_path, ":p:h:h")
+  local dot_git_path = vim.fn.findfile(".git", ".;")
+  return vim.fn.fnamemodify(dot_git_path, ":p:h")
 end
 
 local function dlv_debug_git_root()

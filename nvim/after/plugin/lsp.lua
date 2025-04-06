@@ -68,6 +68,12 @@ local servers = {
   elixirls = {},
   svelte = {},
   rubocop = {},
+  tailwindcss = {
+    filetypes = { 
+      "html", "css", "scss", "javascript", "javascriptreact", 
+      "typescript", "typescriptreact", "haml", "gohtmltmpl", "astro", "svelte"
+    },
+  },
 
   tailwindcss = {
     filetypes = {
