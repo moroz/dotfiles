@@ -196,8 +196,6 @@ md() {
 ms() {
   if [ -f mix.exs ]; then
     mix phx.server $@
-  elif [ -f next.config.js ] || [ -f next.config.ts ] || [ -f vite.config.ts ] || [ -f vite.config.js ] || [ -f vite.config.mjs ]; then
-    pnpm dev $@
   elif [ -f modd.conf ]; then
     modd $@
   elif [ -f hugo.toml ]; then
@@ -209,7 +207,7 @@ ms() {
   elif [ -f Procfile ]; then
     foreman start
   elif [ -f package.json ]; then
-    pnpm start $@
+    pnpm dev $@
   elif [ -f Cargo.toml ]; then
     cargo watch -x run $@
   elif [ -f go.mod ]; then
