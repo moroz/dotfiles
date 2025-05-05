@@ -70,13 +70,6 @@ local servers = {
   rubocop = {},
   tailwindcss = {
     filetypes = {
-      "html", "css", "scss", "javascript", "javascriptreact",
-      "typescript", "typescriptreact", "haml", "gohtmltmpl", "astro", "svelte"
-    },
-  },
-
-  tailwindcss = {
-    filetypes = {
       "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "html-eex", "liquid", "markdown",
       "mdx", "css", "less", "postcss", "sass", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact",
       "svelte", "templ", "gohtmltmpl"

@@ -11,6 +11,7 @@ vim.opt.swapfile = false
 vim.opt.number = true
 vim.opt.guicursor = ""
 vim.opt.termguicolors = true
+vim.wo.signcolumn = 'yes'
 
 vim.cmd.syntax('on')
 
@@ -26,6 +27,7 @@ vim.api.nvim_set_keymap('n', '<F10>', ':wqa<cr>', { silent = true, noremap = tru
 vim.api.nvim_set_keymap('n', '<F9>', ':Vex<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-p>', ':Files<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':noh<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<Leader><Tab>', '<C-^>', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 
 -- Bootstrap lazy.nvim
@@ -54,6 +56,8 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
+        'tpope/vim-surround',
+        'tpope/vim-abolish',
         'junegunn/fzf',
         'junegunn/fzf.vim',
         'sbdchd/neoformat',
@@ -188,4 +192,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
     group = highlight_group,
     pattern = '*',
+})
+
+vim.api.nvim_create_autocmd({ 'Filetype' }, {
+    pattern = { 'make', 'go', 'php', 'rust', 'cs' },
+    command = 'setlocal tabstop=4 shiftwidth=4 noexpandtab fileformat=unix'
+})
+
+vim.api.nvim_create_autocmd({ 'Filetype' }, {
+    pattern = 'c',
+    command = 'setlocal tabstop=2 shiftwidth=2 noexpandtab'
 })
