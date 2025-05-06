@@ -12,7 +12,6 @@ vim.opt.number = true
 vim.opt.guicursor = ""
 vim.opt.termguicolors = true
 
-vim.cmd.colorscheme("default")
 vim.cmd.syntax('on')
 
 vim.api.nvim_set_keymap('n', "<C-s>", ":w!<cr>", { silent = true, noremap = true })
@@ -27,6 +26,7 @@ vim.api.nvim_set_keymap('n', '<F10>', ':wqa<cr>', { silent = true, noremap = tru
 vim.api.nvim_set_keymap('n', '<F9>', ':Vex<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-p>', ':Files<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':noh<cr>', { silent = true, noremap = true })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -58,6 +58,14 @@ require("lazy").setup({
         'junegunn/fzf.vim',
         'sbdchd/neoformat',
         "lukas-reineke/lsp-format.nvim",
+        {
+            "forest-nvim/sequoia.nvim",
+            lazy = false,
+        },
+        {
+            "rebelot/kanagawa.nvim",
+            lazy = false,
+        },
 
         {
             -- LSP Configuration & Plugins
@@ -71,15 +79,26 @@ require("lazy").setup({
                 'folke/neodev.nvim',
             },
         },
+        {
+            "nvim-treesitter/nvim-treesitter",
+            build = ":TSUpdate",
+            config = function()
+                local configs = require("nvim-treesitter.configs")
 
+                configs.setup({
+                    ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "go", "rust" },
+                    sync_install = false,
+                    highlight = { enable = true },
+                    indent = { enable = true },
+                })
+            end
+        }
     },
-    -- Configure any other settings here. See the documentation for more details.
-    -- colorscheme that will be used when installing plugins.
-    install = { colorscheme = { "habamax" } },
     -- automatically check for plugin updates
     checker = { enabled = true },
 })
 
+vim.cmd.colorscheme("kanagawa")
 vim.api.nvim_create_augroup("fmt", { clear = true })
 
 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -161,3 +180,12 @@ mason_lspconfig.setup_handlers {
         }
     end,
 }
+
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+    callback = function()
+        vim.highlight.on_yank()
+    end,
+    group = highlight_group,
+    pattern = '*',
+})
