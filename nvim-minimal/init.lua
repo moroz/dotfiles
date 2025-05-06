@@ -88,21 +88,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
     command = "silent! undojoin | Neoformat",
 })
 
-vim.api.nvim_create_autocmd("VimEnter", {
-    callback = function()
-        if vim.fn.argc() == 0 then
-            vim.cmd("Ex")
-        end
-    end
-})
-
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('neodev').setup()
 local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup {
-    ensure_installed = { "svelte", "gopls", "elixirls", "clangd", "tailwindcss", "rust_analyzer" },
+    ensure_installed = { "gopls", "clangd", "tailwindcss", "rust_analyzer", "lua_ls" },
     automatic_installation = true,
 }
 
