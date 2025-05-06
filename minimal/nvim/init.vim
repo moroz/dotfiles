@@ -1,5 +1,4 @@
 set nocompatible
-set number
 
 filetype plugin indent on
 syntax on
@@ -10,3 +9,4 @@ set shiftwidth=4
 set hidden
 set noswapfile
 colorscheme evening
+set number

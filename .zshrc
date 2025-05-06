@@ -64,6 +64,7 @@ jj-clone() {
 alias vi="nvim"
 alias ee="emacs -nw"
 alias r=". ~/.zshrc"
+alias mi="NVIM_APPNAME=nvim-minimal nvim"
 
 alias cdw="cd ~/working"
 alias cdd="cd ~/Downloads"

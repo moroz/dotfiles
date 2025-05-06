@@ -69,8 +69,8 @@ local servers = {
   svelte = {},
   rubocop = {},
   tailwindcss = {
-    filetypes = { 
-      "html", "css", "scss", "javascript", "javascriptreact", 
+    filetypes = {
+      "html", "css", "scss", "javascript", "javascriptreact",
       "typescript", "typescriptreact", "haml", "gohtmltmpl", "astro", "svelte"
     },
   },
@@ -124,3 +124,5 @@ mason_lspconfig.setup_handlers {
 }
 
 vim.lsp.set_log_level("ERROR")
+
+vim.g.copilot_enabled = false

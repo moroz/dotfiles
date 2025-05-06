@@ -1,0 +1,11 @@
+{
+  "fzf": { "branch": "master", "commit": "d226d841a1f2b849b7e3efab2a44ecbb3e61a5a5" },
+  "fzf.vim": { "branch": "master", "commit": "3cb44a8ba588e1ada409af495bdc6a4d2d37d5da" },
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "lsp-format.nvim": { "branch": "master", "commit": "f336cfd6572bf644d26b5cdec7e5e2c6b8f45135" },
+  "mason-lspconfig.nvim": { "branch": "main", "commit": "1a31f824b9cd5bc6f342fc29e9a53b60d74af245" },
+  "mason.nvim": { "branch": "main", "commit": "fc98833b6da5de5a9c5b1446ac541577059555be" },
+  "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
+  "neoformat": { "branch": "master", "commit": "33cab6962999ca74824ee6dc6e627f406139d6ee" },
+  "nvim-lspconfig": { "branch": "master", "commit": "4bc481b6f0c0cf3671fc894debd0e00347089a4e" }
+}
