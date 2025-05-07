@@ -227,3 +227,10 @@ vim.api.nvim_create_autocmd({ 'Filetype' }, {
     pattern = 'c',
     command = 'setlocal tabstop=2 shiftwidth=2 noexpandtab'
 })
+
+vim.api.nvim_create_autocmd("BufNewFile", {
+    pattern = "*.rb",
+    callback = function()
+        vim.api.nvim_buf_set_lines(0, 0, 0, false, { "# frozen_string_literal: true", "" })
+    end,
+})
