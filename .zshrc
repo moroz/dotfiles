@@ -61,10 +61,10 @@ jj-clone() {
   jj git clone $origin
 }
 
-alias vi="nvim"
+# alias vi="nvim"
 alias ee="emacs -nw"
 alias r=". ~/.zshrc"
-alias mi="NVIM_APPNAME=nvim-minimal nvim"
+alias vi="nvim"
 
 alias cdw="cd ~/working"
 alias cdd="cd ~/Downloads"
