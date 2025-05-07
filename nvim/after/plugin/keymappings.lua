@@ -8,7 +8,6 @@ vim.api.nvim_set_keymap('n', "<F9>", ":NvimTreeFindFileToggle<cr>", { silent = t
 vim.api.nvim_set_keymap('n', "<F10>", ":wqa!<cr>", { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>wd', ':q<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>wm', ':only<cr>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('', '<Leader>bb', ':Buffers<cr>', { silent = true, noremap = true })
 
 vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
 vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })

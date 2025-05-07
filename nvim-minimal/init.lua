@@ -53,12 +53,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Make sure to setup `mapleader` and `maplocalleader` before
--- loading lazy.nvim so that mappings are correct.
--- This is also a good place to setup other settings (vim.opt)
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
 -- Setup lazy.nvim
 require("lazy").setup({
     spec = {
@@ -219,13 +213,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 vim.api.nvim_create_autocmd({ 'Filetype' }, {
-    pattern = { 'make', 'go', 'php', 'rust', 'cs' },
+    pattern = { 'make', 'go', 'php', 'rust', 'cs', 'c' },
     command = 'setlocal tabstop=4 shiftwidth=4 noexpandtab fileformat=unix'
 })
 
 vim.api.nvim_create_autocmd({ 'Filetype' }, {
-    pattern = 'c',
-    command = 'setlocal tabstop=2 shiftwidth=2 noexpandtab'
+    pattern = { 'c' },
+    command = 'setlocal tabstop=2 shiftwidth=2 noexpandtab fileformat=unix'
 })
 
 vim.api.nvim_create_autocmd("BufNewFile", {

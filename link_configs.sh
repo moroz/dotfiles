@@ -3,8 +3,8 @@
 mkdir -p $HOME/.config/{fontconfig,rofi,powershell}
 
 # Yes, swap these two for now
-[[ -L $HOME/.config/nvim-minimal ]] || ln -s $HOME/.dotfiles/nvim-minimal $HOME/.config/nvim
-[[ -L $HOME/.config/nvim ]] || ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim-minimal
+[[ -L $HOME/.config/nvim-minimal ]] || ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim-minimal
+[[ -L $HOME/.config/nvim ]] || ln -s $HOME/.dotfiles/nvim-minimal $HOME/.config/nvim
 
 [[ -L $HOME/.tmux.conf ]] || ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
 [[ -L $HOME/.prettierrc.json ]] || ln -s $HOME/.dotfiles/.prettierrc.json $HOME/.prettierrc.json
