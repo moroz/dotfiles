@@ -70,14 +70,21 @@ require("lazy").setup({
             "rebelot/kanagawa.nvim",
             lazy = false,
         },
-
+        {
+            'mason-org/mason.nvim',
+            version = 'v1.11.0'
+        },
+        {
+            'mason-org/mason-lspconfig.nvim',
+            version = 'v1.32.0'
+        },
         {
             -- LSP Configuration & Plugins
             'neovim/nvim-lspconfig',
             dependencies = {
-                -- Automatically install LSPs to stdpath for neovim
-                'williamboman/mason.nvim',
-                'williamboman/mason-lspconfig.nvim',
+                -- -- Automatically install LSPs to stdpath for neovim
+                -- 'williamboman/mason.nvim',
+                -- 'williamboman/mason-lspconfig.nvim',
 
                 -- Additional lua configuration, makes nvim stuff amazing!
                 'folke/neodev.nvim',
