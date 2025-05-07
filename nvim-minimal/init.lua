@@ -12,6 +12,10 @@ vim.opt.number = true
 vim.opt.guicursor = ""
 vim.opt.termguicolors = true
 vim.wo.signcolumn = 'yes'
+vim.opt.smartcase = true
+vim.opt.ignorecase = true
+vim.opt.smartindent = true
+vim.o.fileformat = 'unix'
 
 vim.cmd.syntax('on')
 
@@ -24,11 +28,13 @@ vim.api.nvim_set_keymap('n', '<Leader>wl', '<C-w>l', { silent = true, noremap = 
 vim.api.nvim_set_keymap('n', '<Leader>wh', '<C-w>h', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>w-', ':sp<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F10>', ':wqa<cr>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<F9>', ':Vex<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<F9>', ':Ex<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<C-p>', ':Files<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<Esc><Esc>', ':noh<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<Leader><Tab>', '<C-^>', { silent = true, noremap = true })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
+vim.keymap.set('n', '<Leader>mtv', ':TestFile<CR>', { silent = true, noremap = true })
+vim.keymap.set('n', '<Leader>bb', ':Buffers<CR>', { silent = true, noremap = true })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -62,6 +68,17 @@ require("lazy").setup({
         'junegunn/fzf.vim',
         'sbdchd/neoformat',
         "lukas-reineke/lsp-format.nvim",
+        'vim-test/vim-test',
+        { 'fatih/vim-go', ft = { 'go', 'gohtmltmpl' } },
+        {
+            'sebdah/vim-delve',
+            ft = 'go',
+            init = function()
+                vim.g.delve_new_command = "tabnew"
+            end
+        },
+
+
         {
             "forest-nvim/sequoia.nvim",
             lazy = false,

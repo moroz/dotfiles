@@ -12,5 +12,8 @@
   "nvim-treesitter": { "branch": "master", "commit": "28d480e0624b259095e56f353ec911f9f2a0f404" },
   "sequoia.nvim": { "branch": "master", "commit": "912da0ff5b9247b974895672cc62d3c471cb1a6e" },
   "vim-abolish": { "branch": "master", "commit": "dcbfe065297d31823561ba787f51056c147aa682" },
-  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }
+  "vim-delve": { "branch": "master", "commit": "41d6ad294fb6dd5090f5f938318fc4ed73b6e1ea" },
+  "vim-go": { "branch": "master", "commit": "59e208d5212b86c8afd69d8590f181594f859ddb" },
+  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
+  "vim-test": { "branch": "master", "commit": "b0c3e13249699a522c8b472ff79eff40d2935476" }
 }
