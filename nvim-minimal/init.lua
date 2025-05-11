@@ -35,6 +35,8 @@ vim.api.nvim_set_keymap('n', '<Leader><Tab>', '<C-^>', { silent = true, noremap 
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<Leader>mtv', ':TestFile<CR>', { silent = true, noremap = true })
 vim.keymap.set('n', '<Leader>bb', ':Buffers<CR>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('', 'j', 'gj', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('', 'k', 'gk', { silent = true, noremap = true })
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
