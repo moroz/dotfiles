@@ -150,7 +150,7 @@ require('neodev').setup()
 local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup {
-	ensure_installed = { "gopls", "clangd", "tailwindcss", "rust_analyzer", "lua_ls" },
+	ensure_installed = { "gopls", "clangd", "tailwindcss", "rust_analyzer", "lua_ls", "rubocop", "ts_ls" },
 	automatic_installation = true,
 }
 
