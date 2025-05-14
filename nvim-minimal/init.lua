@@ -111,9 +111,15 @@ require("lazy").setup({
 				-- -- Automatically install LSPs to stdpath for neovim
 				-- 'williamboman/mason.nvim',
 				-- 'williamboman/mason-lspconfig.nvim',
-
-				-- Additional lua configuration, makes nvim stuff amazing!
-				'folke/neodev.nvim',
+			},
+		},
+		{
+			-- Autocompletion
+			'hrsh7th/nvim-cmp',
+			dependencies = {
+				-- Adds LSP completion capabilities
+				'hrsh7th/cmp-nvim-lsp',
+				'hrsh7th/cmp-path',
 			},
 		},
 		{
@@ -146,7 +152,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 
 require('mason').setup()
 require('mason-lspconfig').setup()
-require('neodev').setup()
 local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup {
@@ -205,9 +210,15 @@ local servers = {
 	},
 }
 
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+capabilities['offsetEncoding'] = { 'utf-16' }
+
 mason_lspconfig.setup_handlers {
 	function(server_name)
 		require('lspconfig')[server_name].setup {
+			capabilities = capabilities,
 			on_attach = on_attach(server_name),
 			settings = servers[server_name],
 			filetypes = (servers[server_name] or {}).filetypes,
@@ -241,3 +252,42 @@ vim.api.nvim_create_autocmd("BufNewFile", {
 		vim.api.nvim_buf_set_lines(0, 0, 0, false, { "# frozen_string_literal: true", "" })
 	end,
 })
+
+local cmp = require 'cmp'
+cmp.setup {
+	sources = {
+		{ name = 'nvim_lsp' },
+		{ name = "emmet_vim" },
+		{ name = "path" },
+	},
+	completion = {
+		autocomplete = false,
+	},
+	mapping = cmp.mapping.preset.insert {
+		['<C-n>'] = cmp.mapping.select_next_item(),
+		['<C-p>'] = cmp.mapping.select_prev_item(),
+		['<C-d>'] = cmp.mapping.scroll_docs(-4),
+		['<C-f>'] = cmp.mapping.scroll_docs(4),
+		['<C-Space>'] = cmp.mapping.complete {},
+		['<CR>'] = cmp.mapping.confirm {
+			behavior = cmp.ConfirmBehavior.Replace,
+			select = true,
+		},
+		['<Tab>'] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			else
+				fallback()
+			end
+		end, { 'i', 's' }),
+		['<S-Tab>'] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			else
+				fallback()
+			end
+		end, { 'i', 's' }),
+	},
+}
+
+vim.g.fzf_layout = { window = { width = 0.9, height = 0.8, relative = true } }
