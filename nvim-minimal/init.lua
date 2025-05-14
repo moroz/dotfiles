@@ -38,6 +38,8 @@ vim.keymap.set('n', '<Leader>bb', ':Buffers<CR>', { silent = true, noremap = tru
 vim.api.nvim_set_keymap('', 'j', 'gj', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', 'k', 'gk', { silent = true, noremap = true })
 
+vim.g.fzf_layout = { window = { width = 0.9, height = 0.8, relative = true } }
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -150,15 +152,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	command = "silent! undojoin | Neoformat",
 })
 
-require('mason').setup()
-require('mason-lspconfig').setup()
-local mason_lspconfig = require('mason-lspconfig')
-
-mason_lspconfig.setup {
-	ensure_installed = { "gopls", "clangd", "tailwindcss", "rust_analyzer", "lua_ls", "rubocop", "ts_ls" },
-	automatic_installation = true,
-}
-
 vim.lsp.set_log_level("ERROR")
 
 local on_attach = function(server_name)
@@ -189,6 +182,9 @@ local on_attach = function(server_name)
 end
 
 local servers = {
+	clangd = {
+		filetypes = { "c", "cpp" },
+	},
 	gopls = {},
 	templ = {},
 	elixirls = {},
@@ -214,6 +210,15 @@ local servers = {
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 capabilities['offsetEncoding'] = { 'utf-16' }
+
+require('mason').setup()
+require('mason-lspconfig').setup()
+local mason_lspconfig = require('mason-lspconfig')
+
+mason_lspconfig.setup {
+	ensure_installed = { "gopls", "clangd", "tailwindcss", "rust_analyzer", "lua_ls", "rubocop", "ts_ls" },
+	automatic_installation = true,
+}
 
 mason_lspconfig.setup_handlers {
 	function(server_name)
@@ -289,5 +294,3 @@ cmp.setup {
 		end, { 'i', 's' }),
 	},
 }
-
-vim.g.fzf_layout = { window = { width = 0.9, height = 0.8, relative = true } }
