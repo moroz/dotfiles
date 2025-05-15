@@ -25,13 +25,7 @@ require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-abolish',
   'tpope/vim-endwise',
-  'huyvohcmc/atlas.vim',
-  'chriskempson/base16-vim',
-  'Lokaltog/vim-distinguished',
-  "protesilaos/tempus-themes-vim",
-  "miikanissi/modus-themes.nvim",
   "flazz/vim-colorschemes",
-  "miikanissi/modus-themes.nvim",
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
@@ -84,9 +78,6 @@ require('lazy').setup({
       },
     },
   },
-
-  -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim',     opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -194,8 +185,6 @@ require('lazy').setup({
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open floating diagnostic message' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostics list' })
 

@@ -51,28 +51,6 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
-function resolve_colorscheme()
-  local master = os.getenv('VIM_COLORSCHEME') 
-
-  if master then
-    return master
-  end
-
-  local preferred = ''
-
-  if vim.fn.has('unix') then
-    preferred = vim.fn.system('dconf read /org/gnome/desktop/interface/color-scheme'):gsub("%s+", "")
-  end
-
-  if preferred == "'prefer-light'" then
-    return os.getenv('VIM_LIGHT_COLORSCHEME') or 'modus_operandi'
-  else
-    return os.getenv('VIM_DARK_COLORSCHEME') or 'modus_vivendi'
-  end
-end
-
-vim.cmd.colorscheme(resolve_colorscheme())
-
 if os.getenv('NO_SYNTAX') == 'true' then
   vim.cmd.syntax('off')
 end
