@@ -10,6 +10,7 @@ cmp.setup {
     end,
   },
   completion = {
+    autocomplete = false,
     completeopt = 'menu,menuone,noinsert'
   },
   mapping = cmp.mapping.preset.insert {
