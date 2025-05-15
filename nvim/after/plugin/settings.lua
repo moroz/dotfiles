@@ -74,3 +74,5 @@ if is_wsl() then
     cache_enabled = 0,
   }
 end
+
+vim.cmd.colorscheme('distinguished')

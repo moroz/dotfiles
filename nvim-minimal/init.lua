@@ -68,7 +68,6 @@ require("lazy").setup({
 		"lukas-reineke/lsp-format.nvim",
 		'vim-test/vim-test',
 		'h-hg/fcitx.nvim',
-		'RRethy/nvim-treesitter-endwise',
 		{
 			'mattn/emmet-vim',
 			init = function()

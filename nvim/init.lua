@@ -24,18 +24,45 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   'tpope/vim-surround',
   'tpope/vim-abolish',
-  'tpope/vim-endwise',
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    dependencies = {
+      'RRethy/nvim-treesitter-endwise',
+    },
+    config = function()
+      local configs = require("nvim-treesitter.configs")
+
+      configs.setup({
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "go", "rust", "elixir", "ruby" },
+        sync_install = false,
+        highlight = { enable = true },
+        indent = { enable = true },
+      })
+    end
+  },
+
+
   "flazz/vim-colorschemes",
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
   {
+    'mason-org/mason.nvim',
+    version = 'v1.11.0'
+  },
+  {
+    'mason-org/mason-lspconfig.nvim',
+    version = 'v1.32.0'
+  },
+  {
     -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      'williamboman/mason.nvim',
-      'williamboman/mason-lspconfig.nvim',
+      -- 'williamboman/mason.nvim',
+      -- 'williamboman/mason-lspconfig.nvim',
 
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`

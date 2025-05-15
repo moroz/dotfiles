@@ -31,11 +31,4 @@ if [[ "$(uname)" == 'Darwin' ]]; then
   defaults write -g ApplePressAndHoldEnabled -bool false
   mkdir -p $HOME/Pictures/screenshots
   defaults write com.apple.screencapture location $HOME/Pictures/screenshots
-  [[ -L $HOME/.config/alacritty ]] || ln -s $HOME/.dotfiles/alacritty $HOME/.config/alacritty
-  if which brew >/dev/null; then
-    brew install zsh tmux reattach-to-user-namespace mc ag neovim wget curl direnv aws-vault ripgrep universal-ctags
-    brew install --cask firefox google-chrome spectacle karabiner-elements signal slack tableplus
-    sudo bash -c "echo $(which zsh) >> /etc/shells"
-    sudo chsh -s $(which zsh) $USER
-  fi
 fi
