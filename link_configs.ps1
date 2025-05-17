@@ -6,7 +6,7 @@ if (-not (Test-Path -Path $link -PathType Leaf) -and -not (Test-Path -Path $link
 }
 
 $target = "$env:USERPROFILE\.dotfiles\Microsoft.PowerShell_profile.ps1"
-$linkDir = "$env:USERPROFILE\Documents\PowerShell"
+$linkDir = "$env:USERPROFILE\Documents\WindowsPowerShell"
 $link = Join-Path $linkDir "Microsoft.PowerShell_profile.ps1"
 
 if (-not (Test-Path -Path $link)) {
