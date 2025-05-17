@@ -1,3 +1,6 @@
+# winget install --id Microsoft.PowerShell --source winget
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+
 $target = "$env:USERPROFILE\.dotfiles\nvim"
 $link = "$env:USERPROFILE\AppData\Local\nvim"
 
@@ -6,7 +9,7 @@ if (-not (Test-Path -Path $link -PathType Leaf) -and -not (Test-Path -Path $link
 }
 
 $target = "$env:USERPROFILE\.dotfiles\Microsoft.PowerShell_profile.ps1"
-$linkDir = "$env:USERPROFILE\Documents\WindowsPowerShell"
+$linkDir = split-path $profile
 $link = Join-Path $linkDir "Microsoft.PowerShell_profile.ps1"
 
 if (-not (Test-Path -Path $link)) {
