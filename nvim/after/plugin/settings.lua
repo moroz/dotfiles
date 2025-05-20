@@ -82,4 +82,4 @@ if is_wsl() then
   }
 end
 
-vim.cmd.colorscheme('distinguished')
+vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'distinguished')
