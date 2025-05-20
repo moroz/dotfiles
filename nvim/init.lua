@@ -1,6 +1,7 @@
 -- vim: ts=2 sts=2 sw=2 et
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
+vim.g.user_emmet_install_global = 0
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -156,14 +157,7 @@ require('lazy').setup({
   { 'joerdav/templ.vim', ft = 'templ' },
   'sbdchd/neoformat',
   'vim-test/vim-test',
-  {
-    'mattn/emmet-vim',
-    init = function()
-      vim.cmd([[
-        imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
-      ]])
-    end
-  },
+  'mattn/emmet-vim',
   { 'leafOfTree/vim-svelte-plugin', ft = 'svelte' },
   -- "ludovicchabant/vim-gutentags",
   {

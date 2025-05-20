@@ -40,3 +40,19 @@ vim.api.nvim_create_autocmd({ 'Filetype' }, {
   pattern = 'c',
   command = 'setlocal tabstop=2 shiftwidth=2 noexpandtab'
 })
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = {
+    "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "html-eex", "markdown",
+    "mdx", "css", "sass", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact",
+    "svelte", "templ", "gohtmltmpl"
+  },
+  callback = function(_)
+    vim.cmd("EmmetInstall")
+    require("cmp").setup.buffer({ enabled = false })
+
+    vim.cmd([[
+      imap <expr> <buffer> <tab> emmet#expandAbbrIntelligent("\<tab>")
+    ]])
+  end,
+})

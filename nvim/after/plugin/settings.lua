@@ -24,6 +24,13 @@ vim.o.fileformat = 'unix'
 
 vim.opt.termguicolors = true
 
+vim.g.user_emmet_install_global = 0
+vim.g.user_emmet_settings = {
+  templ = {
+    extends = "html"
+  }
+}
+
 vim.g.mapleader = ' '
 
 vim.g.neoformat_only_msg_on_error = true

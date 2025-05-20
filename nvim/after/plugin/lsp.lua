@@ -64,12 +64,11 @@ local servers = {
   rubocop = {},
   tailwindcss = {
     filetypes = {
-      "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "html-eex", "liquid", "markdown",
-      "mdx", "css", "less", "postcss", "sass", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact",
+      "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "html-eex", "markdown",
+      "mdx", "css", "sass", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact",
       "svelte", "templ", "gohtmltmpl"
     }
   },
-
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -94,7 +93,7 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   -- ensure_installed = { "ts_ls", "svelte", "templ", "lua_ls", "gopls", "elixirls", "efm" },
-  ensure_installed = { "ts_ls", "svelte", "gopls", "elixirls", "clangd", "tailwindcss" },
+  ensure_installed = { "ts_ls", "svelte", "gopls", "elixirls", "clangd", "tailwindcss", "templ", "powershell_es" },
   automatic_installation = true,
 }
 
