@@ -19,10 +19,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 })
 
 
-vim.api.nvim_create_autocmd("BufNewFile", {
+vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = "*.rb",
   callback = function()
-    vim.api.nvim_buf_set_lines(0, 0, 0, false, { "# frozen_string_literal: true", "" })
+    if vim.fn.line('$') == 1 and vim.fn.getline(1) == '' then
+      vim.api.nvim_buf_set_lines(0, 0, 0, false, { "# frozen_string_literal: true", "" })
+    end
   end,
 })
 
