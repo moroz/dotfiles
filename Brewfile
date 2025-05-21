@@ -6,6 +6,8 @@ brew "direnv"
 brew "aws-vault"
 brew "ripgrep"
 brew "universal-ctags"
+brew "sponge"
+brew "jq"
 
 if OS.mac?
   brew "curl"
