@@ -262,3 +262,8 @@ light() {
   ln -sf $HOME/.config/ghostty/theme-light $HOME/.config/ghostty/theme
   set_wallpaper $LIGHT_WALLPAPER
 }
+
+cursor() {
+  size="${@:-32}"
+  dconf write /org/cinnamon/desktop/interface/cursor-size $size
+}
