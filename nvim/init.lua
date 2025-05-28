@@ -46,6 +46,8 @@ require('lazy').setup({
 
 
   "flazz/vim-colorschemes",
+  { "miikanissi/modus-themes.nvim", priority = 1000 },
+  { "protesilaos/tempus-themes-vim" },
 
   -- NOTE: This is where your plugins related to LSP can be installed.
   --  The configuration is done below. Search for lspconfig to find it below.
