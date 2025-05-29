@@ -23,6 +23,7 @@ git config --global core.excludesfile ~/.gitignore
 
 if [[ ! -L ~/.config/jj/config.toml ]]; then
   rm -f ~/.config/jj/config.toml
+  mkdir -p ~/.config/jj
   ln -s $HOME/.dotfiles/jj/config.toml ~/.config/jj/config.toml
 fi
 
