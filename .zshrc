@@ -249,17 +249,17 @@ set_wallpaper() {
 
 dark() {
   dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+  dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Dark-Aqua'"
   gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-Y-Dark-Aqua'
   gsettings set org.cinnamon.theme name 'Mint-Y-Dark-Aqua'
-  ln -sf $HOME/.config/ghostty/theme-dark $HOME/.config/ghostty/theme
   set_wallpaper $DARK_WALLPAPER
 }
 
 light() {
   dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+  dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Aqua'"
   gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-Y-Aqua'
   gsettings set org.cinnamon.theme name 'Mint-Y-Aqua'
-  ln -sf $HOME/.config/ghostty/theme-light $HOME/.config/ghostty/theme
   set_wallpaper $LIGHT_WALLPAPER
 }
 
