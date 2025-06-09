@@ -93,7 +93,7 @@ local mason_lspconfig = require 'mason-lspconfig'
 
 mason_lspconfig.setup {
   -- ensure_installed = { "ts_ls", "svelte", "templ", "lua_ls", "gopls", "elixirls", "efm" },
-  ensure_installed = { "ts_ls", "svelte", "gopls", "elixirls", "clangd", "tailwindcss", "templ", "powershell_es", "rubocop", "solargraph" },
+  ensure_installed = { "ts_ls", "svelte", "gopls", "elixirls", "clangd", "tailwindcss", "templ", "powershell_es", "rubocop", "solargraph", "astro" },
   automatic_installation = true,
 }
 
