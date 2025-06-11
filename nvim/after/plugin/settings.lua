@@ -85,4 +85,22 @@ if is_wsl() then
   }
 end
 
-vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'distinguished')
+local is_mac = function()
+  local output = vim.fn.system('uname')
+  return output == "Darwin\n"
+end
+
+local is_day_mac = function()
+  local output = vim.fn.system("~/.dotfiles/darkmode.Darwin")
+  return output == "DAYTIME\n"
+end
+
+if is_mac() then
+  if is_day_mac() then
+    vim.cmd.colorscheme(os.getenv('VIM_DAY_COLORSCHEME') or 'tempus_fugit')
+  else
+    vim.cmd.colorscheme(os.getenv('VIM_NIGHT_COLORSCHEME') or 'tempus_winter')
+  end
+else
+  vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'distinguished')
+end
