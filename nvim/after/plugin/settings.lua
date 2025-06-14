@@ -65,7 +65,7 @@ if os.getenv('NO_SYNTAX') == 'true' then
   vim.cmd.syntax('off')
 end
 
-local is_wsl = function()
+local function is_wsl()
   local output = vim.fn.system('uname -r')
   return output:lower():match('microsoft') ~= nil
 end
@@ -85,18 +85,24 @@ if is_wsl() then
   }
 end
 
-local is_mac = function()
-  local output = vim.fn.system('uname')
-  return output == "Darwin\n"
+local function has_dark_mode()
+  local uname = vim.loop.os_uname().sysname
+  return uname == "Darwin" or uname == "Linux"
 end
 
-local is_day_mac = function()
-  local output = vim.fn.system("~/.dotfiles/darkmode.Darwin")
-  return output == "DAYTIME\n"
+local function is_day()
+  local uname = vim.loop.os_uname().sysname
+  if uname == "Darwin" then
+    local output = vim.fn.system("~/.dotfiles/darkmode.Darwin")
+    return output == "DAYTIME\n"
+  elseif uname == "Linux" then
+    local output = vim.fn.system("dconf read /org/gnome/desktop/interface/color-scheme")
+    return output == "'prefer-light'\n"
+  end
 end
 
-if is_mac() then
-  if is_day_mac() then
+if has_dark_mode() then
+  if is_day() then
     vim.cmd.colorscheme(os.getenv('VIM_DAY_COLORSCHEME') or 'tempus_fugit')
   else
     vim.cmd.colorscheme(os.getenv('VIM_NIGHT_COLORSCHEME') or 'tempus_winter')
