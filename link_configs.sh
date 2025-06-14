@@ -19,6 +19,8 @@ mkdir -p $HOME/.config/{fontconfig,rofi,powershell}
 [[ -L $HOME/.ideavimrc ]] || ln -s $HOME/.dotfiles/.ideavimrc $HOME/.ideavimrc
 git config --global core.excludesfile ~/.gitignore
 
+[[ -L $HOME/.local/bin/launch_terminal.sh ]] || ln -sf $(realpath ~/.dotfiles/launch_terminal.sh) ~/.local/bin/
+
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
 [[ -f $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 ]] || ln -s $HOME/.dotfiles/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 
