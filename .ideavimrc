@@ -1,0 +1,7 @@
+let mapleader = " "
+
+nnoremap <silent> <Leader>wv :vsplit<CR>
+nnoremap <silent> <Leader>wd :q<CR>
+nnoremap <silent> <Leader>w- :split<CR>
+nnoremap <silent> <Leader>wm :only<CR>
+nnoremap <silent> <F9> :action ActivateProjectToolWindow<CR>
