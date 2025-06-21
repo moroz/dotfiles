@@ -16,6 +16,7 @@ mkdir -p $HOME/.config/{fontconfig,rofi,powershell}
 [[ -L $HOME/.Xresources ]] || ln -s $HOME/.dotfiles/.Xresources $HOME/.Xresources
 [[ -L $HOME/.config/rofi/config.rasi ]] || ln -s $HOME/.dotfiles/config.rasi $HOME/.config/rofi/config.rasi
 [[ -L $HOME/.doom.d ]] || ln -s $HOME/.dotfiles/.doom.d $HOME/.doom.d
+[[ -L $HOME/.ideavimrc ]] || ln -s $HOME/.dotfiles/.ideavimrc $HOME/.ideavimrc
 git config --global core.excludesfile ~/.gitignore
 
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
