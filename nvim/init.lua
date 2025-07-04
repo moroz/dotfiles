@@ -36,7 +36,7 @@ require('lazy').setup({
       local configs = require("nvim-treesitter.configs")
 
       configs.setup({
-        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "go", "rust", "elixir", "ruby" },
+        ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "go", "rust", "elixir", "ruby", "heex" },
         sync_install = false,
         highlight = { enable = true },
         indent = { enable = true },
