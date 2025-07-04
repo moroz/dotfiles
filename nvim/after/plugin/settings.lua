@@ -29,6 +29,9 @@ vim.g.user_emmet_settings = {
   templ = {
     extends = "html"
   },
+  heex = {
+    extends = "html"
+  },
   astro = {
     extends = "html"
   },
