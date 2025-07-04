@@ -31,6 +31,9 @@ vim.g.user_emmet_settings = {
   },
   astro = {
     extends = "html"
+  },
+  heex = {
+    extends = "html"
   }
 }
 

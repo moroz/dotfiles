@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd(
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   group = "fmt",
-  pattern = { '*.rb', '*.js', '*.jsx', '*.ts', '*.mjs', '*.tsx', '*.svelte', '*.scss', '*.sass', '*.lua', '*.erb', '*.json', '*.css', '*.html', '*.tf', '*.c', '*.h', '*.astro' },
+  pattern = { '*.rb', '*.js', '*.jsx', '*.ts', '*.mjs', '*.tsx', '*.svelte', '*.scss', '*.sass', '*.lua', '*.erb', '*.json', '*.css', '*.html', '*.tf', '*.c', '*.h', '*.astro', '*.ex', '*.exs' },
   command = "silent! undojoin | Neoformat",
 })
 
@@ -45,9 +45,8 @@ vim.api.nvim_create_autocmd({ 'Filetype' }, {
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
-    "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "html-eex", "markdown",
-    "mdx", "css", "sass", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact",
-    "svelte", "templ", "gohtmltmpl"
+    "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "heex", "markdown",
+    "mdx", "css", "sass", "scss", "javascriptreact", "typescriptreact", "svelte", "templ", "gohtmltmpl"
   },
   callback = function(_)
     vim.cmd("EmmetInstall")
