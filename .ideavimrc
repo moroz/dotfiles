@@ -5,14 +5,16 @@ nnoremap <silent> <Leader>wv :vsplit<CR>
 nnoremap <silent> <Leader>wd :q<CR>
 nnoremap <silent> <Leader>w- :split<CR>
 nnoremap <silent> <Leader>wm :only<CR>
-nnoremap <silent> <F9> :action ActivateProjectToolWindow<CR>
+nnoremap <silent> <Leader>wl <C-w>l
+nnoremap <silent> <Leader>wh <C-w>h
 
 if has('mac')
-  map <silent> <D-s> <Action>(SaveAll)<CR>
-  nmap <silent> <D-p> <Action>(GotoFile)<CR>
-  nmap <silent> <D-S-p> <Action>(SearchEverywhere)<CR>
+  map <silent> <D-s> <Action>(SaveAll)
+  nmap <silent> <D-p> <Action>(GotoFile)
+  nmap <silent> <D-S-p> <Action>(SearchEverywhere)
 else
-  map <silent> <C-s> <Action>(SaveAll)<CR>
-  nmap <silent> <C-p> <Action>(GotoFile)<CR>
-  nmap <silent> <C-S-p> <Action>(SearchEverywhere)<CR>
+  map <silent> <C-s> <Action>(SaveAll)
+  nmap <silent> <C-p> <Action>(GotoFile)
+  nmap <silent> <C-S-p> <Action>(SearchEverywhere)
+  nmap <silent> <F9> <Action>(ActivateProjectToolWindow)
 endif
