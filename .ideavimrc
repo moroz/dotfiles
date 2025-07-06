@@ -1,7 +1,10 @@
 let mapleader = " "
 
+set ideajoin
 nnoremap <silent> <Leader>wv :vsplit<CR>
 nnoremap <silent> <Leader>wd :q<CR>
 nnoremap <silent> <Leader>w- :split<CR>
 nnoremap <silent> <Leader>wm :only<CR>
 nnoremap <silent> <F9> :action ActivateProjectToolWindow<CR>
+map <silent> <C-s> <Action>(SaveAll)<CR>
+nmap <silent> <C-p> <Action>(GotoFile)<CR>

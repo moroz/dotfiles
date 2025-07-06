@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = "silent! undojoin | Neoformat",
 })
 
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePost", {
   pattern = "*.heex",
   callback = function()
     local view = vim.fn.winsaveview()
