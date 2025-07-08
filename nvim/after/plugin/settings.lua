@@ -35,9 +35,9 @@ vim.g.user_emmet_settings = {
   astro = {
     extends = "html"
   },
-  heex = {
+  eruby = {
     extends = "html"
-  }
+  },
 }
 
 vim.g.mapleader = ' '
@@ -109,9 +109,9 @@ end
 
 if has_dark_mode() then
   if is_day() then
-    vim.cmd.colorscheme(os.getenv('VIM_DAY_COLORSCHEME') or 'tempus_fugit')
+    vim.cmd.colorscheme(os.getenv('VIM_LIGHT_COLORSCHEME') or 'tempus_fugit')
   else
-    vim.cmd.colorscheme(os.getenv('VIM_NIGHT_COLORSCHEME') or 'tempus_winter')
+    vim.cmd.colorscheme(os.getenv('VIM_DARK_COLORSCHEME') or 'tempus_winter')
   end
 else
   vim.cmd.colorscheme(os.getenv('VIM_COLORSCHEME') or 'distinguished')
