@@ -54,9 +54,8 @@ vim.api.nvim_create_autocmd({ 'Filetype' }, {
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = {
-    "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "heex", "markdown",
-    "mdx", "css", "sass", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact",
-    "svelte", "templ", "gohtmltmpl"
+    "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "heex", "markdown", "mdx", "css",
+    "sass", "scss", "javascriptreact", "typescriptreact", "svelte", "templ", "gohtmltmpl"
   },
   callback = function(_)
     vim.cmd("EmmetInstall")
