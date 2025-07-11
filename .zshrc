@@ -247,20 +247,24 @@ set_wallpaper() {
   /usr/bin/gsettings set org.cinnamon.desktop.background picture-uri \'file://${path}\'
 }
 
-dark() {
-  dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
-  dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Dark-Aqua'"
-  gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-Y-Dark-Aqua'
-  gsettings set org.cinnamon.theme name 'Mint-Y-Dark-Aqua'
-  set_wallpaper $DARK_WALLPAPER
+light() {
+  dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Aqua'"
+  dconf write /org/cinnamon/desktop/wm/preferences/theme "'Mint-Y-Aqua'"
+  dconf write /org/cinnamon/theme/name "'Mint-Y-Aqua'"
+  dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+  dconf write /org/x/apps/portal/color-scheme "'prefer-light'"
+  dconf write /org/gnome/desktop/interface/gtk-theme "'Mint-Y-Aqua'"
+  set_wallpaper $LIGHT_WALLPAPER
 }
 
-light() {
-  dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
-  dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Aqua'"
-  gsettings set org.cinnamon.desktop.interface gtk-theme 'Mint-Y-Aqua'
-  gsettings set org.cinnamon.theme name 'Mint-Y-Aqua'
-  set_wallpaper $LIGHT_WALLPAPER
+dark() {
+  dconf write /org/cinnamon/desktop/interface/gtk-theme "'Mint-Y-Dark-Aqua'"
+  dconf write /org/cinnamon/desktop/wm/preferences/theme "'Mint-Y-Dark-Aqua'"
+  dconf write /org/cinnamon/theme/name "'Mint-Y-Dark-Aqua'"
+  dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+  dconf write /org/x/apps/portal/color-scheme "'prefer-dark'"
+  dconf write /org/gnome/desktop/interface/gtk-theme "'Mint-Y-Dark-Aqua'"
+  set_wallpaper $DARK_WALLPAPER
 }
 
 cursor() {
