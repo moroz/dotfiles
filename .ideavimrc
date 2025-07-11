@@ -12,6 +12,7 @@ if has('mac')
   map <silent> <D-s> <Action>(SaveAll)
   nmap <silent> <D-p> <Action>(GotoFile)
   nmap <silent> <D-S-p> <Action>(SearchEverywhere)
+  nmap <silent> <D-w> :q<CR>
 else
   map <silent> <C-s> <Action>(SaveAll)
   nmap <silent> <C-p> <Action>(GotoFile)
