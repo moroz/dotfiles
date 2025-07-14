@@ -38,6 +38,9 @@ vim.g.user_emmet_settings = {
   eruby = {
     extends = "html"
   },
+  svelte = {
+    extends = "html"
+  },
 }
 
 vim.g.mapleader = ' '
