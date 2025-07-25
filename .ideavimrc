@@ -7,6 +7,9 @@ nnoremap <silent> <Leader>w- :split<CR>
 nnoremap <silent> <Leader>wm :only<CR>
 nnoremap <silent> <Leader>wl <C-w>l
 nnoremap <silent> <Leader>wh <C-w>h
+nmap <silent> <Leader>? <Action>(RecentFiles)
+nmap <silent> <F9> <Action>(ActivateProjectToolWindow)
+nmap <silent> <F2> <Action>(RenameElement)
 
 if has('mac')
   map <silent> <D-s> <Action>(SaveAll)
@@ -19,5 +22,4 @@ else
   map <silent> <C-s> <Action>(SaveAll)
   nmap <silent> <C-p> <Action>(GotoFile)
   nmap <silent> <C-S-p> <Action>(SearchEverywhere)
-  nmap <silent> <F9> <Action>(ActivateProjectToolWindow)
 endif
