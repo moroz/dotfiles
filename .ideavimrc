@@ -1,5 +1,8 @@
 let mapleader = " "
 
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
+
 set ideajoin
 nnoremap <silent> <Leader>wv :vsplit<CR>
 nnoremap <silent> <Leader>wd :q<CR>
