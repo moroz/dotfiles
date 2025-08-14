@@ -4,6 +4,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
 set ideajoin
+set ignorecase
+set smartcase
+
 nnoremap <silent> <Leader>wv :vsplit<CR>
 nnoremap <silent> <Leader>wd :q<CR>
 nnoremap <silent> <Leader>w- :split<CR>
