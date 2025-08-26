@@ -1,6 +1,7 @@
 let mapleader = " "
 
 Plug 'tpope/vim-surround'
+Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-commentary'
 
 set ideajoin
@@ -13,6 +14,8 @@ nnoremap <silent> <Leader>w- :split<CR>
 nnoremap <silent> <Leader>wm :only<CR>
 nnoremap <silent> <Leader>wl <C-w>l
 nnoremap <silent> <Leader>wh <C-w>h
+nnoremap <silent> <Leader>wj <C-w>j
+nnoremap <silent> <Leader>wk <C-w>k
 nmap <silent> <Leader>? <Action>(RecentFiles)
 nmap <silent> <F9> <Action>(ActivateProjectToolWindow)
 nmap <silent> <F2> <Action>(RenameElement)
@@ -26,6 +29,7 @@ if has('mac')
   nmap <silent> <D-b> <C-b>
 else
   map <silent> <C-s> <Action>(SaveAll)
+  nmap <silent> <C-w> :q<CR>
   nmap <silent> <C-p> <Action>(GotoFile)
   nmap <silent> <C-S-p> <Action>(SearchEverywhere)
 endif
