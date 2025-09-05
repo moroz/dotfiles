@@ -19,6 +19,7 @@ mkdir -p $HOME/.config/{fontconfig,rofi,powershell}
 [[ -L $HOME/.ideavimrc ]] || ln -s $HOME/.dotfiles/.ideavimrc $HOME/.ideavimrc
 git config --global core.excludesfile ~/.gitignore
 
+mkdir -p ~/.local/bin
 [[ -L $HOME/.local/bin/launch_terminal.sh ]] || ln -sf $(realpath ~/.dotfiles/launch_terminal.sh) ~/.local/bin/
 
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc

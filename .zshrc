@@ -19,7 +19,7 @@ compinit
 
 PROMPT='%m:%~$ '
 ENABLE_CORRECTION="true"
-export PATH="$HOME/bin:$HOME/.emacs.d/bin:$HOME/.fzf/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.emacs.d/bin:$HOME/.fzf/bin:$HOME/.dotnet/tools:$PATH"
 export GPG_TTY=$(tty)
 
 if which eza >/dev/null 2>&1; then
@@ -254,7 +254,7 @@ light() {
   dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
   dconf write /org/x/apps/portal/color-scheme "'prefer-light'"
   dconf write /org/gnome/desktop/interface/gtk-theme "'Mint-Y-Aqua'"
-  set_wallpaper $LIGHT_WALLPAPER
+  [[ -n $LIGHT_WALLPAPER ]] && set_wallpaper
 }
 
 dark() {
@@ -264,7 +264,7 @@ dark() {
   dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
   dconf write /org/x/apps/portal/color-scheme "'prefer-dark'"
   dconf write /org/gnome/desktop/interface/gtk-theme "'Mint-Y-Dark-Aqua'"
-  set_wallpaper $DARK_WALLPAPER
+  [[ -n $DARK_WALLPAPER ]] && set_wallpaper
 }
 
 cursor() {
