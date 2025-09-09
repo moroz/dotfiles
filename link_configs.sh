@@ -46,3 +46,8 @@ if [[ "$(uname)" == 'Darwin' ]]; then
   mkdir -p $HOME/Pictures/screenshots
   defaults write com.apple.screencapture location $HOME/Pictures/screenshots
 fi
+
+mkdir -p ~/.config/zed
+for file in keymap.json settings.json; do
+    [[ -L $HOME/.config/zed/$file ]] || ln -sf $HOME/.dotfiles/zed/$file $HOME/.config/zed/$file
+done

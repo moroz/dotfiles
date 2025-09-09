@@ -1,7 +1,7 @@
 #!/bin/sh
 
 light_theme="Tempus Fugit"
-dark_theme="Tempus Winter"
+dark_theme="Modus Vivendi Tinted"
 
 theme="$(dconf read /org/x/apps/portal/color-scheme)"
 
