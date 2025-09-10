@@ -34,6 +34,10 @@ fi
 mkdir -p ~/.ctags.d
 [[ -f $HOME/.ctags.d/default.ctags ]] || ln -s $HOME/.dotfiles/.ctags $HOME/.ctags.d/default.ctags
 
+mkdir -p ~/.config/zed
+for file in settings.json keymap.json; do
+  [[ -L $HOME/.config/zed/$file ]] || ln -sf "$HOME/.dotfiles/zed/$file" "$HOME/.config/zed/$file"
+done
 
 if [[ "$(uname)" == 'Darwin' ]]; then
   [[ -f "/Library/Keyboard Layouts/Custom Dvorak.keylayout" ]] || sudo cp "$HOME/.dotfiles/Custom Dvorak.keylayout" /Library/Keyboard\ Layouts
