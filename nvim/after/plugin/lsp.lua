@@ -88,15 +88,18 @@ mason_lspconfig.setup {
 
 mason_lspconfig.setup_handlers {
   function(server_name)
-    require('lspconfig')[server_name].setup {
+    vim.lsp.config(server_name, {
       capabilities = capabilities,
       on_attach = on_attach(server_name),
       settings = servers[server_name],
       filetypes = (servers[server_name] or {}).filetypes,
       init_options = (servers[server_name] or {}).init_options,
-    }
+    })
+
+    vim.lsp.enable(server_name)
   end,
 }
+
 
 vim.lsp.set_log_level("ERROR")
 
