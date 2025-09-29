@@ -130,23 +130,11 @@ require('lazy').setup({
     },
   },
 
-  -- {
-  --   "CopilotC-Nvim/CopilotChat.nvim",
-  --   dependencies = {
-  --     { "github/copilot.vim" },                       -- or zbirenbaum/copilot.lua
-  --     { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log and async functions
-  --   },
-  --   build = "make tiktoken",                          -- Only on MacOS or Linux
-  --   opts = {
-  --     -- See Configuration section for options
-  --   },
-  --   -- See Commands section for default commands if you want to lazy load on them
-  -- },
-
   'ctjhoa/spacevim',
   { 'h-hg/fcitx.nvim' },
   { 'elixir-editors/vim-elixir', ft = 'elixir' },
   { 'hashivim/vim-terraform',    ft = 'terraform' },
+  { 'kaarmu/typst.vim', ft = 'typst', },
   "lukas-reineke/lsp-format.nvim",
   { 'fatih/vim-go',      ft = { 'go', 'gohtmltmpl' } },
   {
