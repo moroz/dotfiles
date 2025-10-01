@@ -134,7 +134,7 @@ require('lazy').setup({
   { 'h-hg/fcitx.nvim' },
   { 'elixir-editors/vim-elixir', ft = 'elixir' },
   { 'hashivim/vim-terraform',    ft = 'terraform' },
-  { 'kaarmu/typst.vim', ft = 'typst', },
+  { 'kaarmu/typst.vim',          ft = 'typst', },
   "lukas-reineke/lsp-format.nvim",
   { 'fatih/vim-go',      ft = { 'go', 'gohtmltmpl' } },
   {
@@ -155,6 +155,7 @@ require('lazy').setup({
     cmd = {
       'NvimTreeToggle',
       'NvimTreeOpen',
+      'NvimTreeFindFileToggle',
     },
     config = function()
       require('nvim-tree').setup({
