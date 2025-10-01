@@ -9,3 +9,14 @@ key = "9643ACD937ED3E82E9E25B8FBA266278CB48B02B"
 
 [git]
 sign-on-push = true
+
+[aliases]
+up = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail
+
+jj git fetch
+jj rebase --skip-emptied -d 'trunk()'
+"""]
+
+[revsets]
+trunk = "main@origin | master@origin"
