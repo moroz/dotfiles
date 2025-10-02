@@ -17,3 +17,9 @@ if (-not (Test-Path -Path $link)) {
     New-Item -ItemType SymbolicLink -Path $link -Target $target
 }
 
+$target = "$env:USERPROFILE\.dotfiles\.ideavimrc"
+$link = "$env:USERPROFILE\.ideavimrc"
+
+if (-not (Test-Path -Path $link)) {
+    New-Item -ItemType SymbolicLink -Path $link -Target $target
+}
