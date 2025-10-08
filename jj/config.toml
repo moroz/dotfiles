@@ -18,5 +18,11 @@ jj git fetch
 jj rebase --skip-emptied -d 'trunk()'
 """]
 
+tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
+
+[revset-aliases]
+'closest_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_pushable(to)' = 'heads(::to & ~description(exact:"") & (~empty() | merges()))'
+
 [revsets]
 trunk = "main@origin | master@origin"
