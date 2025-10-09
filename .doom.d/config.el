@@ -38,6 +38,8 @@
 
 (setq neo-smart-open t)
 (global-set-key (kbd "<f9>") 'neotree-toggle)
+(global-set-key (kbd "C-1") 'neotree-toggle)
+(global-set-key (kbd "M-<f12>") '+vterm/toggle)
 (setq neo-theme 'ascii)
 
 (global-set-key (kbd "<f10>") 'save-buffers-kill-terminal)
