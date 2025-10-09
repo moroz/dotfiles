@@ -143,3 +143,14 @@
 
 (remove-hook 'doom-first-input-hook
              #'evil-snipe-mode)
+
+(after! vterm
+  (define-key vterm-mode-map (kbd "C-<escape>") #'vterm-send-escape)
+  (define-key vterm-mode-map (kbd "<escape>") #'vterm-send-escape)
+  
+  (add-hook 'vterm-mode-hook 
+            (lambda ()
+              (evil-insert-state)
+              ;; Explicitly unmap doom/escape in this buffer
+              (local-unset-key [escape])
+              (local-set-key (kbd "<escape>") #'vterm-send-escape))))
