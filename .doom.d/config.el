@@ -98,6 +98,8 @@
 
 (add-hook 'LaTeX-mode-hook 'set-latex-vars)
 
+(map! :leader :nv "?" #'recentf-open)
+
 (map! :after tex-mode
       :map LaTeX-mode-map
       :localleader
