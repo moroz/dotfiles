@@ -138,6 +138,13 @@ require('lazy').setup({
   "lukas-reineke/lsp-format.nvim",
   { 'fatih/vim-go',      ft = { 'go', 'gohtmltmpl' } },
   {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {
+      open_mapping = [[<F60>]]
+    }
+  },
+  {
     'sebdah/vim-delve',
     ft = 'go',
     init = function()
