@@ -19,7 +19,6 @@ nnoremap <silent> <Leader>wk <C-w>k
 nnoremap <silent> <Leader>mtv :action RiderUnitTestRunContextAction<CR>
 nnoremap <silent> <Leader>mta :action RiderUnitTestRunCurrentSessionAction<CR>
 nmap <silent> <Leader>? <Action>(RecentFiles)
-nmap <silent> <F9> <Action>(ActivateProjectToolWindow)
 nmap <silent> <F2> <Action>(RenameElement)
 
 if has('mac')

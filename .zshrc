@@ -201,8 +201,8 @@ ms() {
     modd $@
   elif [ -f hugo.toml ]; then
     hugo server -D
-  elif [ -f book.toml ]; then
-    mdbook serve -p 3001 $@
+  elif [ -f *.csproj ]; then
+    dotnet watch run $@
   elif [ -f Gemfile ]; then 
     bundle exec rails server $@
   elif [ -f Procfile ]; then
