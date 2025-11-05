@@ -18,6 +18,13 @@ jj git fetch
 jj rebase --skip-emptied -d 'trunk()'
 """]
 
+fr = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail
+
+jj git fetch
+jj new 'trunk()'
+"""]
+
 tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
 
 [revset-aliases]
