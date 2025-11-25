@@ -82,6 +82,10 @@ vim.o.confirm = true
 
 vim.opt.guicursor = ''
 
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -694,7 +698,10 @@ require('lazy').setup({
         -- <c-k>: Toggle signature help
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        preset = 'default',
+        preset = 'enter',
+
+        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
 
         -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
         --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -797,6 +804,7 @@ require('lazy').setup({
   },
   { 'miikanissi/modus-themes.nvim', priority = 1000 },
   { 'protesilaos/tempus-themes-vim' },
+  'flazz/vim-colorschemes',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
@@ -928,7 +936,31 @@ vim.keymap.set('n', '<leader><space>', telescope.buffers, { desc = '[ ] Find exi
 vim.keymap.set('n', '<leader>/', ':LiveGrepGitRoot<cr>', { desc = '[S]earch by [G]rep on Git Root' })
 vim.keymap.set('n', '<leader>Ts', require('telescope.builtin').colorscheme)
 
-vim.cmd.colorscheme 'tempus_fugit'
+local function has_dark_mode()
+  local uname = vim.loop.os_uname().sysname
+  return uname == 'Darwin' or uname == 'Linux'
+end
+
+local function is_day()
+  local uname = vim.loop.os_uname().sysname
+  if uname == 'Darwin' then
+    local output = vim.fn.system '~/.dotfiles/darkmode.Darwin'
+    return output == 'DAYTIME\n'
+  elseif uname == 'Linux' then
+    local output = vim.fn.system 'dconf read /org/gnome/desktop/interface/color-scheme'
+    return output == "'prefer-light'\n"
+  end
+end
+
+if has_dark_mode() then
+  if is_day() then
+    vim.cmd.colorscheme(os.getenv 'VIM_LIGHT_COLORSCHEME' or 'tempus_fugit')
+  else
+    vim.cmd.colorscheme(os.getenv 'VIM_DARK_COLORSCHEME' or 'distinguished')
+  end
+else
+  vim.cmd.colorscheme(os.getenv 'VIM_COLORSCHEME' or 'distinguished')
+end
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
