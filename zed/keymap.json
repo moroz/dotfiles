@@ -18,7 +18,9 @@
       "space w m": "workspace::CloseInactiveTabsAndPanes",
       "space w h": "workspace::ActivatePaneLeft",
       "space w l": "workspace::ActivatePaneRight",
-      "space w v": "pane::SplitVertical"
+      "space w v": "pane::SplitVertical",
+      "space w d": "pane::CloseActiveItem",
+      "ctrl-w": "pane::CloseActiveItem"
     }
   }
 ]
