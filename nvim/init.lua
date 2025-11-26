@@ -635,6 +635,8 @@ require('lazy').setup({
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
+        astro = { 'prettierd', 'prettier', stop_after_first = true },
+        svelte = { 'prettierd', 'prettier', stop_after_first = true },
       },
     },
   },
@@ -804,6 +806,14 @@ require('lazy').setup({
   },
   { 'miikanissi/modus-themes.nvim', priority = 1000 },
   { 'protesilaos/tempus-themes-vim' },
+
+  {
+    'GustavEikaas/easy-dotnet.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
+    config = function()
+      require('easy-dotnet').setup()
+    end,
+  },
   'flazz/vim-colorschemes',
 
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
@@ -860,8 +870,8 @@ vim.keymap.set('n', '<Leader>bb', telescope.buffers, { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-s>', ':w!<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('i', '<C-s>', '<esc>:w!<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F5>', ':LspRestart<cr>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<F9>', ':Neotree<cr>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<M-1>', ':Neotree<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<F9>', ':Neotree toggle<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<M-1>', ':Neotree toggle<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F10>', ':wqa!<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>wd', ':q<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>wm', ':only<cr>', { silent = true, noremap = true })
@@ -870,6 +880,7 @@ vim.api.nvim_set_keymap('', '<Leader>wj', '<C-w>j', { silent = true, noremap = t
 vim.api.nvim_set_keymap('', '<Leader>wk', '<C-w>k', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>wl', '<C-w>l', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>wv', ':vsp<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('', '<Leader><Tab>', '<C-^>', { silent = true, noremap = true })
 
 vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
 vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
