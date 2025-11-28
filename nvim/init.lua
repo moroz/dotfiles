@@ -802,6 +802,17 @@ require('lazy').setup({
   },
   'flazz/vim-colorschemes',
 
+  {
+    'kylechui/nvim-surround',
+    version = '^3.0.0', -- Use for stability; omit to use `main` branch for the latest features
+    event = 'VeryLazy',
+    config = function()
+      require('nvim-surround').setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+
   -- The following comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
@@ -856,8 +867,8 @@ vim.keymap.set('n', '<Leader>bb', telescope.buffers, { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-s>', ':w!<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('i', '<C-s>', '<esc>:w!<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F5>', ':LspRestart<cr>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<F9>', ':Neotree toggle<cr>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<M-1>', ':Neotree toggle<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<F9>', ':Neotree reveal toggle filesystem<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<M-1>', ':Neotree reveal toggle filesystem<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F10>', ':wqa!<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>wd', ':q<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('', '<Leader>wm', ':only<cr>', { silent = true, noremap = true })
