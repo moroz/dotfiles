@@ -55,8 +55,8 @@ vim.o.splitbelow = true
 --  It is very similar to `vim.o` but offers an interface for conveniently interacting with tables.
 --   See `:help lua-options`
 --   and `:help lua-options-guide`
-vim.o.list = true
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+-- vim.o.list = true
+-- vim.opt.listchars = { tab = nil, trail = '·', nbsp = '␣' }
 
 -- Preview substitutions live, as you type!
 vim.o.inccommand = 'split'
@@ -503,6 +503,7 @@ require('lazy').setup({
         -- elixirls = {},
         svelte = {},
         rubocop = {},
+        solargraph = {},
         tailwindcss = {
           filetypes = {
             'astro',
@@ -526,6 +527,12 @@ require('lazy').setup({
             'svelte',
             'templ',
             'gohtmltmpl',
+            'go',
+          },
+          settings = {
+            tailwindCSS = {
+              classFunctions = { 'twMerge', 'clsx', 'Class' },
+            },
           },
         },
 
@@ -547,6 +554,8 @@ require('lazy').setup({
             },
           },
         },
+        powershell_es = {},
+        astro = {},
       }
 
       -- You can press `g?` for help in this menu.
