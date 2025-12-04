@@ -499,8 +499,15 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         gopls = {},
-        ts_ls = {},
-        -- elixirls = {},
+        ts_ls = {
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'svelte',
+          },
+        },
         svelte = {},
         rubocop = {},
         solargraph = {},
@@ -556,6 +563,7 @@ require('lazy').setup({
         },
         powershell_es = {},
         astro = {},
+        elixirls = {},
       }
 
       -- You can press `g?` for help in this menu.
@@ -626,6 +634,7 @@ require('lazy').setup({
         --
         -- You can use 'stop_after_first' to run the first available formatter from the list
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
+        json = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'prettierd', 'prettier', stop_after_first = true },
@@ -633,6 +642,8 @@ require('lazy').setup({
         svelte = { 'prettierd', 'prettier', stop_after_first = true },
         html = { 'prettierd', 'prettier', stop_after_first = true },
         terraform = { 'terraform_fmt', stop_after_first = true },
+        elixir = { 'mix' },
+        heex = { 'mix' },
       },
     },
   },
