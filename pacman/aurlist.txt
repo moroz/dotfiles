@@ -1,0 +1,14 @@
+brave-bin
+gnome-online-accounts-gtk
+google-chrome
+mint-backgrounds
+mint-themes
+mint-x-icons
+mint-y-icons
+openvpn3
+powershell-bin
+safeeyes
+slack-desktop
+spotify
+yay
+yay-debug
