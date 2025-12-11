@@ -822,6 +822,7 @@ require('lazy').setup({
     end,
   },
   'flazz/vim-colorschemes',
+  'fatih/vim-go',
 
   {
     'kylechui/nvim-surround',
