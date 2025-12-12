@@ -9,6 +9,7 @@ openvpn3
 powershell-bin
 safeeyes
 slack-desktop
+sparrow-wallet
 spotify
 yay
 yay-debug
