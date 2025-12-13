@@ -124,6 +124,7 @@ showtime
 signal-desktop
 simple-scan
 snapshot
+sof-firmware
 sudo
 sushi
 tecla
