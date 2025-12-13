@@ -539,6 +539,9 @@ require('lazy').setup({
           settings = {
             tailwindCSS = {
               classFunctions = { 'twMerge', 'clsx', 'Class' },
+              includeLanguages = {
+                go = 'javascript',
+              },
             },
           },
         },
@@ -957,6 +960,8 @@ local function find_with_rg()
     },
   }
 end
+
+vim.g.go_doc_keywordprg_enabled = 0
 
 vim.keymap.set('n', '<C-p>', find_with_rg, { noremap = true })
 
