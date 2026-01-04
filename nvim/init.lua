@@ -567,6 +567,7 @@ require('lazy').setup({
         powershell_es = {},
         astro = {},
         elixirls = {},
+        denols = {},
       }
 
       -- You can press `g?` for help in this menu.
@@ -829,6 +830,7 @@ require('lazy').setup({
   },
   'flazz/vim-colorschemes',
   'fatih/vim-go',
+  'vim-test/vim-test',
 
   {
     'kylechui/nvim-surround',
