@@ -831,6 +831,7 @@ require('lazy').setup({
   'flazz/vim-colorschemes',
   'fatih/vim-go',
   'vim-test/vim-test',
+  'tpope/vim-abolish',
 
   {
     'kylechui/nvim-surround',
