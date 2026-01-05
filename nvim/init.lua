@@ -818,7 +818,15 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
-  { 'miikanissi/modus-themes.nvim', priority = 1000 },
+  {
+    'miikanissi/modus-themes.nvim',
+    priority = 1000,
+    config = function()
+      require('modus-themes').setup {
+        variant = 'tinted',
+      }
+    end,
+  },
   { 'protesilaos/tempus-themes-vim' },
 
   {
@@ -996,9 +1004,9 @@ end
 
 if has_dark_mode() then
   if is_day() then
-    vim.cmd.colorscheme(os.getenv 'VIM_LIGHT_COLORSCHEME' or 'tempus_fugit')
+    vim.cmd.colorscheme(os.getenv 'VIM_LIGHT_COLORSCHEME' or 'modus_operandi')
   else
-    vim.cmd.colorscheme(os.getenv 'VIM_DARK_COLORSCHEME' or 'distinguished')
+    vim.cmd.colorscheme(os.getenv 'VIM_DARK_COLORSCHEME' or 'modus_vivendi')
   end
 else
   vim.cmd.colorscheme(os.getenv 'VIM_COLORSCHEME' or 'distinguished')
