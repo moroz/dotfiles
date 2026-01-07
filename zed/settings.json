@@ -30,4 +30,28 @@
     "diagnostics": false,
   },
   "format_on_save": "on",
+  "lsp": {
+    "tailwindcss-language-server": {
+      "settings": {
+        "classFunctions": ["clsx", "cn", "Class"],
+        "classAttributes": ["class", "className"],
+        "includeLanguages": {
+          "ftl": "html",
+          "jinja": "html",
+          "jinja2": "html",
+          "smarty": "html",
+          "tmpl": "gohtml",
+          "cshtml": "html",
+          "vbhtml": "html",
+          "razor": "html",
+          "go": "javascript",
+        },
+      },
+    },
+  },
+  "languages": {
+    "Go": {
+      "language_servers": ["...", "tailwindcss-language-server"],
+    },
+  },
 }
