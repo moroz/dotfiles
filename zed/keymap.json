@@ -33,8 +33,8 @@
   {
     "context": "Editor && vim_mode == normal && os == macos",
     "bindings": {
-      "cmd-p": "file_finder::Toggle",
-      "cmd-w": "pane::CloseActiveItem",
+      "cmd-f": "vim::PageDown",
+      "cmd-b": "vim::PageUp",
     },
   },
   {
