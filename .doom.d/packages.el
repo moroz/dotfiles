@@ -57,3 +57,4 @@
 (package! mise)
 (package! xclip)
 (package! modus-themes)
+(package! treesit-auto)

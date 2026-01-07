@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "prettier": {
+    "allowed": true,
+  },
   "ui_font_size": 16,
   "buffer_font_size": 21.0,
   "buffer_font_family": "CaskaydiaMono Nerd Font",
@@ -14,16 +17,17 @@
   "soft_wrap": "editor_width",
   "show_edit_predictions": false,
   "theme": {
-    "mode": "system",
+    "mode": "light",
     "light": "Modus Operandi Tinted",
-    "dark": "VSCode Dark Modern"
+    "dark": "Modus Vivendi Tinted",
   },
   "vim": {
     "use_system_clipboard": "never",
-    "use_smartcase_find": true
+    "use_smartcase_find": true,
   },
   "vim_mode": true,
   "telemetry": {
-    "diagnostics": false
-  }
+    "diagnostics": false,
+  },
+  "format_on_save": "on",
 }

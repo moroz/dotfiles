@@ -12,12 +12,13 @@
 
 (defun km/get-font-size ()
   (setq base-size 22)
-  (setq scaling-factor (if (is-linux) 2 1))
-  (* scaling-factor base-size)
+  ;; (setq scaling-factor (if (is-linux) 2 1))
+  ;; (* scaling-factor base-size)
+  base-size
   )
 
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-(setq latin-font "JetBrainsMono Nerd Font")
+(setq latin-font "CaskaydiaMono Nerd Font")
 (setq sans-font "Roboto")
 
 (defun get-preferred-color-scheme()
@@ -156,3 +157,39 @@
               ;; Explicitly unmap doom/escape in this buffer
               (local-unset-key [escape])
               (local-set-key (kbd "<escape>") #'vterm-send-escape))))
+
+(use-package treesit-auto
+  :config
+  (global-treesit-auto-mode))
+
+;; Force tsserver for TypeScript/React instead of Deno
+(after! lsp-mode
+  ;; Disable Deno LSP
+  (setq lsp-disabled-clients '(deno-ls))
+  
+  ;; Ensure tsserver is used for TypeScript and React
+  (setq lsp-enabled-clients '(ts-ls)))
+
+;; Ensure mise/go binaries are in path
+(setenv "PATH" (concat 
+                (getenv "HOME") "/.local/share/mise/shims:"
+                (getenv "HOME") "/go/bin:"
+                (getenv "PATH")))
+
+(setq exec-path (append 
+                 (list (concat (getenv "HOME") "/.local/share/mise/shims"))
+                 (list (concat (getenv "HOME") "/go/bin"))
+                 exec-path))
+
+;; Additional Go configuration
+(after! go-mode
+  ;; Set tab width
+  (setq-hook! 'go-mode-hook
+    tab-width 4
+    indent-tabs-mode t)
+  
+  ;; Use goimports instead of gofmt
+  (setq gofmt-command "goimports")
+  
+  ;; Run gofmt before saving
+  (add-hook 'before-save-hook 'gofmt-before-save))
