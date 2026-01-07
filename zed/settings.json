@@ -17,7 +17,7 @@
   "soft_wrap": "editor_width",
   "show_edit_predictions": false,
   "theme": {
-    "mode": "light",
+    "mode": "system",
     "light": "Modus Operandi Tinted",
     "dark": "Modus Vivendi Tinted",
   },

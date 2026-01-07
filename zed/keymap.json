@@ -25,4 +25,21 @@
       "ctrl-p": "file_finder::Toggle",
     },
   },
+  {
+    "context": "(VimControl && !menu)",
+    "bindings": {
+      "k": [
+        "vim::Up",
+        {
+          "display_lines": true,
+        },
+      ],
+      "j": [
+        "vim::Down",
+        {
+          "display_lines": true,
+        },
+      ],
+    },
+  },
 ]
