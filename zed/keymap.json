@@ -7,13 +7,6 @@
 // from the command palette.
 [
   {
-    "context": "Workspace",
-    "bindings": {
-      "ctrl-p": "file_finder::Toggle",
-      "ctrl-w": "pane::CloseActiveItem",
-    },
-  },
-  {
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "space w m": "workspace::CloseInactiveTabsAndPanes",
@@ -21,8 +14,27 @@
       "space w l": "workspace::ActivatePaneRight",
       "space w v": "pane::SplitVertical",
       "space w d": "pane::CloseActiveItem",
-      "ctrl-w": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "(Workspace || (Editor && vim_mode == normal)) && os != macos",
+    "bindings": {
       "ctrl-p": "file_finder::Toggle",
+      "ctrl-w": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "(Workspace || (Editor && vim_mode == normal)) && os == macos",
+    "bindings": {
+      "cmd-p": "file_finder::Toggle",
+      "cmd-w": "pane::CloseActiveItem",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == normal && os == macos",
+    "bindings": {
+      "cmd-p": "file_finder::Toggle",
+      "cmd-w": "pane::CloseActiveItem",
     },
   },
   {
