@@ -56,13 +56,14 @@
     },
   },
   {
-    "context": "Workspace && os == macos",
+    "context": "(Workspace || Editor) && os == macos",
     "bindings": {
       "cmd-s": "workspace::SaveAll",
+      "cmd-`": "terminal_panel::Toggle",
     },
   },
   {
-    "context": "Workspace && os != macos",
+    "context": "(Workspace || Editor) && os != macos",
     "bindings": {
       "ctrl-s": "workspace::SaveAll",
     },
