@@ -7,6 +7,13 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "claude-sonnet-4.5",
+    },
+    "model_parameters": [],
+  },
   "ui_font_size": 16,
   "buffer_font_size": 21.0,
   "buffer_font_family": "CaskaydiaMono Nerd Font",
@@ -50,5 +57,8 @@
     "Go": {
       "language_servers": ["...", "tailwindcss-language-server"],
     },
+  },
+  "file_types": {
+    "HTML": ["*.html.tmpl"],
   },
 }
