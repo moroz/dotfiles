@@ -59,7 +59,6 @@
     "context": "(Workspace || Editor) && os == macos",
     "bindings": {
       "cmd-s": "workspace::SaveAll",
-      "cmd-`": "terminal_panel::Toggle",
     },
   },
   {
