@@ -67,4 +67,9 @@
       "ctrl-s": "workspace::SaveAll",
     },
   },
+  {
+    "bindings": {
+      "ctrl-alt-f2": "debugger::Stop"
+    }
+  }
 ]
