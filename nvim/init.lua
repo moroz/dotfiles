@@ -47,6 +47,9 @@ vim.o.timeoutlen = 300
 vim.o.splitright = true
 vim.o.splitbelow = true
 
+vim.o.wrap = true
+vim.o.linebreak = true
+
 -- Sets how neovim will display certain whitespace characters in the editor.
 --  See `:help 'list'`
 --  and `:help 'listchars'`
@@ -511,40 +514,7 @@ require('lazy').setup({
         svelte = {},
         rubocop = {},
         solargraph = {},
-        tailwindcss = {
-          filetypes = {
-            'astro',
-            'astro-markdown',
-            'eelixir',
-            'erb',
-            'eruby',
-            'gohtml',
-            'haml',
-            'html',
-            'html-eex',
-            'markdown',
-            'mdx',
-            'css',
-            'sass',
-            'scss',
-            'javascript',
-            'javascriptreact',
-            'typescript',
-            'typescriptreact',
-            'svelte',
-            'templ',
-            'gohtmltmpl',
-            'go',
-          },
-          settings = {
-            tailwindCSS = {
-              classFunctions = { 'twMerge', 'clsx', 'Class' },
-              includeLanguages = {
-                go = 'javascript',
-              },
-            },
-          },
-        },
+        tailwindcss = {},
 
         lua_ls = {
           -- cmd = { ... },
@@ -1011,6 +981,46 @@ if has_dark_mode() then
 else
   vim.cmd.colorscheme(os.getenv 'VIM_COLORSCHEME' or 'distinguished')
 end
+
+vim.lsp.config('tailwindcss', {
+  filetypes = {
+    'astro',
+    'astro-markdown',
+    'eelixir',
+    'erb',
+    'eruby',
+    'gohtml',
+    'haml',
+    'html',
+    'html-eex',
+    'markdown',
+    'mdx',
+    'css',
+    'sass',
+    'scss',
+    'javascript',
+    'javascriptreact',
+    'typescript',
+    'typescriptreact',
+    'svelte',
+    'templ',
+    'gohtmltmpl',
+    'go',
+  },
+  settings = {
+    tailwindCSS = {
+      classFunctions = {
+        'Class',
+        'clsx',
+        'cn',
+        'twMerge',
+      },
+      includeLanguages = {
+        go = 'javascript',
+      },
+    },
+  },
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
