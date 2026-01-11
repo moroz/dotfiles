@@ -903,8 +903,8 @@ require('lazy').setup({
 local telescope = require 'telescope.builtin'
 vim.keymap.set('n', '<Leader>Ts', telescope.colorscheme, { noremap = true })
 vim.keymap.set('n', '<Leader>bb', telescope.buffers, { noremap = true })
-vim.api.nvim_set_keymap('n', '<C-s>', ':w!<cr>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('i', '<C-s>', '<esc>:w!<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<C-s>', ':wa!<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('i', '<C-s>', '<esc>:wa!<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F5>', ':LspRestart<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F9>', ':Neotree reveal toggle filesystem<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<M-1>', ':Neotree reveal toggle filesystem<cr>', { silent = true, noremap = true })
@@ -1004,7 +1004,7 @@ end
 
 if has_dark_mode() then
   if is_day() then
-    vim.cmd.colorscheme(os.getenv 'VIM_LIGHT_COLORSCHEME' or 'modus_operandi')
+    vim.cmd.colorscheme(os.getenv 'VIM_LIGHT_COLORSCHEME' or 'tempus_fugit')
   else
     vim.cmd.colorscheme(os.getenv 'VIM_DARK_COLORSCHEME' or 'modus_vivendi')
   end
