@@ -23,3 +23,17 @@ $link = "$env:USERPROFILE\.ideavimrc"
 if (-not (Test-Path -Path $link)) {
     New-Item -ItemType SymbolicLink -Path $link -Target $target
 }
+
+$target = "$env:USERPROFILE\.dotfiles\zed\settings.json"
+$link = "$env:USERPROFILE\AppData\Roaming\Zed\settings.json"
+
+if (-not (Test-Path -Path $link -PathType Leaf) -and -not (Test-Path -Path $link -PathType Container)) {
+    New-Item -ItemType SymbolicLink -Path $link -Target $target
+}
+
+$target = "$env:USERPROFILE\.dotfiles\zed\keymap.json"
+$link = "$env:USERPROFILE\AppData\Roaming\Zed\keymap.json"
+
+if (-not (Test-Path -Path $link -PathType Leaf) -and -not (Test-Path -Path $link -PathType Container)) {
+    New-Item -ItemType SymbolicLink -Path $link -Target $target
+}
