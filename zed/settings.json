@@ -67,5 +67,8 @@
     "modus-themes": true,
     "html": true,
     "vscode-dark-modern": true,
+    "elixir": true,
+    "toml": true,
+    "dockerfile": true,
   },
 }

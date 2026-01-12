@@ -619,8 +619,8 @@ require('lazy').setup({
         css = { 'terraform_fmt', stop_after_first = true },
         scss = { 'terraform_fmt', stop_after_first = true },
         sass = { 'terraform_fmt', stop_after_first = true },
-        elixir = { 'mix' },
-        heex = { 'mix' },
+        -- elixir = { 'mix' },
+        -- heex = { 'mix' },
       },
     },
   },
@@ -1020,6 +1020,18 @@ vim.lsp.config('tailwindcss', {
       },
     },
   },
+})
+
+vim.api.nvim_create_augroup('fmt', {})
+
+vim.api.nvim_create_autocmd('BufWritePost', {
+  pattern = { '*.ex', '*.exs', '*.heex' },
+  callback = function()
+    local view = vim.fn.winsaveview()
+    vim.cmd 'silent! !mix format %'
+    vim.cmd 'edit!'
+    vim.fn.winrestview(view)
+  end,
 })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
