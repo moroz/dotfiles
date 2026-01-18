@@ -70,5 +70,6 @@
     "elixir": true,
     "toml": true,
     "dockerfile": true,
+    "svelte": true,
   },
 }

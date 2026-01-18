@@ -1,0 +1,19 @@
+theme = "everforest_dark"
+
+editor.soft-wrap.enable = true
+
+[keys.normal]
+F10 = ":write-quit-all"
+C-s = ":w"
+C-p = "file_picker"
+
+"{" = "goto_prev_paragraph"
+"}" = "goto_next_paragraph"
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
+
+[keys.select]
+"{" = "goto_prev_paragraph"
+"}" = "goto_next_paragraph"
+"^" = "goto_first_nonwhitespace"
+"$" = "goto_line_end"
