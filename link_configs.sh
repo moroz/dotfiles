@@ -4,6 +4,7 @@ mkdir -p $HOME/.config/{fontconfig,rofi,powershell}
 
 [[ -e $HOME/.config/nvim ]] || ln -s $HOME/.dotfiles/nvim $HOME/.config/nvim
 [[ -e $HOME/.config/nvim-minimal ]] || ln -s $HOME/.dotfiles/nvim-minimal $HOME/.config/nvim-minimal
+[[ -e $HOME/.config/helix ]] || ln -s $HOME/.dotfiles/helix $HOME/.config/helix
 
 [[ -L $HOME/.tmux.conf ]] || ln -s $HOME/.dotfiles/.tmux.conf $HOME/.tmux.conf
 [[ -L $HOME/.prettierrc.json ]] || ln -s $HOME/.dotfiles/.prettierrc.json $HOME/.prettierrc.json

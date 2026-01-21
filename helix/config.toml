@@ -1,6 +1,7 @@
-theme = "everforest_dark"
+theme = "jellybeans"
 
 editor.soft-wrap.enable = true
+editor.true-color = true
 
 [keys.normal]
 F10 = ":write-quit-all"
