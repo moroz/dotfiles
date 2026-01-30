@@ -17,7 +17,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-PROMPT='%F{green}%n@%m%f:%F{blue}%~%f$ '
+PROMPT='%B%F{green}%n@%m%f:%F{blue}%~%f%b$ '
 precmd() { print -Pn "\e]0;%n@%m: %~\a" }
 ENABLE_CORRECTION="true"
 export PATH="$HOME/bin:$HOME/.emacs.d/bin:$HOME/.fzf/bin:$HOME/.dotnet/tools:$PATH"
