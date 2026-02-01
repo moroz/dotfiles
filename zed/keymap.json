@@ -69,7 +69,13 @@
   },
   {
     "bindings": {
-      "ctrl-alt-f2": "debugger::Stop"
-    }
-  }
+      "ctrl-alt-f2": "debugger::Stop",
+    },
+  },
+  {
+    "context": "Terminal && os == macos",
+    "bindings": {
+      "cmd-d": ["terminal::SendKeystroke", "ctrl-d"],
+    },
+  },
 ]
