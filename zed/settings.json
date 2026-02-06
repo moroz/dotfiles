@@ -58,6 +58,9 @@
     "Go": {
       "language_servers": ["...", "tailwindcss-language-server"],
     },
+    "Astro": {
+      "tab_size": 2,
+    },
   },
   "file_types": {
     "HTML": ["*.html.tmpl"],
