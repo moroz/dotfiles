@@ -51,11 +51,15 @@ export BAT_THEME=zenburn
 # compile erlang with docs using asdf/kerl
 export KERL_BUILD_DOCS="yes"
 
-# TODO: Find an equivalent commit chain for jj
-alias giac="git init && git add -A && git commit -m 'Initial commit' && jj git init --colocate"
 alias gpd="jj git push"
 alias gb="jj bookmark move --to @-"
 alias gci="jj commit -i"
+
+giac() {
+  jj git init 
+  jj commit -m "Initial commit"
+  jj bookmark set -r @- main
+}
 
 jj-clone() {
   origin="$(gh repo view --json sshUrl $1 | jq -r .sshUrl)"
