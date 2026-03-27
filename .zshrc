@@ -202,6 +202,8 @@ md() {
 ms() {
   if [ -f mix.exs ]; then
     mix phx.server $@
+  elif [ -f Procfile ]; then
+    overmind start
   elif [ -f modd.conf ]; then
     modd $@
   elif [ -f hugo.toml ]; then
@@ -210,8 +212,6 @@ ms() {
     dotnet watch run $@
   elif [ -f Gemfile ]; then 
     bundle exec rails server $@
-  elif [ -f Procfile ]; then
-    foreman start
   elif [ -f package.json ]; then
     pnpm dev $@
   elif [ -f Cargo.toml ]; then
