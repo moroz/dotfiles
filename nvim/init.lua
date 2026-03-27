@@ -1036,6 +1036,15 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'go', 'c' },
+  callback = function()
+    vim.bo.tabstop = 4
+    vim.bo.shiftwidth = 4
+    vim.bo.expandtab = false
+  end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'go', 'ruby', 'elixir', 'c' },
   callback = function()
     vim.treesitter.start()
