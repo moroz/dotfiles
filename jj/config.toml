@@ -27,6 +27,14 @@ jj new 'trunk()'
 
 tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
 
+pr = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail
+
+jj git push -c @-
+COMMIT_ID="$(jj log -r @- --no-graph -T 'change_id.short()')"
+gh pr create -H push-$COMMIT_ID
+"""]
+
 [revset-aliases]
 'closest_bookmark(to)' = 'heads(::to & bookmarks())'
 'closest_pushable(to)' = 'heads(::to & ~description(exact:"") & (~empty() | merges()))'

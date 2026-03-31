@@ -17,7 +17,6 @@ nnoremap <silent> <Leader>wh <C-w>h
 nnoremap <silent> <Leader>wj <C-w>j
 nnoremap <silent> <Leader>wk <C-w>k
 nmap <silent> <Leader>? <Action>(RecentFiles)
-nmap <silent> <F2> <Action>(RenameElement)
 
 if &ide =~? 'rider'
   nnoremap <silent> <Leader>mtv :action RiderUnitTestRunContextAction<CR>
