@@ -793,7 +793,10 @@ require('lazy').setup({
     priority = 1000,
     config = function()
       require('modus-themes').setup {
-        variant = 'tinted',
+        variants = {
+          modus_operandi = 'default',
+          modus_vivendi = 'tinted',
+        },
       }
     end,
   },
@@ -876,7 +879,7 @@ vim.keymap.set('n', '<Leader>Ts', telescope.colorscheme, { noremap = true })
 vim.keymap.set('n', '<Leader>bb', telescope.buffers, { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-s>', ':wa!<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('i', '<C-s>', '<esc>:wa!<cr>', { silent = true, noremap = true })
-vim.api.nvim_set_keymap('n', '<F5>', ':LspRestart<cr>', { silent = true, noremap = true })
+vim.api.nvim_set_keymap('n', '<F5>', ':lsp restart<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F9>', ':Neotree reveal toggle filesystem<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<M-1>', ':Neotree reveal toggle filesystem<cr>', { silent = true, noremap = true })
 vim.api.nvim_set_keymap('n', '<F10>', ':wqa!<cr>', { silent = true, noremap = true })
