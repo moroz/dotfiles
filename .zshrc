@@ -46,6 +46,8 @@ export EDITOR=nvim
 export ERL_AFLAGS="-kernel shell_history enabled"
 export DOCKER_BUILDKIT=1
 export BAT_THEME=zenburn
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=false
 
 # https://mobile.twitter.com/bernheisel/status/1358201158507061250
 # compile erlang with docs using asdf/kerl

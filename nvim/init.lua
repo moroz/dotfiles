@@ -613,7 +613,7 @@ require('lazy').setup({
         typescript = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
         astro = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
-        svelte = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+        svelte = { 'prettierd', 'prettier', stop_after_first = true },
         html = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
         terraform = { 'terraform_fmt', stop_after_first = true },
         css = { 'oxfmt', stop_after_first = true },
