@@ -536,7 +536,7 @@ require('lazy').setup({
         },
         powershell_es = {},
         astro = {},
-        elixirls = {},
+        expert = {},
         denols = {},
       }
 
