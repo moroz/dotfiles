@@ -612,6 +612,7 @@ require('lazy').setup({
         javascriptreact = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
         typescript = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
         typescriptreact = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
+        markdown = { 'oxfmt', stop_after_first = true },
         astro = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
         svelte = { 'prettierd', 'prettier', stop_after_first = true },
         html = { 'oxfmt', 'prettierd', 'prettier', stop_after_first = true },
@@ -1054,6 +1055,12 @@ vim.api.nvim_create_autocmd('FileType', {
     vim.treesitter.start()
   end,
 })
+
+vim.filetype.add {
+  extension = {
+    ['mdx'] = 'markdown',
+  },
+}
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
