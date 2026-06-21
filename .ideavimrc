@@ -31,6 +31,7 @@ if has('mac')
   imap <silent> <D-s> <Action>(SaveAll)
   nmap <silent> <D-p> <Action>(SearchEverywhere)
   nmap <silent> <D-w> :q<CR>
+  nmap <silent> <D-t> <C-t>
   nmap <silent> <D-f> <C-f>
   nmap <silent> <D-b> <C-b>
   nmap <silent> <D-]> <C-]>
