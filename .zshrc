@@ -53,7 +53,6 @@ export CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION=false
 # compile erlang with docs using asdf/kerl
 export KERL_BUILD_DOCS="yes"
 
-alias gpd="jj git push"
 alias gb="jj bookmark move --to @-"
 alias gci="jj commit -i"
 
@@ -127,6 +126,14 @@ gc() {
     jj commit $@
   else
     git commit $@
+  fi
+}
+
+gpd() {
+  if is_jj_repo; then
+    jj git push $@
+  else
+    git push $@
   fi
 }
 
