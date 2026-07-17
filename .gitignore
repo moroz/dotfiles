@@ -20,3 +20,5 @@ mise.*.local.toml
 /.jj
 .env.development
 *.dSYM
+
+**/.claude/settings.local.json

@@ -25,7 +25,7 @@ jj git fetch
 jj new 'trunk()'
 """]
 
-tug = ["bookmark", "move", "--from", "closest_bookmark(@)", "--to", "closest_pushable(@)"]
+tug = ["bookmark", "advance", "--to", "closest_pushable(@)"]
 
 pr = ["util", "exec", "--", "bash", "-c", """
 set -euo pipefail
