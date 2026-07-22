@@ -794,6 +794,7 @@ require('lazy').setup({
         'yaml',
         'toml',
         'tsx',
+        'graphql',
       },
       highlight = {
         enable = true,
