@@ -4,12 +4,13 @@
 
 When drafting content that will be posted in my name to chat/messaging tools
 (Slack, email) or to shared documents/pages (Confluence, Notion, Google Docs,
-wikis), append a short AI-disclosure line at the end of the content. Write a
-fresh one each time — don't reuse the same wording twice in a row — and keep
-the tone light. Use this template, varying the bizarre self-description each
-time — don't reuse the same one twice in a row:
+wikis), prepend a short AI-disclosure line ABOVE the content (before the text,
+not at the end). Always include at least one emoji in the line. Write a fresh
+one each time — don't reuse the same wording twice in a row — and keep the
+tone light. Use this template, varying the bizarre self-description each time
+— don't reuse the same one twice in a row:
 
-> Bleep blop. I am a bot, a `<bizarre self-description>`.
+> 🤖 Bleep blop. I am a bot, a `<bizarre self-description>`.
 
 Examples of the self-description part (don't just copy these verbatim, vary
 them):
