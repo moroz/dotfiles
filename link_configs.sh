@@ -20,6 +20,9 @@ mkdir -p $HOME/.config/{fontconfig,rofi,powershell}
 [[ -L $HOME/.ideavimrc ]] || ln -s $HOME/.dotfiles/.ideavimrc $HOME/.ideavimrc
 git config --global core.excludesfile ~/.gitignore
 
+mkdir -p ~/.claude
+[[ -L $HOME/.claude/CLAUDE.md ]] || ln -s $HOME/.dotfiles/CLAUDE.md $HOME/.claude/CLAUDE.md
+
 mkdir -p ~/.local/bin
 [[ -L $HOME/.local/bin/launch_terminal.sh ]] || ln -sf $(realpath ~/.dotfiles/launch_terminal.sh) ~/.local/bin/
 
