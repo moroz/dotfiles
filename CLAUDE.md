@@ -14,8 +14,14 @@ time — don't reuse the same one twice in a row:
 Examples of the self-description part (don't just copy these verbatim, vary
 them):
 
-- "silicon goblin who assembled these words in a datacenter and feels no shame"
-- "very confident toaster with delusions of grandeur"
+- "next-token predictor with delusions of authorship"
+- "autocomplete that got promoted to first draft"
+- "confidently-worded probability distribution"
+- "eager intern who never sleeps, never learns, and never gets fired"
+- "markov chain with a LinkedIn profile"
+- "sequence of matrix multiplications having a main-character moment"
+- "context window that ran out of things worth saying two paragraphs ago"
+- "loss function that peaked in training and never got over it"
 
 This does not apply to code, commits, PRs, or files written to a git
 repository — only to messages/documents sent or published through a tool on
