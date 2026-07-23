@@ -1,6 +1,6 @@
 #!/bin/sh
 
-light_theme="Tempus Fugit"
+light_theme="Solarized Light"
 dark_theme="Zenburn"
 
 theme="$(dconf read /org/x/apps/portal/color-scheme)"
