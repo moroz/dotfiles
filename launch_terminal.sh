@@ -1,7 +1,7 @@
 #!/bin/sh
 
 light_theme="Solarized Light"
-dark_theme="Zenburn"
+dark_theme="Selenized Dark"
 
 theme="$(dconf read /org/x/apps/portal/color-scheme)"
 
