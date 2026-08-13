@@ -1,0 +1,36 @@
+[tools]
+go = "latest"
+jj = "latest"
+neovim = "latest"
+node = "latest"
+deno = "latest"
+rust = "latest"
+terraform = "latest"
+terragrunt = "latest"
+gh = "latest"
+python = "latest"
+pipx = "latest"
+claude = "latest"
+rg = "latest"
+ruby = "latest"
+pnpm = "latest"
+powershell = "latest"
+caddy = "latest"
+overmind = "latest"
+uv = "latest"
+elixir = "latest"
+erlang = "latest"
+typst = "latest"
+jq = "latest"
+ansible = { version = "latest", pipx_args = "--include-deps", uvx = false }
+bun = "latest"
+age = "latest"
+
+[settings]
+experimental = true
+
+[settings.ruby]
+compile = false
+
+[settings.age]
+identity_files = ["~/.config/mise/private.txt"]

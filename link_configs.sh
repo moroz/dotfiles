@@ -23,6 +23,9 @@ git config --global core.excludesfile ~/.gitignore
 mkdir -p ~/.claude
 [[ -L $HOME/.claude/CLAUDE.md ]] || ln -s $HOME/.dotfiles/CLAUDE.md $HOME/.claude/CLAUDE.md
 
+mkdir -p ~/.config/mise
+[[ -L $HOME/.config/mise/config.toml ]] || ln -s $HOME/.dotfiles/mise.config.toml $HOME/.config/mise/config.toml
+
 mkdir -p ~/.local/bin
 [[ -L $HOME/.local/bin/launch_terminal.sh ]] || ln -sf $(realpath ~/.dotfiles/launch_terminal.sh) ~/.local/bin/
 
