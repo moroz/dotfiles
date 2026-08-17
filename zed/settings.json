@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "terminal": {
+    "font_size": 17.0,
+  },
   "agent": {
     "sidebar_side": "right",
     "default_model": {
@@ -16,7 +19,7 @@
     "model_parameters": [],
   },
   "ui_font_size": 16,
-  "buffer_font_size": 19.0,
+  "buffer_font_size": 16.0,
   "buffer_line_height": "standard",
   "buffer_font_family": "CaskaydiaMono Nerd Font",
   "base_keymap": "JetBrains",

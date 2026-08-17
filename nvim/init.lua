@@ -649,12 +649,14 @@ require('lazy').setup({
           -- `friendly-snippets` contains a variety of premade snippets.
           --    See the README about individual language/framework/plugin snippets:
           --    https://github.com/rafamadriz/friendly-snippets
-          -- {
-          --   'rafamadriz/friendly-snippets',
-          --   config = function()
-          --     require('luasnip.loaders.from_vscode').lazy_load()
-          --   end,
-          -- },
+          {
+            'rafamadriz/friendly-snippets',
+            config = function()
+              require('luasnip.loaders.from_vscode').lazy_load()
+              -- Custom snippets (e.g. React components) live here as lua files.
+              require('luasnip.loaders.from_lua').lazy_load { paths = vim.fn.stdpath 'config' .. '/snippets' }
+            end,
+          },
         },
         opts = {},
       },
@@ -971,6 +973,8 @@ local function find_with_rg()
       '!.git',
       '-g',
       '!.jj',
+      '-g',
+      '!.idea',
     },
   }
 end
