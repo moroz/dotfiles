@@ -9,7 +9,10 @@ local fmt = require('luasnip.extras.fmt').fmt
 local function filename_to_component()
   return function()
     local name = vim.fn.expand '%:t:r'
-    name = name:gsub('^%l', string.upper)
+    name = name:gsub('(%a)([%w]*)', function(first, rest)
+      return first:upper() .. rest
+    end)
+    name = name:gsub('-', '')
     return name
   end
 end
