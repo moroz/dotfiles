@@ -22,6 +22,7 @@ git config --global core.excludesfile ~/.gitignore
 
 mkdir -p ~/.claude
 [[ -L $HOME/.claude/CLAUDE.md ]] || ln -s $HOME/.dotfiles/CLAUDE.md $HOME/.claude/CLAUDE.md
+[[ -L $HOME/.claude/settings.json ]] || ln -s $HOME/.dotfiles/claude/settings.json $HOME/.claude/settings.json
 
 mkdir -p ~/.config/mise
 [[ -L $HOME/.config/mise/config.toml ]] || ln -s $HOME/.dotfiles/mise.config.toml $HOME/.config/mise/config.toml

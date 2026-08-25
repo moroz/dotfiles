@@ -1,0 +1,23 @@
+{
+  "model": "opus",
+  "permissions": {
+    "defaultMode": "default"
+  },
+  "enabledPlugins": {
+    "ruby-lsp@claude-plugins-official": true,
+    "caveman@caveman": true,
+    "mcp-server-dev@claude-plugins-official": true
+  },
+  "extraKnownMarketplaces": {
+    "caveman": {
+      "source": {
+        "source": "github",
+        "repo": "JuliusBrussee/caveman"
+      }
+    }
+  },
+  "syntaxHighlightingDisabled": true,
+  "effortLevel": "medium",
+  "tui": "fullscreen",
+  "theme": "light"
+}
