@@ -25,6 +25,12 @@ jq = "latest"
 ansible = { version = "latest", pipx_args = "--include-deps", uvx = false }
 bun = "latest"
 age = "latest"
+aws-vault = "latest"
+aws = { version = "latest", symlink_bins = "true" }
+mkcert = "latest"
+minikube = "latest"
+helm = "latest"
+kubectl = "latest"
 
 [settings]
 experimental = true
