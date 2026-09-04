@@ -254,6 +254,8 @@ if [ "$system" = "Darwin" ]; then
   export CFLAGS="-O2 -g -fno-stack-check"
   # Uncomment this line to build (takes too much time when not building)
   # export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"
+
+  alias mc="SHELL=/bin/bash mc"
 fi
 
 set_wallpaper() {
