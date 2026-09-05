@@ -287,3 +287,11 @@ cursor() {
   size="${@:-32}"
   dconf write /org/cinnamon/desktop/interface/cursor-size $size
 }
+
+claude-personal() {
+  CLAUDE_CONFIG_DIR=~/.claude-personal claude
+}
+
+claude-work() {
+  CLAUDE_CONFIG_DIR=~/.claude-work claude
+}

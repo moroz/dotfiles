@@ -7,9 +7,14 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
   "cli_default_open_behavior": "new_window",
   "project_panel": {
-    "dock": "left"
+    "dock": "left",
   },
   "terminal": {
     "font_size": 17.0,
@@ -30,9 +35,9 @@
   "soft_wrap": "editor_width",
   "show_edit_predictions": false,
   "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "Modus Vivendi Tinted",
+    "mode": "dark",
+    "light": "VSCode Light+",
+    "dark": "macOS Classic Dark",
   },
   "vim": {
     "use_system_clipboard": "never",
@@ -84,5 +89,9 @@
     "svelte": true,
     "sql": true,
     "deno": true,
+    "powershell": true,
+    "terraform": true,
+    "vscode-light-plus": true,
+    "python": true,
   },
 }

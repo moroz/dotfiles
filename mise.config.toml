@@ -34,6 +34,7 @@ kubectl = "latest"
 
 [settings]
 experimental = true
+auto_update = true
 
 [settings.ruby]
 compile = false
