@@ -1,5 +1,8 @@
 {
   "model": "opus",
+  "env": {
+    "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false"
+  },
   "permissions": {
     "defaultMode": "default"
   },

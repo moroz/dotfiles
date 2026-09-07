@@ -14,18 +14,18 @@
   },
   "cli_default_open_behavior": "new_window",
   "project_panel": {
-    "dock": "left",
+    "dock": "left"
   },
   "terminal": {
-    "font_size": 17.0,
+    "font_size": 17.0
   },
   "agent": {
     "sidebar_side": "right",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-sonnet-4.5",
+      "model": "claude-sonnet-4.5"
     },
-    "model_parameters": [],
+    "model_parameters": []
   },
   "ui_font_size": 16.0,
   "buffer_font_size": 18.0,
@@ -35,17 +35,18 @@
   "soft_wrap": "editor_width",
   "show_edit_predictions": false,
   "theme": {
-    "mode": "dark",
-    "light": "VSCode Light+",
-    "dark": "macOS Classic Dark",
+    "mode": "system",
+    "light": "One Light",
+    "dark": "Modus Vivendi Tinted",
+    "dark": "Dracula"
   },
   "vim": {
     "use_system_clipboard": "never",
-    "use_smartcase_find": true,
+    "use_smartcase_find": true
   },
   "vim_mode": true,
   "telemetry": {
-    "diagnostics": false,
+    "diagnostics": false
   },
   "format_on_save": "on",
   "lsp": {
@@ -62,21 +63,21 @@
           "cshtml": "html",
           "vbhtml": "html",
           "razor": "html",
-          "go": "javascript",
-        },
-      },
-    },
+          "go": "javascript"
+        }
+      }
+    }
   },
   "languages": {
     "Go": {
-      "language_servers": ["...", "tailwindcss-language-server"],
+      "language_servers": ["...", "tailwindcss-language-server"]
     },
     "Astro": {
-      "tab_size": 2,
-    },
+      "tab_size": 2
+    }
   },
   "file_types": {
-    "HTML": ["*.html.tmpl"],
+    "HTML": ["*.html.tmpl"]
   },
   "auto_install_extensions": {
     "astro": true,
@@ -93,5 +94,9 @@
     "terraform": true,
     "vscode-light-plus": true,
     "python": true,
-  },
+    "python-lsp": true,
+    "tokyo-night": true,
+    "dracula": true,
+    "typst": true
+  }
 }
