@@ -13,6 +13,26 @@ This does not apply to code, commits, PRs, or files written to a git
 repository — only to messages/documents sent or published through a tool on
 my behalf to a shared or external system.
 
+## Slack status updates
+
+A status update is posted in two steps. The top-level message is an abstract of
+two or three sentences ending in a thread pointer (🧵); the body goes in a
+threaded reply. The AI disclosure line above goes on the **reply**, not on the
+abstract. A note that asks for a decision is shorter still — say what is needed
+and from whom.
+
+Link every ticket and PR mentioned. Never link a handoff or working page.
+
+Slack allows only one attached draft per channel, and a threaded reply needs a
+real parent `ts`, so a two-step message cannot be drafted whole: draft the
+abstract, and hand me the thread body as text to paste once the parent is
+posted.
+
+Default to drafting and waiting for my go-ahead, even when sending would be
+convenient. Check any factual claim — what merged, what deployed, when
+something happened — against `git log` or the ticket before it goes in the
+message.
+
 ## Commit with `jj commit`
 
 Always commit with `jj commit`, never `git commit`.
