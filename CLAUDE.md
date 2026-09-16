@@ -42,6 +42,30 @@ shows the working copy with one parent and would flatten the other side into an
 ordinary commit), rebuild it as a jj merge instead of reaching for `git commit`:
 `jj new <ours> <theirs>`, restore the resolved tree, then describe it.
 
+## Review a PR adversarially, in a background agent
+
+When I ask for a PR review — mine or your own — run it as a **background agent**
+rather than inline, so the reading stays out of the main thread. Brief it with
+the PR number, the repo path, what the change is meant to do, and the
+`CLAUDE.md` and pattern docs it has to judge against. Tell it to verify every
+claim against the code, to say plainly when a suspicion does not survive
+checking, and to report each finding as
+`path:line: <severity>: <problem>. <fix>.` It reviews only: no edits, no
+commits, no pushes.
+
+**Post the findings as a comment on the PR**, and say what you did about each
+one — fixed, documented, or rejected with the reason. A finding you disagree
+with is worth more in the comment than out of it: a rejected finding and its
+argument is a decision the next reader can see. The comment carries the AI
+disclosure line like anything else published in my name.
+
+Then fix what survived, in commits of their own on the same branch, and say in
+the commit message that review found it.
+
+**Review your own work this way before asking me to merge it.** The automated
+reviewer on the PR runs from the base commit on every push, so a finding left
+for it costs a full round and leaves the code unchanged in the meantime.
+
 ## Refer to management as "The Corporate"
 
 In anything I write — messages, reports, tickets, documents, and answers in the
