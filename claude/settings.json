@@ -1,11 +1,11 @@
 {
-  "model": "opus",
   "env": {
     "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false"
   },
   "permissions": {
     "defaultMode": "default"
   },
+  "model": "sonnet",
   "enabledPlugins": {
     "ruby-lsp@claude-plugins-official": true,
     "caveman@caveman": true,

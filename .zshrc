@@ -41,7 +41,12 @@ alias ...="cd ../.."
 export QUOTING_STYLE=literal
 export FZF_DEFAULT_COMMAND="rg --files --hidden --ignore -g '!.git' -g '!.jj' -g '!.idea'"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_TMUX=1
+# Not FZF_TMUX=1: that makes fzf's key bindings shell out to the fzf-tmux
+# wrapper, which is not shipped with every fzf build (the mise one is just
+# the binary). --tmux does the same job inside fzf, and is ignored when there
+# is no tmux to pop up into. FZF_TMUX_OPTS triggers the wrapper too, so it
+# stays unset.
+export FZF_DEFAULT_OPTS="--tmux center,80%,60% ${FZF_DEFAULT_OPTS-}"
 export EDITOR=nvim
 export ERL_AFLAGS="-kernel shell_history enabled"
 export DOCKER_BUILDKIT=1
