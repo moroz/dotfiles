@@ -147,10 +147,10 @@ mm() {
         mix ecto.migrate
     elif [ -f Gemfile ]; then
         bundle exec rake db:migrate $@
-    elif [ -f Cargo.toml ]; then
-        diesel migration run
     elif [ -n "${GOOSE_DBSTRING}" ]; then
         goose up
+    elif git ls-files -co --exclude-standard ':(glob)**/mikro-orm.config.ts' | grep -q .; then
+        pnpm exec mikro-orm migration:up
     fi
 }
 
@@ -159,10 +159,10 @@ mr() {
         mix ecto.rollback $@
     elif [ -f Gemfile ]; then
         bundle exec rake db:rollback $@
-    elif [ -f Cargo.toml ]; then
-      diesel migration revert
     elif [ -n "${GOOSE_DBSTRING}" ]; then
         goose down
+    elif git ls-files -co --exclude-standard ':(glob)**/mikro-orm.config.ts' | grep -q .; then
+        pnpm exec mikro-orm migration:down
     fi
 }
 
