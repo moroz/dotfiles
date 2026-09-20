@@ -22,7 +22,6 @@ elixir = "latest"
 erlang = "latest"
 typst = "latest"
 jq = "latest"
-ansible = { version = "latest", pipx_args = "--include-deps", uvx = false }
 bun = "latest"
 age = "latest"
 aws-vault = "latest"
@@ -31,6 +30,7 @@ mkcert = "latest"
 minikube = "latest"
 helm = "latest"
 kubectl = "latest"
+ansible = { version = "latest", expose = ["ansible-core"] }
 
 [settings]
 experimental = true
