@@ -8,7 +8,7 @@
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
   "icon_theme": {
-    "mode": "dark",
+    "mode": "light",
     "light": "Zed (Default)",
     "dark": "Zed (Default)"
   },
@@ -37,8 +37,7 @@
   "theme": {
     "mode": "system",
     "light": "One Light",
-    "dark": "Modus Vivendi Tinted",
-    "dark": "Dracula"
+    "dark": "Modus Vivendi Tinted"
   },
   "vim": {
     "use_system_clipboard": "never",
