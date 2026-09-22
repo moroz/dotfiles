@@ -3,6 +3,7 @@
     "CLAUDE_CODE_ENABLE_PROMPT_SUGGESTION": "false"
   },
   "permissions": {
+    "allow": ["Bash(gh pr merge:*)", "Bash(git push origin --force *:refs/tags/staging)"],
     "defaultMode": "default"
   },
   "model": "sonnet",
