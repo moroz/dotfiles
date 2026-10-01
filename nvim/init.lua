@@ -995,7 +995,7 @@ vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagn
 
 local function has_dark_mode()
   local uname = vim.loop.os_uname().sysname
-  return uname == 'Darwin' or uname == 'Linux'
+  return uname == 'Darwin' or (uname == 'Linux' and vim.fn.executable 'dconf' == 1)
 end
 
 local function is_day()
@@ -1016,7 +1016,7 @@ if has_dark_mode() then
     vim.cmd.colorscheme(os.getenv 'VIM_DARK_COLORSCHEME' or 'modus_vivendi')
   end
 else
-  vim.cmd.colorscheme(os.getenv 'VIM_COLORSCHEME' or 'distinguished')
+  vim.cmd.colorscheme(os.getenv 'VIM_COLORSCHEME' or 'default')
 end
 
 vim.lsp.config('tailwindcss', {
