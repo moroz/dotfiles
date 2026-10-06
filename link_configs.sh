@@ -31,6 +31,22 @@ mkdir -p ~/.local/bin
 [[ -L $HOME/.local/bin/launch_terminal.sh ]] || ln -sf $(realpath ~/.dotfiles/launch_terminal.sh) ~/.local/bin/
 
 [[ -f $HOME/.zshrc ]] || echo ". ~/.dotfiles/.zshrc" > ~/.zshrc
+
+# zoxide, with cd aliased to z. Interactive shells only, and not in Claude
+# Code: its shell snapshot would carry the alias into the commands it runs.
+# Added even when zoxide is missing; the shell warns until it is installed.
+grep -q 'zoxide init' ~/.zshrc || cat >> ~/.zshrc <<'EOF'
+
+if [[ -o interactive && -z $CLAUDECODE ]]; then
+  if command -v zoxide >/dev/null; then
+    eval "$(zoxide init zsh)"
+    alias cd=z
+  else
+    echo "warning: zoxide is not installed, cd is not aliased to z" >&2
+  fi
+fi
+EOF
+
 [[ -f $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 ]] || ln -s $HOME/.dotfiles/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 
 if [[ ! -L ~/.config/jj/config.toml ]]; then
