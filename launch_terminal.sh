@@ -1,7 +1,7 @@
 #!/bin/sh
 
 light_theme="Solarized Light"
-dark_theme="Selenized Dark"
+dark_theme="Dark Pastel"
 
 theme="$(dconf read /org/x/apps/portal/color-scheme)"
 
