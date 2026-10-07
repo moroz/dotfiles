@@ -76,3 +76,38 @@ capacity.
 Individuals are still individuals: a colleague who happens to manage something
 is called by their name when the point is them, not their office. "The
 Corporate" is for the institution deciding, asking, approving or reorganising.
+
+## PDFs: Typst, IBM Plex Sans
+
+Typeset every PDF with **Typst** in **IBM Plex Sans** (IBM Plex Mono for
+code). Keep the `.typ` source next to the PDF so it can be rebuilt.
+
+Every PDF carries this metadata **in its filename**, and again in its footer:
+
+- a **timestamp** of when it was built;
+- its **theme** (`light` or `dark`), when it comes in more than one;
+- the **SHA of the working tree** it was built from, when it was built from a
+  repository: `git rev-parse HEAD`, suffixed `-dirty` when there are
+  uncommitted changes.
+
+Filename: `<name>_<YYYYMMDD-HHMM>[_<theme>][_<sha12>].pdf`, e.g.
+`harness-proposal_20261007-1235_dark_91fb05c3903d.pdf`; leave out a part
+that does not apply. The footer gives the full form: date and time with UTC
+offset, the theme, and the full SHA. When the content draws on several
+repositories, the footer lists each one's commit; the filename carries a SHA
+only for the tree the PDF was built in.
+
+The build script stamps the metadata, so a rebuild never carries a stale
+name.
+
+### "iPad PDF"
+
+When I ask for an iPad PDF, I mean:
+
+- sized for the **iPad 11th generation** (11-inch, 2360 × 1640 at 264 ppi):
+  a page in its 1.44 aspect ratio, margins and type sized to read without
+  zooming, no multi-column layout that needs panning;
+- **WCAG AAA** contrast: at least 7:1 for body text and 4.5:1 for large text,
+  in every theme;
+- **two builds, light and dark**, from the same source, each stamped with its
+  theme.
