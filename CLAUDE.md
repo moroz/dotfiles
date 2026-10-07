@@ -80,7 +80,10 @@ Corporate" is for the institution deciding, asking, approving or reorganising.
 ## PDFs: Typst, IBM Plex Sans
 
 Typeset every PDF with **Typst** in **IBM Plex Sans** (IBM Plex Mono for
-code). Keep the `.typ` source next to the PDF so it can be rebuilt.
+code). Keep the `.typ` source, its images and the build script together where
+the PDF is built, so it can be rebuilt; build there, and copy only the finished
+PDF to wherever I read it. Where that is on a given machine is that machine's
+setup (the VM's is in claude-vm's `CLAUDE.md`).
 
 Every PDF carries this metadata **in its filename**, and again in its footer:
 
