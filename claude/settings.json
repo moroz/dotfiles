@@ -11,7 +11,6 @@
   },
   "model": "opus",
   "enabledPlugins": {
-    "ruby-lsp@claude-plugins-official": true,
     "mcp-server-dev@claude-plugins-official": true,
     "vibe-wise@anthropic-plugin-directory": true
   },
