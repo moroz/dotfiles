@@ -512,8 +512,6 @@ require('lazy').setup({
           },
         },
         svelte = {},
-        rubocop = {},
-        solargraph = {},
         tailwindcss = {},
 
         lua_ls = {
@@ -828,13 +826,6 @@ require('lazy').setup({
   },
   { 'protesilaos/tempus-themes-vim' },
 
-  {
-    'GustavEikaas/easy-dotnet.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim', 'nvim-telescope/telescope.nvim' },
-    config = function()
-      require('easy-dotnet').setup()
-    end,
-  },
   'flazz/vim-colorschemes',
   'folke/tokyonight.nvim',
   'rebelot/kanagawa.nvim',
