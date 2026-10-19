@@ -12,16 +12,8 @@
   "model": "opus",
   "enabledPlugins": {
     "ruby-lsp@claude-plugins-official": true,
-    "caveman@caveman": true,
-    "mcp-server-dev@claude-plugins-official": true
-  },
-  "extraKnownMarketplaces": {
-    "caveman": {
-      "source": {
-        "source": "github",
-        "repo": "JuliusBrussee/caveman"
-      }
-    }
+    "mcp-server-dev@claude-plugins-official": true,
+    "vibe-wise@anthropic-plugin-directory": true
   },
   "syntaxHighlightingDisabled": true,
   "effortLevel": "medium",
