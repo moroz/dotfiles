@@ -28,7 +28,6 @@ mkcert = "latest"
 minikube = "latest"
 helm = "latest"
 kubectl = "latest"
-ansible = { version = "latest", expose = ["ansible-core"] }
 
 [settings]
 experimental = true
