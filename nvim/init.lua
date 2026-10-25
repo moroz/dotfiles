@@ -130,7 +130,7 @@ rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
-  'NMAC427/guess-indent.nvim', -- Detect tabstop and shiftwidth automatically
+  { 'NMAC427/guess-indent.nvim', opts = {} }, -- Detect tabstop and shiftwidth automatically
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -600,6 +600,18 @@ require('lazy').setup({
           }
         end
       end,
+      formatters = {
+        -- Tabs at the buffer's tab width, unless the project has a .clang-format of its own
+        ['clang-format'] = {
+          prepend_args = function(_, ctx)
+            if vim.fs.find({ '.clang-format', '_clang-format' }, { upward = true, path = ctx.dirname })[1] then
+              return {}
+            end
+            local width = vim.bo[ctx.buf].tabstop
+            return { ('--style={BasedOnStyle: LLVM, UseTab: Always, IndentWidth: %d, TabWidth: %d}'):format(width, width) }
+          end,
+        },
+      },
       formatters_by_ft = {
         lua = { 'stylua' },
         c = { 'clang-format' },
