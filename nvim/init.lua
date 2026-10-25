@@ -479,8 +479,6 @@ require('lazy').setup({
         },
       }
 
-      local capabilities = require('blink.cmp').get_lsp_capabilities()
-
       -- Enable the following language servers
       --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
       --
@@ -491,7 +489,6 @@ require('lazy').setup({
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
         -- gopls = {},
         -- pyright = {},
         -- rust_analyzer = {},
@@ -501,6 +498,7 @@ require('lazy').setup({
         --    https://github.com/pmizio/typescript-tools.nvim
         --
         -- But for many setups, the LSP (`ts_ls`) will work just fine
+        clangd = {},
         gopls = {},
         ts_ls = {
           filetypes = {
@@ -518,12 +516,10 @@ require('lazy').setup({
           -- cmd = { ... },
           -- filetypes = { ... },
           -- capabilities = {},
-          Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-          },
           settings = {
             Lua = {
+              workspace = { checkThirdParty = false },
+              telemetry = { enable = false },
               completion = {
                 callSnippet = 'Replace',
               },
@@ -551,20 +547,16 @@ require('lazy').setup({
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
+      -- blink.cmp adds its completion capabilities to every server itself
+      for server_name, server in pairs(servers) do
+        vim.lsp.config(server_name, server)
+      end
+
+      -- mason-lspconfig v2 ignores `handlers` and enables every installed
+      -- server; enable only the ones listed above
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
-        automatic_installation = false,
-        handlers = {
-          function(server_name)
-            local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
-            -- certain features of an LSP (for example, turning off formatting for ts_ls)
-            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
-            vim.lsp.config(server_name, server)
-            vim.lsp.enable(server_name)
-          end,
-        },
+        automatic_enable = vim.tbl_keys(servers),
       }
     end,
   },
