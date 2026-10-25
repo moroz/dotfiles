@@ -821,9 +821,10 @@ require('lazy').setup({
     --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
     --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
+  -- Colorschemes are lazy: `:colorscheme` loads the plugin providing them
   {
     'miikanissi/modus-themes.nvim',
-    priority = 1000,
+    lazy = true,
     config = function()
       require('modus-themes').setup {
         variants = {
@@ -833,13 +834,13 @@ require('lazy').setup({
       }
     end,
   },
-  { 'protesilaos/tempus-themes-vim' },
+  { 'protesilaos/tempus-themes-vim', lazy = true },
 
-  'flazz/vim-colorschemes',
-  'folke/tokyonight.nvim',
-  'rebelot/kanagawa.nvim',
-  'raphamorim/lucario',
-  'razcoen/fleet.nvim',
+  { 'flazz/vim-colorschemes', lazy = true },
+  { 'folke/tokyonight.nvim', lazy = true },
+  { 'rebelot/kanagawa.nvim', lazy = true },
+  { 'raphamorim/lucario', lazy = true },
+  { 'razcoen/fleet.nvim', lazy = true },
   'fatih/vim-go',
   'vim-test/vim-test',
   'tpope/vim-abolish',
