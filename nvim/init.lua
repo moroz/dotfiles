@@ -534,7 +534,6 @@ require('lazy').setup({
         },
         powershell_es = {},
         astro = {},
-        expert = {},
         denols = {},
       }
 
@@ -633,8 +632,6 @@ require('lazy').setup({
         css = { 'oxfmt', stop_after_first = true },
         scss = { 'oxfmt', stop_after_first = true },
         sass = { 'oxfmt', stop_after_first = true },
-        -- elixir = { 'mix' },
-        -- heex = { 'mix' },
       },
     },
   },
@@ -802,7 +799,6 @@ require('lazy').setup({
         'typescript',
         'tsx',
         'css',
-        'elixir',
         'go',
         'json',
         'yaml',
@@ -1028,13 +1024,11 @@ vim.lsp.config('tailwindcss', {
   filetypes = {
     'astro',
     'astro-markdown',
-    'eelixir',
     'erb',
     'eruby',
     'gohtml',
     'haml',
     'html',
-    'html-eex',
     'markdown',
     'mdx',
     'css',
@@ -1064,18 +1058,6 @@ vim.lsp.config('tailwindcss', {
   },
 })
 
-vim.api.nvim_create_augroup('fmt', {})
-
-vim.api.nvim_create_autocmd('BufWritePost', {
-  pattern = { '*.ex', '*.exs', '*.heex' },
-  callback = function()
-    local view = vim.fn.winsaveview()
-    vim.cmd 'silent! !mix format %'
-    vim.cmd 'edit!'
-    vim.fn.winrestview(view)
-  end,
-})
-
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'go', 'c' },
   callback = function()
@@ -1086,7 +1068,7 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 vim.api.nvim_create_autocmd('FileType', {
-  pattern = { 'go', 'ruby', 'elixir', 'c', 'markdown', 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
+  pattern = { 'go', 'ruby', 'c', 'markdown', 'typescript', 'javascript', 'typescriptreact', 'javascriptreact' },
   callback = function()
     vim.treesitter.start()
   end,
