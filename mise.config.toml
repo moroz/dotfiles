@@ -28,6 +28,7 @@ mkcert = "latest"
 minikube = "latest"
 helm = "latest"
 kubectl = "latest"
+turso = "latest"
 
 [settings]
 experimental = true
