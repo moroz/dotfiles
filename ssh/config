@@ -1,0 +1,23 @@
+# Added by OrbStack: 'orb' SSH host for Linux machines
+# This only works if it's at the top of ssh_config (before any Host blocks).
+# This won't be added again if you remove it.
+Include ~/.orbstack/ssh/config
+
+# Hosts go here, above the defaults: ssh uses the first value it finds.
+
+Host *
+  # FIDO2 security keys, touch to use. YubiKey first, Swissbit as backup.
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh/id_ed25519_sk_primary
+  IdentityFile ~/.ssh/id_ecdsa_sk_backup
+
+  # Forward the agent only where a Host block asks for it.
+  # claude-vm forwards through Lima's own config (~/.lima/claude-vm/ssh.config).
+  ForwardAgent no
+
+  # Keep idle sessions alive through NAT; drop dead ones after ~3 min.
+  ServerAliveInterval 60
+  ServerAliveCountMax 3
+
+  # Learn rotated host keys from servers that offer them.
+  UpdateHostKeys yes

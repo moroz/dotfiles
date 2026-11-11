@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Template: ssh/install-macos.sh fills in the home directory and
+     installs it to ~/Library/LaunchAgents. -->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>dev.moroz.ssh-agent</string>
+  <!-- Homebrew OpenSSH agent: Apple's ssh-agent cannot sign with FIDO (-sk) keys. -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/sh</string>
+    <string>-c</string>
+    <string>rm -f "$HOME/.ssh/agent.sock"; exec /opt/homebrew/bin/ssh-agent -D -a "$HOME/.ssh/agent.sock"</string>
+  </array>
+  <!-- Notify (via oshirase) when a security key is waiting for a touch.
+       The agent has no terminal, so without this the wait is silent.
+       REQUIRE=force: macOS has no DISPLAY, which ssh otherwise insists on. -->
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>SSH_ASKPASS</key>
+    <string>__HOME__/.local/bin/ssh-askpass-oshirase</string>
+    <key>SSH_ASKPASS_REQUIRE</key>
+    <string>force</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>StandardErrorPath</key>
+  <string>/tmp/dev.moroz.ssh-agent.log</string>
+</dict>
+</plist>

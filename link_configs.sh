@@ -69,6 +69,9 @@ if [[ "$(uname)" == 'Darwin' ]]; then
   defaults write -g ApplePressAndHoldEnabled -bool false
   mkdir -p $HOME/Pictures/screenshots
   defaults write com.apple.screencapture location $HOME/Pictures/screenshots
+
+  # SSH agent for FIDO keys, with touch notifications (installs oshirase).
+  $HOME/.dotfiles/ssh/install-macos.sh
 fi
 
 mkdir -p ~/.config/zed

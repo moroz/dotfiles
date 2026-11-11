@@ -15,6 +15,10 @@ if OS.mac?
   brew "tmux"
   brew "mc"
   brew "powershell"
+  # FIDO2 security keys for SSH (ssh/install-macos.sh): Apple's OpenSSH is
+  # built without them.
+  brew "openssh"
+  brew "ykman"
 
   cask "google-chrome"
   cask "firefox"

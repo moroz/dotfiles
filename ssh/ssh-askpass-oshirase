@@ -1,0 +1,14 @@
+#!/bin/sh
+# SSH_ASKPASS for the Homebrew ssh-agent (launchd: dev.moroz.ssh-agent).
+#
+# When a FIDO (-sk) key needs a touch, ssh-agent runs this with
+# SSH_ASKPASS_PROMPT=none and the message ("Confirm user presence for key
+# ED25519-SK SHA256:...") as $1, and kills it once the key is touched.
+# Show that as a notification through oshirase (install-oshirase.sh).
+#
+# Anything else (passphrase or confirm prompts) is declined: this agent's
+# keys need neither.
+[ "$SSH_ASKPASS_PROMPT" = none ] || exit 1
+exec "$HOME/.local/bin/oshirase" send \
+  -url http://127.0.0.1:4649 -source ssh -urgency critical \
+  "Touch your security key" "$1"

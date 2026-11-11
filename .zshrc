@@ -261,6 +261,11 @@ if [ "$system" = "Darwin" ]; then
   # export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"
 
   alias mc="SHELL=/bin/bash mc"
+
+  # FIDO security keys (ssh/install-macos.sh): load them into the agent when
+  # it is empty, e.g. after a restart. Loading needs no touch.
+  ssh-add -l >/dev/null 2>&1 ||
+    ssh-add -q ~/.ssh/id_ed25519_sk_primary ~/.ssh/id_ecdsa_sk_backup 2>/dev/null
 fi
 
 set_wallpaper() {
