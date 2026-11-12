@@ -114,3 +114,56 @@ When I ask for an iPad PDF, I mean:
   in every theme;
 - **two builds, light and dark**, from the same source, each stamped with its
   theme.
+
+## Notifications through oshirase
+
+Where `oshirase` is installed, `oshirase send` puts a notification on my
+host's screen (see the oshirase README for the protocol). A notification
+interrupts whatever I am doing elsewhere, so each one has to earn that and
+cost me as little as possible.
+
+**Descriptive.** I should know from the banner alone what happened, where,
+and what, if anything, is needed from me — without switching to the terminal
+to find out.
+
+- The **title** says what happened or what is needed, in a few words that
+  survive truncation: "Waiting for approval to push", "Tests failed in
+  oshirase", not "Done", "Update" or "Claude".
+- `-source` names the project (and the session or branch, when several run
+  at once), e.g. `-source "oshirase · native-notifier"`. macOS shows it as
+  the subtitle.
+- The **body** is one or two sentences: the outcome or the question, and the
+  detail I need to act — the command waiting, the test that failed, the
+  choice to be made. Not a log, not a summary of the whole session.
+
+**Non-intrusive.**
+
+- Send one only when I am needed or something I am waiting for has finished:
+  blocked on input or approval, a long task done, a failure that stops the
+  work. Never for progress, intermediate steps, or a reply I am already
+  watching in the terminal.
+- One notification per event. Do not repeat or remind; if I have not
+  answered, the first one is still in Notification Centre.
+- Urgency `normal` by default (silent). `low` for things that can wait.
+  `critical` plays a sound — only for something that fails unless I act within
+  a minute or so, such as a YubiKey touch.
+- Never put secrets, tokens or personal data in a notification; it lands on
+  the lock screen.
+- If `oshirase send` fails, say so once in the terminal and carry on; do not
+  retry in a loop.
+
+### SSH: say what the key touch is for
+
+Before a command that needs my SSH key — `git push`, `jj git push`, a fetch
+from a private remote, `ssh` to a host — send a notification right before
+running it, urgency `critical`, so I know what I am approving when I touch the
+key. It has to fit the macOS banner, which shows about one line of title and
+two short lines of body; anything longer is cut off.
+
+- **Title:** the action and its target, e.g. "Touch key: push oshirase".
+- **Body:** what goes where, and why, in under about 90 characters, e.g.
+  "2 commits to native-notifier: NUL check, daemon prompt fix. For PR #1."
+- `-source` as above.
+
+One notification per command. If the command fails for lack of a touch, say so
+in the terminal; do not run it again on your own.
