@@ -6,8 +6,15 @@ Include ~/.orbstack/ssh/config
 # Hosts go here, above the defaults: ssh uses the first value it finds.
 
 Host *
-  # FIDO2 security keys, touch to use. YubiKey first, Swissbit as backup.
+  # Secure Enclave key via Secretive's agent, Touch ID to use. It cannot be
+  # exported, so the FIDO2 keys below stay registered as recovery: YubiKey,
+  # then Swissbit. ssh reads those from their files, so they need no agent.
+  # ForwardAgent yes forwards this agent; to forward the Homebrew one instead,
+  # give its socket: ForwardAgent ~/.ssh/agent.sock. Lima's own ssh.config
+  # does not read this file, so claude-vm keeps SSH_AUTH_SOCK's agent.
+  IdentityAgent ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
   IdentitiesOnly yes
+  IdentityFile ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/d443a53df452d0266d6cefe30874b453.pub
   IdentityFile ~/.ssh/id_ed25519_sk_primary
   IdentityFile ~/.ssh/id_ecdsa_sk_backup
 
