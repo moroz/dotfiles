@@ -164,6 +164,17 @@ two short lines of body; anything longer is cut off.
 - **Body:** what goes where, and why, in under about 90 characters, e.g.
   "2 commits to native-notifier: NUL check, daemon prompt fix. For PR #1."
 - `-source` as above.
+- `-tag ssh-touch`, always. A critical notification stays on a Linux desktop
+  until dismissed; with the tag, the host takes it down as soon as the key is
+  touched.
 
 One notification per command. If the command fails for lack of a touch, say so
 in the terminal; do not run it again on your own.
+
+### Email only when I ask for one
+
+`oshirase send -via email` sends that one notification as an email instead
+(to the address set up on the host). Send one **only when I ask for an
+email**, never on your own judgement, and with the same title, `-source` and
+body rules as above. If it fails, say so; do not fall back to a desktop
+notification without saying so.
