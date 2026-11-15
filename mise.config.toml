@@ -29,6 +29,7 @@ minikube = "latest"
 helm = "latest"
 kubectl = "latest"
 turso = "latest"
+tree-sitter = "latest"
 
 [settings]
 experimental = true

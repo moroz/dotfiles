@@ -7,7 +7,52 @@
       "Bash(gh pr merge:*)",
       "Bash(git push origin --force *:refs/tags/staging)"
     ],
+    "deny": [
+      "Read(~/.config/mise/private.txt)",
+      "Read(~/.config/mise/age.txt)",
+      "Read(~/.ssh/id_ed25519)",
+      "Read(~/.ssh/id_ed25519_sk_primary)",
+      "Read(~/.ssh/id_ecdsa_sk_backup)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.local/share/keyrings/**)",
+      "Read(~/.config/BraveSoftware/**)",
+      "Read(~/.config/Signal/**)",
+      "Read(~/.claude/.credentials.json)",
+      "Bash(ansible-vault view *)",
+      "Bash(ansible-vault decrypt *)",
+      "Bash(ansible-vault edit *)",
+      "Bash(aws-vault *)"
+    ],
     "defaultMode": "auto"
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "allowUnsandboxedCommands": false,
+    "filesystem": {
+      "denyRead": [
+        "~/.config/mise/private.txt",
+        "~/.config/mise/age.txt",
+        "~/.ssh/id_ed25519",
+        "~/.ssh/id_ed25519_sk_primary",
+        "~/.ssh/id_ecdsa_sk_backup",
+        "~/.gnupg",
+        "~/.local/share/keyrings",
+        "~/.config/BraveSoftware",
+        "~/.config/Signal",
+        "~/.claude/.credentials.json"
+      ]
+    },
+    "credentials": {
+      "envVars": [
+        { "name": "SSH_AUTH_SOCK", "mode": "deny" },
+        { "name": "CLAUDE_CODE_MESSAGING_TOKEN", "mode": "deny" },
+        { "name": "DISPLAY", "mode": "deny" },
+        { "name": "WAYLAND_DISPLAY", "mode": "deny" },
+        { "name": "XAUTHORITY", "mode": "deny" },
+        { "name": "DBUS_SESSION_BUS_ADDRESS", "mode": "deny" }
+      ]
+    }
   },
   "model": "opus",
   "enabledPlugins": {
@@ -17,5 +62,10 @@
   "syntaxHighlightingDisabled": true,
   "effortLevel": "medium",
   "tui": "fullscreen",
-  "theme": "light"
+  "theme": "dark-daltonized",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "autoCompactWindow": 400000
+    }
+  }
 }
