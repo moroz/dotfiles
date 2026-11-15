@@ -22,3 +22,5 @@ mise.*.local.toml
 *.dSYM
 
 **/.claude/settings.local.json
+
+**/.claude/.cc-writes/

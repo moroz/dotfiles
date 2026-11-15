@@ -261,10 +261,14 @@ if [ "$system" = "Darwin" ]; then
   # export KERL_CONFIGURE_OPTIONS="--disable-hipe --with-ssl=$(brew --prefix openssl)"
 
   alias mc="SHELL=/bin/bash mc"
+fi
 
-  # FIDO security keys (ssh/install-macos.sh): load them into the agent when
-  # it is empty, e.g. after a restart. Loading needs no touch.
-  ssh-add -l >/dev/null 2>&1 ||
+# FIDO security keys (ssh/install-macos.sh, ssh/install-linux.sh): load them
+# into the agent when it is empty, e.g. after a restart. Loading needs no
+# touch. Exit status 1 is a running agent with no keys; 2 is no agent.
+if [[ -f ~/.ssh/id_ed25519_sk_primary ]]; then
+  ssh-add -l >/dev/null 2>&1
+  (( $? == 1 )) &&
     ssh-add -q ~/.ssh/id_ed25519_sk_primary ~/.ssh/id_ecdsa_sk_backup 2>/dev/null
 fi
 

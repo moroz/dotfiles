@@ -72,6 +72,9 @@ if [[ "$(uname)" == 'Darwin' ]]; then
 
   # SSH agent for FIDO keys, with touch notifications (installs oshirase).
   $HOME/.dotfiles/ssh/install-macos.sh
+elif [[ "$(uname)" == 'Linux' ]] && systemctl --user show-environment >/dev/null 2>&1; then
+  # The same on a Linux desktop; skipped without a systemd user session.
+  $HOME/.dotfiles/ssh/install-linux.sh
 fi
 
 mkdir -p ~/.config/zed
