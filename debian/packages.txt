@@ -1,0 +1,15 @@
+# Debian (trixie) packages beyond a default desktop install, one per line.
+# Install with:
+#   sed 's/#.*//' debian/packages.txt | xargs sudo apt install
+#
+# --- Bluetooth audio (Sony WH-1000XM5) ---------------------------------------
+# Without the PipeWire Bluetooth plugin the headphones pair and connect but
+# no audio profile comes up: WirePlumber logs "PipeWire's BlueZ SPA plugin is
+# missing or broken". WirePlumber looks for it only at startup, so after
+# installing, restart the audio stack (or log in again):
+#   systemctl --user restart wireplumber pipewire pipewire-pulse
+# The plugin brings LDAC (the XM5's best codec), SBC-XQ, mSBC for the mic,
+# LC3, aptX and Opus. AAC is not available: Debian builds PipeWire without
+# it (the fdk-aac encoder is non-free), and LDAC is better on the XM5 anyway.
+pipewire-audio
+libspa-0.2-bluetooth
