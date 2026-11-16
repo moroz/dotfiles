@@ -6,7 +6,7 @@ separate problems turned up, with a workaround for each:
 | Problem | Cause | Workaround |
 |---|---|---|
 | Random segfaults in unrelated programs | CPU microcode `0x6133` | `intel-microcode` held at `0x4129` |
-| Sudden resets and freezes, nothing logged | Debian 13's i915 graphics firmware (suspected, under test) | Debian 12's GuC and DMC firmware in `/lib/firmware/updates` |
+| Sudden resets and freezes, nothing logged | Debian 13's i915 graphics firmware (likely; no failure since the swap) | Debian 12's GuC and DMC firmware in `/lib/firmware/updates` |
 
 - Machine: ThinkPad X1 Carbon Gen 11 (21HMS02J00), BIOS N3XET63W (1.38)
 - CPU: i7-1370P, Raptor Lake-P, signature `0xb06a2` (`intel-ucode/06-ba-02`)
@@ -25,7 +25,7 @@ separate problems turned up, with a workaround for each:
   journal) while running daemons kept logging; no error, no "hung task"
   report from the kernel.
 
-## What was tested (2026-11-15/16)
+## What was tested (2026-11-15 to 17)
 
 Each row is one boot. Debian 13 throughout; `i915.enable_psr=0` from the third
 row on.
@@ -36,7 +36,8 @@ row on.
 | 6.12 | `0x4128` (BIOS, `dis_ucode_ldr`) | Debian 13 | none | none; shut down cleanly after 2h25, too short to tell |
 | 6.12 | `0x4129` | Debian 13 | none¹ | reset after 3h35 |
 | 6.1 | `0x4129` | Debian 13 | none | desktop froze after 4 min |
-| 6.12 | `0x4129` | **Debian 12** | none | none so far (1h23 at last check) |
+| 6.12 | `0x4129` | **Debian 12** | none | none; shut down cleanly after 4h34 |
+| 6.12 | `0x4129` | **Debian 12** | none | none; still up after 5h38 (2026-11-17) |
 
 ¹ One `nemo-desktop` segfault at `0x726574`, which is ASCII text ("ter")
 followed as a pointer: a use-after-free in nemo, which crashes on its own.
@@ -58,9 +59,12 @@ What this shows:
   the frozen desktop. Wi-Fi firmware differs too but was left alone: 6.12 uses
   `iwlwifi-so-a0-gf-a0-89.ucode`, which Debian 12 never had.
 
-The last row decides it. Previous 6.12 boots failed by 3h35, so a full day
-without a reset or freeze points to the firmware. If it fails, the next
-suspect is the rest of Debian 13's userspace, Mesa first.
+With Debian 13's firmware, 6.12 failed by 3h35. With Debian 12's, both boots
+ran past that and the kernel logged no oops or warning (taint stayed at `64`,
+the routine firmware-workaround flag); a short boot in between was clean too.
+That points to the firmware. A few more days without a reset or freeze would
+settle it; if one comes, the next suspect is the rest of Debian 13's
+userspace, Mesa first.
 
 ## Workaround 1: microcode pinned at 0x4129
 
