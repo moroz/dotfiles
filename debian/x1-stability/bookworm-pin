@@ -1,0 +1,9 @@
+# Bookworm is here only for testing older microcode and kernels;
+# never pick anything from it unless asked for by exact version.
+Package: *
+Pin: release n=bookworm
+Pin-Priority: 1
+
+Package: *
+Pin: release n=bookworm-security
+Pin-Priority: 1

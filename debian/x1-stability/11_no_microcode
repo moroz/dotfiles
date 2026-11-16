@@ -1,0 +1,8 @@
+#!/bin/sh
+# One extra boot entry: the default kernel without the microcode update and
+# without i915.enable_psr=0, to test whether new microcode causes the crashes.
+GRUB_CMDLINE_LINUX="$(echo "$GRUB_CMDLINE_LINUX" | sed 's/i915\.enable_psr=0//') dis_ucode_ldr" \
+  /etc/grub.d/10_linux 2>/dev/null |
+  awk '/^menuentry /{n++} n==1{print} n==1 && /^}/{exit}' |
+  sed -e "1s|'[^']*'|'Debian GNU/Linux (no microcode update)'|" \
+      -e '1s/gnulinux-simple-/gnulinux-noucode-/'
