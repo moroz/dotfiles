@@ -30,6 +30,8 @@ helm = "latest"
 kubectl = "latest"
 turso = "latest"
 tree-sitter = "latest"
+fzf = "latest"
+"go:github.com/go-delve/delve/cmd/dlv" = "latest"
 
 [settings]
 experimental = true
