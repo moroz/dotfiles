@@ -2,11 +2,6 @@
 name = "Karol Moroz"
 email = "karol@moroz.dev"
 
-[signing]
-behavior = "drop"
-backend = "gpg"
-key = "9643ACD937ED3E82E9E25B8FBA266278CB48B02B"
-
 [aliases]
 up = ["util", "exec", "--", "bash", "-c", """
 set -euo pipefail

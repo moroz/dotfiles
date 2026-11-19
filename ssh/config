@@ -5,6 +5,13 @@ Include ~/.orbstack/ssh/config
 
 # Hosts go here, above the defaults: ssh uses the first value it finds.
 
+# Reuse one authenticated connection to GitHub for ten minutes after the
+# last use, so a burst of clones and fetches costs one Touch ID, not one each.
+Host github.com
+  ControlMaster auto
+  ControlPath ~/.ssh/cm-%C
+  ControlPersist 10m
+
 Host *
   # Secure Enclave key via Secretive's agent, Touch ID to use. It cannot be
   # exported, so the FIDO2 keys below stay registered as recovery: YubiKey,
