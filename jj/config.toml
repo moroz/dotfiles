@@ -7,9 +7,6 @@ behavior = "drop"
 backend = "gpg"
 key = "9643ACD937ED3E82E9E25B8FBA266278CB48B02B"
 
-[git]
-sign-on-push = true
-
 [aliases]
 up = ["util", "exec", "--", "bash", "-c", """
 set -euo pipefail
@@ -41,3 +38,4 @@ gh pr create -H push-$COMMIT_ID
 
 [revsets]
 trunk = "main@origin | master@origin"
+git.sign-on-push = "none()"
