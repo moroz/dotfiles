@@ -5,7 +5,9 @@
   "permissions": {
     "allow": [
       "Bash(gh pr merge:*)",
-      "Bash(git push origin --force *:refs/tags/staging)"
+      "Bash(git push origin --force *:refs/tags/staging)",
+      "Edit(~/go/pkg/mod/**)",
+      "Edit(~/.cache/go-build/**)"
     ],
     "deny": [
       "Read(~/.config/mise/private.txt)",
@@ -25,10 +27,23 @@
     ],
     "defaultMode": "auto"
   },
+  "model": "opus",
+  "enabledPlugins": {
+    "mcp-server-dev@claude-plugins-official": true,
+    "vibe-wise@anthropic-plugin-directory": true
+  },
   "sandbox": {
     "enabled": true,
     "failIfUnavailable": true,
     "allowUnsandboxedCommands": false,
+    "network": {
+      "allowedDomains": [
+        "proxy.golang.org",
+        "sum.golang.org",
+        "api.github.com",
+        "github.com"
+      ]
+    },
     "filesystem": {
       "denyRead": [
         "~/.config/mise/private.txt",
@@ -45,27 +60,46 @@
     },
     "credentials": {
       "envVars": [
-        { "name": "SSH_AUTH_SOCK", "mode": "deny" },
-        { "name": "CLAUDE_CODE_MESSAGING_TOKEN", "mode": "deny" },
-        { "name": "DISPLAY", "mode": "deny" },
-        { "name": "WAYLAND_DISPLAY", "mode": "deny" },
-        { "name": "XAUTHORITY", "mode": "deny" },
-        { "name": "DBUS_SESSION_BUS_ADDRESS", "mode": "deny" }
+        {
+          "name": "SSH_AUTH_SOCK",
+          "mode": "deny"
+        },
+        {
+          "name": "CLAUDE_CODE_MESSAGING_TOKEN",
+          "mode": "deny"
+        },
+        {
+          "name": "DISPLAY",
+          "mode": "deny"
+        },
+        {
+          "name": "WAYLAND_DISPLAY",
+          "mode": "deny"
+        },
+        {
+          "name": "XAUTHORITY",
+          "mode": "deny"
+        },
+        {
+          "name": "DBUS_SESSION_BUS_ADDRESS",
+          "mode": "deny"
+        }
       ]
-    }
-  },
-  "model": "opus",
-  "enabledPlugins": {
-    "mcp-server-dev@claude-plugins-official": true,
-    "vibe-wise@anthropic-plugin-directory": true
+    },
+    "excludedCommands": [
+      "git",
+      "jj",
+      "gh",
+      "ssh"
+    ]
   },
   "syntaxHighlightingDisabled": true,
   "effortLevel": "medium",
-  "tui": "fullscreen",
-  "theme": "dark-daltonized",
   "modelSettings": {
     "claude-opus-5-5": {
       "autoCompactWindow": 400000
     }
-  }
+  },
+  "tui": "fullscreen",
+  "theme": "light"
 }

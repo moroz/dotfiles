@@ -32,6 +32,7 @@ turso = "latest"
 tree-sitter = "latest"
 fzf = "latest"
 "go:github.com/go-delve/delve/cmd/dlv" = "latest"
+oxfmt = "latest"
 
 [settings]
 experimental = true
