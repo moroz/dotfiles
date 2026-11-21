@@ -37,12 +37,8 @@
     "failIfUnavailable": true,
     "allowUnsandboxedCommands": false,
     "network": {
-      "allowedDomains": [
-        "proxy.golang.org",
-        "sum.golang.org",
-        "api.github.com",
-        "github.com"
-      ]
+      "allowedDomains": ["proxy.golang.org", "sum.golang.org", "api.github.com", "github.com"],
+      "allowAllUnixSockets": true
     },
     "filesystem": {
       "denyRead": [
@@ -86,12 +82,7 @@
         }
       ]
     },
-    "excludedCommands": [
-      "git",
-      "jj",
-      "gh",
-      "ssh"
-    ]
+    "excludedCommands": ["git", "jj", "gh", "ssh"]
   },
   "syntaxHighlightingDisabled": true,
   "effortLevel": "medium",
