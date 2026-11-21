@@ -786,7 +786,6 @@ require('lazy').setup({
         'query',
         'vim',
         'vimdoc',
-        'ruby',
         'javascript',
         'typescript',
         'tsx',
@@ -803,11 +802,6 @@ require('lazy').setup({
         group = vim.api.nvim_create_augroup('treesitter-start', { clear = true }),
         callback = function(args)
           if not pcall(vim.treesitter.start, args.buf) then
-            return
-          end
-          -- Ruby's indent rules depend on vim's regex highlighting
-          if vim.bo[args.buf].filetype == 'ruby' then
-            vim.bo[args.buf].syntax = 'on'
             return
           end
           vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
@@ -1023,10 +1017,7 @@ vim.lsp.config('tailwindcss', {
   filetypes = {
     'astro',
     'astro-markdown',
-    'erb',
-    'eruby',
     'gohtml',
-    'haml',
     'html',
     'markdown',
     'mdx',

@@ -130,7 +130,7 @@ require("lazy").setup({
         local configs = require("nvim-treesitter.configs")
 
         configs.setup({
-          ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "go", "rust", "elixir", "ruby" },
+          ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "html", "go", "rust" },
           sync_install = false,
           highlight = { enable = true },
           indent = { enable = true },
@@ -164,7 +164,7 @@ local on_attach = function(server_name)
     end
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 
-    local enable_format_lsps = { 'svelte', 'lua_ls', 'efm', 'elixirls', 'elixir-ls' }
+    local enable_format_lsps = { 'svelte', 'lua_ls', 'efm' }
     local enable_format = false
     for i = 1, #enable_format_lsps, 1 do
       if enable_format_lsps[i] == server_name then
@@ -186,12 +186,10 @@ local servers = {
   },
   gopls = {},
   templ = {},
-  elixirls = {},
   svelte = {},
-  rubocop = {},
   tailwindcss = {
     filetypes = {
-      "astro", "astro-markdown", "eelixir", "erb", "eruby", "gohtml", "haml", "html", "html-eex", "liquid", "markdown",
+      "astro", "astro-markdown", "gohtml", "html", "liquid", "markdown",
       "mdx", "css", "less", "postcss", "sass", "scss", "javascript", "javascriptreact", "typescript", "typescriptreact",
       "svelte", "templ", "gohtmltmpl"
     }
@@ -215,7 +213,7 @@ require('mason-lspconfig').setup()
 local mason_lspconfig = require('mason-lspconfig')
 
 mason_lspconfig.setup {
-  ensure_installed = { "gopls", "clangd", "tailwindcss", "rust_analyzer", "lua_ls", "rubocop", "ts_ls" },
+  ensure_installed = { "gopls", "clangd", "tailwindcss", "rust_analyzer", "lua_ls", "ts_ls" },
   automatic_installation = true,
 }
 
@@ -246,7 +244,7 @@ vim.api.nvim_create_autocmd({ 'Filetype' }, {
 })
 
 vim.api.nvim_create_autocmd({ 'Filetype' }, {
-  pattern = { 'c', 'lua', 'elixir', 'html' },
+  pattern = { 'c', 'lua', 'html' },
   command = 'setlocal tabstop=2 shiftwidth=2 noexpandtab fileformat=unix'
 })
 
