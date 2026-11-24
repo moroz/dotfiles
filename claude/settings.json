@@ -20,6 +20,7 @@
       "Read(~/.config/BraveSoftware/**)",
       "Read(~/.config/Signal/**)",
       "Read(~/.claude/.credentials.json)",
+      "Read(~/Dropbox/**)",
       "Bash(ansible-vault view *)",
       "Bash(ansible-vault decrypt *)",
       "Bash(ansible-vault edit *)",
@@ -37,7 +38,7 @@
     "failIfUnavailable": true,
     "allowUnsandboxedCommands": false,
     "network": {
-      "allowedDomains": ["proxy.golang.org", "sum.golang.org", "api.github.com", "github.com"],
+      "allowedDomains": ["*"],
       "allowAllUnixSockets": true
     },
     "filesystem": {
@@ -51,7 +52,8 @@
         "~/.local/share/keyrings",
         "~/.config/BraveSoftware",
         "~/.config/Signal",
-        "~/.claude/.credentials.json"
+        "~/.claude/.credentials.json",
+        "~/Dropbox"
       ]
     },
     "credentials": {
@@ -92,5 +94,5 @@
     }
   },
   "tui": "fullscreen",
-  "theme": "light"
+  "theme": "dark-daltonized"
 }
